@@ -1,0 +1,105 @@
+/*-------------------------
+#.section-header
+--------------------------*/
+.section-header {
+    margin-top: -.5rem;
+    margin-bottom: 5rem;
+    .section-title {
+        font-size: 3.5rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: var(--white);
+    }
+}
+.section-inner-wrap{
+    .title {
+        margin-bottom: 15px;
+        font-size: 6.4rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: var(--white);
+    }
+    p {
+        margin-bottom: 35px;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        color: #8F92A1;
+        a {
+            display: inline-block;
+            color: var(--primary-color);
+            transition: $transition;
+            &:hover {
+                color: var(--hover-color);
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+.section-title-area {
+    margin-bottom: 6rem;
+    h2 {
+        margin-bottom: 2rem;
+        font-size: 4.4rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: var(--white);
+    }
+    p {
+        margin: 0;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        color: rgba(255, 255, 255, .6);
+    }
+}
+.section-header-two {
+    margin-bottom: 3.5rem;
+    .section-title {
+        font-size: 2.4rem;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: var(--white);
+    }
+}
+.submit-work-img {
+    min-width: 120%;
+}
+@media (max-width: 1550px) {
+    .submit-work-img {
+        min-width: 108%;
+    }
+}
+@media (max-width: 1367px) {
+    .submit-work-img {
+        min-width: 100%;
+    }
+}
+@media (max-width: 1199px) {
+    .section-inner-wrap .title {
+        font-size: 5rem;
+    }
+}
+@media (max-width: 991px) {
+    .submit-work-img {
+       margin-top: 3rem;
+    }
+}
+@media (max-width: 768px) {
+    .section-header .section-title {
+        font-size: 3rem;
+    }
+}
+@media (max-width: 575px) {
+    .section-inner-wrap .title {
+        font-size: 3.6rem;
+    }
+    .section-header .view-all-btn {
+        margin-top: 1rem;
+    }
+}
+@media (max-width: 375px) {
+    .section-header .section-title {
+        font-size: 2.6rem;
+    }
+}

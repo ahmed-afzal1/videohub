@@ -1,0 +1,58 @@
+/*-------------------------
+#.Movies category-page
+--------------------------*/
+.movies-category-page {
+    .movies-category-page-title {
+        font-weight: 600;
+        font-size: 64px;
+        line-height: 110%;
+        color: #fff;
+        margin-bottom: 60px;
+    }
+    .nav.nav-pills {
+        margin-bottom: 32px;
+    }
+    .nav-pills .nav-link {
+        font-size: 16px;
+        line-height: 100%;
+        border: 1px solid #fff;
+        font-weight: 600;
+        min-height: 45px;
+        margin-right: 18px;
+        margin-bottom: 18px;
+        color: #fff;
+        border-radius: 4px;
+        padding: 12px 26px;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        border: 1px solid var(--primary-color);
+        background-color: var(--primary-color);
+    }
+    .load-more-btn {
+        margin-top: 20px;
+        button {
+            font-family: $poppins;
+            border: 2px solid #fff;
+            background-color: #010001;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 100%;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 4px;
+            text-transform: capitalize;
+            padding: 1.5rem 2rem;
+        }
+    }
+}
+@media (max-width: 1199px) {
+    .movies-category-page .movies-category-page-title {
+        font-size: 5rem;
+    }
+}
+@media (max-width: 575px) {
+    .movies-category-page .movies-category-page-title {
+        font-size: 3.6rem;
+    }
+}

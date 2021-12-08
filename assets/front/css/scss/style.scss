@@ -1,0 +1,83 @@
+/*
+------------- Table of content ----------------
+
+Template Name: Theme Name Responsive  HTML5 Template
+Template URI: http://zainiklab.com
+Description: Theme Name Responsive  HTML5 Template
+Author: Zainiklab
+Author URI: http://Theme Name.com
+Version: 1.0
+
+---------------------- common content ----------
+1.body reset content
+#.header area
+#.hero-slider
+#.hero-banner
+#.latest-movies-area
+#.free-watch
+#.movi-banner
+#.popular-tv-series
+#.trailer-area
+#.butotn
+#.section-header
+#.footer area
+#.register-area
+#.single-movies
+#.upcomming-movies
+#.suggested-movies
+#.recommend-movies
+#.trending-movies
+#.breadcrumb-area
+#.career
+#.faq
+#.price-table
+#.sidebar-area
+#.movies-page
+#.video-player
+#.movie-details
+#.about-page
+#.newsletter
+
+*/
+
+// variable
+@import "variable/_variable.scss";
+
+// mixin
+@import "mixin/_mixin.scss";
+
+// body reset content
+@import "reset/_predefine.scss";
+
+// component content
+@import "section/header/header";
+@import "section/hero-area/hero-slider";
+@import "section/hero-area/hero-banner";
+@import "section/latest-movies-area/latest-movies-area";
+@import "section/free-watch/free-watch";
+@import "section/movi-banner/movi-banner";
+@import "section/popular-tv-series/popular-tv-series";
+@import "section/trailer-area/trailer-area";
+@import "section/button/button";
+@import "section/section-header/section-header";
+@import "section/footer/footer";
+@import "section/register-area/register-area";
+@import "section/single-movies/single-movies";
+@import "section/upcomming-movies/upcomming-movies";
+@import "section/suggested-movies/suggested-movies";
+@import "section/recommend-movies/recommend-movies";
+@import "section/trending-movies/trending-movies";
+@import "section/breadcrumb-area/breadcrumb-area";
+@import "section/career-page/career";
+@import "section/faq/faq";
+@import "section/price-table/price-table";
+@import "section/sidebar-area/sidebar-area"; 
+@import "section/movies-page/movies-page"; 
+@import "section/movie-details/movie-details"; 
+@import "section/about-page/about-page"; 
+@import "section/newsletter/newsletter"; 
+@import "section/referral-page/referral-page";
+@import "section/movies-category-page/movies-category-page";
+@import "section/settings-page/settings-page";
+
+// page content

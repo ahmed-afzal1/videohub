@@ -1,0 +1,30 @@
+/*-------------------------
+#.upcomming-movies
+--------------------------*/
+.suggested-movies-area {
+    .single-movies {
+        margin-bottom: 3rem;
+        .movi-verlay {
+            .share-add-btn {
+                top: auto;
+                bottom: 2rem;
+                .share-area {
+                    .share-btn {
+                        width: 3.2rem;
+                        height: 3.2rem;
+                    }
+                }
+                .add-btn {
+                    width: 3.2rem;
+                    height: 3.2rem;
+                }
+            }
+            .movies-info {
+                bottom: 0;
+                .movies-meta {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

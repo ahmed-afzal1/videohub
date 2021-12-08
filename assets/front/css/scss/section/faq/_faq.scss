@@ -1,0 +1,99 @@
+/*-------------------------
+#.faq
+--------------------------*/
+.faq-page {
+     .faq-tabs-area {
+          margin-top: 7rem;
+          .nav-tabs {
+               border: none;
+               margin-bottom: 1.5rem;
+               .nav-item {
+                    margin-right: 1.5rem;
+                    .nav-link {
+                         padding: .5rem 2rem;
+                         font-size: 1.4rem;
+                         font-weight: 700;
+                         text-transform: capitalize;
+                         border-radius: 10rem;
+                         border: none;
+                         color: #242731;
+                         background: transparent;
+                         &.active {
+                              background: var(--primary-color);
+                              color: var(--white);
+                         }
+                    }
+               }
+          }
+     }
+     .accordion {
+          .accordion-item {
+               background: transparent;
+               border: none;
+          }
+          .accordion-header {
+               .accordion-button {
+                    padding: 3rem 0;
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    text-transform: capitalize;
+                    color: var(--white);
+                    background: transparent;
+                    border-bottom: 1px solid #101112;
+                    &:focus {
+                         box-shadow: none;
+                    }
+                    &:after {
+                         content: '\f107';
+                         font-family: "Font Awesome 5 free";
+                         font-weight: 900;
+                    }
+               }
+          }
+          .accordion-body {
+               padding: 2.5rem 0;
+          }
+          h4 {
+               margin-bottom: 2rem;
+               font-size: 2.6rem;
+               font-weight: 600;
+               text-transform: capitalize;
+               color: var(--white);
+          }
+          p {
+               margin-bottom: 2.5rem;
+               font-size: 1.6rem;
+               font-weight: 400;
+               line-height: 2.6rem;
+               color: #777E90;
+          }
+          .learn-more {
+               display: inline-block;
+               padding: 1rem 2rem;
+               border: 2px solid #101112;
+               border-radius: 9rem;
+               font-size: 1.6rem;
+               font-weight: 600;
+               text-transform: capitalize;
+               color: var(--white);
+               transition: $transition;
+               &:hover {
+                    color: var(--white);
+                    background: var(--primary-color);
+                    border-color: var(--primary-color);
+               }
+          }
+     }
+}
+@media (max-width: 575px) {
+     .faq-page .faq-tabs-area .nav-tabs .nav-item {
+          margin: .5rem;
+     }
+     .faq-page .accordion h4 {
+          font-size: 2rem;
+     }
+     .faq-page .accordion .accordion-header .accordion-button {
+          padding: 2rem 0;
+          font-size: 1.4rem;
+     }
+}

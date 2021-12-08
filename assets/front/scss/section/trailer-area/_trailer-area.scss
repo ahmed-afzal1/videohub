@@ -1,0 +1,130 @@
+/*-------------------------
+#.trailer-area
+--------------------------*/
+.trailer-area {
+    position: relative;
+    background: url('../images/trailer.jpg') no-repeat center / cover;
+    background-attachment: fixed;
+    z-index: 1;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .90);
+        z-index: -1;
+    }
+    .trailer-video {
+        position: relative;
+        .thumbnail-thumbnail {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+        }
+        .play-btn {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            text-align: center;
+            transform: translateY(-50%);
+            width: 5.5rem;
+            height: 5.5rem;
+            line-height: 5.5rem;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--white);
+            transition: $transition;
+            &:hover {
+                color: var(--white);
+                background: var(--hover-color);
+            }
+        }
+    }
+    .trailer-info {
+        .trailer-title {
+            margin-bottom: 2.5rem;
+            font-size: 6rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            color: var(--white);
+        }
+        .trailer-label {
+            margin-bottom: 3rem;
+            font-size: 1.8rem;
+            font-weight: 400;
+            text-transform: capitalize;
+            color: rgba(255, 255, 255, .80);
+        }
+        .trailer-content {
+            margin-bottom: 3.5rem;
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            color: rgba(255, 255, 255, .60);
+        }
+    }
+
+    // Trailer slider navigation css
+    .slick-initialized .slick-slide {
+        display: flex;
+    }
+    .slick-arrow {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid #797979;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        top: -94px;
+        right: 0;
+        position: absolute;
+        transition: all .5s linear;
+        &:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+    }
+    .arrow-prev.slick-arrow {
+        right: 55px;
+    }
+}
+@media (max-width: 1199px) {
+    .trailer-area .trailer-info .trailer-title {
+        margin-bottom: 1.5rem;
+        font-size: 4.5rem;
+    }
+    .trailer-area .trailer-info .trailer-label {
+        margin-bottom: 2rem;
+    }
+    .trailer-area .trailer-info .trailer-content {
+        margin-bottom: 2.5rem;
+    }
+}
+@media (max-width: 991px) {
+    .trailer-area .trailer-info {
+        margin-top: 3rem;
+    }
+}
+@media (max-width: 767px) {
+    .trailer-area .slick-arrow {
+        top: auto;
+        bottom: 0;
+    }
+}
+@media (max-width: 575px) {
+    .trailer-area .trailer-info .trailer-title {
+        font-size: 3.6rem;
+    }
+}
+@media (max-width: 480px) {
+    .trailer-area .trailer-info .trailer-title {
+        font-size: 3.2rem;
+    }
+}

@@ -1,0 +1,41 @@
+/*-------------------------
+#.movi-banner
+--------------------------*/
+.movi-banner-area {
+    .movi-banner-slide {
+        .single-movi-banner {
+            a {
+                display: block;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+        .slick-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            z-index: 9;
+            cursor: pointer;
+            opacity: 1;
+            color: var(--white);
+            transition: $transition;
+            &:hover {
+                color: var(--primary-color);
+            }
+            &.arrow-prev {
+                left: 5%;
+            }
+            &.arrow-next {
+                right: 5%;
+            }
+        }
+    }
+}
+@media (max-width: 575px) {
+    .movi-banner-area .movi-banner-slide .slick-arrow {
+        font-size: 2rem;
+    }
+}

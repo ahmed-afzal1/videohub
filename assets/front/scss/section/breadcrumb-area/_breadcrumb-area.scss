@@ -1,0 +1,40 @@
+/*-------------------------
+#.breadcrumb-area
+--------------------------*/
+.breadcrumb-area {
+     padding: 15px 0 50px 0;
+     .breadcrumb-page {
+          ul {
+               li {
+                    display: inline-block;
+                    position: relative;
+                    list-style: none;
+                    margin-right: 20px;
+                    font-size: 1.6rem;
+                    text-transform: capitalize;
+                    color: rgba(255, 255, 255, .60);
+                    &:before {
+                         position: absolute;
+                         content: '/';
+                         left: calc(100% + 10px);
+                         top: 0;
+                         color: var(--white);
+                    }
+                    &:last-child {
+                         margin-right: 0;
+                         &:before {
+                              display: none;
+                         }
+                    }
+                    a {
+                         display: inline-block;
+                         color: var(--white);
+                         transition: $transition;
+                         &:hover {
+                              color: var(--primary-color);
+                         }
+                    }
+               }
+          }
+     }
+}

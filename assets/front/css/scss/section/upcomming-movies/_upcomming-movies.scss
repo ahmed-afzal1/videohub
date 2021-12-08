@@ -1,0 +1,31 @@
+/*-------------------------
+#.upcomming-movies
+--------------------------*/
+.upcomming-movies-area {
+    .single-movies {
+        margin-bottom: 3rem;
+    }
+}
+@media (min-width: 575px) and (max-width: 767px) {
+    .single-movies .movi-verlay .movies-info .movies-title {
+        margin-bottom: 0;
+        font-size: 2rem;
+    }
+    .single-movies .movi-verlay .movies-info .movie-content {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        margin-bottom: 0;
+    }
+}
+@media (max-width: 575px) {
+    .single-movies .movi-verlay .movies-info .movie-content {
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        margin-bottom: 0;
+    }
+    .single-movies .movi-verlay .movies-info {
+        bottom: 0;
+        left: 0;
+        padding: 2rem;
+    }
+}

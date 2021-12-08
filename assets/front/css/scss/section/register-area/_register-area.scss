@@ -1,0 +1,277 @@
+/*-------------------------
+#.register-area
+--------------------------*/
+.register-area {
+    @include flex-position(flex, center, center);
+    position: relative;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 3rem 1.5rem;
+    z-index: 1;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(10, 14, 23, 0.45);
+        backdrop-filter: blur(12px);
+        z-index: -1;
+    }
+    .register-wrap {
+        width: 600px;
+        max-width: 600px;
+        padding: 4.5rem;
+        background: #050505;
+        border-radius: 1.5rem;
+        
+    }
+    .register-top {
+        position: relative;
+        border-bottom: 1px solid rgba(255, 255, 255, .40);
+        margin-bottom: 2rem;
+        &:before {
+            position: absolute;
+            content: '';
+            width: 20%;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -1px;
+            left: 0;
+        }
+        h3 {
+            margin-bottom: 1rem;
+            font-family: $bodyFont;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        p {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #8F92A1;
+            a {
+                display: inline-block;
+                color: var(--primary-color);
+                transition: $transition;
+                font-weight: 600;
+                &:hover {
+                    color: var(--hover-color);
+                }
+            }
+        }
+    }
+    .other-continue {
+        .continue-area {
+            display: flex;
+            justify-content: space-between;
+            flex-flow: row wrap;
+            margin-bottom: 2rem;
+            .continue-btn {
+                @include flex-position(flex, center, center);
+                width: 48%;
+                height: 56px;
+                background: #121212;
+                border-radius: 16px;
+                font-size: 1.4rem;
+                font-weight: 500;
+                text-transform: capitalize;
+                color: var(--white);
+                transition: $transition;
+                .icon {
+                    margin-right: 1rem;
+                }
+                &:hover {
+                    color: var(--white);
+                    background: var(--primary-color);
+                }
+            }
+        }
+        .or-text {
+            position: relative;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #8F92A1;
+            &:after {
+                position: absolute;
+                content: '';
+                width: 45%;
+                height: 1px;
+                background: rgba(255, 255, 255, .05);
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            &:before {
+                position: absolute;
+                content: '';
+                width: 45%;
+                height: 1px;
+                background: rgba(255, 255, 255, .05);
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    .register-form {
+        .form-group {
+            margin-bottom: 2.5rem;
+            label {
+                margin-bottom: 1rem;
+                font-family: $bodyFont;
+                font-size: 1.8rem;
+                font-weight: 400;
+                text-transform: capitalize;
+                color: var(--white);
+            }
+            .form-control {
+                width: 100%;
+                height: 5.4rem;
+                padding: .5rem 1.5rem;
+                background: #1F1F1F;
+                border-radius: 12px;
+                border: 1px solid transparent;
+                font-family: $bodyFont;
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: var(--white);
+                &:focus {
+                    border-color: var(--primary-color);
+                }
+            }
+        }
+        .form-check {
+            .form-check-input {
+                appearance: none;
+                width: 2rem;
+                height: 2rem;
+                border-color: transparent;
+                &:checked {
+                    background-color: var(--primary-color);
+                    border-color: #E40916;
+                    box-shadow: none;
+                }
+            }
+            .form-check-label {
+                margin-bottom: 0;
+                padding-left: 1.5rem;
+                font-family: $bodyFont;
+                font-size: 1.4rem;
+                line-height: 2.4rem;
+                font-weight: 400;
+                color: #8F92A1;
+                cursor: pointer;
+                a {
+                    display: inline-block;
+                    color: var(--primary-color);
+                    transition: $transition;
+                    font-weight: 700;
+                    &:hover {
+                        color: var(--hover-color);
+                    }
+                }
+            }
+        }
+        .remember-check {
+            .form-check-input  {
+                margin-top: 2px;
+            }
+            .form-check-label  {
+                padding-left: 1rem;
+                font-size: 1.8rem;
+            }
+        }
+        .forget-password {
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: 500;
+            text-transform: capitalize;
+            color: var(--primary-color);
+            transition: $transition;
+            &:hover {
+                color: var(--hover-color);
+            }
+        }
+        .register-btn {
+            display: block;
+            width: 100%;
+            border: none;
+            height: 5.6rem;
+            border-radius: 1.6rem;
+            background: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: capitalize;
+            color: var(--white);
+            transition: $transition;
+            &:hover {
+                color: var(--white);
+                background: var(--hover-color);
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    .register-area .register-wrap {
+        padding: 3rem 2rem;
+    }
+}
+@media (max-width: 575px) {
+    .register-area .other-continue .continue-area .continue-btn .icon {
+        max-width: 20px;
+        margin-right: .5rem;
+    }
+}
+@media (max-width: 480px) {
+    .register-area .other-continue .continue-area .continue-btn {
+        width: 100%;
+        margin: 1rem 0;
+    }
+    .register-area .register-form .remember-check .form-check-label {
+        display: block;
+    }
+    .register-area .register-form .forget-password.float-end {
+        display: block;
+        margin-top: 1rem;
+        float: none !important;
+        margin-left: -20px;
+    }
+    .register-area .other-continue .continue-area .continue-btn .icon {
+        margin-right: 1rem;
+    }
+}
+@media (max-width: 414px) {
+    .register-area .register-top h3 {
+        font-size: 2.2rem;
+    }
+    .register-area .register-top p {
+        font-size: 1.4rem;
+    }
+    .register-area .register-form .form-group label {
+        font-size: 1.4rem;
+    }
+    .register-area .register-form .remember-check .form-check-label {
+        font-size: 1.4rem;
+    }
+    .register-area .register-form .forget-password {
+        font-size: 1.4rem;
+    }
+    .register-area .register-wrap {
+        padding: 3rem 2rem;
+    }
+}
+@media (max-width: 360px) {
+    .register-area .other-continue .continue-area .continue-btn {
+        font-size: 1.2rem;
+    }
+    .register-area .other-continue .continue-area .continue-btn .icon {
+        max-width: 20px;
+    }
+}

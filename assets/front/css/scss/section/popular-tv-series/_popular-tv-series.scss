@@ -1,0 +1,74 @@
+/*-------------------------
+#.popular-tv-series
+--------------------------*/
+.single-tv-series {
+    margin-bottom: 3rem;
+    padding: .6rem;
+    border-radius: 1rem;
+    transition: $transition;
+    .tv-series-thumbnail {
+        position: relative;
+        border-radius: 1.6rem;
+        overflow: hidden;
+        .thumbnail {
+            width: 100%;
+            height: auto;
+            transition: $transition;
+        }
+        .premium {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            max-width: 2rem;
+        }
+        .imdb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 6rem;
+            height: 2rem;
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--secondary-color );
+            border-radius: .4rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--black);
+            img {
+                max-width: 3rem;
+            }
+        }
+    }
+    .tv-series-info {
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        .series-title {
+            font-family: $bodyFont;
+            font-size: 2rem;
+            font-weight: 500;
+            text-transform: capitalize;
+            color: var(--white);
+            a {
+                color: var(--white);
+                transition: $transition;
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+        p {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, .60);
+        }
+    }
+    &:hover {
+        background: #0B0B0B;
+        .tv-series-thumbnail {
+            .thumbnail {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

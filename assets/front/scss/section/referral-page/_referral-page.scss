@@ -1,0 +1,289 @@
+/*-------------------------
+#.Referral-page
+--------------------------*/
+.referral-page {
+    .title {
+        font-weight: normal;
+        font-size: 100px;
+        line-height: 112%;
+        color: #FFFFFF;
+        span {
+            font-weight: 600;
+            font-size: 144px;
+            line-height: 112%;
+        }
+    }
+}
+.how-to-refer-area {
+    .how-to-refer-title {
+        margin-bottom: 5rem;
+    }
+    h2 {
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 150%;
+        color: #FFFFFF;
+    }
+    .how-to-refer-step-wrap {
+        padding: 0 157px;
+        .how-to-refer-step {
+            text-align: center;
+            width: 228px;
+            margin: 0 auto;
+            .how-to-refer-img {
+                border-radius: 7px;
+                overflow: hidden;
+                img {
+                    border-radius: 7px;
+                }
+            }
+            .how-to-refer-content {
+                p {
+                    font-weight: 500;
+                    color: #D6CECE;
+                    margin-top: 30px;
+                }
+                .how-to-step-count {
+                    height: 39px;
+                    width: 39px;
+                    background-color: #fff;
+                    font-size: 18px;
+                    line-height: 150%;
+                    color: #1F2128;
+                    font-weight: 700;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    left: 44%;
+                    top: -56px;
+                }
+            }
+        }
+    }
+
+    .reffer-share-btns {
+        margin-top: 20px;
+        .social-share-referral {
+            height: 50px;
+            width: 50px;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 21px;
+            margin: 10px 5px 0;
+        }
+        .share-referral-big-btn {
+            margin: 10px 5px 0;
+        }
+        .facebook-share {
+            background-color: #3B5998;
+        }
+        .twitter-share {
+            background-color: #2AA9E0;
+        }
+        .check-referral-btn {
+            background-color: rgba(228, 9, 22, 0.35);
+        }
+    }
+}
+.common-modal {
+    .container {
+        height: 100%;
+        .row {
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    }
+    .modal-header {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    .btn-close {
+        background: transparent;
+        opacity: 1;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        z-index: 9;
+    }
+    .modal-content {
+        height: 100%;
+        background-color: #010001;
+    }
+    .modal-dialog {
+        max-width: 100%;
+        margin: 0;
+        height: 100%;
+    }
+    // Leftside box
+    .referral-modal-left-box {
+        background-color: #ffffff1a;
+
+        .referral-modal-inner-box{
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 52px 42px;
+            h1 {
+                font-weight: bold;
+                font-size: 48px;
+                line-height: 112%;
+                margin-top: 7px;
+            }
+            span {
+                background: rgba(246, 199, 0, 0.2);
+                border-radius: 54px;
+                min-height: 23px;
+                min-width: 88px;
+                padding: 4px 10px;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 112%;
+                text-transform: capitalize;
+            }
+        }
+        
+        .primary-btn {
+            padding: 1.2rem 3.5rem;
+            background: #1B6CCC!important;
+        }
+        .your-balance {
+            span {
+            background-color: rgba(26, 155, 65, 0.25)!important;
+            }
+        }
+        .last-withdrawl {
+            span {
+                background-color: rgba(225, 105, 225, 0.25)!important;
+            }
+        }
+
+    }
+
+    // Right side table
+    .referral-data-table {
+        background-color: #1B1A1B;
+        table {
+            background-color: #1B1A1B;
+        }
+        thead tr th {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 112%;
+            color: #fff;
+            border-bottom-width: 2px;
+            border-bottom-color: rgba(255, 255, 255, 0.1)!important;
+            padding: 21px 30px!important;
+        }
+        td.referral-purchase-col {
+            color: #30AD25!important;
+        }
+        tbody tr td {
+            font-size: 14px;
+            color: #B5B5B5;
+            font-weight: 400;
+            border-bottom-color: rgba(255, 255, 255, 0.06);
+            padding: 15px 30px!important;
+        }
+    }
+}
+.modal {
+    z-index: 9999;
+}
+    
+.popover {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 12px 30px;
+    width: 215px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-align: center;
+}
+.popover-body {
+    color: #fff;
+}
+.bs-popover-auto[data-popper-placement^=bottom]>.popover-arrow::after, .bs-popover-bottom>.popover-arrow::after {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 1400px) {
+    .referral-page .title {
+        font-size: 64px;
+    }
+    .referral-page .title span {
+        font-size: 94px;
+    }
+
+}
+@media (max-width: 1399px) {
+    .how-to-refer-area .how-to-refer-step-wrap .how-to-refer-step .how-to-refer-content .how-to-step-count {
+        left: 45%;
+    }
+    .how-to-refer-area .how-to-refer-step-wrap .how-to-refer-step {
+        padding: 0 0;
+    }
+    .how-to-refer-area .how-to-refer-step-wrap .how-to-refer-step .how-to-refer-content p {
+        font-size: 16px;
+    }
+}
+@media (max-width: 1199px) {
+    .how-to-refer-area .how-to-refer-step-wrap {
+        padding: 0 60px;
+    }
+    .common-modal .referral-modal-left-box .referral-modal-inner-box h1 {
+        font-size: 28px;
+    }
+    .common-modal .referral-modal-left-box .primary-btn {
+        padding: 1rem 2rem;
+        font-size: 14px;
+    }
+}
+@media (max-width: 991px) {
+    .referral-modal-left-box {
+        display: flex;
+    }
+    .common-modal .referral-modal-left-box .referral-modal-inner-box {
+        padding: 30px 30px;
+    }
+}
+@media (max-width: 767px) {
+    .referral-modal-left-box {
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .widraw-now-btn {
+        text-align: left!important;
+    }
+}
+@media (max-width: 575px) {
+    .common-modal .modal-header {
+        right: 35px;
+        top: 20px;
+    }
+    .referral-page .title {
+        font-size: 38px;
+    }
+    .referral-page .title span {
+        font-size: 58px;
+    }
+}
+@media (max-width: 400px) {
+    .how-to-refer-area .how-to-refer-step-wrap {
+        padding: 0;
+    }
+    .how-to-refer-area .how-to-refer-step-wrap .how-to-refer-step .how-to-refer-content .how-to-step-count {
+        left: 43%;
+    }
+    .how-to-refer-area .how-to-refer-step-wrap .how-to-refer-step .how-to-refer-content p {
+        font-size: 15px;
+    }
+    .how-to-refer-area .how-to-refer-step-wrap .how-to-refer-step {
+        padding: 0 10px;
+    }
+}

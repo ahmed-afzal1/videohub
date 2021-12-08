@@ -1,0 +1,307 @@
+/*-------------------------
+#.single-movies
+--------------------------*/
+.single-movies {
+    position: relative;
+    border-radius: 1.6rem;
+    overflow: hidden;
+    .movis-thumbnail {
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+    .movi-verlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: transparent;
+        transition: $transition;
+        .imdb-wrap {
+            display: flex;
+            flex-flow: row wrap;
+            position: absolute;
+            top: 2rem;
+            left: 1.5rem;
+            opacity: 0;
+            transition: $transition;
+            .imdb {
+                @include flex-position(flex, center, center);
+                width: 6rem;
+                height: 2.5rem;
+                margin-right: 1rem;
+                background: #F6C700;
+                border-radius: .4rem;
+                font-size: 1.2rem;
+                font-weight: 500;
+                color: var(--black);
+                img {
+                    max-width: 3rem;
+                }
+            }
+            .season {
+                width: 3.5rem;
+                height: 2.5rem;
+                background: #C4C4C4;
+                border-radius: .4rem;
+                text-align: center;
+                font-size: 1.4rem;
+                font-weight: 400;
+                color: #1F1F1F;
+            }
+        }
+        .premium {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+        }
+        .play-btn {
+            display: inline-block;
+            position: absolute;
+            width: 4rem;
+            height: 4rem;
+            line-height: 4rem;
+            top: 60%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            text-align: center;
+            transform: translateY(-50%) ;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: $transition;
+            opacity: 0;
+            &:hover {
+                color: var(--white);
+                background: var(--hover-color);
+            }
+        }
+        .share-add-btn {
+            display: inline-block;
+            position: absolute;
+            top: 6rem;
+            right: 2rem;
+            .share-area {
+                position: relative;
+                .share-btn {
+                    @include flex-position(flex, center, center);
+                    position: relative;
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    text-align: center;
+                    border-radius: 50%;
+                    background: var(--white);
+                    border: 5px solid #BABABA;
+                    font-size: 1.2rem;
+                    color: var(--primary-color);
+                    transition: $transition;
+                    z-index: 3;
+                    opacity: 0;
+                    transform: scale(0);
+                    transition-delay: .3s;
+                    &:hover {
+                        color: var(--white);
+                        background: var(--primary-color);
+                    }
+                }
+                .share-media {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    background: #363636;
+                    border-radius: .4rem;
+                    width: 10rem;
+                    padding: 0 .5rem;
+                    height: 3.6rem;
+                    transition: $transition;
+                    opacity: 0;
+                    z-index: 2;
+                    visibility: hidden;
+                    li {
+                        transition: $transition;
+                        transform: scale(0);
+                        &:first-child {
+                            transition-delay: .3s;
+                        }
+                        &:nth-child(2) {
+                            transition-delay: .6s;
+                        }
+                        &:nth-child(3) {
+                            transition-delay: .7s;
+                        }
+                        &:nth-child(4) {
+                            transition-delay: 1.2s;
+                        }
+                        opacity: 0;
+                        a {
+                            color: rgba(255, 255, 255, .6);
+                            transition: $transition;
+                            font-size: 1.4rem;
+                            &:hover {
+                                color: var(--white);
+                            }
+                        }
+                    }
+                }
+                &:hover {
+                    .share-media {
+                        right: 100%;
+                        opacity: 1;
+                        visibility: visible;
+                        li {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                    }
+                }
+            }
+            .add-btn {
+                @include flex-position(flex, center, center);
+                width: 3.5rem;
+                height: 3.5rem;
+                text-align: center;
+                margin-top: 1rem;
+                border-radius: 50%;
+                background: var(--white);
+                border: 5px solid #BABABA;
+                font-size: 1.2rem;
+                color: var(--primary-color);
+                transition: $transition;
+                opacity: 0;
+                transform: scale(0);
+                transition-delay: .6s;
+                &:hover {
+                    color: var(--white);
+                    background: var(--primary-color);
+                }
+            }
+        }
+        .movies-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 1.5rem;
+            .movies-title {
+                font-family: $bodyFont;
+                margin-bottom: 10px;
+                font-size: 2.4rem;
+                font-weight: 500;
+                text-transform: capitalize;
+                color: var(--white);
+                opacity: 0;
+                transition: $transition;
+                a {
+                    color: var(--white);
+                    transition: $transition;
+                    &:hover {
+                        color: var(--primary-color);
+                    }
+                }
+            }
+            .movies-meta {
+                margin-bottom: .5rem;
+                transition: $transition;
+                opacity: 0;
+                li {
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 2rem;
+                    list-style: none;
+                    font-size: 1.2rem;
+                    line-height: 1;
+                    text-transform: capitalize;
+                    font-weight: 400;
+                    color: var(--white);
+                    transform: translateY(10px) ;
+                    transition: $transition;
+                    opacity: 0;
+                    &:first-child {
+                        transition-delay: .2s;
+                    }
+                    &:nth-child(2) {
+                        transition-delay: .4s;
+                    }
+                    &:nth-child(3) {
+                        transition-delay: .6s;
+                    }
+                    &:nth-child(4) {
+                        transition-delay: .8s;
+                    }
+                    &:nth-child(5) {
+                        transition-delay: 1s;
+                    }
+                    &:after {
+                        position: absolute;
+                        content: '';
+                        width: .6rem;
+                        height: .6rem;
+                        border-radius: 50%;
+                        background: var(--secondary-color);
+                        top: 3px;
+                        left: calc(100% + 10px);
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .movie-content {
+                font-size: 1.3rem;
+                font-weight: 400;
+                line-height: 2.2rem;
+                color: var(--white);
+                margin-bottom: 30px;
+                transition: $transition;
+                opacity: 0;
+            }
+        }
+    }
+    &:hover {
+        .movi-verlay {
+            background: rgba(0, 0, 0, .7);
+            .share-area {
+                .share-btn {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            .add-btn  {
+                opacity: 1;
+                transform: scale(1);
+            }
+            .movies-title {
+                opacity: 1;
+                margin-bottom: 0;
+            }
+            .movies-meta {
+                opacity: 1;
+                li {
+                    transform: translateY(0) ;
+                    opacity: 1;
+                }
+            }
+            .movie-content  {
+                opacity: 1;
+                margin-bottom: 0;
+            }
+        }
+        .imdb-wrap {
+            opacity: 1;
+        }
+        .play-btn {
+            opacity: 1;
+            top: 50%;
+        }
+    }
+}

@@ -1,0 +1,77 @@
+/*-------------------------
+#.newsletter
+--------------------------*/
+.newsletter-area {
+    .newsletter-top {
+        margin-bottom: 7.5rem;
+        h2 {
+            margin-bottom: 1.5rem;
+            font-size: 4.4rem;
+            font-weight: 700;
+            text-transform: capitalize;
+            color: var(--white);
+        }
+        p {
+            margin-bottom: 0;
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            color: #8F92A1;
+        }
+    }
+    .newsletter-form {
+        .form-group {
+            display: flex;
+            .form-controls {
+                flex: 1;
+                border: none;
+                border-radius: 1rem 0 0 1rem;
+                padding: 1rem 2rem;
+                font-family: $bodyFont;
+                font-size: 1.6rem;
+                height: 70px;
+            }
+            .newsletter-btn {
+                width: 200px;
+                height: 70px;
+                border: none;
+                border-radius: 0 1rem 1rem 0;
+                background: var(--primary-color);
+                font-size: 1.6rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--white);
+                transition: $transition;
+                &:hover {
+                    color: var(--white);
+                    background: var(--hover-color);
+                }
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    .newsletter-area .newsletter-top h2 {
+        font-size: 3.2rem;
+    }
+}
+@media (max-width: 480px) {
+    .newsletter-area .newsletter-form .form-group .newsletter-btn {
+        width: 140px;
+        letter-spacing: 1px;
+        font-size: 1.4rem;
+    }
+}
+@media (max-width: 414px) {
+    .newsletter-area .newsletter-form .form-group {
+        flex-flow: row wrap;
+    }
+    .newsletter-area .newsletter-form .form-group .form-controls {
+        width: 100%;
+        border-radius: 1rem ;
+    }
+    .newsletter-area .newsletter-form .form-group .newsletter-btn {
+        width: 100%;
+        border-radius: 1rem ;
+        margin-top: 1.5rem;
+    }
+}

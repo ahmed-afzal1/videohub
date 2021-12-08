@@ -1,0 +1,366 @@
+/*-------------------------
+#.settings-page
+--------------------------*/
+.settings-page {
+    .settings-page-title {
+        font-weight: 600;
+        font-size: 64px;
+        line-height: 110%;
+        color: #fff;
+        margin-bottom: 60px;
+    }
+    .settings-left-part {
+        background-color: #181718;
+        padding: 40px 0;
+        min-height: 650px;
+         ul li {
+            a {
+                color: #AFAFAF;
+                font-weight: 700;
+                display: block;
+                padding: 11px 32px;
+                position: relative;
+                -webkit-transition: all 0.5s linear;
+                transition: all 0.5s linear;
+                span {
+                    margin-right: 20px;
+                }
+                &.active::before {
+                    height: 30px;
+                    width: 3px;
+                    background-color: red;
+                    content: "";
+                    left: 0;
+                    position: absolute;
+                }
+                &.active, &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+    .settings-right-part {
+        background-color: #181718;
+        padding: 40px 60px;
+        min-height: 650px;
+        height: 100%;
+
+        .settings-title-wrap {
+            margin-bottom: 20px;
+        }
+        .settings-form-title {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 32px;
+        }
+        .form-control {
+            font-size: 16px;
+            line-height: 120%;
+            color: #C1C1C1;
+            background-color: transparent;
+            border: 1px solid #3D3D3D;
+            height: 50px;
+        }
+        label.form-check-label {
+            font-size: 14px;
+            line-height: 17px;
+            color: #fff;
+        }
+        .primary-btn {
+            padding: 1.2rem 3.5rem;
+        }
+    }
+}
+
+// Account Info Page css
+.account-info-area  {
+    .form-check-input[type=checkbox] {
+        border-radius: .25em;
+        border: 2px solid rgba(255, 255, 255, 0.54);
+        background-color: transparent;
+        margin-top: 6px;
+    }
+}
+
+// device management page
+.device-management {
+    .device-number-form-group {
+        position: relative;
+        input {
+            height: 100px!important;
+        }
+        .manage-btn {
+            position: absolute;
+            color: #D4D4D4;
+            right: 11px;
+            bottom: 11px;
+            font-size: 14px;
+        }
+    }
+    .activate-device-group {
+        input {
+            margin-right: 10px;
+        }
+        button {
+            border-radius: 4px;
+        }
+    }
+    .device-number {
+        height: 64px;
+        min-width: 64px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 36px;
+        font-weight: 700;
+    }
+    .device-number-content {
+        font-size: 14px;
+        color: #D1D1D1;
+        line-height: 120%;
+        a {
+            color: #D1D1D1;
+        }
+    }
+}
+#manageDevicesPopup {
+    .referral-data-table {
+        padding: 40px 60px 60px;
+        thead tr th {
+            padding: 21px 0!important;
+        }
+        tbody tr td {
+            padding: 15px 0!important;
+        }
+        .devices-table-delete button {
+            margin-left: 30px;
+        }
+    }
+    .primary-btn {
+        border-radius: 4px;
+        padding: .5rem 3.5rem;
+        font-size: 1.2rem;
+        margin-top: 30px;
+    }
+}
+
+// Settings Referral Page
+.settings-referral-area {
+    .refer-more-friends-btn {
+        padding: 5px 15px!important;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    // Settings Referral table
+    .referral-data-table {
+        thead {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        thead tr th {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 112%;
+            color: #fff;
+            border-bottom-color: rgba(255, 255, 255, 0.1)!important;
+            padding: 21px 30px!important;
+            padding-left: 0!important;
+            min-width: 120px;
+        }
+        td.referral-purchase-col {
+            color: #30AD25!important;
+        }
+        tbody tr td {
+            font-size: 13px;
+            color: #B5B5B5;
+            font-weight: 400;
+            border-bottom-color: rgba(255, 255, 255, 0.06);
+            padding: 15px 30px!important;
+            padding-left: 0!important;
+            min-width: 120px;
+        }
+    }
+
+    // Billing Payment Status
+    .billing-payment-status-wrap {
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background-color: rgba(255, 255, 255, 0.02);
+        padding: 45px;
+        width: 323px;
+        margin-top: 40px;
+        .purchase-status {
+            font-size: 10px;
+            font-weight: 600;
+            background-color: rgba(228, 9, 22, 0.15);
+            padding: 8px 12px;
+            margin-right: 10px;
+            letter-spacing: 1.4px;
+        }
+        .payment-processor {
+            min-height: 89px;
+            min-width: 199px;
+            background-color: rgba(228, 9, 22, 0.61);
+            border: 1px solid #E40916;
+            color: rgba(255, 255, 255, 0.71);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px 25px;
+            font-size: 14px;
+            margin-top: 24px;
+        }
+
+    }
+}
+.form-check-input:checked {
+    background-color: red!important;
+    border-color: red!important;
+}
+.form-switch .form-check-input:checked {
+    background-position: right center;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(255,255,255,1)'/></svg>");
+}
+.form-switch .form-check-input {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(228, 9, 22, 1)'/></svg>");
+}
+// Parental Controls Page css
+.parental-control-area {
+    .parental-control-wrap {
+        .viewing-restrictions-switch {
+            background-color: rgba(255, 255, 255, 0.14);
+            padding: 10px 10px 10px 20px;
+            width: 285px;
+            
+            .form-check-input{
+                position: relative;
+                top: 3px;
+            }
+            .form-check-label {
+                margin-left: 7px;
+            }
+        }
+        
+        .set-pin-btn {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 112%;
+            letter-spacing: 2px;
+            border: 1px solid #fff;
+            background-color: transparent;
+            color: #fff;
+            padding: 6px 13px;
+            margin-top: 20px;
+        }
+    }
+
+}
+
+// Promo Code Page css
+.promo-code-area {
+    .promo-code-wrap {
+        .promo-code-title {
+            color: #B1AEAE;
+        }
+        .promo-code-box {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 14px 33px;
+            font-size: 14px;
+        }
+        .promo-code-btn {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 112%;
+            letter-spacing: 2px;
+            border: 1px solid #fff;
+            background-color: transparent;
+            color: #fff;
+            padding: 6px 13px;
+            margin-top: 20px;
+        }
+    }
+
+    // No Promo Code
+    .no-promo-code-wrap {
+        .no-promo-small-title {
+            color: #8A8A8A;
+        }
+    }
+}
+
+// Set Pin Popup
+.setPinPopup {
+    .customBtn {
+        padding: 12px 23px;
+        font-size: 15px;
+        background-color: #0052B4;
+        color: #fff;
+        border-radius: 4px;
+    }
+    .set-pin-title {
+        font-family: $poppins;
+        font-size: 24px;
+        line-height: 120%;
+        font-weight: 600;
+        letter-spacing: .5px;
+    }
+    form input {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border-radius: 4px;
+        border: 2px solid #fff;
+        margin: 0 5px;
+        transition: $transition;
+    }
+    input:focus {
+        border: 2px solid var(--primary-color)!important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .settings-page .settings-page-title {
+        font-size: 5rem;
+    }
+}
+@media (max-width: 991px) {
+    .settings-page .settings-left-part {
+        min-height: auto;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .settings-page .settings-right-part {
+        padding: 40px 33px;
+        height: auto;
+        min-height: auto;
+    }
+}
+@media (max-width: 575px) {
+    .settings-page .settings-page-title {
+        font-size: 3.6rem;
+    }
+    .settings-referral-area .billing-payment-status-wrap {
+        padding: 25px;
+        width: 250px;
+    }
+}
+@media (max-width: 480px) {
+    .form-group.activate-device-group {
+        flex-direction: column;
+        align-items: flex-start!important;
+    }
+    .device-management .activate-device-group button {
+        margin-top: 15px;
+    }
+}
+@media (max-width: 400px) {
+    .settings-title-wrap {
+        flex-direction: column;
+    }
+}

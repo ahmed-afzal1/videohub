@@ -1,0 +1,43 @@
+/*-------------------------
+#.trending-movies
+--------------------------*/
+.trending-movies-area {
+    .single-movies {
+        .movi-verlay {
+            .imdb-wrap {
+                flex-direction: column;
+                row-gap: .6rem;
+            }
+        }
+    }
+    .slick-slider {
+        margin: 0 -15px;
+    }
+    .slick-slide {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    .slick-arrow {
+        @include flex-position(flex, center, center);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3rem;
+        height: 5.5rem;
+        background: rgba(0,0,0, .3);
+        color: var(--white);
+        transition: $transition;
+        cursor: pointer;
+        z-index: 5;
+        &:hover {
+            color: var(--white);
+            background: var(--primary-color);
+        }
+        &.slick-prev {
+            left: 1.5rem;
+        }
+        &.slick-next {
+            right: 1.5rem;
+        }
+    }
+}

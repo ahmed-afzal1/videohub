@@ -1,0 +1,21 @@
+/*-------------------------
+#.about-page
+--------------------------*/
+.about-page {
+    .about-image-text {
+        padding: 6rem 0 10rem 0;
+        .about-img {
+            width: 100%;
+            height: auto;
+            border-radius: 1.2rem;
+        }
+    }
+}
+@media (max-width: 991px) {
+    .about-page .about-image-text .about-img {
+        margin-bottom: 3rem;
+    }
+    .about-page .about-image-text {
+        padding: 0 0 3rem 0;
+    }
+}

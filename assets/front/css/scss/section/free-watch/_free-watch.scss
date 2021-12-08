@@ -1,0 +1,201 @@
+/*-------------------------
+#.free-watch
+--------------------------*/
+.free-watch {
+    .single-watch-grid {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        .watch-thumbnail {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .play-btn {
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            width: 7rem;
+            height: 7rem;
+            line-height: 7rem;
+            background: var(--primary-color);
+            font-size: 2.2rem;
+            color: var(--white);
+            transform: translateY(-50%);
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 50%;
+            transition: $transition;
+            &:hover {
+                color: var(--white);
+                background: var(--hover-color);
+            }
+        }
+        .watch-info {
+            position: absolute;
+            left: 4rem;
+            bottom: 3.5rem;
+            h3 {
+                margin-bottom: 1.5rem;
+                font-size: 2.4rem;
+                font-weight: 500;
+                text-transform: capitalize;
+                color: var(--white);
+                a {
+                    color: var(--white);
+                }
+            }
+            p {
+                margin: 0;
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: rgba(255, 255, 255, .80)
+            }
+        }
+    }
+    .single-watch-list {
+        margin-bottom: 2rem;
+        background: #111111;
+        border-radius: 1.2rem;
+        overflow: hidden;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .watch-thumbnail {
+            position: relative;
+            img {
+                width: 100%;
+                min-height: 175px;
+                object-fit: cover;
+            }
+            .play-btn {
+                display: inline-block;
+                position: absolute;
+                width: 4rem;
+                height: 4rem;
+                line-height: 4rem;
+                top: 50%;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                text-align: center;
+                transform: translateY(-50%);
+                border-radius: 50%;
+                background: var(--primary-color);
+                color: var(--white);
+                font-size: 1.2rem;
+                transition: $transition;
+                &:hover {
+                    color: var(--white);
+                    background: var(--hover-color);
+                }
+            }
+        }
+        .watch-info {
+            padding: 1.5rem 2.5rem;
+            .date {
+                display: block;
+                margin-bottom: .5rem;
+                font-size: 1.4rem;
+                font-weight: 400;
+                color: #E5E5E5;
+            }
+            .watch-title {
+                margin-bottom: 1rem;
+                font-family: $bodyFont;
+                font-size: 2rem;
+                font-weight: 500;
+                text-transform: capitalize;
+                color: var(--white);
+                a {
+                    color: var(--white);
+                    transition: $transition;
+                    &:hover {
+                        color: var(--primary-color);
+                    }
+                }
+            }
+            p {
+                margin-bottom: .8rem;
+                font-size: 1.2rem;
+                line-height: 2.2rem;
+                color: rgba(255, 255, 255, .80);
+            }
+            .watch-meta {
+                margin: 0;
+                padding: 0;
+                li {
+                    display: inline-block;
+                    margin-right: 2rem;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    color: rgba(255, 255, 255, .60);
+                    i {
+                        margin-right: .5rem;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+	.free-watch .single-watch-list .watch-info {
+        padding: 1rem;
+    }
+    .free-watch .single-watch-list .watch-info .date {
+        margin-bottom: 0;
+    }
+    .free-watch .single-watch-list .watch-info p {
+        font-size: 1.2rem;
+    }
+    .free-watch .single-watch-list .watch-info .watch-title {
+        margin-bottom: 0;
+        font-size: 1.8rem;
+    }
+}
+@media (max-width: 991px) {
+    .free-watch .single-watch-grid {
+        margin-bottom: 2rem;
+    }
+}
+@media (max-width: 767px) {
+    .free-watch .single-watch-list .watch-thumbnail img {
+        border-radius: 1.2rem;
+    }
+}
+@media (max-width: 480px) {
+    .free-watch .single-watch-grid .watch-info {
+        left: 2rem;
+        bottom: 2rem;
+    }
+}
+@media (max-width: 414px) {
+    .free-watch .single-watch-grid .watch-info h3 {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+    }
+    .free-watch .single-watch-grid .watch-info p {
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+    }
+    .free-watch .single-watch-grid .play-btn {
+        width: 4.5rem;
+        height: 4.5rem;
+        line-height: 4.5rem;
+        font-size: 1.8rem;
+    }
+}
+@media (max-width: 320px) {
+    .free-watch .single-watch-grid .watch-thumbnail img {
+        height: 320px;
+    }
+    .free-watch .single-watch-grid .watch-info h3 {
+        margin-bottom: .5rem;
+    }
+}

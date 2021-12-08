@@ -1,0 +1,140 @@
+
+"Main Languages",Translations
+Home,"الصفحة الرئيسية"
+"Other Services","خدمات أخرى"
+Blog,مدونة
+"Your email address...","عنوان بريدك الإلكتروني..."
+Register|Login,"تسجيل الدخول | تسجيل"
+Pages,صفحات
+Contact,اتصل
+"We're social, connect with us","نحن اجتماعيون ، تواصل معنا:"
+Dashboard,"لوحة القيادة"
+Newsletter,"النشرة الإخبارية"
+"View All","عرض الكل"
+View(s),الآراء)
+"Read More","اقرأ أكثر"
+FAQ,التعليمات
+Register,سجيل
+Login,"تسجيل الدخول"
+"Enter Email","تسجيل الدخول"
+"Enter Password","أدخل كلمة المرور"
+"Forgot Password","هل نسيت كلمة المرور"
+Authenticating...,"مصادقة ..."
+"Enter Name","أدخل الاسم"
+"Enter Number","أدخل رقم"
+"Enter Confirmation Password","أدخل كلمة مرور التأكيد"
+"Enter Code","ادخل الرمز"
+Address,عنوان
+"Change Password","تغيير كلمة السر"
+checking,تدقيق
+Send,إرسال
+Email,"البريد الإلكتروني"
+Or,أو
+Blogs,المدونات
+Categories,التصنيفات
+"Recent Post","المنشور الاخير"
+Admin,مشرف
+"Blog Details","تفاصيل المدونة"
+"Enter Your Details","أدخل التفاصيل الخاصة بك"
+"Enter Full Name","أدخل الاسم الكامل"
+"Enter Email address","أدخل عنوان البريد الالكتروني"
+"Enter Phone Number","أدخل رقم الهاتف"
+"Enter Address","أدخل العنوان"
+"Enter City","أدخل المدينة"
+"Enter Zip Code","أدخل الرمز البريدي"
+Paypal,"باي بال"
+Stripe,شريط
+"Select Payment Type","اختر طريقة الدفع"
+"Card Number","رقم البطاقة"
+CVC,"رقم البطاقة"
+Month,شهر
+Year,عام
+Checkout,الدفع
+"Contact US","اتصل بنا"
+Phone,هاتف
+"Find us here","تجدنا هنا"
+"Email Address","عنوان البريد الإلكتروني"
+Name,اسم
+"Your Message",رسالتك
+"Enter Capcha code","أدخل كود الكابتشا"
+"Send Message","إرسال رسالة"
+Promotion,"ترقية وظيفية"
+"Promotion by","الترويج بواسطة"
+"Order Now","اطلب الان"
+"Promotion Not Available","الترويج غير متوفر"
+"Blog Not Available","المدونة غير متوفرة"
+"Payment Success","الدفع الناجح"
+success,نجاح
+"You Successfully Order this Promotion...","لقد طلبت هذا العرض بنجاح ..."
+"Total Orders","إجمالي الطلبات"
+"Total Investments!","إجمالي الاستثمارات!"
+Method,طريقة
+Amount,كمية
+"Payment Status","حالة السداد"
+"Order Status","حالة الطلب"
+Action,عمل
+Orders,طلب
+"Orders View","عرض الطلبات"
+"Order Number","رقم الأمر"
+"Customer Name","اسم الزبون"
+"Customer Email","البريد الإلكتروني للعملاء"
+"Customer Number","رقم العميل"
+City,مدينة
+"Zip Code","الرمز البريدي"
+"Payment Method","طريقة الدفع او السداد"
+Txnid,السداد
+"Charge Id","معرف المسؤول"
+"Pay Amount","مقدار الأجر"
+"Admin Name","اسم المسؤول"
+Subject,موضوع
+Message,رسالة
+Date,تاريخ
+Back,عودة
+"You are about to delete this Order.","أنت على وشك حذف هذا الطلب."
+"Confirm Delete","هل تريد المتابعة؟"
+Delete,حذف
+Cancel,إلغاء
+"Do you want to proceed?","هل تريد المتابعة؟"
+Update,تحديث
+"Current Password","كلمة المرور الحالية"
+"New Password","كلمة مرور جديدة"
+"Confirm Password","تأكيد كلمة المرور"
+"Edit Profile","تعديل الملف الشخصي"
+Logout,"تسجيل خروج"
+"Support Ticket","بطاقة الدعم"
+"Credentials Doesn\'t Match !","أوراق الاعتماد لا تتطابق!"
+"Your Email is not Verified!","البريد الإلكتروني الخاص بك لم يتم التحقق!"
+"Please enter Correct Capcha Code.","الرجاء إدخال كود الكابتشا الصحيح."
+"This email has already been taken.","وقد تم بالفعل اتخاذ هذا البريد الإلكتروني."
+"Success !","نجاح !"
+"Successfully updated your profile.","تم تجديد حسابك بنجاح."
+"Confirm password does not match.","تأكيد كلمة المرور غير متطابقة."
+"Current password Does not match.","كلمة المرور الحالية غير متطابقة."
+"Successfully change your password.","تغيير كلمة المرور بنجاح"
+"Clear All","امسح الكل"
+"You Have a New Message","لديك رسالة جديدة"
+"No new Notification","لا يوجد إعلام جديد"
+Completed,منجز
+Pending,"قيد الانتظار"
+Processing,معالجة
+Decline,انخفاض
+View,رأي
+Conversation,محادثة
+"Conversations Details","محادثات التفاصيل"
+Reply,الرد
+Details,تفاصيل
+"You are about to delete this Message.","أنت على وشك حذف هذه الرسالة."
+"Message Send","رسالة إرسال"
+"Message Deleted Successfully","تم حذف الرسالة بنجاح"
+"Data Deleted Successfully","تم حذف البيانات بنجاح"
+"the phone field is required.","حقل الهاتف مطلوب."
+"the message field is required.","حقل الرسالة مطلوب."
+"the email field is required.","حقل البريد الإلكتروني مطلوب."
+"the name field is required.","حقل الاسم مطلوب"
+"please enter your name","يرجى إدخال اسمك"
+"please enter your email","رجاءا أدخل بريدك الإلكتروني"
+"please enter your number","من فضلك ادخل رقمك"
+"please enter your address","الرجاء إدخال عنوانك"
+"please enter your city name","الرجاء إدخال اسم مدينتك"
+"Account Information","معلومات الحساب"
+Order,طلب
