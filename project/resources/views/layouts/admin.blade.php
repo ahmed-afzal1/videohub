@@ -11,6 +11,7 @@
     <link href="{{ asset('assets/admin/img/logo/GO-logo.jpg')}} " rel="icon">
     
     <title>GO - Dashboard</title>
+    @stack('style')
 <style>
 
         /*color picker Start*/
@@ -68,8 +69,9 @@ span.input-group-addon {
 </a>
 
 @includeIf('admin.partials.scripts')
+@includeIf('admin.partials.toaster')
 
-@yield('script')
+@stack('script')
 
 </body>
 

@@ -44,8 +44,8 @@
   Route::post('/genre/create', 'Admin\GenreController@store')->name('admin-cat-store');
   Route::get('/genre/edit/{id}', 'Admin\GenreController@edit')->name('admin-cat-edit');
   Route::post('/genre/update/{id}', 'Admin\GenreController@update')->name('admin-cat-update');
-  Route::get('/genre/delete/{id}', 'Admin\GenreController@destroy')->name('admin-cat-delete');
-  Route::get('/genre/status/{id1}/{id2}', 'Admin\GenreController@status')->name('admin-cat-status');
+  Route::post('/genre/delete/{id}', 'Admin\GenreController@destroy')->name('admin-cat-delete');
+  Route::post('/genre/status/{id}', 'Admin\GenreController@status')->name('admin-cat-status');
   //------------------------------  ADMIN CATEGORY SECTION ENDS------------------------------//
 });
 

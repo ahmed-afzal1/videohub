@@ -1,13 +1,12 @@
-@extends('layouts.load')
+@extends('layouts.admin')
 
 @section('content')
 
 
 <div class="col-lg-12">
   <!-- Form Basic -->
-    <div class="card-body">
-      @include('includes.admin.form-error')  
-    <form id="ModalFormSubmit" action="{{route('admin-cat-update',$data->id)}}" method="POST">
+    <div class="card-body"> 
+    <form action="{{route('admin-cat-update',$data->id)}}" method="POST" enctype='multipart/form-data'>
       @csrf
         <div class="form-group">
           <label for="Genre">{{ __('Genre Name') }}</label>
@@ -24,7 +23,7 @@
       </div>
 
     <div class="form-group ShowLanguageImage {{$data->image->image ? '' : 'd-none'}}">
-        <img src="{{  $data->image->image ? asset('assets/images/genre_image/'.$data->image->image) : ''}}" alt="image" width="150">
+        <img src="{{  $data->image->image ? asset('assets/images/'.$data->image->image) : ''}}" alt="image" width="150">
     </div>
  
 

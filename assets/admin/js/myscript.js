@@ -117,57 +117,57 @@ $(document).on('click','.remove-btn', function(){
 
 // Modal Form Submit
 
-  $(document).on('submit', '#ModalFormSubmit', function (e) {
-    e.preventDefault();
+  // $(document).on('submit', '#ModalFormSubmit', function (e) {
+  //   e.preventDefault();
 
-    if(nicEditors.findEditor('area1')){
-      nicEditors.findEditor('area1').saveContent();
-    };
+  //   if(nicEditors.findEditor('area1')){
+  //     nicEditors.findEditor('area1').saveContent();
+  //   };
     
-    if (admin_loader == 1) {
-      $('.submit-loader').show();
-    }
-    var $this = $(this).parent();
-    $('button.addProductSubmit-btn').prop('disabled', true);
-    $.ajax({
-      method: "POST",
-      url: $(this).prop('action'),
-      data: new FormData(this),
-      dataType: 'JSON',
-      contentType: false,
-      cache: false,
-      processData: false,
-      success: function (data) {
-        if ((data.errors)) {
-          $this.find('.alert-danger').show();
-          $this.find('.alert-danger ul').html('');
-          for (var error in data.errors) {
-            $this.find('.alert-danger ul').append('<li>' + data.errors[error] + '</li>');
-          }
-          if (admin_loader == 1) {
-            $('.submit-loader').hide();
-          }
+  //   if (admin_loader == 1) {
+  //     $('.submit-loader').show();
+  //   }
+  //   var $this = $(this).parent();
+  //   $('button.addProductSubmit-btn').prop('disabled', true);
+  //   $.ajax({
+  //     method: "POST",
+  //     url: $(this).prop('action'),
+  //     data: new FormData(this),
+  //     dataType: 'JSON',
+  //     contentType: false,
+  //     cache: false,
+  //     processData: false,
+  //     success: function (data) {
+  //       if ((data.errors)) {
+  //         $this.find('.alert-danger').show();
+  //         $this.find('.alert-danger ul').html('');
+  //         for (var error in data.errors) {
+  //           $this.find('.alert-danger ul').append('<li>' + data.errors[error] + '</li>');
+  //         }
+  //         if (admin_loader == 1) {
+  //           $('.submit-loader').hide();
+  //         }
 
 
-          $("#modal1 .modal-content .modal-body .alert-danger").focus();
-          $('button.addProductSubmit-btn').prop('disabled', false);
-          $('#geniusformdata input , #geniusformdata select , #geniusformdata textarea').eq(1).focus();
-        } else {
-          table.ajax.reload();
-          $('.alert-success').show();
-          $('.alert-success p').html(data);
-          if (admin_loader == 1) {
-            $('.submit-loader').hide();
-          }
-          $('button.addProductSubmit-btn').prop('disabled', false);
-          $('#modal1,#modal2').modal('toggle');
+  //         $("#modal1 .modal-content .modal-body .alert-danger").focus();
+  //         $('button.addProductSubmit-btn').prop('disabled', false);
+  //         $('#geniusformdata input , #geniusformdata select , #geniusformdata textarea').eq(1).focus();
+  //       } else {
+  //         table.ajax.reload();
+  //         $('.alert-success').show();
+  //         $('.alert-success p').html(data);
+  //         if (admin_loader == 1) {
+  //           $('.submit-loader').hide();
+  //         }
+  //         $('button.addProductSubmit-btn').prop('disabled', false);
+  //         $('#modal1,#modal2').modal('toggle');
 
-        }
-      }
+  //       }
+  //     }
 
-    });
+  //   });
 
-  });
+  // });
 
   // Modal Form Submit
 

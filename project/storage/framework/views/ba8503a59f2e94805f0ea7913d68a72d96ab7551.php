@@ -1,13 +1,11 @@
-@extends('layouts.admin')
-
-@section('content')
-    <input type="hidden" id="headerdata" value="{{ __('GENRE') }}">
+<?php $__env->startSection('content'); ?>
+    <input type="hidden" id="headerdata" value="<?php echo e(__('GENRE')); ?>">
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{ $pageTitle }}</h1>
+            <h1 class="h3 mb-0 text-gray-800"><?php echo e($pageTitle); ?></h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboaard') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $pageTitle }}</li>
+                <li class="breadcrumb-item"><a href="<?php echo e(route('admin.dashboard')); ?>"><?php echo e(__('Dashboaard')); ?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo e($pageTitle); ?></li>
             </ol>
         </div>
 
@@ -17,8 +15,8 @@
             <div class="col-lg-12">
                 <div class="card mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <a class="btn btn-primary" href="{{ route('admin-cat-create') }}"> <i class="fa fa-plus"></i>
-                            {{ __('Add Genre') }}</a>
+                        <a class="btn btn-primary" href="<?php echo e(route('admin-cat-create')); ?>"> <i class="fa fa-plus"></i>
+                            <?php echo e(__('Add Genre')); ?></a>
                     </div>
                     <div class="card-body">
 
@@ -26,28 +24,28 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>{{ __('Name') }}</th>
-                                        <th>{{ __('Image') }}</th>
-                                        <th>{{ __('Slug') }}</th>
-                                        <th>{{ __('Status') }}</th>
-                                        <th>{{ __('Action') }}</th>
+                                        <th><?php echo e(__('Name')); ?></th>
+                                        <th><?php echo e(__('Image')); ?></th>
+                                        <th><?php echo e(__('Slug')); ?></th>
+                                        <th><?php echo e(__('Status')); ?></th>
+                                        <th><?php echo e(__('Action')); ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($datas as $data)
+                                    <?php $__empty_1 = true; $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 
                                         <tr>
-                                            <td>{{ $data->name }}</td>
+                                            <td><?php echo e($data->name); ?></td>
                                             <td class="w-25">
-                                                <img src="{{ asset('assets/images/' . $data->image->image) }}"
+                                                <img src="<?php echo e(asset('assets/images/' . $data->image->image)); ?>"
                                                     class="rounded w-25">
                                             </td>
-                                            <td>{{ $data->slug }}</td>
+                                            <td><?php echo e($data->slug); ?></td>
                                             <td>
 
-                                                <select name="status" id="status" data-url="{{ route('admin-cat-status', $data->id) }}" class="form-control">
-                                                    <option value="1" {{$data->status ? 'selected' : ''}}>{{__('Active')}}</option>
-                                                    <option value="0" {{$data->status ? '' : 'selected'}}>{{__('Inactive')}}</option>
+                                                <select name="status" id="status" data-url="<?php echo e(route('admin-cat-status', $data->id)); ?>" class="form-control">
+                                                    <option value="1" <?php echo e($data->status ? 'selected' : ''); ?>><?php echo e(__('Active')); ?></option>
+                                                    <option value="0" <?php echo e($data->status ? '' : 'selected'); ?>><?php echo e(__('Inactive')); ?></option>
                                                 </select>
                                                
 
@@ -56,23 +54,23 @@
 
                                                
 
-                                                <a href="{{ route('admin-cat-edit', $data->id) }}"
+                                                <a href="<?php echo e(route('admin-cat-edit', $data->id)); ?>"
                                                     class="btn btn-primary"><i class="fa fa-pen"></i></a>
 
-                                                <button data-url="{{ route('admin-cat-delete', $data->id) }}"
+                                                <button data-url="<?php echo e(route('admin-cat-delete', $data->id)); ?>"
                                                     class="btn btn-danger delete"><i class="fa fa-trash"></i></button>
 
                                             </td>
                                         </tr>
-                                    @empty
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                                         <tr>
 
-                                            <td class="text-center" colspan="100%">{{ __('No Genre Found') }}</td>
+                                            <td class="text-center" colspan="100%"><?php echo e(__('No Genre Found')); ?></td>
 
                                         </tr>
 
-                                    @endforelse
+                                    <?php endif; ?>
                                 </tbody>
 
                             </table>
@@ -80,7 +78,8 @@
 
                         <div class="card-footer">
 
-                            {{ $datas->links() }}
+                            <?php echo e($datas->links()); ?>
+
 
                         </div>
 
@@ -95,11 +94,11 @@
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
         <div class="modal-dialog">
             <form action="" method="post">
-                @csrf
+                <?php echo csrf_field(); ?>
                 <div class="modal-content">
 
                     <div class="modal-header d-block text-center">
-                        <h4 class="modal-title d-inline-block">{{ __('Confirm Delete') }}</h4>
+                        <h4 class="modal-title d-inline-block"><?php echo e(__('Confirm Delete')); ?></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -107,23 +106,23 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <p class="text-center">
-                            {{ __('You are about to delete this Category. Everything under this category will be deleted') }}.
+                            <?php echo e(__('You are about to delete this Category. Everything under this category will be deleted')); ?>.
                         </p>
-                        <p class="text-center">{{ __('Do you want to proceed?') }}</p>
+                        <p class="text-center"><?php echo e(__('Do you want to proceed?')); ?></p>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button class="btn btn-danger" type="submit">{{ __('Delete') }}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo e(__('Cancel')); ?></button>
+                        <button class="btn btn-danger" type="submit"><?php echo e(__('Delete')); ?></button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('style')
+<?php $__env->startPush('style'); ?>
 
 
 <style>
@@ -173,10 +172,10 @@ label:active:after {
 </style>
 
 
-@endpush
+<?php $__env->stopPush(); ?>
 
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 
     <script>
         'use strict'
@@ -194,7 +193,7 @@ label:active:after {
                 let url = $(this).data('url');
                 $.ajax({
                     headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
                     url: url,
                     data: {
@@ -213,4 +212,6 @@ label:active:after {
 
     </script>
 
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/admin/genre/index.blade.php ENDPATH**/ ?>
