@@ -2,6 +2,11 @@
 
     Route::prefix('admin')->group(function() {
 
+      Route::resource('category', 'Admin\CategoryController');
+
+      Route::get('search/category', 'Admin\CategoryController@index')->name('category.search');
+      Route::post('category/status/{id}', 'Admin\CategoryController@status')->name('category.status');
+
   //------------- Admin Login Section -------------------------------------------//
     Route::get('/login', 'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('/login/submit', 'Admin\LoginController@login')->name('admin.login.submit');
@@ -105,7 +110,7 @@
   Route::group(['middleware'=>'permissions:Movie Section Section'],function(){
   // Move Section -----------------------------------------------------------------------------//
  
-  Route::get('movie/index','Admin\MovieController@Index')->name('admin.movie.index');
+  Route::get('movie','Admin\MovieController@Index')->name('admin.movie.index');
   Route::get('movie/create','Admin\MovieController@create')->name('admin.movie.create');
   Route::post('movie/store','Admin\MovieController@store')->name('admin.movie.store');
   Route::post('movie/processing','Admin\MovieController@Processing')->name('admin.movie.processing');
@@ -113,7 +118,7 @@
   Route::get('movie/heighlight/{id}','Admin\MovieController@Heighlight')->name('admin.move.heighlight');
   Route::post('movie/update/{id}','Admin\MovieController@update')->name('admin.movie.update');
   Route::post('movie/heighlight/update/{id}','Admin\MovieController@heighlightUpdate')->name('admin.heighlight.update');
-  Route::get('movie/delete/{id}','Admin\MovieController@delete')->name('admin.movie.delete');
+  Route::post('movie/delete/{id}','Admin\MovieController@delete')->name('admin.movie.delete');
   // Move Section End -----------------------------------------------------------------------------//
 });
 

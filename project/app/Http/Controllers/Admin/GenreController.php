@@ -19,7 +19,10 @@ class GenreController extends Controller
     public function index()
     {
         $pageTitle = __('All Genre');
-        $datas = Genre::orderBy('id','desc')->paginate();
+
+        $datas = Genre::latest()->with('image')->paginate();
+
+        
         return view('admin.genre.index',compact('pageTitle', 'datas'));
     }
 

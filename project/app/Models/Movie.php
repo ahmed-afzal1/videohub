@@ -12,7 +12,7 @@ class Movie extends Model
     'producer','directors','cast',
     'genre_id','status','heighlight','slug','language_id'];
 
- 
+    
     public function language()
     {
       return  $this->belongsTo('App\Models\VideoLanguage');

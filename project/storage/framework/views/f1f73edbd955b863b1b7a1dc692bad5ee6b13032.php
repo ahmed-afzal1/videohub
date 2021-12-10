@@ -6,6 +6,14 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span><?php echo e(__('Dashboard')); ?></span></a>
     </li>
+    <li class="nav-item ">
+    <a class="nav-link" href="<?php echo e(route('category.index')); ?>">
+            <i class="fab fa-fw fa-wpforms"></i>
+            <span><?php echo e(__('Manage Category')); ?></span>
+        </a>
+    </li>
+    
+    
     <li class="nav-item <?php if( request()->is('forms') ): ?> active <?php endif; ?>  ">
     <a class="nav-link" href="<?php echo e(route('admin-cat-index')); ?>">
             <i class="fab fa-fw fa-wpforms"></i>

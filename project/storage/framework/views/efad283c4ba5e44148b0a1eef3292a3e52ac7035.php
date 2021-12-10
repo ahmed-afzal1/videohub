@@ -10,29 +10,27 @@
     <meta name="keywords"
         content="business,corporate, creative, woocommerach, design, gallery, minimal, modern, landing page, cv, designer, freelancer, html, one page, personal, portfolio, programmer, responsive, vcard, one page" />
     <meta name="author" content="ZaiFlix" />
-    <link rel="shortcut icon" href="{{ asset('assets/front/images/favicon.pn') }}g" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo e(asset('assets/front/images/favicon.pn')); ?>g" type="image/x-icon">
     <!-- fonts file -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- css file  -->
-    <link rel="stylesheet" href="{{ asset('assets/front/css/plugins.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/front/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/front/scss/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/front/css/responsive.css') }}">
-    <script src="{{ asset('assets/front/js/modernizr-3.11.2.min.js') }}"></script>
+    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/plugins.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/bootstrap.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/front/scss/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/responsive.css')); ?>">
+    <script src="<?php echo e(asset('assets/front/js/modernizr-3.11.2.min.js')); ?>"></script>
 </head>
 
 <body>
 
     <!-- Pre Loader Area start -->
-    {{-- <div id="preloader">
-        <div id="status"></div>
-    </div> --}}
+    
     <!-- Pre Loader Area End -->
 
 
-    @include('partials.front.header')
+    <?php echo $__env->make('partials.front.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!-- mobilemenu area start here  -->
     <div class="mobile-menu-area d-block d-xl-none">
@@ -53,7 +51,7 @@
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileoffcanvas">
         <div class="offcanvas-header">
-            <a class="navbar-brand" href="index.html"><img src="{{ asset('assets/front/images/logo.png') }}"
+            <a class="navbar-brand" href="index.html"><img src="<?php echo e(asset('assets/front/images/logo.png')); ?>"
                     alt="ZaiFlix" /></a>
             <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas"
                 aria-label="Close"></button>
@@ -70,7 +68,7 @@
             <div class="button-list d-flex align-items-center justify-content-center">
                 <div class="dropdown language-dropdown">
                     <button class="language-btn" data-bs-toggle="dropdown">
-                        <img class="flag" src="{{ asset('assets/front/images/usa-flag.png') }}"
+                        <img class="flag" src="<?php echo e(asset('assets/front/images/usa-flag.png')); ?>"
                             alt="usa" />
                         <span class="btn-text">EN</span>
                         <i class="agnle-down fas fa-angle-down"></i>
@@ -83,7 +81,7 @@
                 </div>
                 <div class="dropdown favourite-dropdown">
                     <button class="favourite-btn" data-bs-toggle="dropdown">
-                        <img class="favourite" src="{{ asset('assets/front/images/favourite.svg') }}"
+                        <img class="favourite" src="<?php echo e(asset('assets/front/images/favourite.svg')); ?>"
                             alt="favourite" />
                     </button>
                     <div class="dropdown-menu">
@@ -91,7 +89,7 @@
                             <li>
                                 <a href="#" class="singtle-movi">
                                     <div class="movi-image">
-                                        <img src="{{ asset('assets/front/images/favourite-1.png') }}"
+                                        <img src="<?php echo e(asset('assets/front/images/favourite-1.png')); ?>"
                                             alt="favourite" />
                                     </div>
                                     <div class="movi-info">
@@ -284,7 +282,7 @@
     </div>
     <!-- mobilemenu area end here  -->
 
-    @yield('contents')
+    <?php echo $__env->yieldContent('contents'); ?>
 
     <!-- footer area start here  -->
     <footer class="footer-area">
@@ -294,7 +292,7 @@
                     <div class="col-xl-6 col-lg-3 col-md-6 col-sm-6">
                         <div class="single-widget about-widget">
                             <a href="index.html" class="brand-logo"><img
-                                    src="{{ asset('assets/front/images/logo.png') }}" alt="logo" /></a>
+                                    src="<?php echo e(asset('assets/front/images/logo.png')); ?>" alt="logo" /></a>
                             <p>Wonderful serenity has taken possession of my entire soul, like these sweet mornings of
                                 spring which I enjoy with my whole</p>
                             <ul class="social-media">
@@ -372,10 +370,11 @@
     <!-- footer area end here  -->
 
     <!-- js file  -->
-    <script src="{{ asset('assets/front/js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('assets/front/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/front/js/plugins.js') }}"></script>
-    <script src="{{ asset('assets/front/js/main.js') }}"></script>
+    <script src="<?php echo e(asset('assets/front/js/jquery-3.6.0.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/front/js/bootstrap.bundle.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/front/js/plugins.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/front/js/main.js')); ?>"></script>
 </body>
 
 </html>
+<?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/layouts/front.blade.php ENDPATH**/ ?>

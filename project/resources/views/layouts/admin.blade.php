@@ -69,6 +69,7 @@ span.input-group-addon {
 </a>
 
 @includeIf('admin.partials.scripts')
+@stack('plugin')
 @includeIf('admin.partials.toaster')
 
 @stack('script')

@@ -18,7 +18,7 @@ class CastCrewController extends Controller
 
     public function index()
     {
-        $castAndCrews = CastCrew::orderBy('id', 'desc')->paginate();
+        $castAndCrews = CastCrew::latest()->with('image')->paginate();
 
         return view('admin.cast_crew.index', compact('castAndCrews'));
     }

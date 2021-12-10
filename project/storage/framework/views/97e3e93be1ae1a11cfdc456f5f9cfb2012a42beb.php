@@ -1,13 +1,11 @@
-@extends('layouts.admin')
-
-@section('content')
-    <input type="hidden" id="headerdata" value="{{ __('HEIGHLIGHT MOVIE') }}">
+<?php $__env->startSection('content'); ?>
+    <input type="hidden" id="headerdata" value="<?php echo e(__('HEIGHLIGHT MOVIE')); ?>">
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{ __('Movies') }}</h1>
+            <h1 class="h3 mb-0 text-gray-800"><?php echo e(__('Movies')); ?></h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Movie') }}</li>
+                <li class="breadcrumb-item"><a href="<?php echo e(route('admin.dashboard')); ?>"><?php echo e(__('Dashboard')); ?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo e(__('Movie')); ?></li>
             </ol>
         </div>
 
@@ -17,8 +15,9 @@
             <div class="col-lg-12">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <a class="btn btn-primary" href="{{ route('admin.movie.create') }}">
-                            <i class="fas fa-plus"></i> {{ __('Add New Movie') }}
+                        <a class="btn btn-primary" href="<?php echo e(route('admin.movie.create')); ?>">
+                            <i class="fas fa-plus"></i> <?php echo e(__('Add New Movie')); ?>
+
                         </a>
                     </div>
                     <div class="card-body">
@@ -29,54 +28,57 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>{{ __('Title') }}</th>
-                                        <th>{{ __('Image') }}</th>
-                                        <th>{{ __('Release Date') }}</th>
-                                        <th>{{ __('Access') }}</th>
-                                        <th>{{ __('Action') }}</th>
+                                        <th><?php echo e(__('Title')); ?></th>
+                                        <th><?php echo e(__('Image')); ?></th>
+                                        <th><?php echo e(__('Release Date')); ?></th>
+                                        <th><?php echo e(__('Access')); ?></th>
+                                        <th><?php echo e(__('Action')); ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($movies as $movie)
+                                    <?php $__empty_1 = true; $__currentLoopData = $movies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                         <tr>
                                             <td>
-                                                {{ $movie->title }}
+                                                <?php echo e($movie->title); ?>
+
                                             </td>
                                             <td class="w-25">
-                                                <img src="{{ $movie->image->image ? asset('assets/images/' . $movie->image->image) : asset('assets/images/noimages.png') }}"
+                                                <img src="<?php echo e($movie->image->image ? asset('assets/images/' . $movie->image->image) : asset('assets/images/noimages.png')); ?>"
                                                     alt="" class="w-50 rounded">
                                             </td>
                                             <td>
-                                                {{ $movie->relase_date }}
+                                                <?php echo e($movie->relase_date); ?>
+
                                             </td>
                                             <td>
-                                                {{ $movie->access }}
+                                                <?php echo e($movie->access); ?>
+
                                             </td>
                                             <td>
                                                 <div class="action-list"><a
-                                                        href="{{ route('admin.movie.edit', $movie->id) }}"
+                                                        href="<?php echo e(route('admin.movie.edit', $movie->id)); ?>"
                                                         class="btn btn-primary btn-sm mr-2"> <i
-                                                            class="fas fa-edit mr-1"></i>{{ __('Edit') }}</a><a
+                                                            class="fas fa-edit mr-1"></i><?php echo e(__('Edit')); ?></a><a
                                                         href="javascript:void(0)"
-                                                        data-href=" {{ route('admin.movie.delete', $movie->id) }}"
+                                                        data-href=" <?php echo e(route('admin.movie.delete', $movie->id)); ?>"
                                                         
                                                         class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt"></i></a><a
                                                         href="javascript:void(0)"
-                                                        data-href="{{ route('admin.move.heighlight', $movie->id) }}"
+                                                        data-href="<?php echo e(route('admin.move.heighlight', $movie->id)); ?>"
                                                         class="btn btn-primary btn-sm mr-2 heighight ml-2"
                                                         data-toggle="modal" data-target="#modal1"> <i
-                                                            class="fas fa-star mr-1"></i>{{ __('Highlight') }}</a></div>
+                                                            class="fas fa-star mr-1"></i><?php echo e(__('Highlight')); ?></a></div>
                                             </td>
                                         </tr>
-                                    @empty
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                                         <tr>
 
-                                            <td class="text-center" colspan="100%">{{__('No Movie Has been Created Yet')}}</td>
+                                            <td class="text-center" colspan="100%"><?php echo e(__('No Movie Has been Created Yet')); ?></td>
 
                                         </tr>
 
-                                    @endforelse
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -84,11 +86,12 @@
 
                     </div>
 
-                    @if($movies->hasPages())
+                    <?php if($movies->hasPages()): ?>
                         <div class="card-footer">
-                            {{$movies->links()}}
+                            <?php echo e($movies->links()); ?>
+
                         </div>
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -101,7 +104,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="submit-loader">
-                    <img src="{{ asset('assets/images/' . $gs->admin_loader) }}" alt="">
+                    <img src="<?php echo e(asset('assets/images/' . $gs->admin_loader)); ?>" alt="">
                 </div>
                 <div class="modal-header">
                     <h5 class="modal-title"></h5>
@@ -113,22 +116,22 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo e(__('Close')); ?></button>
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- DELETE MODAL --}}
+    
 
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
         <div class="modal-dialog">
             <form action="" method="post">
-                @csrf
+                <?php echo csrf_field(); ?>
                 <div class="modal-content">
 
                     <div class="modal-header d-block text-center">
-                        <h4 class="modal-title d-inline-block">{{ __('Confirm Delete') }}</h4>
+                        <h4 class="modal-title d-inline-block"><?php echo e(__('Confirm Delete')); ?></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -136,33 +139,33 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <p class="text-center">
-                            {{ __('You are about to delete this Category. Everything under this category will be deleted') }}.
+                            <?php echo e(__('You are about to delete this Category. Everything under this category will be deleted')); ?>.
                         </p>
-                        <p class="text-center">{{ __('Do you want to proceed?') }}</p>
+                        <p class="text-center"><?php echo e(__('Do you want to proceed?')); ?></p>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button class="btn btn-danger">{{ __('Delete') }}</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo e(__('Cancel')); ?></button>
+                        <button class="btn btn-danger"><?php echo e(__('Delete')); ?></button>
                     </div>
 
                 </div>
             </form>
         </div>
     </div>
-    {{-- DELETE MODAL ENDS --}}
+    
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@push('plugin')
+<?php $__env->startPush('plugin'); ?>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-@endpush
+<?php $__env->stopPush(); ?>
 
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 
     <script>
         $(document).ready(function() {
@@ -180,4 +183,6 @@
     </script>
 
 
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/admin/movie/index.blade.php ENDPATH**/ ?>

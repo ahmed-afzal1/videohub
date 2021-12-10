@@ -69,6 +69,7 @@ span.input-group-addon {
 </a>
 
 <?php if ($__env->exists('admin.partials.scripts')) echo $__env->make('admin.partials.scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->yieldPushContent('plugin'); ?>
 <?php if ($__env->exists('admin.partials.toaster')) echo $__env->make('admin.partials.toaster', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <?php echo $__env->yieldPushContent('script'); ?>

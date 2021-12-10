@@ -26,6 +26,7 @@ class FrontendController extends Controller
 {
     public function Index()
     {
+        
         return view('front.index');
         
         // $newMovies      = Movie::where('heighlight','like', '%new%')->get();
