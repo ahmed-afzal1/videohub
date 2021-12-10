@@ -19,7 +19,7 @@
         <div class="loader" style="background: url({{asset('assets/images/genarel-settings/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);"></div>
         <form enctype="multipart/form-data" action="{{route('admin-cast-crew-store')}}" method="POST">
           @csrf
-          @include('includes.form-success')
+        
             <div class="form-group">
               <label for="name">{{ __('Name') }}</label>
             <input type="text" class="form-control" name="name" value="" id="name" placeholder="{{ __('Name') }}">

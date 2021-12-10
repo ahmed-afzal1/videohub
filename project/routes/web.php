@@ -242,8 +242,8 @@ Route::group(['middleware'=>'permissions:Email Settings Section'],function(){
   Route::post('/cast-crew/create', 'Admin\CastCrewController@store')->name('admin-cast-crew-store');
   Route::get('/cast-crew/edit/{id}', 'Admin\CastCrewController@edit')->name('admin-cast-crew-edit');
   Route::post('/cast-crew/update/{id}', 'Admin\CastCrewController@update')->name('admin-cast-crew-update');
-  Route::get('/cast-crew/delete/{id}', 'Admin\CastCrewController@destroy')->name('admin-cast-crew-delete');
-  Route::get('/cast-crew/status/{id1}/{id2}', 'Admin\CastCrewController@status')->name('admin-cast-crew-status');
+  Route::post('/cast-crew/delete/{id}', 'Admin\CastCrewController@destroy')->name('admin-cast-crew-delete');
+  Route::post('/cast-crew/status/{id}', 'Admin\CastCrewController@status')->name('admin-cast-crew-status');
   //------------------------------  ADMIN CAST AND CREW SECTION ENDS------------------------------//
   });
 

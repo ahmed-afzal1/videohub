@@ -42,7 +42,7 @@ public static function slug($slug)
 
 public static function MakeImage($image,$location,$modelData)
 {
-    $name = time() . $image->getClientOriginalName();
+    $name = time() .$image->getClientOriginalName();
     $location = $location . $name;
     Image::make($image)->resize(400,400)->save($location);
     $modelData->image()->create(['image' => $name]);

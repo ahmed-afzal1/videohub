@@ -16,13 +16,13 @@
       </div>
       <div class="card-body">
 
-        <div class="loader" style="background: url({{asset('assets/images/genarel-settings/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);"></div>
-        <form action="{{route('admin-cast-crew-update',$data->id)}}" enctype="multipart/form-data" method="POST">
+        <div class="loader" style="background: url({{asset('assets/images/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);"></div>
+        <form action="{{route('admin-cast-crew-update',$castAndCrew->id)}}" enctype="multipart/form-data" method="POST">
           @csrf
-          @include('includes.form-success')
+        
           <div class="form-group">
             <label for="name">{{ __('Name') }}</label>
-            <input type="text" class="form-control" name="name" value="{{$data->name}}" id="name" placeholder="{{ __('Name') }}">
+            <input type="text" class="form-control" name="name" value="{{$castAndCrew->name}}" id="name" placeholder="{{ __('Name') }}">
           </div>
     
             <div class="form-group">
@@ -34,14 +34,14 @@
               </div>
           </div>
     
-        <div class="form-group ShowLanguageImage {{$data->image->image ? '' : 'd-none'}}">
-            <img src="{{  $data->image->image ? asset('assets/images/'.$data->image->image) : ''}}" alt="image" width="150">
+        <div class="form-group ShowLanguageImage {{$castAndCrew->image->image ? '' : 'd-none'}}">
+            <img src="{{  $castAndCrew->image->image ? asset('assets/images/'.$castAndCrew->image->image) : ''}}" alt="image" width="150">
         </div>
      
     
           <div class="form-group">
             <label for="bio">{{ __('Bio') }}</label>
-            <textarea name="bio" id="bio" class="form-control"  rows="5" placeholder="{{ __('Enter Bio') }}">{{ $data->bio }}</textarea>
+            <textarea name="bio" id="bio" class="form-control"  rows="5" placeholder="{{ __('Enter Bio') }}">{{ $castAndCrew->bio }}</textarea>
           </div>
     
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -1,13 +1,11 @@
-@extends('layouts.admin')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{ __('Cast & Crew') }}</h1>
+            <h1 class="h3 mb-0 text-gray-800"><?php echo e(__('Cast & Crew')); ?></h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboaard') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Cast & Crew') }}</li>
+                <li class="breadcrumb-item"><a href="<?php echo e(route('admin.dashboard')); ?>"><?php echo e(__('Dashboaard')); ?></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo e(__('Cast & Crew')); ?></li>
             </ol>
         </div>
 
@@ -17,8 +15,9 @@
             <div class="col-lg-12">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <a class="btn btn-primary mb-" href="{{ route('admin-cast-crew-create') }}">
-                            <i class="fas fa-plus"></i> {{ __('Add New Cast & Crew') }}
+                        <a class="btn btn-primary mb-" href="<?php echo e(route('admin-cast-crew-create')); ?>">
+                            <i class="fas fa-plus"></i> <?php echo e(__('Add New Cast & Crew')); ?>
+
                         </a>
                     </div>
 
@@ -29,61 +28,64 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th width="20%">{{ __('Name') }}</th>
-                                        <th width="15%">{{ __('Image') }}</th>
-                                        <th width="30%">{{ __('Bio') }}</th>
-                                        <th width="20%">{{ __('Status') }}</th>
-                                        <th width="15%">{{ __('Action') }}</th>
+                                        <th width="20%"><?php echo e(__('Name')); ?></th>
+                                        <th width="15%"><?php echo e(__('Image')); ?></th>
+                                        <th width="30%"><?php echo e(__('Bio')); ?></th>
+                                        <th width="20%"><?php echo e(__('Status')); ?></th>
+                                        <th width="15%"><?php echo e(__('Action')); ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($castAndCrews as $castAndCrew)
+                                    <?php $__empty_1 = true; $__currentLoopData = $castAndCrews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $castAndCrew): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                         <tr>
                                             <td>
-                                                {{ $castAndCrew->name }}
+                                                <?php echo e($castAndCrew->name); ?>
+
                                             </td>
                                             <td>
-                                                <img src="{{ $castAndCrew->image->image != null ? url('assets/images/' . $castAndCrew->image->image) : url('assets/images/noimage.png') }}"
+                                                <img src="<?php echo e($castAndCrew->image->image != null ? url('assets/images/' . $castAndCrew->image->image) : url('assets/images/noimage.png')); ?>"
                                                     class="w-75 rounded">
                                             </td>
                                             <td>
-                                                {{ Str::limit($castAndCrew->bio, 50) }}
+                                                <?php echo e(Str::limit($castAndCrew->bio, 50)); ?>
+
                                             </td>
                                             <td>
 
                                                 <select name="status" class="form-control status"
-                                                    data-url="{{ route('admin-cast-crew-status', $castAndCrew->id) }}">
+                                                    data-url="<?php echo e(route('admin-cast-crew-status', $castAndCrew->id)); ?>">
 
-                                                    <option value="1" {{ $castAndCrew->status ? 'selected' : '' }}>
-                                                        {{ __('Active') }}</option>
-                                                    <option value="0" {{ $castAndCrew->status ? '' : 'selected' }}>
-                                                        {{ __('Deactive') }}</option>
+                                                    <option value="1" <?php echo e($castAndCrew->status ? 'selected' : ''); ?>>
+                                                        <?php echo e(__('Active')); ?></option>
+                                                    <option value="0" <?php echo e($castAndCrew->status ? '' : 'selected'); ?>>
+                                                        <?php echo e(__('Deactive')); ?></option>
 
                                                 </select>
 
                                             </td>
                                             <td>
                                                 <div class="action-list"><a
-                                                        href="{{ route('admin-cast-crew-edit', $castAndCrew->id) }}"
+                                                        href="<?php echo e(route('admin-cast-crew-edit', $castAndCrew->id)); ?>"
                                                         class="btn btn-primary btn-sm mr-2"> <i
                                                             class="fas fa-pen mr-1"></i></a>
                                                         <a href="javascript:void(0);"
-                                                        data-href=" {{ route('admin-cast-crew-delete', $castAndCrew->id) }}"
+                                                        data-href=" <?php echo e(route('admin-cast-crew-delete', $castAndCrew->id)); ?>"
                                                        
                                                         class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
-                                    @empty
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                                         <tr>
 
-                                            <td class="text-center" colspan="100%">{{ __('No Cast and Crew Found') }}
+                                            <td class="text-center" colspan="100%"><?php echo e(__('No Cast and Crew Found')); ?>
+
                                             </td>
 
                                         </tr>
 
-                                    @endforelse
+                                    <?php endif; ?>
 
                                 </tbody>
 
@@ -91,14 +93,15 @@
                         </div>
 
 
-                        @if ($castAndCrews->hasPages())
+                        <?php if($castAndCrews->hasPages()): ?>
                             <div class="card-footer">
 
-                                {{ $castAndCrews->links() }}
+                                <?php echo e($castAndCrews->links()); ?>
+
 
                             </div>
 
-                        @endif
+                        <?php endif; ?>
 
                     </div>
                 </div>
@@ -110,7 +113,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="submit-loader">
-                    <img src="{{ asset('assets/images/genarel-settings/' . $gs->admin_loader) }}" alt="">
+                    <img src="<?php echo e(asset('assets/images/genarel-settings/' . $gs->admin_loader)); ?>" alt="">
                 </div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalScrollableTitle"></h5>
@@ -122,22 +125,22 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo e(__('Close')); ?></button>
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- ATTRIBUTE MODAL ENDS --}} {{-- DELETE MODAL --}}
+     
 
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
         <div class="modal-dialog">
             <form action="" method="post">
-                @csrf
+                <?php echo csrf_field(); ?>
                 <div class="modal-content">
 
                     <div class="modal-header d-block text-center">
-                        <h4 class="modal-title d-inline-block">{{ __('Confirm Delete') }}</h4>
+                        <h4 class="modal-title d-inline-block"><?php echo e(__('Confirm Delete')); ?></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -145,25 +148,25 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <p class="text-center">
-                            {{ __('You are about to delete this Category. Everything under this category will be deleted') }}.
+                            <?php echo e(__('You are about to delete this Category. Everything under this category will be deleted')); ?>.
                         </p>
-                        <p class="text-center">{{ __('Do you want to proceed?') }}</p>
+                        <p class="text-center"><?php echo e(__('Do you want to proceed?')); ?></p>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button type="submit" class="btn btn-danger" >{{ __('Delete') }}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo e(__('Cancel')); ?></button>
+                        <button type="submit" class="btn btn-danger" ><?php echo e(__('Delete')); ?></button>
                     </div>
 
                 </div>
             </form>
         </div>
     </div>
-    {{-- DELETE MODAL ENDS --}}
+    
     <input type="hidden" value="1" id="isValue">
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('style')
+<?php $__env->startPush('style'); ?>
 
 
     <style>
@@ -178,11 +181,11 @@
     </style>
 
 
-@endpush
+<?php $__env->stopPush(); ?>
 
 
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 
     <script>
         'use strict'
@@ -202,7 +205,7 @@
                 let url = $(this).data('url');
                 $.ajax({
                     headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
                     url: url,
                     data: {
@@ -220,4 +223,6 @@
         })
     </script>
 
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/admin/cast_crew/index.blade.php ENDPATH**/ ?>
