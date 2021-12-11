@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubscriptionPlan extends Model
 {
-    protected $fillable = ['plan_name','price','description','feature_key','feature_value'];
+    protected $fillable = ['plan_name', 'price','duration', 'description', 'features','status'];
 
-public function DurationDay($time , $day)
+    protected $casts = [
+        'features' => 'array'
+    ];
+
+    public function DurationDay($time, $day)
     {
         return  floatval($time * $day);
-    
     }
 }
-
-
-

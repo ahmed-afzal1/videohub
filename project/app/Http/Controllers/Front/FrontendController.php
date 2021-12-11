@@ -434,8 +434,8 @@ public function GetReview($review)
 
     public function plan()
     {
-    //    $plans =  SubscriptionPlan::where('status',1)->get();
-        return view('front.plan');
+       $plans =  SubscriptionPlan::where('status',1)->get();
+       return view('front.plan',compact('plans'));
     }
 
 

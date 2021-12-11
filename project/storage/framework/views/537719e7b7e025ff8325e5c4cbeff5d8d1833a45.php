@@ -35,7 +35,7 @@ span.input-group-addon {
 
 </style>
     <?php if ($__env->exists('admin.partials.style')) echo $__env->make('admin.partials.style', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php echo $__env->yieldContent('style'); ?>
+    <?php echo $__env->yieldPushContent('style'); ?>
 
 </head>
 

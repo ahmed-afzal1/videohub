@@ -159,7 +159,7 @@
     Route::post('/subscription-plan/create', 'Admin\SubscriptionPlanController@store')->name('admin-subscription-plan-store');
     Route::get('/subscription-plan/edit/{id}', 'Admin\SubscriptionPlanController@edit')->name('admin-subscription-plan-edit');
     Route::post('/subscription-plan/update/{id}', 'Admin\SubscriptionPlanController@update')->name('admin-subscription-plan-update');
-    Route::get('/subscription-plan/delete/{id}', 'Admin\SubscriptionPlanController@destroy')->name('admin-subscription-plan-delete');
+    Route::post('/subscription-plan/delete/{id}', 'Admin\SubscriptionPlanController@destroy')->name('admin-subscription-plan-delete');
     Route::get('/subscription-plan/status/{id1}/{id2}', 'Admin\SubscriptionPlanController@status')->name('admin-subscription-plan-status');
     //--------------------------------- ADMIN Subscription SECTION ENDS---------------------------------//
   });

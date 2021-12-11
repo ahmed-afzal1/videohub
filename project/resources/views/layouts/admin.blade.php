@@ -35,7 +35,7 @@ span.input-group-addon {
 
 </style>
     @includeIf('admin.partials.style')
-    @yield('style')
+    @stack('style')
 
 </head>
 
