@@ -8,6 +8,7 @@ use DB;
 class TvShow extends Model
 {
     protected $fillable = ['language_id','genre_id','show_name','description','status','slug','relase_date','access'];
+    protected $casts = ['genre_id' => "array"];
     public function image()
     {
         return $this->morphOne('App\Models\ShowImage', 'imageable')->withDefault();
@@ -29,14 +30,7 @@ class TvShow extends Model
         return $this->hasOne('App\Models\VideoLanguage','id','language_id');
     }
 
-    public function getGenreIdAttribute($value)
-    {
-        if($value == null)
-        {
-            return '';
-        }
-        return explode(',', $value);
-    }
+   
 
     public function genres()
     {

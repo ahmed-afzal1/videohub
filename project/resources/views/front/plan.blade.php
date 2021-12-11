@@ -35,7 +35,7 @@
 
                                         <th scope="col">
                                             <div class="table-header">
-                                                <p>Plan Catagories</p>
+                                                <p>{{__('Plan Catagories')}}</p>
                                             </div>
                                         </th>
 
@@ -71,26 +71,29 @@
                             </tr>
 
                             @foreach ($plans as $key => $plan)
-                            
+
                                 @if ($loop->first)
                                     <tr>
                                         <td class="features" colspan="4">{{ __('Features') }}</td>
                                     </tr>
                                 @endif
-                                @foreach ($plan->features as $f => $feature)
+                            @endforeach
+                            @foreach ($features as $feature)
 
-                               
-                                    <tr>
-                                        <td>{{$feature['key']}}</td>
-                                      
-                                        @if($feature['value'] == 'yes')
-                                        <td><i class="fas fa-check"></i></td>
+
+                                <tr>
+                                    <td>{{ $feature->features }}</td>
+
+                                    @foreach($plans as $plan)
+
+                                        @if(in_array($feature->id, $plan->plan_features))
+                                        <td><i class="fa fa-check"></i></td>
                                         @else
-                                          <td><i class="fas fa-times"></i></td>
+                                         <td><i class="fa fa-times"></i></td>
                                         @endif
-                                        
-                                    </tr>
-                                @endforeach
+                                    @endforeach
+
+                                </tr>
                             @endforeach
 
 

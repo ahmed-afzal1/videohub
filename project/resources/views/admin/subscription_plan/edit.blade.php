@@ -33,61 +33,42 @@
                     <div class="form-group col-md-6">
                         <label for="price">{{ __('Plan Duration in Days') }}</label>
                         <input type="text" class="form-control" name="duration" required
-                            placeholder="{{ __('Plan Duration') }}" value="{{$plan->duration}}">
+                            placeholder="{{ __('Plan Duration') }}" value="{{ $plan->duration }}">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="price">{{ __('Plan Status') }}</label>
                         <select name="status" id="" class="form-control">
 
-                            <option value="1" {{$plan->status ? 'selected' : ''}}>{{ __('Active') }}</option>
-                            <option value="0" {{!$plan->status ? 'selected' : ''}}>{{ __('Inactive') }}</option>
+                            <option value="1" {{ $plan->status ? 'selected' : '' }}>{{ __('Active') }}</option>
+                            <option value="0" {{ !$plan->status ? 'selected' : '' }}>{{ __('Inactive') }}</option>
 
                         </select>
                     </div>
-                  <div class="form-group col-md-12">
+                    
+                    <div class="form-group col-md-6">
+                        <label for="price">{{ __('Plan Features') }}</label>
+                        <select name="plan_features[]" multiple class="form-control select-2">
+
+                            @foreach ($features as $feat)
+                                <option value="{{ $feat->id }}" {{in_array($feat->id, $plan->plan_features) ? 'selected' : ''}}>{{ __($feat->features) }}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
                         <label for="description">{{ __('Short Description') }}</label>
-                       <input type="text" name="description" id="description"
-                            placeholder="{{ __('Description') }}" class="form-control" value="{{$plan->description}}">
+                        <input type="text" name="description" id="description" placeholder="{{ __('Description') }}"
+                            class="form-control" value="{{ $plan->description }}">
                     </div>
-                  
-                  <div class="more-field text-right col-md-12">
-                        <button type="button" class="btn btn-primary" id="add_more_feature"> <i class="fa fa-plus"></i>
-                            {{ __('Add Features') }}</button>
-                    </div>
-                  
-                    <div id="feature_section" class="col-md-12">
 
 
-                        @foreach ($plan->features as $key => $item)
 
-                            <div class="feature-area position-relative ">
-                                <span class="remove-btn language-remove"><i class="fas fa-times"></i></span>
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-6 col-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="feature[{{$key}}][key]"
-                                                placeholder="{{ __('Enter Feature Name') }}" value="{{ $item['key'] }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-6">
-                                        <div class="form-group">
-                                            <select class="form-control  mb-3" name="feature[{{$key}}][value]">
-                                                <option value="yes" {{ $item['value'] == 'yes' ? 'selected' : '' }}>
-                                                    {{ __('Yes') }}</option>
-                                                <option value="no" {{ $item['value'] == 'no' ? 'selected' : '' }}>
-                                                    {{ __('No') }}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+
 
                 </div>
 
-               
+
                 <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
             </form>
         </div>
@@ -114,62 +95,25 @@
 @endpush
 
 @push('plugin')
-    <!-- include summernote css/js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 @endpush
+
 
 @push('script')
 
     <script>
         'use strict'
         $(document).ready(function() {
+            $('.select-2').select2();
 
-            let counter = "{{count($plan->features)}}";
-
-            $('#summernote').summernote();
-           
-
-
-            $('#add_more_feature').on('click', function() {
-                $("#feature_section").append(
-                    `
-
-                     <div class="feature-area mt-5 position-relative">
-                            <span class="remove-btn language-remove"><i class="fas fa-times"></i></span>
-                            <div class="row">
-                                <div class="col-sm-6 col-md-6 col-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="feature[${counter}][key]"
-                                            placeholder="{{ __('Enter Feature Name') }}" id="">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-6">
-                                    <div class="form-group">
-                                        <select class="form-control  mb-3" name="feature[${counter}][value]">
-                                            <option value="yes">{{ __('Yes') }}</option>
-                                            <option value="no">{{ __('No') }}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                   `
-                );
-                counter++;
-            });
-
-            $(document).on('click', '.remove-btn', function() {
-
-                $(this.parentNode).remove();
-
-            });
         });
     </script>
 
 
 @endpush
-

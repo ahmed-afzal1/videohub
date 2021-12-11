@@ -79,7 +79,7 @@
     Route::get('/show/edit/{id}', 'Admin\ShowController@edit')->name('admin-show-edit');
     Route::post('/show/update/{id}', 'Admin\ShowController@update')->name('admin-show-update');
     Route::get('/show/delete/{id}', 'Admin\ShowController@destroy')->name('admin-show-delete');
-    Route::get('/show/status/{id1}/{id2}', 'Admin\ShowController@status')->name('admin-show-status');
+    Route::post('/show/status/{id}', 'Admin\ShowController@status')->name('admin-show-status');
   //------------------------------  ADMIN Show ENDS------------------------------//
   
   //--------------------- ADMIN Show SECTION --------------------------//
@@ -154,6 +154,13 @@
     Route::group(['middleware'=>'permissions:Subscription Plan Section'],function(){
     //----------------------------- ADMIN Subscription SECTION -----------------------------------------//
     
+    // plan Features
+    Route::get('plan/features','Admin\PlanFeatureController@index')->name('admin.plan.features');
+    Route::post('plan/features/store','Admin\PlanFeatureController@store')->name('admin.plan.features.store');
+    Route::post('plan/features/update/{id}','Admin\PlanFeatureController@update')->name('admin.plan.features.update');
+    Route::post('/plan/features/status/{id}','Admin\PlanFeatureController@status')->name('admin.plan.features.status');
+    
+
     Route::get('/subscription-plan', 'Admin\SubscriptionPlanController@index')->name('admin-subscription-plan-index');
     Route::get('/subscription-plan/create', 'Admin\SubscriptionPlanController@create')->name('admin-subscription-plan-create');
     Route::post('/subscription-plan/create', 'Admin\SubscriptionPlanController@store')->name('admin-subscription-plan-store');

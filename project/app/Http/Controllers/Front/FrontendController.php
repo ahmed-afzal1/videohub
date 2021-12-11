@@ -19,6 +19,7 @@ use App\Models\TvShow;
 use App\Models\SubscriptionPlan;
 use App\Models\Page;
 use App\Models\Generalsetting;
+use App\PlanFeature;
 use Auth;
 use DB;
 
@@ -435,7 +436,8 @@ public function GetReview($review)
     public function plan()
     {
        $plans =  SubscriptionPlan::where('status',1)->get();
-       return view('front.plan',compact('plans'));
+       $features = PlanFeature::where('status',1)->get();
+       return view('front.plan',compact('plans','features'));
     }
 
 

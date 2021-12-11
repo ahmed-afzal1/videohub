@@ -13,6 +13,13 @@
         </a>
     </li>
     
+    <li class="nav-item ">
+    <a class="nav-link" href="{{route('admin.plan.features')}}">
+            <i class="fab fa-fw fa-wpforms"></i>
+            <span>{{ __('Manage Subsciption Features') }}</span>
+        </a>
+    </li>
+    
     
     <li class="nav-item @if( request()->is('forms') ) active @endif  ">
     <a class="nav-link" href="{{route('admin-cat-index')}}">

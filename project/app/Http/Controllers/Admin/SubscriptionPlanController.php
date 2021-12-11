@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SubscriptionPlan;
-
+use App\PlanFeature;
 
 class SubscriptionPlanController extends Controller
 {
@@ -26,7 +26,9 @@ class SubscriptionPlanController extends Controller
 
     public function create()
     {
-        return view('admin.subscription_plan.create');
+        $features = PlanFeature::where('status',1)->get();
+
+        return view('admin.subscription_plan.create',compact('features'));
     }
 
 
@@ -48,7 +50,7 @@ class SubscriptionPlanController extends Controller
             'description' => $request->description,
             'duration' => $request->duration,
             'status' => $request->status,
-            'features' => $request->feature
+            'plan_features' => $request->plan_features
         ]);
 
         $notify[] = ['success', __('Subcription Created Successfully')];
@@ -59,7 +61,8 @@ class SubscriptionPlanController extends Controller
     public function edit($id)
     {
         $plan = SubscriptionPlan::findOrFail($id);
-        return view('admin.subscription_plan.edit', compact('plan'));
+        $features = PlanFeature::where('status',1)->get();
+        return view('admin.subscription_plan.edit', compact('plan','features'));
     }
 
 
@@ -83,7 +86,7 @@ class SubscriptionPlanController extends Controller
             'description' => $request->description,
             'duration' => $request->duration,
             'status' => $request->status,
-            'features' => $request->feature
+            'plan_features' => $request->plan_features
         ]);
       
 

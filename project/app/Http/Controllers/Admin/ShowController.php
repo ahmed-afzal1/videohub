@@ -26,8 +26,8 @@ class ShowController extends Controller
 
     public function Index()
     {
-        $datas = TvShow::orderBy('id','desc')->get();
-       return view('admin.show.index',compact('datas'));
+        $shows = TvShow::orderBy('id','desc')->paginate();
+       return view('admin.show.index',compact('shows'));
     }
 
      public function create()
@@ -49,13 +49,15 @@ class ShowController extends Controller
 
 
 
-        $input = $request->all();
-        $data = new TvShow;
-        $input['genre_id'] = Helper::implode($request->genre_id);
-        $input['slug'] = Helper::slug($request->show_name. ' '.$request->release_date);
-        $id = $data->create($input)->id;
-
-        $model = TvShow::find($id);
+        $model = TvShow::create([
+            'show_name' => $request->show_name,
+            'relase_date' =>  $request->relase_date,
+            'genre_id' => $request->genre_id,
+            'access' => $request->access,
+            'description' => $request->description,
+            'slug' => Helper::slug($request->show_name. ' '.$request->release_date)
+        ]);
+       
         if($request->hasFile('image')){
             $image = $request->image;
             $location = base_path('../assets/images/');
@@ -64,7 +66,10 @@ class ShowController extends Controller
         }else{
             Helper::NullImage($model);
         }
-        return back()->with('success',__('New Data Added Successfully.'));
+        
+        $notify[] = ['success',__('Show Created Successfully')];
+
+        return back()->withNotify($notify);
      }
 
 
@@ -87,14 +92,17 @@ class ShowController extends Controller
         'relase_date' => 'required',
         'image' => 'mimes:jpeg,jpg,png',
        ]);
-
-
-
-        $input = $request->all();
+       
         $model = TvShow::findOrFail($id);
-        $input['genre_id'] = Helper::implode($request->genre_id);
-        $input['slug'] = Helper::slug($request->show_name. ' '.$request->release_date);
-        $model->update($input);
+
+        $model->update([
+            'show_name' => $request->show_name,
+            'relase_date' =>  $request->relase_date,
+            'genre_id' => $request->genre_id,
+            'access' => $request->access,
+            'description' => $request->description,
+            'slug' => Helper::slug($request->show_name. ' '.$request->release_date)
+        ]);
 
         
         if($request->hasFile('image')){
@@ -103,7 +111,9 @@ class ShowController extends Controller
             Helper::ImageUpdate($image,$location,$model);
         }
         
-        return back()->with('success',__('Data Updated Successfully.'));
+        $notify[] = ['success',__('Show Created Successfully')];
+
+        return back()->withNotify($notify);
      }
 
 
@@ -115,8 +125,23 @@ class ShowController extends Controller
             $location = base_path('../assets/images/');
             Helper::Deletes($model,$location);
             $model->delete();
-            return back()->with('success',__('Data Deleted Successfully.'));
+            $notify[] = ['success',__('Show Deleted Successfully')];
+
+        return back()->withNotify($notify);
            
+        }
+
+
+        public function status(Request $request, $id)
+        {
+            $show = TvShow::findOrFail($id);
+
+            $show->status = $request->status;
+
+            $show->save();
+
+
+           return response()->json(['success' => 'Status Updated Success']);
         }
 
 

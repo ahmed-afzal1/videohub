@@ -13,6 +13,13 @@
         </a>
     </li>
     
+    <li class="nav-item ">
+    <a class="nav-link" href="<?php echo e(route('admin.plan.features')); ?>">
+            <i class="fab fa-fw fa-wpforms"></i>
+            <span><?php echo e(__('Manage Subsciption Features')); ?></span>
+        </a>
+    </li>
+    
     
     <li class="nav-item <?php if( request()->is('forms') ): ?> active <?php endif; ?>  ">
     <a class="nav-link" href="<?php echo e(route('admin-cat-index')); ?>">
