@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 07:07 PM
+-- Generation Time: Dec 12, 2021 at 08:47 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -125,10 +125,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'Movies', 'movies', 0, '2021-12-10 13:56:23', '2021-12-11 04:50:24'),
-(4, 'Drama', 'drama', 0, '2021-12-10 13:56:29', '2021-12-11 04:50:23'),
-(5, 'Kids', 'kids', 0, '2021-12-10 13:56:35', '2021-12-11 04:50:21'),
-(6, 'Series', 'series', 0, '2021-12-10 13:56:43', '2021-12-11 04:50:19');
+(3, 'Thriller', 'thriller', 1, '2021-12-10 13:56:23', '2021-12-12 13:41:02'),
+(4, 'Horror', 'horror', 1, '2021-12-10 13:56:29', '2021-12-12 13:40:37'),
+(5, 'Action', 'action', 1, '2021-12-10 13:56:35', '2021-12-12 13:40:36'),
+(6, 'Romantic', 'romantic', 1, '2021-12-10 13:56:43', '2021-12-12 13:40:35');
 
 -- --------------------------------------------------------
 
@@ -205,8 +205,7 @@ CREATE TABLE `episodes` (
 --
 
 INSERT INTO `episodes` (`id`, `access`, `tv_show_id`, `tv_session_id`, `title`, `description`, `release_date`, `duration`, `video_type`, `video`, `status`, `slug`, `tag`, `created_at`, `updated_at`) VALUES
-(13, 'free', 14, 2, 'Episode 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries<br>', '2020-03-14 04:29:49', '1 hour 30 min', 'url', 'https://www.youtube.com/embed/2rR158vUmnU', 1, 'episode-1', 'a,b,c,d', '2020-03-13 22:29:49', '2020-03-13 22:29:49'),
-(14, 'premium', 14, 2, 'Episode 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries<br>', '2020-03-14 04:31:37', '1 hour 30 min', 'url', 'https://www.youtube.com/embed/8BiFXHGn1PA', 1, 'episode-2', 'a,b,c,d', '2020-03-13 22:31:37', '2020-03-13 23:53:56');
+(16, 'free', 25, 14, 'khusu', '8989898d asdasda sdasdasdasd as', '2021-12-12 19:00:10', '78', 'url', 'https://www.youtube.com/embed/-4dtjKFqEEE', 1, 'khusu', '898989', '2021-12-12 13:00:10', '2021-12-12 13:05:58');
 
 -- --------------------------------------------------------
 
@@ -426,6 +425,7 @@ CREATE TABLE `movies` (
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `video_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genre_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
   `language_id` int(11) DEFAULT NULL,
   `video` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -445,8 +445,9 @@ CREATE TABLE `movies` (
 -- Dumping data for table `movies`
 --
 
-INSERT INTO `movies` (`id`, `title`, `slug`, `video_type`, `genre_id`, `language_id`, `video`, `description`, `tag`, `status`, `access`, `relase_date`, `heighlight`, `producer`, `directors`, `cast`, `created_at`, `updated_at`) VALUES
-(28, 'khusu', 'khusu', 'url', NULL, NULL, 'https://www.youtube.com/embed/S-lwK7n-4_s', 'kajsdhf kjskf jshalkfj haslkfjh dkfhsdlakfhlsdaf', 'dsadasd', '1', 'free', '01-01-1970', 'trending,new', '4', '4', '5', '2021-12-10 14:44:24', '2021-12-10 15:45:04');
+INSERT INTO `movies` (`id`, `title`, `slug`, `video_type`, `genre_id`, `category_id`, `language_id`, `video`, `description`, `tag`, `status`, `access`, `relase_date`, `heighlight`, `producer`, `directors`, `cast`, `created_at`, `updated_at`) VALUES
+(28, 'khusu', 'khusu', 'url', NULL, 0, NULL, 'https://www.youtube.com/embed/S-lwK7n-4_s', 'kajsdhf kjskf jshalkfj haslkfjh dkfhsdlakfhlsdaf', 'dsadasd', '1', 'free', '01-01-1970', 'trending,new', '4', '4', '5', '2021-12-10 14:44:24', '2021-12-10 15:45:04'),
+(29, 'khusu', 'khusu', 'url', NULL, 6, NULL, 'https://www.youtube.com/embed/S-lwK7n-4_s', '5464546546546545465456465465465', '8', '1', 'free', '12/16/2021', 'new', '4', '4', '4', '2021-12-12 13:44:28', '2021-12-12 13:44:28');
 
 -- --------------------------------------------------------
 
@@ -569,7 +570,7 @@ CREATE TABLE `plan_features` (
 INSERT INTO `plan_features` (`id`, `features`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'test', 1, '2021-12-11 12:06:47', '2021-12-11 12:17:28'),
 (2, 'test3', 1, '2021-12-11 12:08:05', '2021-12-11 12:39:14'),
-(3, 'safhkjshdfjk', 1, '2021-12-11 12:38:46', '2021-12-11 12:39:15');
+(3, 'safhkjshdfjk', 1, '2021-12-11 12:38:46', '2021-12-12 12:13:24');
 
 -- --------------------------------------------------------
 
@@ -741,7 +742,17 @@ INSERT INTO `show_images` (`id`, `image`, `imageable_id`, `imageable_type`, `cre
 (87, '1639248967logo.png', 24, 'App\\Models\\TvShow', '2021-12-11 12:56:08', '2021-12-11 12:56:08'),
 (88, '1639249112pexels-alesia-kozik-6765363.jpg', 25, 'App\\Models\\TvShow', '2021-12-11 12:58:32', '2021-12-11 12:58:32'),
 (89, '1639249691logo.png', 26, 'App\\Models\\TvShow', '2021-12-11 13:08:11', '2021-12-11 13:08:11'),
-(90, '1639249763screencapture-localhost-websolution-3-servicetop-kawsar-script-content-main-files-admin-pages-create-2021-09-15-20_48_42.png', 27, 'App\\Models\\TvShow', '2021-12-11 13:09:23', '2021-12-11 13:09:23');
+(90, '1639249763screencapture-localhost-websolution-3-servicetop-kawsar-script-content-main-files-admin-pages-create-2021-09-15-20_48_42.png', 27, 'App\\Models\\TvShow', '2021-12-11 13:09:23', '2021-12-11 13:09:23'),
+(91, '1639333114logo.png', 8, 'App\\Models\\TvSession', '2021-12-12 12:18:36', '2021-12-12 12:18:36'),
+(92, '1639333136logo.png', 9, 'App\\Models\\TvSession', '2021-12-12 12:18:56', '2021-12-12 12:18:56'),
+(93, '1639333166pexels-alesia-kozik-6765363.jpg', 10, 'App\\Models\\TvSession', '2021-12-12 12:19:26', '2021-12-12 12:19:26'),
+(94, '1639333203pexels-alesia-kozik-6765363.jpg', 11, 'App\\Models\\TvSession', '2021-12-12 12:20:03', '2021-12-12 12:20:03'),
+(95, '1639333256logo.png', 12, 'App\\Models\\TvSession', '2021-12-12 12:20:56', '2021-12-12 12:20:56'),
+(96, '1639333481logo.png', 13, 'App\\Models\\TvSession', '2021-12-12 12:24:41', '2021-12-12 12:24:41'),
+(97, '1639333504logo.png', 14, 'App\\Models\\TvSession', '2021-12-12 12:25:04', '2021-12-12 12:25:04'),
+(98, '1639334582logo.png', 15, 'App\\Models\\Episode', '2021-12-12 12:43:02', '2021-12-12 12:43:02'),
+(99, '1639335610logo.png', 16, 'App\\Models\\Episode', '2021-12-12 13:00:10', '2021-12-12 13:00:10'),
+(100, '1639338268logo.png', 29, 'App\\Models\\Movie', '2021-12-12 13:44:28', '2021-12-12 13:44:28');
 
 -- --------------------------------------------------------
 
@@ -902,12 +913,7 @@ CREATE TABLE `tv_sessions` (
 --
 
 INSERT INTO `tv_sessions` (`id`, `show_id`, `session_title`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(2, 14, 'Season 1', 'season-1', 1, '2020-02-18 04:27:06', '2020-03-13 21:09:49'),
-(3, 14, 'Season 2', 'season-2', 1, '2020-02-18 04:27:34', '2020-03-13 21:08:43'),
-(4, 18, 'Season 1', 'season-1', 1, '2020-03-13 21:56:59', '2020-03-13 21:56:59'),
-(5, 18, 'Season 2', 'season-2', 1, '2020-03-13 21:57:44', '2020-03-13 21:57:44'),
-(6, 19, 'Season 1', 'season-1', 1, '2020-03-13 21:58:01', '2020-03-13 21:58:01'),
-(7, 19, 'Season 2', 'season-2', 1, '2020-03-13 21:58:10', '2020-03-16 04:13:15');
+(14, 25, 'Season 1', 'season-1', 1, '2021-12-12 12:25:04', '2021-12-12 12:25:04');
 
 -- --------------------------------------------------------
 
@@ -1244,7 +1250,7 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT for table `episodes`
 --
 ALTER TABLE `episodes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1292,7 +1298,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1340,7 +1346,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `show_images`
 --
 ALTER TABLE `show_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `socialsettings`
@@ -1376,7 +1382,7 @@ ALTER TABLE `subscription_plans`
 -- AUTO_INCREMENT for table `tv_sessions`
 --
 ALTER TABLE `tv_sessions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tv_shows`
