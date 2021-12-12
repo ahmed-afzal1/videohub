@@ -8,6 +8,7 @@ use App\Models\Genre;
 use App\helper\Helper;
 use App\Models\Movie;
 use App\Models\CastCrew;
+use App\Models\Category;
 use Carbon\Carbon;
 
 use Validator;
@@ -32,7 +33,8 @@ class MovieController extends Controller
     {
         $cast_crews = CastCrew::where('status', 1)->get();
         $genres = Genre::where('status', 1)->get();
-        return view('admin.movie.create', compact('genres', 'cast_crews'));
+        $categories = Category::where('status', 1)->get();
+        return view('admin.movie.create', compact('genres', 'cast_crews','categories'));
     }
 
     // move store method 
@@ -63,6 +65,7 @@ class MovieController extends Controller
         $input = $request->all();
         $input['tag'] = Helper::TagFormat($request->tag);
         $input['video_type'] = $request->video_type;
+        $input['category_id'] = $request->category;
 
         $input['producer'] = Helper::implode($request->producer);
         $input['directors'] = Helper::implode($request->directors);
@@ -136,8 +139,8 @@ class MovieController extends Controller
         $cast_crews = CastCrew::where('status', 1)->get();
         $genres = Genre::where('status', 1)->get();
         $data = Movie::findOrFail($id);
-
-        return view('admin.movie.edit', compact('data', 'genres', 'cast_crews'));
+        $categories = Category::where('status', 1)->get();
+        return view('admin.movie.edit', compact('data', 'genres', 'cast_crews','categories'));
     }
 
 
@@ -237,7 +240,7 @@ class MovieController extends Controller
         $input['directors'] = Helper::implode($request->directors);
         $input['cast'] = Helper::implode($request->cast);
         $input['slug'] = Helper::slug($request->title . ' ' . $request->release_date);
-
+        $input['category_id'] = $request->category;
         $data->update($input);
         Helper::tempClear();
 

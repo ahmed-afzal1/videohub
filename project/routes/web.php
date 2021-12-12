@@ -102,7 +102,7 @@
     Route::get('/episode/edit/{id}', 'Admin\EpisodeController@edit')->name('admin-episode-edit');
     Route::post('/episode/update/{id}', 'Admin\EpisodeController@update')->name('admin-episode-update');
     Route::get('/episode/delete/{id}', 'Admin\EpisodeController@destroy')->name('admin-episode-delete');
-    Route::get('/episode/status/{id1}/{id2}', 'Admin\EpisodeController@status')->name('admin-episode-status');
+    Route::post('/episode/status/{id}', 'Admin\EpisodeController@status')->name('admin-episode-status');
     Route::post('episode/processing','Admin\EpisodeController@Processing')->name('admin.episode.processing');
     //------------------------------  ADMIN Episode ENDS------------------------------//
   });

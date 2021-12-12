@@ -40,13 +40,13 @@ class SessionController extends Controller
             'show_id' => 'required',
             'image' => 'mimes:jpeg,jpg,png,',
         ]);
-        //--- Validation Section Ends
+        
+        $model = TvSession::create([
+            'session_title' => $request->session_title,
+            'show_id' => $request->show_id,
+            'slug' => Helper::slug($request->session_title. ' '.$request->created_at)
+        ]);
 
-        $input = $request->all();
-        $input['slug'] = Helper::slug($request->session_title. ' '.$request->created_at);
-        $data = new TvSession;
-        $id = $data->create($input)->id;
-        $model = TvSession::find($id);
         if($request->hasFile('image')){
             $image = $request->image;
             $location = base_path('../assets/images/');
@@ -55,8 +55,8 @@ class SessionController extends Controller
         }else{
             Helper::NullImage($model);
         }
-
-        return back()->with('success',__('New Data Added Successfully.'));
+        $notify[] = ['success',__('Session Created Successfully')];
+        return back()->withNotify($notify);
      }
 
 
@@ -77,10 +77,14 @@ class SessionController extends Controller
             'show_id' => 'required',
             'image' => 'mimes:jpeg,jpg,png,',
         ]);
-        $input = $request->all();
+       
         $model = TvSession::findOrFail($id);
-        $input['slug'] = Helper::slug($request->session_title. ' '.$request->created_at);
-        $model->update($input);
+
+        $model->update([
+            'session_title' => $request->session_title,
+            'show_id' => $request->show_id,
+            'slug' => Helper::slug($request->session_title. ' '.$request->created_at)
+        ]);
 
         
         if($request->hasFile('image')){
@@ -89,7 +93,8 @@ class SessionController extends Controller
             Helper::ImageUpdate($image,$location,$model);
         }
 
-        return back()->with('success',__('Data Updated Successfully.'));
+         $notify[] = ['success',__('Session Updated Successfully')];
+        return back()->withNotify($notify);
      }
 
       
@@ -99,7 +104,8 @@ class SessionController extends Controller
             $location = base_path('../assets/images/');
             Helper::Deletes($model,$location);
 
-            return back()->with('success',__('Data Deleted Successfully.'));
+            $notify[] = ['success',__('Session Deleted Successfully')];
+            return back()->withNotify($notify);
         }
 
 

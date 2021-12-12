@@ -15,30 +15,29 @@ use DB;
 
 class ShowController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('auth:admin');
-        
     }
 
 
 
     public function Index()
     {
-        $shows = TvShow::orderBy('id','desc')->paginate();
-       return view('admin.show.index',compact('shows'));
+        $shows = TvShow::orderBy('id', 'desc')->paginate();
+        return view('admin.show.index', compact('shows'));
     }
 
-     public function create()
-     {
-         $categories = Genre::where('status',1)->get();
+    public function create()
+    {
+        $categories = Genre::where('status', 1)->get();
 
-         return view('admin.show.create',compact('categories'));
-     }
+        return view('admin.show.create', compact('categories'));
+    }
 
-     public function store(Request $request)
-     {
+    public function store(Request $request)
+    {
 
         $request->validate([
             'show_name' => 'required',
@@ -55,44 +54,43 @@ class ShowController extends Controller
             'genre_id' => $request->genre_id,
             'access' => $request->access,
             'description' => $request->description,
-            'slug' => Helper::slug($request->show_name. ' '.$request->release_date)
+            'slug' => Helper::slug($request->show_name . ' ' . $request->release_date)
         ]);
-       
-        if($request->hasFile('image')){
+
+        if ($request->hasFile('image')) {
             $image = $request->image;
             $location = base_path('../assets/images/');
-            Helper::MakeImage($image,$location,$model);
-            
-        }else{
+            Helper::MakeImage($image, $location, $model);
+        } else {
             Helper::NullImage($model);
         }
-        
-        $notify[] = ['success',__('Show Created Successfully')];
+
+        $notify[] = ['success', __('Show Created Successfully')];
 
         return back()->withNotify($notify);
-     }
+    }
 
 
 
-     public function edit($id)
-     {
-        $categories = Genre::where('status',1)->get();
-        
+    public function edit($id)
+    {
+        $categories = Genre::where('status', 1)->get();
+
         $data = TvShow::findOrFail($id);
-        return view('admin.show.edit',compact('categories','data'));
-     }
+        return view('admin.show.edit', compact('categories', 'data'));
+    }
 
 
 
-     public function update(Request $request , $id)
-     {
-       $request->validate([
-        'show_name' => 'required',
-        'description' => 'required|min:10',
-        'relase_date' => 'required',
-        'image' => 'mimes:jpeg,jpg,png',
-       ]);
-       
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'show_name' => 'required',
+            'description' => 'required|min:10',
+            'relase_date' => 'required',
+            'image' => 'mimes:jpeg,jpg,png',
+        ]);
+
         $model = TvShow::findOrFail($id);
 
         $model->update([
@@ -101,52 +99,45 @@ class ShowController extends Controller
             'genre_id' => $request->genre_id,
             'access' => $request->access,
             'description' => $request->description,
-            'slug' => Helper::slug($request->show_name. ' '.$request->release_date)
+            'slug' => Helper::slug($request->show_name . ' ' . $request->release_date)
         ]);
 
-        
-        if($request->hasFile('image')){
+
+        if ($request->hasFile('image')) {
             $image = $request->image;
             $location = base_path('../assets/images/');
-            Helper::ImageUpdate($image,$location,$model);
+            Helper::ImageUpdate($image, $location, $model);
         }
-        
-        $notify[] = ['success',__('Show Created Successfully')];
+
+        $notify[] = ['success', __('Show Created Successfully')];
 
         return back()->withNotify($notify);
-     }
+    }
 
 
 
-        public function destroy($id)
-        {
-           
-            $model = TvShow::findOrFail($id);
-            $location = base_path('../assets/images/');
-            Helper::Deletes($model,$location);
-            $model->delete();
-            $notify[] = ['success',__('Show Deleted Successfully')];
+    public function destroy($id)
+    {
+
+        $model = TvShow::findOrFail($id);
+        $location = base_path('../assets/images/');
+        Helper::Deletes($model, $location);
+        $model->delete();
+        $notify[] = ['success', __('Show Deleted Successfully')];
 
         return back()->withNotify($notify);
-           
-        }
+    }
 
 
-        public function status(Request $request, $id)
-        {
-            $show = TvShow::findOrFail($id);
+    public function status(Request $request, $id)
+    {
+        $show = TvShow::findOrFail($id);
 
-            $show->status = $request->status;
+        $show->status = $request->status;
 
-            $show->save();
-
-
-           return response()->json(['success' => 'Status Updated Success']);
-        }
+        $show->save();
 
 
-
-
-
-
+        return response()->json(['success' => 'Status Updated Success']);
+    }
 }

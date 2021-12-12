@@ -10,7 +10,7 @@ class Movie extends Model
 {
     protected $fillable = ['title','video','video_type','tag','description','access','relase_date',
     'producer','directors','cast',
-    'genre_id','status','heighlight','slug','language_id'];
+    'genre_id','status','heighlight','slug','language_id','category_id'];
 
     
     public function language()

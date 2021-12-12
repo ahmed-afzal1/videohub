@@ -9,7 +9,7 @@
     <li class="nav-item ">
     <a class="nav-link" href="<?php echo e(route('category.index')); ?>">
             <i class="fab fa-fw fa-wpforms"></i>
-            <span><?php echo e(__('Manage Category')); ?></span>
+            <span><?php echo e(__('Manage Movie Category')); ?></span>
         </a>
     </li>
     

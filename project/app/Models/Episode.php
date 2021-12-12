@@ -17,7 +17,7 @@ class Episode extends Model
 
     public function tvSeason()
     {
-        return $this->belongsTo('App\Models\TvSession')->withDefault();
+        return $this->belongsTo(TvSession::class,'tv_session_id')->withDefault();
     }
 
     public function image()

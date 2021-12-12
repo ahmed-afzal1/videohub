@@ -77,15 +77,24 @@
                                 </div>
                                 <div class="form-group col-md-6 col-md-6">
                                     <label for="title">{{ __('Movie Title') }}</label>
-                                    <input type="text" class="form-control" name="title" id="title"
+                                    <input type="text" class="form-control" name="title"
                                         placeholder="{{ __('Movie Title') }}">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="title">{{ __('Movie Access') }}</label>
-                                    <select class="form-control  mb-3" name="access" id="title">
+                                    <select class="form-control  mb-3" name="access" >
                                         <option value="free">{{ __('Free') }}</option>
                                         <option value="premium">{{ __('Premium') }}</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="title">{{ __('Movie Category') }}</label>
+                                    <select class="form-control  mb-3" name="category" >
+                                     @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{ $category->name}}</option>
+                                     @endforeach
                                     </select>
                                 </div>
 

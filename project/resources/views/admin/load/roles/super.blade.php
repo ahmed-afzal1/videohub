@@ -9,7 +9,7 @@
     <li class="nav-item ">
     <a class="nav-link" href="{{route('category.index')}}">
             <i class="fab fa-fw fa-wpforms"></i>
-            <span>{{ __('Manage Category') }}</span>
+            <span>{{ __('Manage Movie Category') }}</span>
         </a>
     </li>
     
