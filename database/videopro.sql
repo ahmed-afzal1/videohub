@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 01, 2021 at 04:54 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.15
+-- Host: 127.0.0.1
+-- Generation Time: Dec 12, 2021 at 07:07 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `videotest`
+-- Database: `videohub`
 --
 
 -- --------------------------------------------------------
@@ -104,6 +104,31 @@ INSERT INTO `cast_crews` (`id`, `name`, `bio`, `status`, `created_at`, `updated_
 (5, 'Chris Evans', 'Christopher Robert Evans began his acting career in typical fashion: performing in school productions and community theatre. He was born in Boston, Massachusetts, the son of Lisa (Capuano), who worked at the Concord Youth Theatre, and G. Robert Evans III, a dentist. His uncle is congressman Mike Capuano. Chris\'s father is of half German and half', 1, '2020-03-07 00:36:10', '2020-03-07 00:36:10'),
 (6, 'Mark Ruffalo', 'Mark Ruffalo was born in Kenosha, Wisconsin, to Marie Rose (Hebert), a stylist and hairdresser, and Frank Lawrence Ruffalo, a construction painter. His father\'s ancestry is Italian, and his mother is of half French-Canadian and half Italian descent. Mark moved with his family to Virginia Beach, Virginia, where he lived out most of his teenage', 1, '2020-03-07 00:36:47', '2020-03-07 00:36:47'),
 (7, 'Scarlett Johansson', 'Scarlett Johansson was born in New York City. Her mother, Melanie Sloan, is from a Jewish family from the Bronx, and her father, Karsten Johansson, is a Danish-born architect, from Copenhagen. She has a sister, Vanessa Johansson, who is also an actress, a brother, Adrian, a twin brother, Hunter Johansson, born three minutes after her', 1, '2020-03-07 00:37:30', '2020-03-16 03:44:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'Movies', 'movies', 0, '2021-12-10 13:56:23', '2021-12-11 04:50:24'),
+(4, 'Drama', 'drama', 0, '2021-12-10 13:56:29', '2021-12-11 04:50:23'),
+(5, 'Kids', 'kids', 0, '2021-12-10 13:56:35', '2021-12-11 04:50:21'),
+(6, 'Series', 'series', 0, '2021-12-10 13:56:43', '2021-12-11 04:50:19');
 
 -- --------------------------------------------------------
 
@@ -326,9 +351,8 @@ CREATE TABLE `genres` (
 --
 
 INSERT INTO `genres` (`id`, `name`, `slug`, `status`, `updated_at`, `created_at`) VALUES
-(34, 'Flower', 'flower', 1, '2020-02-16 10:37:13', NULL),
-(35, 'Fruit', 'friut', 1, '2020-02-28 23:46:17', NULL),
-(37, 'adf', 'adfa', 1, '2020-03-16 02:58:16', NULL);
+(34, 'Flower', 'flower', 1, '2021-12-11 13:09:00', NULL),
+(38, 'messi jr', 'asdsdas', 1, '2021-12-11 10:46:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -386,7 +410,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2020_03_01_054719_create_reviews_table', 9),
 (21, '2020_03_02_065931_create_favarites_table', 10),
 (22, '2020_03_03_092244_create_orders_table', 11),
-(24, '2020_03_07_052545_create_cast_crews_table', 12);
+(24, '2020_03_07_052545_create_cast_crews_table', 12),
+(25, '2021_12_10_191625_create_categories_table', 13),
+(27, '2021_12_11_174236_create_plan_features_table', 14);
 
 -- --------------------------------------------------------
 
@@ -420,11 +446,7 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `title`, `slug`, `video_type`, `genre_id`, `language_id`, `video`, `description`, `tag`, `status`, `access`, `relase_date`, `heighlight`, `producer`, `directors`, `cast`, `created_at`, `updated_at`) VALUES
-(20, 'Avenger', 'Avenger', 'file', '34,35', 19, 'big-buck-bunny_trailer.webm', '<div><ytd-expander class=\"style-scope ytd-video-secondary-info-renderer\" style=\"--ytd-expander-collapsed-height:60px;\"></ytd-expander></div><div><span style=\"color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgba(185, 185, 185, 0.1);\">After the devastating events of Avengers: Infinity War (2018), the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos\'s actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face</span><br></div>', 'h,raeetwear,trgfywrt', '1', 'free', '01-01-1975', 'trending,new,recent,top,old', '4', '4', '4,5,6,7', '2020-02-25 04:32:41', '2020-03-07 03:36:12'),
-(21, 'Privacy Policy', 'privacy-policy', 'url', '34,35', 19, 'https://www.youtube.com/embed/A6aHpgBRcg0', '<span style=\"color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgba(185, 185, 185, 0.1);\">After the devastating events of Avengers: Infinity War (2018), the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos\'s actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face</span><span style=\"color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgba(185, 185, 185, 0.1);\">After the devastating events of Avengers: Infinity War (2018), the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos\'s actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face</span><br>', 'a,b,c,d', '1', 'premium', '01-01-1970', 'trending,new,recent,top,old', '5,7', '5', '3,5,6,7', '2020-02-25 21:24:29', '2020-03-13 21:15:25'),
-(22, 'Axing', 'Axing', 'url', '34', 17, 'https://player.vimeo.com/video/378327608', '<div><span style=\"font-size: 1rem;\"><span style=\"font-weight: bolder;\">SYNOPSIS</span>: Hackers, lovers, and gangsters collide in this story about the fight against corruption and for love.</span></div><div><div><span style=\"font-size: 1rem;\"><br></span></div><div><span style=\"font-size: 1rem;\"><span style=\"font-weight: bolder;\">Director</span>:&nbsp; Puri Jagannadh</span><br></div><div><span style=\"font-weight: bolder;\">Producer</span>:&nbsp; Sajid Qureshi</div><div>Star Cast: Nandamuri Kalyanram, Aditi Arya, Jagapati Babu</div><div>Written By:&nbsp; PURI JAGANNADH</div><div>Film Title: ISM</div><div>Music By: Anup Rubens</div><div>Cinematography: Mukesh G</div><div>Edited By: Junaid Siddiqui</div><div>Production Company: N. T. R. Arts</div><div>Distributed By: Dil Raju</div><div><br></div><div><a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/results?search_query=%23TabaahiZulmKI\" dir=\"auto\">#TabaahiZulmKI</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\">,&nbsp;</span><a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/results?search_query=%23Ism\" dir=\"auto\">#Ism</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\">,&nbsp;</span><a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/results?search_query=%23PenMovies\" dir=\"auto\">#PenMovies</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\">,</span></div><div><br></div><div>For your favorite Bollywood Movies, Subscribe now:&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Fbit.ly%2F2HKEuP0&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://bit.ly/2HKEuP0</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\">&nbsp;</span></div><div><br></div><div>SUBSCRIBE for the best Bollywood clips, movies and scenes, all in your PEN Multiplex channel&nbsp;</div><div><a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Fbit.ly%2F2BcfNFy&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://bit.ly/2BcfNFy</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\"></span></div><div><br></div><div>For your favorite Gujarati Movies, Subscribe now:&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Fbit.ly%2F2ShBC01&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://bit.ly/2ShBC01</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\"></span></div><div><br></div><div>For Daily Bollywood news &amp; gossips subscribe our channels</div><div>BTNews Hindi:&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Fbit.ly%2F2Tl2fhT&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://bit.ly/2Tl2fhT</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\">&nbsp;</span></div><div>Bollywood Times:&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Fbit.ly%2F2G2wTty&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://bit.ly/2G2wTty</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\">&nbsp;</span></div><div><br></div><div>Download our App for latest news &amp; gossips:&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Fbit.ly%2F2ldDN1B&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://bit.ly/2ldDN1B</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\"></span></div><div><br></div><div>Log On To Our Official Website :&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=http%3A%2F%2Fpenindia.in%2F&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">http://penindia.in/</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\"></span></div><div><br></div><div>Enjoy &amp; stay connected with us!&nbsp;</div><div>Like us on Facebook:&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Fwww.facebook.com%2FPenMovies&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://www.facebook.com/PenMovies</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\"></span></div><div>Follow us on Twitter:&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Ftwitter.com%2Fpenmovies&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://twitter.com/penmovies</a><span dir=\"auto\" class=\"style-scope yt-formatted-string\"></span></div><div>Follow us on Instagram:&nbsp;<a class=\"yt-simple-endpoint style-scope yt-formatted-string\" spellcheck=\"false\" href=\"http://localhost/redirect?q=https%3A%2F%2Fwww.instagram.com%2Fpenmovies&amp;redir_token=CYDr1fFpfo7CG5dCUW0w1T4g4EF8MTU4Mjc4NzAyM0AxNTgyNzAwNjIz&amp;event=video_description&amp;v=ftzzbqlySJ4\" rel=\"nofollow\" target=\"_blank\" dir=\"auto\">https://www.instagram.com/penmovies</a></div></div>', 'd,g,a,f', '1', 'premium', '01-01-1970', 'trending,new,recent,top,old', '4,7', '3,5', '5', '2020-02-25 22:24:07', '2020-03-07 03:35:58'),
-(23, 'Youtube Video', 'youtube-video', 'url', '34,35', 17, 'https://www.youtube.com/embed/th8QSIsBJ3s', '<span style=\"color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgba(185, 185, 185, 0.1);\">After the devastating events of Avengers: Infinity War (2018), the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos\'s actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face</span><br>', 'sas,dh', '1', 'free', '01-01-1970', 'trending,new,recent,top,old', '3,5', '3,6', '5,6,7', '2020-02-29 00:03:01', '2020-03-16 04:02:06'),
-(24, 'Horror Movie', 'HorrorMovie', 'file', '34,35', 19, 'MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_UY317_CR23,0,214,317_AL_.jpg', '<span style=\"color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgba(185, 185, 185, 0.1);\">After the devastating events of Avengers: Infinity War (2018), the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos\'s actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face</span><br>', 'a,b,c', '1', 'free', '01-01-1970', 'new', '4', '4', '4,5,6,7', '2020-03-07 01:07:28', '2020-03-09 04:13:25');
+(28, 'khusu', 'khusu', 'url', NULL, NULL, 'https://www.youtube.com/embed/S-lwK7n-4_s', 'kajsdhf kjskf jshalkfj haslkfjh dkfhsdlakfhlsdaf', 'dsadasd', '1', 'free', '01-01-1970', 'trending,new', '4', '4', '5', '2021-12-10 14:44:24', '2021-12-10 15:45:04');
 
 -- --------------------------------------------------------
 
@@ -525,6 +547,29 @@ CREATE TABLE `password_resets` (
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plan_features`
+--
+
+CREATE TABLE `plan_features` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `features` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `plan_features`
+--
+
+INSERT INTO `plan_features` (`id`, `features`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'test', 1, '2021-12-11 12:06:47', '2021-12-11 12:17:28'),
+(2, 'test3', 1, '2021-12-11 12:08:05', '2021-12-11 12:39:14'),
+(3, 'safhkjshdfjk', 1, '2021-12-11 12:38:46', '2021-12-11 12:39:15');
 
 -- --------------------------------------------------------
 
@@ -633,7 +678,7 @@ INSERT INTO `show_images` (`id`, `image`, `imageable_id`, `imageable_type`, `cre
 (15, '1581585069girl.png', 33, 'App\\Models\\Genre', '2020-02-13 03:10:54', '2020-02-13 03:11:09'),
 (20, '1581928133news.jpg', 10, 'App\\Models\\TvShow', '2020-02-16 04:17:35', '2020-02-17 02:28:53'),
 (21, '15818484031578741410blog.jpg', 11, 'App\\Models\\TvShow', '2020-02-16 04:20:03', '2020-02-16 04:20:03'),
-(22, '15818494331578465075request-call.png', 34, 'App\\Models\\Genre', '2020-02-16 04:37:13', '2020-02-16 04:37:13'),
+(22, '1639219562logo.png', 34, 'App\\Models\\Genre', '2020-02-16 04:37:13', '2021-12-11 04:46:03'),
 (23, '15818496421574060315servicebg.jpg', 35, 'App\\Models\\Genre', '2020-02-16 04:40:42', '2020-02-16 04:40:42'),
 (24, NULL, 13, 'App\\Models\\TvShow', '2020-02-17 02:41:58', '2020-02-17 02:41:58'),
 (25, '1584158069Kingdom_Korean_Drama-TP-310x310.jpg', 14, 'App\\Models\\TvShow', '2020-02-17 03:10:30', '2020-03-13 21:54:29'),
@@ -671,7 +716,7 @@ INSERT INTO `show_images` (`id`, `image`, `imageable_id`, `imageable_type`, `cre
 (62, '1583562851MV5BNzg1MTUyNDYxOF5BMl5BanBnXkFtZTgwNTQ4MTE2MjE@._V1_UX214_CR0,0,214,317_AL_.jpg', 4, 'App\\Models\\CastCrew', '2020-03-07 00:34:11', '2020-03-07 00:34:11'),
 (63, '1583562970MV5BMTU2NTg1OTQzMF5BMl5BanBnXkFtZTcwNjIyMjkyMg@@._V1_UY317_CR6,0,214,317_AL_.jpg', 5, 'App\\Models\\CastCrew', '2020-03-07 00:36:10', '2020-03-07 00:36:10'),
 (64, '1583563007MV5BNDQyNzMzZTMtYjlkNS00YzFhLWFhMTctY2M4YmQ1NmRhODBkXkEyXkFqcGdeQXVyNjcyNzgyOTE@._V1_UY317_CR20,0,214,317_AL_.jpg', 6, 'App\\Models\\CastCrew', '2020-03-07 00:36:47', '2020-03-07 00:36:47'),
-(65, '1583563050MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_UY317_CR23,0,214,317_AL_.jpg', 7, 'App\\Models\\CastCrew', '2020-03-07 00:37:30', '2020-03-07 00:37:30'),
+(65, '1639204609logo.png', 7, 'App\\Models\\CastCrew', '2020-03-07 00:37:30', '2021-12-11 00:36:51'),
 (66, '1583577794MV5BOTI0MzcxMTYtZDVkMy00NjY1LTgyMTYtZmUxN2M3NmQ2NWJhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg', 24, 'App\\Models\\Movie', '2020-03-07 01:07:29', '2020-03-07 04:43:15'),
 (67, '15840085001578465053request-call.png', 12, 'App\\Models\\Episode', '2020-03-12 04:21:40', '2020-03-12 04:21:40'),
 (68, '1584157446Brooklyn99-310x310.jpg', 16, 'App\\Models\\TvShow', '2020-03-13 21:44:06', '2020-03-13 21:44:06'),
@@ -685,7 +730,18 @@ INSERT INTO `show_images` (`id`, `image`, `imageable_id`, `imageable_type`, `cre
 (76, '1584160189Brooklyn99-310x310.jpg', 13, 'App\\Models\\Episode', '2020-03-13 22:29:49', '2020-03-13 22:29:49'),
 (77, '1584160297Brooklyn99-310x310.jpg', 14, 'App\\Models\\Episode', '2020-03-13 22:31:37', '2020-03-13 22:31:37'),
 (78, '1584348517MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_UY317_CR23,0,214,317_AL_.jpg', 36, 'App\\Models\\Genre', '2020-03-16 02:48:37', '2020-03-16 02:48:37'),
-(79, '1584348650MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_UY317_CR23,0,214,317_AL_.jpg', 37, 'App\\Models\\Genre', '2020-03-16 02:50:50', '2020-03-16 02:50:50');
+(79, '1584348650MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_UY317_CR23,0,214,317_AL_.jpg', 37, 'App\\Models\\Genre', '2020-03-16 02:50:50', '2020-03-16 02:50:50'),
+(80, '1639167062pexels-alesia-kozik-6765363.jpg', 25, 'App\\Models\\Movie', '2021-12-10 14:11:02', '2021-12-10 14:11:02'),
+(81, '1639169064logo.png', 28, 'App\\Models\\Movie', '2021-12-10 14:44:24', '2021-12-10 14:44:24'),
+(82, '1639219583pexels-alesia-kozik-6765363.jpg', 38, 'App\\Models\\Genre', '2021-12-11 04:46:23', '2021-12-11 04:46:23'),
+(83, '1639248013logo.png', 20, 'App\\Models\\TvShow', '2021-12-11 12:40:13', '2021-12-11 12:40:13'),
+(84, '1639248221logo.png', 21, 'App\\Models\\TvShow', '2021-12-11 12:43:41', '2021-12-11 12:43:41'),
+(85, '1639248279pexels-alesia-kozik-6765363.jpg', 22, 'App\\Models\\TvShow', '2021-12-11 12:44:39', '2021-12-11 12:44:39'),
+(86, '1639248739logo.png', 23, 'App\\Models\\TvShow', '2021-12-11 12:52:19', '2021-12-11 12:52:19'),
+(87, '1639248967logo.png', 24, 'App\\Models\\TvShow', '2021-12-11 12:56:08', '2021-12-11 12:56:08'),
+(88, '1639249112pexels-alesia-kozik-6765363.jpg', 25, 'App\\Models\\TvShow', '2021-12-11 12:58:32', '2021-12-11 12:58:32'),
+(89, '1639249691logo.png', 26, 'App\\Models\\TvShow', '2021-12-11 13:08:11', '2021-12-11 13:08:11'),
+(90, '1639249763screencapture-localhost-websolution-3-servicetop-kawsar-script-content-main-files-admin-pages-create-2021-09-15-20_48_42.png', 27, 'App\\Models\\TvShow', '2021-12-11 13:09:23', '2021-12-11 13:09:23');
 
 -- --------------------------------------------------------
 
@@ -808,10 +864,10 @@ CREATE TABLE `subscription_plans` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `plan_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `duration` int(11) NOT NULL,
-  `time` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double NOT NULL,
   `icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `plan_features` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -821,11 +877,9 @@ CREATE TABLE `subscription_plans` (
 -- Dumping data for table `subscription_plans`
 --
 
-INSERT INTO `subscription_plans` (`id`, `plan_name`, `duration`, `time`, `price`, `icon`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(9, 'Free', 15, '1', 0, NULL, '<h3 style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 0.333333em; margin-left: 0px; text-align: center;\"><font color=\"#00ff00\" face=\"Lato, sans-serif\"><span style=\"font-size: 24px; letter-spacing: 1.5px; text-transform: uppercase;\">Free</span></font><br></h3><p style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font-size: 0.875em; font-family: Lato, sans-serif; text-align: center;\"><font color=\"#ff0033\">15 Days</font></p><ul style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; color: rgb(121, 101, 131); font-size: 0.75em; list-style-type: none; padding: 0px; font-family: Lato, sans-serif; text-align: center;\"><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">Limited Email Support</li><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">Unlimited Data Transfer</li><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">10GB Local Storage</li></ul>', 1, '2020-03-02 22:10:04', '2020-03-03 00:33:54'),
-(10, 'ENTERPRISE', 5, '30', 50, NULL, '<h3 style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 0.333333em; margin-left: 0px; text-align: center;\"><font color=\"#00ff00\" face=\"Lato, sans-serif\"><span style=\"font-size: 24px; letter-spacing: 1.5px; text-transform: uppercase;\">ENTERPRISE</span></font><br></h3><p style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font-size: 0.875em; font-family: Lato, sans-serif; text-align: center;\"><font color=\"#ff0033\">5 Month</font></p><ul style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; color: rgb(121, 101, 131); font-size: 0.75em; list-style-type: none; padding: 0px; font-family: Lato, sans-serif; text-align: center;\"><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">Limited Email Support</li><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">Unlimited Data Transfer</li><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">10GB Local Storage</li></ul>', 1, '2020-03-02 22:11:51', '2020-03-03 00:33:26'),
-(11, 'PREMIUM', 1, '365', 100, NULL, '<h3 style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 0.333333em; margin-left: 0px; text-align: center;\"><font color=\"#00ff00\" face=\"Lato, sans-serif\"><span style=\"font-size: 24px; letter-spacing: 1.5px; text-transform: uppercase;\">premium</span></font><br></h3><p style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font-size: 0.875em; font-family: Lato, sans-serif; text-align: center;\"><font color=\"#ff0033\">1 Years</font></p><ul style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; color: rgb(121, 101, 131); font-size: 0.75em; list-style-type: none; padding: 0px; font-family: Lato, sans-serif; text-align: center;\"><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">Limited Email Support</li><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">Unlimited Data Transfer</li><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">10GB Local Storage</li></ul>', 1, '2020-03-02 22:12:09', '2020-03-03 00:33:33'),
-(16, 'PERSONAL', 4, '30', 20, NULL, '<h3 style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 0.333333em; margin-left: 0px; text-align: center;\"><font color=\"#00ff00\" face=\"Lato, sans-serif\"><span style=\"font-size: 24px; letter-spacing: 1.5px; text-transform: uppercase;\">PERSONAL</span></font><br></h3><p style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; text-align: center; font-family: Lato, sans-serif; font-size: 0.875em;\"><font color=\"#ff0033\">1 Years</font></p><ul style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; text-align: center; color: rgb(121, 101, 131); font-family: Lato, sans-serif; font-size: 0.75em; list-style-type: none; padding: 0px;\"><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">Limited Email Support</li><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">Unlimited Data Transfer</li><li style=\"box-sizing: inherit; margin: 0px 0px 0.833333em;\">10GB Local Storage</li></ul>', 1, '2020-03-03 01:10:28', '2020-03-03 01:10:41');
+INSERT INTO `subscription_plans` (`id`, `plan_name`, `duration`, `price`, `icon`, `description`, `plan_features`, `status`, `created_at`, `updated_at`) VALUES
+(25, 'asda', 78, 89, NULL, 'asdasd asd asdsad asd a', '[\"2\"]', 1, '2021-12-11 12:22:32', '2021-12-11 12:29:21'),
+(26, 'asd', 78, 89, NULL, 'asdasd asd asdsad asd a', '[\"1\",\"2\"]', 1, '2021-12-11 12:32:54', '2021-12-11 12:32:54');
 
 -- --------------------------------------------------------
 
@@ -864,7 +918,7 @@ INSERT INTO `tv_sessions` (`id`, `show_id`, `session_title`, `slug`, `status`, `
 CREATE TABLE `tv_shows` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `language_id` int(11) DEFAULT NULL,
-  `genre_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `genre_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `show_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -880,9 +934,8 @@ CREATE TABLE `tv_shows` (
 --
 
 INSERT INTO `tv_shows` (`id`, `language_id`, `genre_id`, `show_name`, `slug`, `description`, `status`, `access`, `relase_date`, `created_at`, `updated_at`) VALUES
-(14, 19, '34,35', 'Kingdom (2019– )', 'kingdom-2019', 'When police officer Sartaj Singh receives an anonymous tip about the location of criminal overlord Ganesh Gaitonde, he embarks on a chase around Mumbai in what becomes a dangerous...<br>', 1, 'free', '2020-02-23 07:03:49', '2020-02-17 03:10:30', '2020-03-13 21:54:29'),
-(18, 19, '35', 'The Sinner ( 2017 – )', 'the-sinner-2017', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries<br>', 1, 'free', NULL, '2020-03-13 21:48:10', '2020-03-13 21:48:10'),
-(19, 19, '35', 'The Unicorn (2019– )', 'the-unicorn-2019', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries<br>', 1, 'premium', '03/28/2020', '2020-03-13 21:55:22', '2020-03-16 04:09:50');
+(24, NULL, '[\"38\"]', 'asdsad', 'asdsad', 'aad asd asdasd adasda', 1, 'free', '12/14/2021', '2021-12-11 12:56:07', '2021-12-11 12:56:07'),
+(25, NULL, '[\"38\"]', 'test3', 'test3', 'ad asdasdas dasd asd', 1, 'free', '12/13/2021', '2021-12-11 12:58:31', '2021-12-11 13:02:34');
 
 -- --------------------------------------------------------
 
@@ -963,6 +1016,14 @@ ALTER TABLE `blogs`
 --
 ALTER TABLE `cast_crews`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `categories_name_unique` (`name`),
+  ADD UNIQUE KEY `categories_slug_unique` (`slug`);
 
 --
 -- Indexes for table `comments`
@@ -1053,6 +1114,13 @@ ALTER TABLE `pagesettings`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `plan_features`
+--
+ALTER TABLE `plan_features`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `plan_features_features_unique` (`features`);
 
 --
 -- Indexes for table `replies`
@@ -1155,6 +1223,12 @@ ALTER TABLE `cast_crews`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
@@ -1200,7 +1274,7 @@ ALTER TABLE `generalsettings`
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `languages`
@@ -1212,13 +1286,13 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1237,6 +1311,12 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `pagesettings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `plan_features`
+--
+ALTER TABLE `plan_features`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `replies`
@@ -1260,7 +1340,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `show_images`
 --
 ALTER TABLE `show_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `socialsettings`
@@ -1290,7 +1370,7 @@ ALTER TABLE `subscribers`
 -- AUTO_INCREMENT for table `subscription_plans`
 --
 ALTER TABLE `subscription_plans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tv_sessions`
@@ -1302,7 +1382,7 @@ ALTER TABLE `tv_sessions`
 -- AUTO_INCREMENT for table `tv_shows`
 --
 ALTER TABLE `tv_shows`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
