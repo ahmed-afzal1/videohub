@@ -1,10 +1,8 @@
-@extends('layouts.front')
+<?php $__env->startSection('css'); ?>
 
-@section('css')
+<?php $__env->stopSection(); ?>
 
-@endsection
-
-@section('contents')
+<?php $__env->startSection('contents'); ?>
         <!-- breadcrumb area start here  -->
         <div class="breadcrumb-area">
             <div class="container">
@@ -38,9 +36,9 @@
                       <h3 class="widget-title">By Category</h3>
                       <div class="custome-scrollbar">
                         <ul class="category-list">
-                        @foreach ($categories as $category)
+                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                           <li><a href="home.html">3D</a></li>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                           <li class="active"><a href="#">Action</a></li>
                           <li><a href="#">Advanture</a></li>
                           <li><a href="#">Animation</a></li>
@@ -109,19 +107,19 @@
                 </div>
                 <div class="col-lg-9 order-first order-lg-last">
                   <div class="row">
-                  @foreach ($moviesAll as $movie)   
+                  <?php $__currentLoopData = $moviesAll; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                       <div class="single-movies">
                         <div class="movis-thumbnail">
-                          <img src="{{ asset('assets/images/'.@$movie->image->image) }}" alt="movis" />
+                          <img src="<?php echo e(asset('assets/images/'.@$movie->image->image)); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                           <div class="imdb-wrap">
-                            <div class="imdb"><img src="{{asset('assets/front/images/imdb.png')}}" alt="imdb" /><span>{{\App\helper\Helper::GetIMDBRating($movie->title)}}</span></div>
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>" alt="imdb" /><span><?php echo e(\App\helper\Helper::GetIMDBRating($movie->title)); ?></span></div>
                             <span class="season">16+</span>
                           </div>
-                          <img class="premium" src="{{asset('assets/front/images/premium-label.svg')}}" alt="premium" />
-                          <a href="{{route('movie.details', $movie->slug)}}" class="play-btn"><i class="fas fa-play"></i></a>
+                          <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>" alt="premium" />
+                          <a href="<?php echo e(route('movie.details', $movie->slug)); ?>" class="play-btn"><i class="fas fa-play"></i></a>
                           <div class="share-add-btn">
                             <div class="share-area">
                               <a href="#" class="share-btn"><i class="fas fa-share-alt"></i></a>
@@ -134,28 +132,29 @@
                             <a href="#" class="add-btn"><i class="fas fa-plus"></i></a>
                           </div>
                           <div class="movies-info">
-                            <h3 class="movies-title"><a href="{{route('movie.details', $movie->slug)}}">{{$movie->title}}</a></h3>
+                            <h3 class="movies-title"><a href="<?php echo e(route('movie.details', $movie->slug)); ?>"><?php echo e($movie->title); ?></a></h3>
                             <ul class="movies-meta">
-                              @foreach ($movie->category_id as $cat)
-                                    @php
+                              <?php $__currentLoopData = $movie->category_id; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
                                         $category = \App\Models\Category::find($cat);
-                                    @endphp
-                                    <li>{{ $category->name }}</li>
-                                @endforeach
+                                    ?>
+                                    <li><?php echo e($category->name); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
-                            <p class="movie-content">{{Str::limit($movie->description,50)}}</p>
+                            <p class="movie-content"><?php echo e(Str::limit($movie->description,50)); ?></p>
                           </div>
                         </div>
                       </div>
                     </div>
-                  @endforeach
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     
                   </div>
-                  {{$moviesAll->links()}}
+                  <?php echo e($moviesAll->links()); ?>
+
                   <div class="pagination-area">
                     <div class="row">
                       <div class="col-md-6">
-                        <p class="pages-show">Showing {{count($paginationResult->data)}} from {{$paginationResult->total}} data</p>
+                        <p class="pages-show">Showing <?php echo e(count($paginationResult->data)); ?> from <?php echo e($paginationResult->total); ?> data</p>
                       </div>
                       <div class="col-md-6 text-md-end">
                         <ul class="pagination-page">
@@ -174,8 +173,9 @@
               </div>
             </div>
           </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('js')
+<?php $__env->startSection('js'); ?>
     
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/front/movies.blade.php ENDPATH**/ ?>

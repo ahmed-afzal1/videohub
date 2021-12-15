@@ -176,7 +176,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class ,
 
     ],

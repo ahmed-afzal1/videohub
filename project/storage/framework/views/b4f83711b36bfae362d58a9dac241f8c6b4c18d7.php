@@ -1,28 +1,26 @@
-@extends('layouts.front')
+<?php $__env->startPush('css'); ?>
 
-@push('css')
-
-@endpush
+<?php $__env->stopPush(); ?>
 
 
-@section('contents')
+<?php $__env->startSection('contents'); ?>
     <!-- hero-slider area start here  -->
     <section class="hero-slider-area">
         <div class="hero-banner-slide">
             <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-1.jpg') }});">
+                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-1.jpg')); ?>);">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-6">
                             <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
+                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
                                 2021</div>
                             <h1 class="banner-title">Black Widow</h1>
                             <div class="hero-banner-rating d-flex align-items-center">
                                 <span class="hero-normal-rating px-2 me-4">16+</span>
                                 <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
+                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
                                         alt="imdb"><span>8.5</span></span>
                             </div>
 
@@ -38,7 +36,7 @@
                                 <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
                                 <button
                                     class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
+                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
                                         class="me-1"> Add to List</button>
                             </div>
                         </div>
@@ -46,19 +44,19 @@
                 </div>
             </div>
             <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-2.jpg') }});">
+                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-2.jpg')); ?>);">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
+                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
                                 2021</div>
                             <h1 class="banner-title">Black Widow</h1>
 
                             <div class="hero-banner-rating d-flex align-items-center">
                                 <span class="hero-normal-rating px-2 me-4">16+</span>
                                 <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
+                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
                                         alt="imdb"><span>8.5</span></span>
                             </div>
 
@@ -74,7 +72,7 @@
                                 <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
                                 <button
                                     class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
+                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
                                         class="me-1"> Add to List</button>
                             </div>
 
@@ -83,19 +81,19 @@
                 </div>
             </div>
             <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-3.jpg') }});">
+                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-3.jpg')); ?>);">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
+                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
                                 2021</div>
                             <h1 class="banner-title">Black Widow</h1>
 
                             <div class="hero-banner-rating d-flex align-items-center">
                                 <span class="hero-normal-rating px-2 me-4">16+</span>
                                 <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
+                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
                                         alt="imdb"><span>8.5</span></span>
                             </div>
 
@@ -111,7 +109,7 @@
                                 <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
                                 <button
                                     class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
+                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
                                         class="me-1"> Add to List</button>
                             </div>
                         </div>
@@ -119,19 +117,19 @@
                 </div>
             </div>
             <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-4.jpg') }});">
+                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-4.jpg')); ?>);">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
+                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
                                 2021</div>
                             <h1 class="banner-title">Black Widow</h1>
 
                             <div class="hero-banner-rating d-flex align-items-center">
                                 <span class="hero-normal-rating px-2 me-4">16+</span>
                                 <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
+                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
                                         alt="imdb"><span>8.5</span></span>
                             </div>
 
@@ -147,7 +145,7 @@
                                 <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
                                 <button
                                     class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
+                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
                                         class="me-1"> Add to List</button>
                             </div>
                         </div>
@@ -155,19 +153,19 @@
                 </div>
             </div>
             <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-2.jpg') }});">
+                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-2.jpg')); ?>);">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
+                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
                                 2021</div>
                             <h1 class="banner-title">Black Widow</h1>
 
                             <div class="hero-banner-rating d-flex align-items-center">
                                 <span class="hero-normal-rating px-2 me-4">16+</span>
                                 <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
+                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
                                         alt="imdb"><span>8.5</span></span>
                             </div>
 
@@ -183,7 +181,7 @@
                                 <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
                                 <button
                                     class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
+                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
                                         class="me-1"> Add to List</button>
                             </div>
                         </div>
@@ -193,19 +191,19 @@
         </div>
         <div class="hero-banner-thumbnail">
             <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-1.png') }}" alt="thumbnail" />
+                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-1.png')); ?>" alt="thumbnail" />
             </div>
             <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-2.png') }}" alt="thumbnail" />
+                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-2.png')); ?>" alt="thumbnail" />
             </div>
             <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-3.png') }}" alt="thumbnail" />
+                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-3.png')); ?>" alt="thumbnail" />
             </div>
             <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-4.png') }}" alt="thumbnail" />
+                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-4.png')); ?>" alt="thumbnail" />
             </div>
             <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-2.png') }}" alt="thumbnail" />
+                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-2.png')); ?>" alt="thumbnail" />
             </div>
         </div>
     </section>
@@ -217,41 +215,41 @@
             <div class="section-header">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h2 class="section-title">{{ __('Latest Movies') }}</h2>
+                        <h2 class="section-title"><?php echo e(__('Latest Movies')); ?></h2>
                     </div>
                     <div class="col-sm-4 text-sm-end">
-                        <a href="{{route('front.movies')}}" class="view-all-btn">{{ __('View all') }} <i
+                        <a href="<?php echo e(route('front.movies')); ?>" class="view-all-btn"><?php echo e(__('View all')); ?> <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
 
             <div class="latest-movies-slide three-items-slide">
-                @foreach ($latestMovies as $latest)
+                <?php $__currentLoopData = $latestMovies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $latest): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="single-movies">
                         <div class="movies-thumbnail">
-                            <img src="{{ asset('assets/images/'.@$latest->image->image) }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/images/'.@$latest->image->image)); ?>" alt="movis" />
                         </div>
-                        <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                             alt="premium" />
-                        <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
-                                alt="imdb" /><span>{{\App\helper\Helper::GetIMDBRating($latest->title)}}</span></div>
-                        <a href="{{route('movie.details',$latest->slug)}}" class="play-btn"><i class="fas fa-play"></i></a>
+                        <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
+                                alt="imdb" /><span><?php echo e(\App\helper\Helper::GetIMDBRating($latest->title)); ?></span></div>
+                        <a href="<?php echo e(route('movie.details',$latest->slug)); ?>" class="play-btn"><i class="fas fa-play"></i></a>
                         <div class="movies-info">
-                            <h3 class="movies-title"><a href="#">{{ $latest->title }}</a></h3>
+                            <h3 class="movies-title"><a href="#"><?php echo e($latest->title); ?></a></h3>
                             <ul class="movies-meta">
                                 <li class="season"><span>16+</span></li>
-                                @foreach ($latest->category_id as $cat)
-                                    @php
+                                <?php $__currentLoopData = $latest->category_id; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
                                         $category = \App\Models\Category::find($cat);
-                                    @endphp
-                                    <li>{{ $category->name }}</li>
-                                @endforeach
+                                    ?>
+                                    <li><?php echo e($category->name); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </ul>
                         </div>
                     </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </section>
@@ -274,7 +272,7 @@
                 <div class="col-lg-6">
                     <div class="single-watch-grid">
                         <div class="watch-thumbnail">
-                            <a href="#"><img src="{{ asset('assets/front/images/watch-grid-image.jpg') }}"
+                            <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-grid-image.jpg')); ?>"
                                     alt="watch-grid-image" /></a>
                         </div>
                         <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
@@ -290,7 +288,7 @@
                         <div class="row g-0">
                             <div class="col-md-5">
                                 <div class="watch-thumbnail">
-                                    <a href="#"><img src="{{ asset('assets/front/images/watch-list-image-1.jpg') }}"
+                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-1.jpg')); ?>"
                                             class="img-fluid" alt="watch-list-image" /></a>
                                     <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                                 </div>
@@ -312,7 +310,7 @@
                         <div class="row g-0">
                             <div class="col-md-5">
                                 <div class="watch-thumbnail">
-                                    <a href="#"><img src="{{ asset('assets/front/images/watch-list-image-2.jpg') }}"
+                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-2.jpg')); ?>"
                                             class="img-fluid" alt="watch-list-image" /></a>
                                     <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                                 </div>
@@ -334,7 +332,7 @@
                         <div class="row g-0">
                             <div class="col-md-5">
                                 <div class="watch-thumbnail">
-                                    <a href="#"><img src="{{ asset('assets/front/images/watch-list-image-3.jpg') }}"
+                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-3.jpg')); ?>"
                                             class="img-fluid" alt="watch-list-image" /></a>
                                     <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                                 </div>
@@ -376,7 +374,7 @@
                     <div class="col-lg-6">
                         <div class="trailer-video">
                             <img class="thumbnail-thumbnail"
-                                src="{{ asset('assets/front/images/trailer-thumbnail.jpg') }}" alt="trailer-thumbnail" />
+                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg')); ?>" alt="trailer-thumbnail" />
                             <a class="play-btn" href="#"><i class="fas fa-play"></i></a>
                         </div>
                     </div>
@@ -395,7 +393,7 @@
                     <div class="col-lg-6">
                         <div class="trailer-video">
                             <img class="thumbnail-thumbnail"
-                                src="{{ asset('assets/front/images/trailer-thumbnail.jpg') }}" alt="trailer-thumbnail" />
+                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg')); ?>" alt="trailer-thumbnail" />
                             <a class="play-btn" href="#"><i class="fas fa-play"></i></a>
                         </div>
                     </div>
@@ -414,7 +412,7 @@
                     <div class="col-lg-6">
                         <div class="trailer-video">
                             <img class="thumbnail-thumbnail"
-                                src="{{ asset('assets/front/images/trailer-thumbnail.jpg') }}" alt="trailer-thumbnail" />
+                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg')); ?>" alt="trailer-thumbnail" />
                             <a class="play-btn" href="#"><i class="fas fa-play"></i></a>
                         </div>
                     </div>
@@ -454,8 +452,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="{{ asset('assets/front/images/tv-series-1.png') }}" alt="tv series" /></a>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-1.png')); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -468,10 +466,10 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="{{ asset('assets/front/images/tv-series-2.png') }}" alt="tv series" /></a>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-2.png')); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
-                            <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                     alt="imdb" /><span>6.5</span></div>
                         </div>
                         <div class="tv-series-info">
@@ -484,8 +482,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="{{ asset('assets/front/images/tv-series-3.png') }}" alt="tv series" /></a>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-3.png')); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -498,8 +496,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="{{ asset('assets/front/images/tv-series-4.png') }}" alt="tv series" /></a>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-4.png')); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -512,8 +510,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="{{ asset('assets/front/images/tv-series-5.png') }}" alt="tv series" /></a>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-5.png')); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -526,8 +524,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="{{ asset('assets/front/images/tv-series-6.png') }}" alt="tv series" /></a>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-6.png')); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -540,8 +538,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="{{ asset('assets/front/images/tv-series-7.png') }}" alt="tv series" /></a>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-7.png')); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -554,8 +552,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="{{ asset('assets/front/images/tv-series-8.png') }}" alt="tv series" /></a>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-8.png')); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -568,8 +566,10 @@
         </div>
     </section>
     <!-- Popular Tv Series end here  -->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('js')
+<?php $__env->startSection('js'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/front/index.blade.php ENDPATH**/ ?>

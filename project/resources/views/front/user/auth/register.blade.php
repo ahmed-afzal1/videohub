@@ -38,22 +38,23 @@
           <h3 class="or-text">OR</h3>
         </div>
         <div class="register-form">
-          <form action="#">
+          <form action="" method="post">
+          @csrf
             <div class="form-group">
               <label for="Username">Username</label>
-              <input type="email" class="form-control" id="Username" name="Username" />
+              <input type="text" class="form-control" id="Username" name="username" />
             </div>
             <div class="form-group">
               <label for="Email">Email</label>
-              <input type="email" class="form-control" id="Email" name="Email" />
+              <input type="email" class="form-control" id="Email" name="email" />
             </div>
             <div class="form-group">
               <label for="Password">Password</label>
-              <input type="password" class="form-control" id="Password" name="Password" />
+              <input type="password" class="form-control" id="Password" name="password" />
             </div>
             <div class="form-group">
               <label for="RePassword">Repeat Password</label>
-              <input type="password" class="form-control" id="RePassword" name="RePassword" />
+              <input type="password" class="form-control" id="RePassword" name="password_confirmation" />
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="agree" />

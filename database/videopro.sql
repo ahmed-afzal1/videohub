@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 08:47 PM
+-- Generation Time: Dec 15, 2021 at 11:15 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -388,31 +388,6 @@ CREATE TABLE `migrations` (
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2020_02_08_053220_create_videos_table', 1),
-(7, '2020_02_13_034016_create_show_images_table', 3),
-(8, '2020_02_13_034055_create_tv_shows_table', 3),
-(9, '2020_02_13_034150_create_tv_sessions_table', 3),
-(10, '2020_02_13_034542_create_video_languages_table', 3),
-(11, '2020_02_17_093546_create_episodes_table', 4),
-(12, '2020_02_23_085351_create_subscription_plans_table', 5),
-(13, '2020_02_23_101530_create_sports_categories_table', 6),
-(16, '2020_02_23_104158_create_sports_videos_table', 7),
-(17, '2020_02_10_055418_create_moves_table', 8),
-(20, '2020_03_01_054719_create_reviews_table', 9),
-(21, '2020_03_02_065931_create_favarites_table', 10),
-(22, '2020_03_03_092244_create_orders_table', 11),
-(24, '2020_03_07_052545_create_cast_crews_table', 12),
-(25, '2021_12_10_191625_create_categories_table', 13),
-(27, '2021_12_11_174236_create_plan_features_table', 14);
-
 -- --------------------------------------------------------
 
 --
@@ -425,7 +400,7 @@ CREATE TABLE `movies` (
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `video_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genre_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `category_id` int(10) UNSIGNED NOT NULL,
+  `category_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `language_id` int(11) DEFAULT NULL,
   `video` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -446,8 +421,23 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `title`, `slug`, `video_type`, `genre_id`, `category_id`, `language_id`, `video`, `description`, `tag`, `status`, `access`, `relase_date`, `heighlight`, `producer`, `directors`, `cast`, `created_at`, `updated_at`) VALUES
-(28, 'khusu', 'khusu', 'url', NULL, 0, NULL, 'https://www.youtube.com/embed/S-lwK7n-4_s', 'kajsdhf kjskf jshalkfj haslkfjh dkfhsdlakfhlsdaf', 'dsadasd', '1', 'free', '01-01-1970', 'trending,new', '4', '4', '5', '2021-12-10 14:44:24', '2021-12-10 15:45:04'),
-(29, 'khusu', 'khusu', 'url', NULL, 6, NULL, 'https://www.youtube.com/embed/S-lwK7n-4_s', '5464546546546545465456465465465', '8', '1', 'free', '12/16/2021', 'new', '4', '4', '4', '2021-12-12 13:44:28', '2021-12-12 13:44:28');
+(30, 'The Office', 'khusu', 'url', NULL, '[\"3\",\"4\"]', NULL, 'https://www.youtube.com/embed/-4dtjKFqEEE', 'dskjsadfh ksdafh ksajdfhslkajdfhasfkhasdljkfahsf', '789416', '1', 'free', '12/23/2021', 'new', '4', '5', '6', '2021-12-15 15:17:49', '2021-12-15 15:17:49'),
+(31, 'Spider-Man\'s Greatest Movie Moments Ranked', 'khusu-2', 'url', NULL, '[\"3\",\"4\"]', NULL, 'https://www.youtube.com/embed/-4dtjKFqEEE', 'dskjsadfh ksdafh ksajdfhslkajdfhasfkhasdljkfahsf', '789416', '1', 'free', '12/23/2021', 'new', '4', '5', '6', '2021-12-15 15:17:49', '2021-12-15 15:17:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `details` varchar(255) NOT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -752,7 +742,9 @@ INSERT INTO `show_images` (`id`, `image`, `imageable_id`, `imageable_type`, `cre
 (97, '1639333504logo.png', 14, 'App\\Models\\TvSession', '2021-12-12 12:25:04', '2021-12-12 12:25:04'),
 (98, '1639334582logo.png', 15, 'App\\Models\\Episode', '2021-12-12 12:43:02', '2021-12-12 12:43:02'),
 (99, '1639335610logo.png', 16, 'App\\Models\\Episode', '2021-12-12 13:00:10', '2021-12-12 13:00:10'),
-(100, '1639338268logo.png', 29, 'App\\Models\\Movie', '2021-12-12 13:44:28', '2021-12-12 13:44:28');
+(100, '1639338268logo.png', 29, 'App\\Models\\Movie', '2021-12-12 13:44:28', '2021-12-12 13:44:28'),
+(101, '1639603069logo.png', 30, 'App\\Models\\Movie', '2021-12-15 15:17:49', '2021-12-15 15:17:49'),
+(102, '1639603069logo.png', 31, 'App\\Models\\Movie', '2021-12-15 15:17:49', '2021-12-15 15:17:49');
 
 -- --------------------------------------------------------
 
@@ -951,33 +943,27 @@ INSERT INTO `tv_shows` (`id`, `language_id`, `genre_id`, `show_name`, `slug`, `d
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `birthday` date DEFAULT NULL,
   `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gander` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `is_provider` tinyint(10) NOT NULL DEFAULT 0,
+  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
   `status` tinyint(10) NOT NULL DEFAULT 0,
-  `verification_link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_verified` enum('Yes','No') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'No'
+  `verification_link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `photo`, `email`, `birthday`, `address`, `phone`, `gander`, `password`, `remember_token`, `created_at`, `updated_at`, `is_provider`, `status`, `verification_link`, `email_verified`) VALUES
-(9, 'user', '15845261351578465053request-call.png', 'user@gmail.com', '2011-03-10', 'New York', '01111111114', 'Male', '$2y$10$PRPJpf/I5rwjCmw9kq92EOObnyxSmGOqfSodw38hNpmlSb1vpEC0y', NULL, '2020-02-26 22:38:41', '2020-03-18 04:08:55', 0, 0, '6899de8946dff229b5ac8390284e4119', 'Yes'),
-(12, 'user', NULL, 'user5@gmail.com', '1999-04-11', NULL, '01111111114', 'Male', '$2y$10$PRPJpf/I5rwjCmw9kq92EOObnyxSmGOqfSodw38hNpmlSb1vpEC0y', NULL, '2020-02-26 22:38:41', '2020-03-10 04:17:00', 0, 0, '6899de8946dff229b5ac8390284e4119', 'Yes'),
-(13, 'user', NULL, 'user34@gmail.com', '1998-03-10', NULL, '01111111114', 'Female', '$2y$10$PRPJpf/I5rwjCmw9kq92EOObnyxSmGOqfSodw38hNpmlSb1vpEC0y', NULL, '2020-02-26 22:38:41', '2020-03-10 04:17:00', 0, 0, '6899de8946dff229b5ac8390284e4119', 'Yes'),
-(14, 'user', NULL, 'user143@gmail.com', '1997-03-10', NULL, '01111111114', 'Male', '$2y$10$PRPJpf/I5rwjCmw9kq92EOObnyxSmGOqfSodw38hNpmlSb1vpEC0y', NULL, '2020-02-26 22:38:41', '2020-03-10 04:17:00', 0, 0, '6899de8946dff229b5ac8390284e4119', 'Yes'),
-(15, 'user', NULL, 'user332@gmail.com', '2009-03-10', NULL, '01111111114', 'Female', '$2y$10$PRPJpf/I5rwjCmw9kq92EOObnyxSmGOqfSodw38hNpmlSb1vpEC0y', NULL, '2020-02-26 22:38:41', '2020-03-10 04:17:00', 0, 0, '6899de8946dff229b5ac8390284e4119', 'Yes');
+INSERT INTO `users` (`id`, `name`, `username`, `photo`, `email`, `address`, `phone`, `password`, `remember_token`, `created_at`, `updated_at`, `email_verified`, `status`, `verification_link`) VALUES
+(17, 'messi jr', 'neymar', NULL, 'khossain227@gmail.com', 'tesadasdasda', '0123456789', '$2y$10$h6r6vdiOXnoNRw7i4Cbbwu..A94yiQFXljuPPgmMu/yKoyUsx2LHC', 'NF6SADWdXPr4Xb5JNrpyfAXGKzxv61t61QACPkZSjay3tz0njCQaCxyUvB5N', '2021-12-15 13:45:20', '2021-12-15 14:20:34', 0, 0, '7e9d4ed79beb407c36f8e4925d2f1d6c');
 
 -- --------------------------------------------------------
 
@@ -1095,6 +1081,12 @@ ALTER TABLE `migrations`
 -- Indexes for table `movies`
 --
 ALTER TABLE `movies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1298,7 +1290,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1346,7 +1344,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `show_images`
 --
 ALTER TABLE `show_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `socialsettings`
@@ -1394,7 +1392,7 @@ ALTER TABLE `tv_shows`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `videos`

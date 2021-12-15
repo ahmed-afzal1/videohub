@@ -16,61 +16,34 @@ use App\Models\Order;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $order = Order::where('user_id',Auth::user()->id)->orderby('id','desc')->first();
         $user = Auth::user();  
-        return view('user.dashboard',compact('user','order'));
+        return view('front.user.dashboard',compact('user','order'));
     }
 
 
-
-    public function profile()
+    public function profileUpdate(Request $request)
     {
-        $user = Auth::user();  
-        return view('user.profile',compact('user'));
-    }
 
-    public function profileupdate(Request $request)
-    {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required'
+        ]);
    
-        $rules = [
-            'photo' => 'mimes:jpeg,jpg,png,svg',
-            'email' => 'unique:users,email,'.Auth::user()->id
-            ];
+        $user  = auth()->user();
+        
+        $user->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'address' => $request->address
+        ]);
 
-            $custom = [
-                'email.unique' => __('This email has already been taken.')
-            ];
-    $validator = Validator::make($request->all(), $rules,$custom);
-    
-    if ($validator->fails()) {
-      return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
-    }
-
-        //--- Validation Section Ends
-        $input = $request->all();  
-        $data = Auth::user();        
-            if ($file = $request->file('photo')) 
-            {              
-                $name = time().$file->getClientOriginalName();
-                $file->move('assets/images/user-image/',$name);
-                if($data->photo != null)
-                {
-                    if (file_exists(base_path('../assets/images/user-image/'.$data->photo))) {
-                        unlink(base_path('../assets/images/user-image/'.$data->photo));
-                    }
-                }            
-            $input['photo'] = $name;
-            } 
-        $data->update($input);
-        $msg = __('Successfully updated your profile');
-        return response()->json($msg);
+        $notify[] = ['success' ,'Profile Updated Successfully'];
+        return back()->withNotify($notify);
+      
     }
 
     public function resetform()

@@ -3,8 +3,8 @@
     <div class="header-wrap">
         <div class="container">
             <nav class="navbar navbar-expand-xl navbar-light">
-                <a class="navbar-brand" href="{{ route('front.index') }}"><img
-                        src="{{ asset('assets/front/images/logo.png') }}" alt="ZaiFlix" /></a>
+                <a class="navbar-brand" href="<?php echo e(route('front.index')); ?>"><img
+                        src="<?php echo e(asset('assets/front/images/logo.png')); ?>" alt="ZaiFlix" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -13,49 +13,49 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="has-megamenu">
-                            <a href="#">{{ __('Movies') }} <i class="fas fa-angle-down"></i></a>
+                            <a href="#"><?php echo e(__('Movies')); ?> <i class="fas fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="d-flex align-items-start">
                                     <div class="nav nav-pills flex-column me-4" id="Movies-tab" role="tablist"
                                         aria-orientation="vertical">
-                                        @if ($movies->where('access', 'premium')->count() > 0)
+                                        <?php if($movies->where('access', 'premium')->count() > 0): ?>
                                             <button class="nav-link active" id="Movies-ZaiflixPremium-tab"
                                                 data-bs-toggle="pill" data-bs-target="#Movies-ZaiflixPremium"
                                                 type="button" role="tab" aria-controls="Movies-ZaiflixPremium"
-                                                aria-selected="true">{{ __('Zaiflix Premium') }}</button>
-                                        @endif
-                                        @if ($movies->where('heighlight','LIKE','%trending%')->count() > 0)
+                                                aria-selected="true"><?php echo e(__('Zaiflix Premium')); ?></button>
+                                        <?php endif; ?>
+                                        <?php if($movies->where('heighlight','LIKE','%trending%')->count() > 0): ?>
                                             <button class="nav-link" id="Movies-TrendingMovies-tab"
                                                 data-bs-toggle="pill" data-bs-target="#Movies-TrendingMovies"
                                                 type="button" role="tab" aria-controls="Movies-TrendingMovies"
-                                                aria-selected="false">{{ __('Trending Movies') }}</button>
-                                        @endif
-                                         @if ($movies->where('heighlight', 'top')->count() > 0)
+                                                aria-selected="false"><?php echo e(__('Trending Movies')); ?></button>
+                                        <?php endif; ?>
+                                         <?php if($movies->where('heighlight', 'top')->count() > 0): ?>
                                         <button class="nav-link" id="Movies-TopRated-tab" data-bs-toggle="pill"
                                             data-bs-target="#Movies-TopRated" type="button" role="tab"
                                             aria-controls="Movies-TopRated"
-                                            aria-selected="false">{{ __('Top Rated') }}</button>
-                                        @endif
-                                         @if ($movies->where('heighlight', 'new')->count() > 0)
+                                            aria-selected="false"><?php echo e(__('Top Rated')); ?></button>
+                                        <?php endif; ?>
+                                         <?php if($movies->where('heighlight', 'new')->count() > 0): ?>
                                         <button class="nav-link" id="Movies-LatestZaiflix-tab"
                                             data-bs-toggle="pill" data-bs-target="#Movies-LatestZaiflix" type="button"
                                             role="tab" aria-controls="Movies-LatestZaiflix"
-                                            aria-selected="false">{{ __('Latest on Zaiflix') }}</button>
-                                        @endif
-                                        @if($movies->where('heighlight', 'recent')->count() > 0)
+                                            aria-selected="false"><?php echo e(__('Latest on Zaiflix')); ?></button>
+                                        <?php endif; ?>
+                                        <?php if($movies->where('heighlight', 'recent')->count() > 0): ?>
                                         <button class="nav-link" id="Movies-ZaiflixOriginals-tab"
                                             data-bs-toggle="pill" data-bs-target="#Movies-ZaiflixOriginals"
                                             type="button" role="tab" aria-controls="Movies-ZaiflixOriginals"
-                                            aria-selected="false">{{ __('Zaiflix Originals') }}</button>
+                                            aria-selected="false"><?php echo e(__('Zaiflix Originals')); ?></button>
                                     </div>
-                                    @endif
-                                    @if($movies->where('heighlight', 'old')->count() > 0)
+                                    <?php endif; ?>
+                                    <?php if($movies->where('heighlight', 'old')->count() > 0): ?>
                                         <button class="nav-link" id="Movies-ZaiflixOriginals-tab"
                                             data-bs-toggle="pill" data-bs-target="#Movies-ZaiflixOriginals"
                                             type="button" role="tab" aria-controls="Movies-ZaiflixOriginals"
-                                            aria-selected="false">{{ __('Zaiflix Originals') }}</button>
+                                            aria-selected="false"><?php echo e(__('Zaiflix Originals')); ?></button>
                                     </div>
-                                    @endif
+                                    <?php endif; ?>
                                     
                                     <div class="tab-content" id="Movies-tabContent">
                                         <div class="tab-pane fade show active" id="Movies-ZaiflixPremium"
@@ -65,10 +65,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -77,10 +77,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -89,10 +89,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -101,10 +101,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -113,10 +113,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -125,10 +125,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -137,10 +137,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -149,10 +149,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -161,10 +161,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -175,21 +175,21 @@
                                             aria-labelledby="Movies-TrendingMovies-tab">
                                             <div class="movies-list">
 
-                                                @foreach ($movies->where('heighlight', 'trending')->get() as $movie)
+                                                <?php $__currentLoopData = $movies->where('heighlight', 'trending')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <div class="single-movi">
                                                         <a href="#">
                                                             <div class="movi-thumbnail">
                                                                 <img class="poster-image"
-                                                                    src="{{ asset('assets/images/' . $movie->image->image) }}"
+                                                                    src="<?php echo e(asset('assets/images/' . $movie->image->image)); ?>"
                                                                     alt="movi name" />
                                                                 <div class="premium-icon"><img
-                                                                        src="{{ asset('assets/images/' . $movie->image->image) }}"
+                                                                        src="<?php echo e(asset('assets/images/' . $movie->image->image)); ?>"
                                                                         alt="premium" /></div>
                                                             </div>
                                                         </a>
                                                     </div>
 
-                                                @endforeach
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                             </div>
                                         </div>
@@ -200,10 +200,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -212,10 +212,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -224,10 +224,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -236,10 +236,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -248,10 +248,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -260,10 +260,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -272,10 +272,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -284,10 +284,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -296,10 +296,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -313,10 +313,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -325,10 +325,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.pn') }}g"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.pn')); ?>g"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -337,10 +337,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -349,10 +349,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -361,10 +361,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -373,10 +373,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -385,10 +385,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -397,10 +397,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -409,10 +409,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -426,10 +426,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -438,10 +438,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -450,10 +450,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -462,10 +462,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -474,10 +474,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -486,10 +486,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -498,10 +498,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -510,10 +510,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -522,10 +522,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -537,7 +537,7 @@
                             </div>
                         </li>
                         <li class="has-megamenu">
-                            <a href="#">{{ __('Series') }} <i class="fas fa-angle-down"></i></a>
+                            <a href="#"><?php echo e(__('Series')); ?> <i class="fas fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="d-flex align-items-start">
                                     <div class="nav nav-pills flex-column me-4" id="Series-tab" role="tablist"
@@ -545,23 +545,23 @@
                                         <button class="nav-link active" id="Series-ZaiflixPremium-tab"
                                             data-bs-toggle="pill" data-bs-target="#Series-ZaiflixPremium" type="button"
                                             role="tab" aria-controls="Series-ZaiflixPremium"
-                                            aria-selected="true">{{ __('Zaiflix Premium') }}</button>
+                                            aria-selected="true"><?php echo e(__('Zaiflix Premium')); ?></button>
                                         <button class="nav-link" id="Series-TrendingMovies-tab"
                                             data-bs-toggle="pill" data-bs-target="#Series-TrendingMovies" type="button"
                                             role="tab" aria-controls="Series-TrendingMovies"
-                                            aria-selected="false">{{ __('Trending Movies') }}</button>
+                                            aria-selected="false"><?php echo e(__('Trending Movies')); ?></button>
                                         <button class="nav-link" id="Series-TopRated-tab" data-bs-toggle="pill"
                                             data-bs-target="#Series-TopRated" type="button" role="tab"
                                             aria-controls="Series-TopRated"
-                                            aria-selected="false">{{ __('Top Rated') }}</button>
+                                            aria-selected="false"><?php echo e(__('Top Rated')); ?></button>
                                         <button class="nav-link" id="Series-LatestZaiflix-tab"
                                             data-bs-toggle="pill" data-bs-target="#Series-LatestZaiflix" type="button"
                                             role="tab" aria-controls="Series-LatestZaiflix"
-                                            aria-selected="false">{{ __('Latest on Zaiflix') }}</button>
+                                            aria-selected="false"><?php echo e(__('Latest on Zaiflix')); ?></button>
                                         <button class="nav-link" id="Series-ZaiflixOriginals-tab"
                                             data-bs-toggle="pill" data-bs-target="#Series-ZaiflixOriginals"
                                             type="button" role="tab" aria-controls="Series-ZaiflixOriginals"
-                                            aria-selected="false">{{ __('Zaiflix Originals') }}</button>
+                                            aria-selected="false"><?php echo e(__('Zaiflix Originals')); ?></button>
                                     </div>
                                     <div class="tab-content" id="Series-tabContent">
                                         <div class="tab-pane fade show active" id="Series-ZaiflixPremium"
@@ -571,10 +571,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -583,10 +583,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -595,10 +595,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -607,10 +607,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -619,10 +619,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -631,10 +631,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -643,10 +643,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -655,10 +655,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -667,10 +667,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -684,10 +684,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -696,10 +696,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -708,10 +708,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -720,10 +720,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -732,10 +732,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -744,10 +744,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -756,10 +756,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -768,10 +768,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -780,10 +780,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -797,10 +797,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -809,10 +809,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -821,10 +821,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -833,10 +833,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -845,10 +845,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -857,10 +857,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -869,10 +869,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -881,10 +881,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -893,10 +893,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -910,10 +910,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -922,10 +922,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -934,10 +934,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -946,10 +946,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -958,10 +958,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -970,10 +970,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -982,10 +982,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -994,10 +994,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1006,10 +1006,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1023,10 +1023,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1035,10 +1035,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1047,10 +1047,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1059,10 +1059,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1071,10 +1071,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1083,10 +1083,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1095,10 +1095,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1107,10 +1107,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1119,10 +1119,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1134,7 +1134,7 @@
                             </div>
                         </li>
                         <li class="has-megamenu">
-                            <a href="#">{{ __('Kids') }} <i class="fas fa-angle-down"></i></a>
+                            <a href="#"><?php echo e(__('Kids')); ?> <i class="fas fa-angle-down"></i></a>
                             <div class="mega-menu">
                                 <div class="d-flex align-items-start">
                                     <div class="nav nav-pills flex-column me-4" id="Kids-tab" role="tablist"
@@ -1142,23 +1142,23 @@
                                         <button class="nav-link active" id="Kids-ZaiflixPremium-tab"
                                             data-bs-toggle="pill" data-bs-target="#Kids-ZaiflixPremium" type="button"
                                             role="tab" aria-controls="Kids-ZaiflixPremium"
-                                            aria-selected="true">{{ __('Zaiflix Premium') }}</button>
+                                            aria-selected="true"><?php echo e(__('Zaiflix Premium')); ?></button>
                                         <button class="nav-link" id="Kids-TrendingMovies-tab"
                                             data-bs-toggle="pill" data-bs-target="#Kids-TrendingMovies" type="button"
                                             role="tab" aria-controls="Kids-TrendingMovies"
-                                            aria-selected="false">{{ __('Trending Movies') }}</button>
+                                            aria-selected="false"><?php echo e(__('Trending Movies')); ?></button>
                                         <button class="nav-link" id="Kids-TopRated-tab" data-bs-toggle="pill"
                                             data-bs-target="#Kids-TopRated" type="button" role="tab"
                                             aria-controls="Kids-TopRated"
-                                            aria-selected="false">{{ __('Top Rated') }}</button>
+                                            aria-selected="false"><?php echo e(__('Top Rated')); ?></button>
                                         <button class="nav-link" id="Kids-LatestZaiflix-tab"
                                             data-bs-toggle="pill" data-bs-target="#Kids-LatestZaiflix" type="button"
                                             role="tab" aria-controls="Kids-LatestZaiflix"
-                                            aria-selected="false">{{ __('Latest on Zaiflix') }}</button>
+                                            aria-selected="false"><?php echo e(__('Latest on Zaiflix')); ?></button>
                                         <button class="nav-link" id="Kids-ZaiflixOriginals-tab"
                                             data-bs-toggle="pill" data-bs-target="#Kids-ZaiflixOriginals" type="button"
                                             role="tab" aria-controls="Kids-ZaiflixOriginals"
-                                            aria-selected="false">{{ __('Zaiflix Originals') }}</button>
+                                            aria-selected="false"><?php echo e(__('Zaiflix Originals')); ?></button>
                                     </div>
                                     <div class="tab-content" id="Kids-tabContent">
                                         <div class="tab-pane fade show active" id="Kids-ZaiflixPremium" role="tabpanel"
@@ -1168,10 +1168,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1180,10 +1180,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1192,10 +1192,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1204,10 +1204,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1216,10 +1216,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1228,10 +1228,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1240,10 +1240,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1252,10 +1252,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1264,10 +1264,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1281,10 +1281,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1293,10 +1293,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1305,10 +1305,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1317,10 +1317,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1329,10 +1329,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1341,10 +1341,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1353,10 +1353,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1365,10 +1365,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1377,10 +1377,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1394,10 +1394,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1406,10 +1406,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1418,10 +1418,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1430,10 +1430,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1442,10 +1442,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1454,10 +1454,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1466,10 +1466,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1478,10 +1478,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1490,10 +1490,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1507,10 +1507,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1519,10 +1519,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1531,10 +1531,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1543,10 +1543,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1555,10 +1555,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1567,10 +1567,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1579,10 +1579,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1591,10 +1591,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1603,10 +1603,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1620,10 +1620,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item1.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item1.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
 
@@ -1633,10 +1633,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item2.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item2.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1645,10 +1645,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item3.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item3.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1657,10 +1657,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item4.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item4.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1669,10 +1669,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item5.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item5.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1681,10 +1681,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item6.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item6.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1693,10 +1693,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item7.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item7.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1705,10 +1705,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item8.png') }}"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item8.png')); ?>"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1717,10 +1717,10 @@
                                                     <a href="#">
                                                         <div class="movi-thumbnail">
                                                             <img class="poster-image"
-                                                                src="{{ asset('assets/front/images/megamenu-item9.pn') }}g"
+                                                                src="<?php echo e(asset('assets/front/images/megamenu-item9.pn')); ?>g"
                                                                 alt="movi name" />
                                                             <div class="premium-icon"><img
-                                                                    src="{{ asset('assets/front/images/premium.svg') }}"
+                                                                    src="<?php echo e(asset('assets/front/images/premium.svg')); ?>"
                                                                     alt="premium" /></div>
                                                         </div>
                                                     </a>
@@ -1735,7 +1735,7 @@
                             <a href="#">Live TV</a>
                         </li>
                         <li>
-                            <a href="{{ route('front.plan') }}">Subscription</a>
+                            <a href="<?php echo e(route('front.plan')); ?>">Subscription</a>
                         </li>
                     </ul>
                     <div class="header-right d-flex align-items-center">
@@ -1749,7 +1749,7 @@
                         </div>
                         <div class="dropdown language-dropdown">
                             <button class="language-btn" data-bs-toggle="dropdown">
-                                <img class="flag" src="{{ asset('assets/front/images/usa-flag.png') }}"
+                                <img class="flag" src="<?php echo e(asset('assets/front/images/usa-flag.png')); ?>"
                                     alt="usa" />
                                 <span class="btn-text">EN</span>
                                 <i class="agnle-down fas fa-angle-down"></i>
@@ -1760,10 +1760,10 @@
                                 <li><a href="#">Hi</a></li>
                             </ul>
                         </div>
-                        @guest
-                        <a class="login" href="{{ route('user.login') }}">Login</a>
-                        <a class="header-btn" href="{{ route('user.register') }}">Register</a>
-                        @else
+                        <?php if(auth()->guard()->guest()): ?>
+                        <a class="login" href="<?php echo e(route('user.login')); ?>">Login</a>
+                        <a class="header-btn" href="<?php echo e(route('user.register')); ?>">Register</a>
+                        <?php else: ?>
                              <div class="dropdown favourite-dropdown">
                             <button class="favourite-btn" data-bs-toggle="dropdown" >
                                 <img class="favourite" src="assets/images/favourite.svg" alt="favourite" />
@@ -1930,7 +1930,7 @@
                                 </a>
                               </li>
                               <li>
-                                <a href="{{route('user.logout')}}" class="single-item">
+                                <a href="<?php echo e(route('user.logout')); ?>" class="single-item">
                                   <div class="item-icon">
                                     <img class="icon" src="assets/images/logout.svg" alt="logout" />
                                   </div>
@@ -1941,7 +1941,7 @@
                               </li>
                             </ul>
                           </div>
-                        @endguest
+                        <?php endif; ?>
                     </div>
                 </div>
             </nav>
@@ -1949,3 +1949,4 @@
     </div>
 </header>
 <!-- header area end here  -->
+<?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/partials/front/header.blade.php ENDPATH**/ ?>

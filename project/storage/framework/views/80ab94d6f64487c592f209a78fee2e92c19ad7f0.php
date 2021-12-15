@@ -1,10 +1,8 @@
-@extends('layouts.front')
+<?php $__env->startSection('css'); ?>
 
-@section('css')
+<?php $__env->stopSection(); ?>
 
-@endsection
-
-@section('contents')
+<?php $__env->startSection('contents'); ?>
     <!-- breadcrumb area start here  -->
     <div class="breadcrumb-area">
         <div class="container">
@@ -26,11 +24,11 @@
                 <div class="col-lg-12">
                     <div class="movie-details-left">
                         <div class="playerContainer">
-                            @if ($movie->video_type == 'url')
-                                <iframe class="embed-responsive-item" src="{{ $movie->video }}" allowfullscreen></iframe>
-                            @else
+                            <?php if($movie->video_type == 'url'): ?>
+                                <iframe class="embed-responsive-item" src="<?php echo e($movie->video); ?>" allowfullscreen></iframe>
+                            <?php else: ?>
                              <video class="xdPlayer" preload="auto">
-                                        <source src="{{ $movie->video_type == 'file' ? asset('assets/videos/movie-videos/' . $movie->video) : '' }}" type="video/mp4" />
+                                        <source src="<?php echo e($movie->video_type == 'file' ? asset('assets/videos/movie-videos/' . $movie->video) : ''); ?>" type="video/mp4" />
                                         <!-- You Can Also Add Other Video Formet Source -->
                                     </video>
                                     <!-- Video Controls -->
@@ -202,33 +200,34 @@
                                         </div>
                                     </div>
                                 
-                              @endif
+                              <?php endif; ?>
                                    
                         </div>
 
                         <div class="movie-details-info">
                             <div class="info-top">
                                 <div class="info-top-left">
-                                    <h2>{{$movie->title}} <span>({{Carbon\Carbon::parse($movie->relase_date)->format('Y')}})</span></h2>
+                                    <h2><?php echo e($movie->title); ?> <span>(<?php echo e(Carbon\Carbon::parse($movie->relase_date)->format('Y')); ?>)</span></h2>
                                 </div>
                                 <div class="info-top-right">
                                     <a class="share-btn" href="#"><img
-                                            src="{{ asset('assets/front/images/share.svg') }}" alt="share" /></a>
+                                            src="<?php echo e(asset('assets/front/images/share.svg')); ?>" alt="share" /></a>
                                     <a class="add-list-btn" href="#">+ Add to List</a>
                                 </div>
                             </div>
                             <ul class="movie-meta">
-                                <li><img class="meta-icon" src="{{ asset('assets/front/images/clock.svg') }}"
-                                        alt="clock"> <span>{{$movie->duration}}</span></li>
-                                <li><img class="meta-icon" src="{{ asset('assets/front/images/video.svg') }}"
+                                <li><img class="meta-icon" src="<?php echo e(asset('assets/front/images/clock.svg')); ?>"
+                                        alt="clock"> <span><?php echo e($movie->duration); ?></span></li>
+                                <li><img class="meta-icon" src="<?php echo e(asset('assets/front/images/video.svg')); ?>"
                                         alt="clock"> <span>1080p</span></li>
-                                <li><img class="meta-icon" src="{{ asset('assets/front/images/calendar.svg') }}"
-                                        alt="clock"> <span>{{Carbon\Carbon::parse($movie->relase_date)->format('Y')}}</span></li>
+                                <li><img class="meta-icon" src="<?php echo e(asset('assets/front/images/calendar.svg')); ?>"
+                                        alt="clock"> <span><?php echo e(Carbon\Carbon::parse($movie->relase_date)->format('Y')); ?></span></li>
                             </ul>
                             <p class="movie-description">
-                            {{$movie->description}}
+                            <?php echo e($movie->description); ?>
+
                             </p>
-                            <a href="#" class="readmore-btn">Read More</a>
+                            <a href="#" class="readmore-btn">Red More</a>
                         </div>
                         <div class="cast-area">
                             <h2 class="cast-title">Cast</h2>
@@ -236,7 +235,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                                     <div class="single-cast">
                                         <div class="cast-image">
-                                            <a href="#"><img src="{{ asset('assets/front/images/cast-1.png') }}"
+                                            <a href="#"><img src="<?php echo e(asset('assets/front/images/cast-1.png')); ?>"
                                                     alt="cast" /></a>
                                         </div>
                                         <div class="cast-info">
@@ -248,7 +247,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                                     <div class="single-cast">
                                         <div class="cast-image">
-                                            <a href="#"><img src="{{ asset('assets/front/images/cast-2.png') }}"
+                                            <a href="#"><img src="<?php echo e(asset('assets/front/images/cast-2.png')); ?>"
                                                     alt="cast" /></a>
                                         </div>
                                         <div class="cast-info">
@@ -260,7 +259,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                                     <div class="single-cast">
                                         <div class="cast-image">
-                                            <a href="#"><img src="{{ asset('assets/front/images/cast-3.png') }}"
+                                            <a href="#"><img src="<?php echo e(asset('assets/front/images/cast-3.png')); ?>"
                                                     alt="cast" /></a>
                                         </div>
                                         <div class="cast-info">
@@ -296,15 +295,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-movies">
                         <div class="movis-thumbnail">
-                            <img src="{{ asset('assets/front/images/tv-series-1.png') }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/front/images/tv-series-1.png')); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                             <div class="imdb-wrap">
-                                <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                                <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                         alt="imdb" /><span>6.5</span></div>
                                 <span class="season">16+</span>
                             </div>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                             <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                             <div class="share-add-btn">
@@ -335,15 +334,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-movies">
                         <div class="movis-thumbnail">
-                            <img src="{{ asset('assets/front/images/tv-series-2.png') }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/front/images/tv-series-2.png')); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                             <div class="imdb-wrap">
-                                <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                                <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                         alt="imdb" /><span>6.5</span></div>
                                 <span class="season">16+</span>
                             </div>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                             <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                             <div class="share-add-btn">
@@ -374,15 +373,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-movies">
                         <div class="movis-thumbnail">
-                            <img src="{{ asset('assets/front/images/tv-series-3.png') }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/front/images/tv-series-3.png')); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                             <div class="imdb-wrap">
-                                <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                                <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                         alt="imdb" /><span>6.5</span></div>
                                 <span class="season">16+</span>
                             </div>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                             <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                             <div class="share-add-btn">
@@ -413,15 +412,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-movies">
                         <div class="movis-thumbnail">
-                            <img src="{{ asset('assets/front/images/tv-series-4.png') }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/front/images/tv-series-4.png')); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                             <div class="imdb-wrap">
-                                <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                                <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                         alt="imdb" /><span>6.5</span></div>
                                 <span class="season">16+</span>
                             </div>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                             <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                             <div class="share-add-btn">
@@ -452,15 +451,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-movies">
                         <div class="movis-thumbnail">
-                            <img src="{{ asset('assets/front/images/tv-series-5.png') }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/front/images/tv-series-5.png')); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                             <div class="imdb-wrap">
-                                <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                                <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                         alt="imdb" /><span>6.5</span></div>
                                 <span class="season">16+</span>
                             </div>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                             <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                             <div class="share-add-btn">
@@ -491,15 +490,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-movies">
                         <div class="movis-thumbnail">
-                            <img src="{{ asset('assets/front/images/tv-series-6.png') }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/front/images/tv-series-6.png')); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                             <div class="imdb-wrap">
-                                <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                                <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                         alt="imdb" /><span>6.5</span></div>
                                 <span class="season">16+</span>
                             </div>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                             <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                             <div class="share-add-btn">
@@ -530,15 +529,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-movies">
                         <div class="movis-thumbnail">
-                            <img src="{{ asset('assets/front/images/tv-series-7.png') }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/front/images/tv-series-7.png')); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                             <div class="imdb-wrap">
-                                <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                                <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                         alt="imdb" /><span>6.5</span></div>
                                 <span class="season">16+</span>
                             </div>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                             <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                             <div class="share-add-btn">
@@ -569,15 +568,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-movies">
                         <div class="movis-thumbnail">
-                            <img src="{{ asset('assets/front/images/tv-series-8.png') }}" alt="movis" />
+                            <img src="<?php echo e(asset('assets/front/images/tv-series-8.png')); ?>" alt="movis" />
                         </div>
                         <div class="movi-verlay">
                             <div class="imdb-wrap">
-                                <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                                <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                         alt="imdb" /><span>6.5</span></div>
                                 <span class="season">16+</span>
                             </div>
-                            <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                                 alt="premium" />
                             <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                             <div class="share-add-btn">
@@ -626,15 +625,15 @@
             <div class="five-items-slide">
                 <div class="single-movies">
                     <div class="movis-thumbnail">
-                        <img src="{{ asset('assets/front/images/trending-movies-1.png') }}" alt="movis" />
+                        <img src="<?php echo e(asset('assets/front/images/trending-movies-1.png')); ?>" alt="movis" />
                     </div>
                     <div class="movi-verlay">
                         <div class="imdb-wrap">
-                            <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                     alt="imdb" /><span>6.5</span></div>
                             <span class="season">16+</span>
                         </div>
-                        <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                             alt="premium" />
                         <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                         <div class="share-add-btn">
@@ -659,15 +658,15 @@
                 </div>
                 <div class="single-movies">
                     <div class="movis-thumbnail">
-                        <img src="{{ asset('assets/front/images/trending-movies-2.png') }}" alt="movis" />
+                        <img src="<?php echo e(asset('assets/front/images/trending-movies-2.png')); ?>" alt="movis" />
                     </div>
                     <div class="movi-verlay">
                         <div class="imdb-wrap">
-                            <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                     alt="imdb" /><span>6.5</span></div>
                             <span class="season">16+</span>
                         </div>
-                        <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                             alt="premium" />
                         <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                         <div class="share-add-btn">
@@ -692,15 +691,15 @@
                 </div>
                 <div class="single-movies">
                     <div class="movis-thumbnail">
-                        <img src="{{ asset('assets/front/images/trending-movies-3.png') }}" alt="movis" />
+                        <img src="<?php echo e(asset('assets/front/images/trending-movies-3.png')); ?>" alt="movis" />
                     </div>
                     <div class="movi-verlay">
                         <div class="imdb-wrap">
-                            <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                     alt="imdb" /><span>6.5</span></div>
                             <span class="season">16+</span>
                         </div>
-                        <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                             alt="premium" />
                         <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                         <div class="share-add-btn">
@@ -725,15 +724,15 @@
                 </div>
                 <div class="single-movies">
                     <div class="movis-thumbnail">
-                        <img src="{{ asset('assets/front/images/trending-movies-4.png') }}" alt="movis" />
+                        <img src="<?php echo e(asset('assets/front/images/trending-movies-4.png')); ?>" alt="movis" />
                     </div>
                     <div class="movi-verlay">
                         <div class="imdb-wrap">
-                            <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                     alt="imdb" /><span>6.5</span></div>
                             <span class="season">16+</span>
                         </div>
-                        <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                             alt="premium" />
                         <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                         <div class="share-add-btn">
@@ -758,15 +757,15 @@
                 </div>
                 <div class="single-movies">
                     <div class="movis-thumbnail">
-                        <img src="{{ asset('assets/front/images/trending-movies-5.png') }}" alt="movis" />
+                        <img src="<?php echo e(asset('assets/front/images/trending-movies-5.png')); ?>" alt="movis" />
                     </div>
                     <div class="movi-verlay">
                         <div class="imdb-wrap">
-                            <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                     alt="imdb" /><span>6.5</span></div>
                             <span class="season">16+</span>
                         </div>
-                        <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                             alt="premium" />
                         <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                         <div class="share-add-btn">
@@ -791,15 +790,15 @@
                 </div>
                 <div class="single-movies">
                     <div class="movis-thumbnail">
-                        <img src="{{ asset('assets/front/images/trending-movies-3.png') }}" alt="movis" />
+                        <img src="<?php echo e(asset('assets/front/images/trending-movies-3.png')); ?>" alt="movis" />
                     </div>
                     <div class="movi-verlay">
                         <div class="imdb-wrap">
-                            <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
                                     alt="imdb" /><span>6.5</span></div>
                             <span class="season">16+</span>
                         </div>
-                        <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
+                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
                             alt="premium" />
                         <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                         <div class="share-add-btn">
@@ -827,8 +826,10 @@
     </section>
     <!-- Trending Movies area end here  -->
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('js')
+<?php $__env->startSection('js'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/front/movieDetails.blade.php ENDPATH**/ ?>

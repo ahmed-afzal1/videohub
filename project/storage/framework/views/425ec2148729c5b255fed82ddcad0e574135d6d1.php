@@ -8,12 +8,12 @@
     <meta name="description" content="ZaiFlix Responsive  HTML5 Template " />
     <meta name="keywords" content="business,corporate, creative, woocommerach, design, gallery, minimal, modern, landing page, cv, designer, freelancer, html, one page, personal, portfolio, programmer, responsive, vcard, one page" />
     <meta name="author" content="ZaiFlix" />
-    <link rel="shortcut icon" href="{{asset('assets/front/images/favicon.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo e(asset('assets/front/images/favicon.png')); ?>" type="image/x-icon">
     <!-- fonts file -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- css file  -->
-    @include('partials.front.style')
+    <?php echo $__env->make('partials.front.style', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   </head>
   <body>
             
@@ -24,11 +24,11 @@
     <!-- Pre Loader Area End -->
     
     <!-- Register area start here  -->
-    <section class="register-area" style="background-image: url({{asset('assets/front/images/register-bg.jpg')}});">
+    <section class="register-area" style="background-image: url(<?php echo e(asset('assets/front/images/register-bg.jpg')); ?>);">
       <div class="register-wrap">
         <div class="register-top">
           <h3>Let’s Sign You In</h3>
-          <p>Don't have an account? <a href="{{route('user.register')}}">Register</a></p>
+          <p>Don't have an account? <a href="<?php echo e(route('user.register')); ?>">Register</a></p>
         </div>
         <div class="register-form">
           <form action="#">
@@ -51,8 +51,8 @@
         <div class="other-continue mt-5">
           <h3 class="or-text">OR</h3>
           <div class="continue-area mb-0">
-            <a href="#" class="continue-btn"><img class="icon" src="{{asset('assets/front/images/google.svg')}}" alt="google" />  Continue with Google</a>
-            <a href="#" class="continue-btn"><img class="icon" src="{{asset('assets/front/images/facebook.svg')}}" alt="facebook" /> Continue with Facebook</a>
+            <a href="#" class="continue-btn"><img class="icon" src="<?php echo e(asset('assets/front/images/google.svg')); ?>" alt="google" />  Continue with Google</a>
+            <a href="#" class="continue-btn"><img class="icon" src="<?php echo e(asset('assets/front/images/facebook.svg')); ?>" alt="facebook" /> Continue with Facebook</a>
           </div>
         </div>
       </div>
@@ -60,6 +60,6 @@
     <!-- Register area end here  -->
 
     <!-- js file  -->
-    @include('partials.front.script')
+    <?php echo $__env->make('partials.front.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   </body>
-</html>
+</html><?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/user/login.blade.php ENDPATH**/ ?>

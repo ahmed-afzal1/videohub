@@ -1,15 +1,4 @@
 <?php return array (
-  'cartalyst/stripe-laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Cartalyst\\Stripe\\Laravel\\StripeServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Stripe' => 'Cartalyst\\Stripe\\Laravel\\Facades\\Stripe',
-    ),
-  ),
   'facade/ignition' => 
   array (
     'providers' => 
