@@ -1,16 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">{{ __('Create') }} <a href="{{ route('admin-subscription-plan-index') }}"
-                class="btn back-btn btn-sm">{{ __('Back') }}</a></h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboaard') }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ __('Create') }}</li>
-        </ol>
-    </div>
 
     <div class="row">
-        <!-- Datatables -->
+
         <div class="col-lg-12">
             <div class="card mb-4">
                 <div class="card-header">
@@ -56,7 +48,7 @@
                                                 data-href="{{ route('admin.plan.features.update', $feature->id) }}"
                                                 data-feature="{{ $feature->features }}"
                                                 class="btn btn-primary btn-sm mr-2 edit"> <i
-                                                    class="fas fa-edit mr-1"></i>{{ __('Edit') }}</button>
+                                                    class="fas fa-pen mr-1"></i>{{ __('Edit') }}</button>
 
                                         </div>
                                     </td>

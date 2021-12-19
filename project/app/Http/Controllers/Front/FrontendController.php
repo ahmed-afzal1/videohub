@@ -18,6 +18,7 @@ use App\Models\Subscriber;
 use App\Models\SubscriptionPlan;
 use App\Models\VideoLanguage;
 use App\PlanFeature;
+use App\Slider;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -29,7 +30,9 @@ class FrontendController extends Controller
 
         $latestMovies = Movie::where('status', 1)->latest()->with('image')->get();
 
-        return view('front.index', compact('latestMovies'));
+        $sliders = Slider::latest()->with('movie')->get();
+
+        return view('front.index', compact('latestMovies','sliders'));
 
     }
 

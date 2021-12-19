@@ -12,7 +12,9 @@ class PlanFeatureController extends Controller
     {
         $features = PlanFeature::latest()->get();
 
-        return view('admin.subscription_plan.features',compact('features'));
+        $pageTitle = __('Subscription Plan Features');
+
+        return view('admin.subscription_plan.features',compact('features','pageTitle'));
     }
 
     public function store(Request $request)

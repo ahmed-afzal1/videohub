@@ -36,16 +36,15 @@ class Generalsetting extends Model
                     'paypal_sendbox_check',
                     'paypal_client_id',
                     'paypal_client_secret',
-                    'is_smtp',
-                    'smtp_host',
-                    'smtp_port',
-                    'smtp_user',
-                    'smtp_pass',
                     'from_email',
+                    'email_method',
+                    'smtp_config',
                     'from_name',
                 ];
 
     public $timestamps = false;
+
+    protected $casts = [ 'smtp_config' => 'object'];
 
 
     public function upload($name,$file,$oldname)

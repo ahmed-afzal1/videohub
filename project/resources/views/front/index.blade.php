@@ -9,204 +9,76 @@
     <!-- hero-slider area start here  -->
     <section class="hero-slider-area">
         <div class="hero-banner-slide">
-            <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-1.jpg') }});">
-                <div class="container">
-                    <div class="row">
+            @foreach ($sliders as $slider)
+                <div class="single-banner"
+                    style="background-image: url({{ asset('assets/images/poster/' . $slider->poster) }});">
+                    <div class="container">
+                        <div class="row">
 
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
+                            <div class="col-lg-6">
+                                <div class="exciting-collection"><img class="icon"
+                                        src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending
+                                    Now .
+                                    2021</div>
+                                <h1 class="banner-title">{{ @$slider->movie->tilte }}</h1>
+                                <div class="hero-banner-rating d-flex align-items-center">
+                                    <span class="hero-normal-rating px-2 me-4">16+</span>
+                                    <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
+                                            src="{{ asset('assets/front/images/imdb-banner.png') }}"
+                                            alt="imdb"><span>{{ \App\helper\Helper::GetIMDBRating(@$slider->movie->title) }}</span></span>
+                                </div>
 
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
-                                        class="me-1"> Add to List</button>
+                                <p class="banner-content">{{ @$slider->movie->description }}</p>
+                                <div class="hero-cast-wrap">
+                                    <p><span class="red-color">Cast: </span>
+                                        @foreach ($slider->movie->cast as $cast)
+                                            @php
+                                                $cast = \App\Models\CastCrew::find($cast);
+                                            @endphp
+                                            {{ $cast->name }},
+                                        @endforeach
+                                    </p>
+                                    <p><span class="red-color">Genre: </span>
+                                        @if ($slider->movie->genre_id != null)
+                                            @foreach ($slider->movie->genre_id as $genre)
+                                                @php
+                                                    $cast = \App\Models\Genre::find($genre);
+                                                @endphp
+                                                {{ $genre->name }},
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                    <p><span class="red-color">Tag: </span>
+                                         @if ($slider->movie->tag != null)
+                                            @foreach ($slider->movie->tag as $tag)
+                                             
+                                                {{ $tag }},
+                                            @endforeach
+                                        @endif
+                                    
+                                    </p>
+                                </div>
+                                <div class="hero-btns d-flex align-content-center">
+                                    <a href="{{ route('movie.details', $slider->movie->slug) }}" class="primary-btn text-capitalize">Watch Now</a>
+                                    <button
+                                        class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
+                                        <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
+                                            class="me-1"> Add to List</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-2.jpg') }});">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
+            @endforeach
 
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
-
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
-                                        class="me-1"> Add to List</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-3.jpg') }});">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
-
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
-
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
-                                        class="me-1"> Add to List</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-4.jpg') }});">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
-
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
-
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
-                                        class="me-1"> Add to List</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-banner"
-                style="background-image: url({{ asset('assets/front/images/hero-abnner-image-2.jpg') }});">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="{{ asset('assets/front/images/trending-up.svg') }}" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
-
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="{{ asset('assets/front/images/imdb-banner.png') }}"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
-
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
-                                        class="me-1"> Add to List</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="hero-banner-thumbnail">
+        @foreach ($sliders as $slider)
             <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-1.png') }}" alt="thumbnail" />
+                <img src="{{ asset('assets/images/poster/' . $slider->poster) }}" alt="thumbnail" />
             </div>
-            <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-2.png') }}" alt="thumbnail" />
-            </div>
-            <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-3.png') }}" alt="thumbnail" />
-            </div>
-            <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-4.png') }}" alt="thumbnail" />
-            </div>
-            <div class="single-thumbnail">
-                <img src="{{ asset('assets/front/images/hero-banner-thumbnail-2.png') }}" alt="thumbnail" />
-            </div>
+        @endforeach
+
         </div>
     </section>
     <!-- hero-slider area end here  -->
@@ -220,7 +92,7 @@
                         <h2 class="section-title">{{ __('Latest Movies') }}</h2>
                     </div>
                     <div class="col-sm-4 text-sm-end">
-                        <a href="{{route('front.movies')}}" class="view-all-btn">{{ __('View all') }} <i
+                        <a href="{{ route('front.movies') }}" class="view-all-btn">{{ __('View all') }} <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -230,13 +102,14 @@
                 @foreach ($latestMovies as $latest)
                     <div class="single-movies">
                         <div class="movies-thumbnail">
-                            <img src="{{ asset('assets/images/'.@$latest->image->image) }}" alt="movis" />
+                            <img src="{{ asset('assets/images/' . @$latest->image->image) }}" alt="movis" />
                         </div>
                         <img class="premium" src="{{ asset('assets/front/images/premium-label.svg') }}"
                             alt="premium" />
                         <div class="imdb"><img src="{{ asset('assets/front/images/imdb.png') }}"
-                                alt="imdb" /><span>{{\App\helper\Helper::GetIMDBRating($latest->title)}}</span></div>
-                        <a href="{{route('movie.details',$latest->slug)}}" class="play-btn"><i class="fas fa-play"></i></a>
+                                alt="imdb" /><span>{{ \App\helper\Helper::GetIMDBRating($latest->title) }}</span></div>
+                        <a href="{{ route('movie.details', $latest->slug) }}" class="play-btn"><i
+                                class="fas fa-play"></i></a>
                         <div class="movies-info">
                             <h3 class="movies-title"><a href="#">{{ $latest->title }}</a></h3>
                             <ul class="movies-meta">

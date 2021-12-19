@@ -5,8 +5,7 @@ use App\Models\Slider;
 use App\helper\Helper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-
+use App\Models\Blog;
 
 class BlogController extends Controller
 {

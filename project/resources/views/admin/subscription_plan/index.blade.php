@@ -1,18 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-    <input type="hidden" id="headerdata" value="{{ __('SUBSCRIPTION PLAN') }}">
+
     <div class="container-fluid" id="container-wrapper">
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{ __('Subscription Plan') }}</h1>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboaard') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Subscription Plan') }}</li>
-            </ol>
-        </div>
+ 
 
         <div class="row">
-            <!-- Datatables -->
+
             <div class="col-lg-12">
                 <div class="card mb-4">
                     <div class="card-header">
@@ -40,14 +34,14 @@
                                         <td>{{ $subscription->plan_name }}</td>
                                         <td>{{ $subscription->duration }}</td>
                                         <td>
-                                        
-                                        @if($subscription->status)
-                                            <span class="badge badge-success">{{__('Active')}}</span>
-                                        @else
-                                            <span class="badge badge-danger">{{__('Inactive')}}</span>
 
-                                        @endif
-                                        
+                                            @if ($subscription->status)
+                                                <span class="badge badge-success">{{ __('Active') }}</span>
+                                            @else
+                                                <span class="badge badge-danger">{{ __('Inactive') }}</span>
+
+                                            @endif
+
                                         </td>
 
                                         <td>{{ $subscription->price }}</td>
@@ -56,10 +50,9 @@
                                             <div class="action-list"><a
                                                     href="{{ route('admin-subscription-plan-edit', $subscription->id) }}"
                                                     class="btn btn-primary btn-sm mr-2"> <i
-                                                        class="fas fa-edit mr-1"></i>{{ __('Edit') }}</a>
-                                                        
-                                                    {{-- <a href="javascript:void(0);"
-                                                    data-href=" {{ route('admin-subscription-plan-delete', $subscription->id) }}" class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt"></i></a> --}}
+                                                        class="fas fa-pen mr-1"></i>{{ __('Edit') }}</a>
+
+                                              
                                             </div>
                                         </td>
                                     </tr>
@@ -117,16 +110,13 @@
 @push('script')
 
     <script>
-    
-        $(function(){
-            $('.delete').on('click',function(){
+        $(function() {
+            $('.delete').on('click', function() {
                 const modal = $('#confirm-delete');
                 modal.find('form').attr('action', $(this).data('href'))
                 modal.modal('show');
             })
         })
-    
-    
     </script>
 
 @endpush

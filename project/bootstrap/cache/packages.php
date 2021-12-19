@@ -1,4 +1,26 @@
 <?php return array (
+  'codexshaper/laravel-menu-builder' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'CodexShaper\\Menu\\MenuServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'MenuBuilder' => 'CodexShaper\\Menu\\Facades\\Menu',
+    ),
+  ),
+  'encore/laravel-admin' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Encore\\Admin\\AdminServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Admin' => 'Encore\\Admin\\Facades\\Admin',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -26,6 +48,20 @@
     'aliases' => 
     array (
       'Image' => 'Intervention\\Image\\Facades\\Image',
+    ),
+  ),
+  'jxlwqq/code-mirror' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Jxlwqq\\CodeMirror\\CodeMirrorServiceProvider',
+    ),
+  ),
+  'laravel-admin-ext/css-editor' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Encore\\CssEditor\\CssEditorServiceProvider',
     ),
   ),
   'laravel/socialite' => 

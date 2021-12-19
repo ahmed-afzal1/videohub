@@ -3,26 +3,14 @@
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">{{ __('Customer Details') }}
-    <a href="{{ url()->previous() }}" class="btn back-btn btn-sm">{{__('Back')}}</a>
-    </h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{ __('Dashboard') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{route('admin-episode-index')}}">{{ __('Customer Details') }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ __('Customer Details') }}</li>
-        </ol>
-    </div>
-    @include('includes.admin.form-error')
-     @include('includes.admin.form-success')
+
+
     <div class="row">
         <div class="col-lg-12">
                 <div class="row">
                     <div class="col-md-6 col-lg-3">
                         <div class="card mb-4">
-                            <div class="card-header  d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">{{ __('Profile Photo') }}</h6>
-                              </div>
+                            
                             <div class="card-body text-center">
                                 <div class="profile-image text-center pb-2">
                                     <img src="{{ $data->photo ? asset('assets/images/user-image/'.$data->photo) : asset('assets/images/noimage.png') }}" alt="image" class="img-fluid rounded-circle" width="150" height="150">

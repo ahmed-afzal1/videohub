@@ -1,43 +1,36 @@
+ <nav class="navbar navbar-expand-lg main-navbar">
 
-<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
-    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
-    </button>
-    <ul class="navbar-nav ml-auto">
-       
-        <li class="nav-item dropdown no-arrow mx-1" id="notf_order"> 
-            <a class="nav-link" href=""> <i class="fas fa-globe-americas text-white"></i></a>
-        </li>
-       
-        
-        <div class="topbar-divider d-none d-sm-block"></div>
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle ShowLanguageImage" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-              
-                <img class="img-profile rounded-circle " src="<?php echo e(Auth::guard('admin')->user()->photo ? asset('assets/images/admins/'.Auth::guard('admin')->user()->photo) :  asset('assets/images/admins/admin.jpg')); ?>" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small"><?php echo e(Auth::guard('admin')->user()->name); ?></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo e(route('admin.profile')); ?>">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <?php echo e(__('Profile')); ?>
+     <ul class="navbar-nav mr-auto icon-menu">
+         
+     </ul>
 
-                </a>
-            <a class="dropdown-item" href="<?php echo e(route('admin.password')); ?>">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <?php echo e(__('Settings')); ?>
+     <ul class="navbar-nav navbar-right">
 
-                </a>
-               
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?php echo e(route('admin.logout')); ?>">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <?php echo e(__('Logout')); ?>
+         <li>
+             <a target="_blank" href="<?php echo e(route('front.index')); ?>" class="nav-link nav-link-lg"><i
+                     class="fas fa-home pr-1"></i><span><?php echo e(__('Visit Frontend')); ?></span></a>
+         </li>
 
-                </a>
-            </div>
-        </li>
-    </ul>
-</nav>
+         <li class="dropdown"><a href="#" data-toggle="dropdown"
+                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                 <img alt="image"
+                     src="<?php echo e(asset('assets/images/'.auth()->guard('admin')->user()->photo)); ?>"
+                     class="rounded-circle mr-1">
+                 <div class="d-sm-none d-lg-inline-block"><?php echo e(Auth::guard('admin')->user()->name); ?></div>
+             </a>
+             <div class="dropdown-menu dropdown-menu-right">
+                 <a href="<?php echo e(route('admin.profile')); ?>" class="dropdown-item has-icon">
+                     <i class="far fa-user"></i> <?php echo e(__('Profile')); ?>
+
+                 </a>
+
+                 <div class="dropdown-divider"></div>
+                 <a href="<?php echo e(route('admin.logout')); ?>" class="dropdown-item has-icon text-danger">
+                     <i class="fas fa-sign-out-alt"></i> <?php echo e(__('Logout')); ?>
+
+                 </a>
+             </div>
+         </li>
+     </ul>
+ </nav>
 <?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/admin/partials/topbar.blade.php ENDPATH**/ ?>

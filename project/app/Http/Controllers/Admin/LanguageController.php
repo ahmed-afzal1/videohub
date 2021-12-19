@@ -21,25 +21,14 @@ class LanguageController extends Controller
 
     }
 
-    //*** JSON Request
-    public function datatables()
-    {
-         $datas = Language::orderBy('id')->get();
-         //--- Integrating This Collection Into Datatables
-         return DataTables::of($datas)
-                            ->addColumn('action', function(Language $data) {
-                                $delete = $data->id == 1 || $data->is_default == 1 ? '':'<a class=" btn btn-danger mr-2 btn-sm text-white" href="javascript:;" data-href="' . route('admin-lang-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a>';
-                                $default = $data->is_default == 1 ? '<a style=" pointer-events: none;cursor: pointer;" class="status btn btn-success btn-sm text-white"><i class="fa fa-check"></i> Default</a>' : '<a  class="status btn btn-info btn-sm text-white cursor-pointer" data-href="' . route('admin-lang-st',['id1'=>$data->id,'id2'=>1]) . '">'.__('Set Default').'</a>';
-                                return '<div class="action-list"><a class="btn btn-primary mr-2 btn-sm text-white" href="' . route('admin-lang-edit',$data->id) . '"> <i class="fas fa-edit"></i> '.__('Edit').'</a>'.'<a class="btn btn-secondary mr-2 btn-sm text-white" href="' . route('website.lang.export',$data->id) . '"> <i class="fas fa-download"></i> '. __('Export').'</a>'.$delete.$default.'</div>';
-                            }) 
-                            ->rawColumns(['action'])
-                            ->toJson(); //--- Returning Json Data To Client Side
-    }
 
     //*** GET Request
     public function index()
     {
-        return view('admin.website-language.index');
+        $languages = Language::latest()->get();
+        
+
+        return view('admin.website-language.index',compact('languages'));
     }
 
     //*** GET Request
@@ -76,10 +65,9 @@ class LanguageController extends Controller
         file_put_contents(base_path().'/../project/resources/lang/'.$data->file, $mydata); 
         //--- Logic Section Ends
 
-        //--- Redirect Section        
-        $msg = __('New Data Added Successfully.');
-        return response()->json($msg);      
-        //--- Redirect Section Ends   
+        $notify[] = ['success' ,'Language Added Successfully'];
+
+        return back()->withNotify($notify);
     }
 
     //*** GET Request
@@ -123,10 +111,9 @@ class LanguageController extends Controller
         file_put_contents(base_path().'/../project/resources/lang/'.$data->file, $mydata); 
         //--- Logic Section Ends
 
-        //--- Redirect Section     
-        $msg = __('Data Updated Successfully.');
-        return response()->json($msg);      
-        //--- Redirect Section Ends         
+        $notify[] = ['success' ,'Language Update Successfully'];
+
+        return back()->withNotify($notify);       
     }
 
       public function status($id1,$id2)
@@ -136,9 +123,9 @@ class LanguageController extends Controller
             $data->update();
             $data = Language::where('id','!=',$id1)->update(['is_default' => 0]);
             //--- Redirect Section     
-            $msg = __('Data Updated Successfully.');
-            return response()->json($msg);      
-            //--- Redirect Section Ends  
+            $notify[] = ['success' ,'Language Update Successfully'];
+
+            return back()->withNotify($notify);
         }
 
     //*** GET Request Delete
@@ -146,7 +133,9 @@ class LanguageController extends Controller
     {
         if($id == 1)
         {
-        return __("You don't have access to remove this language");
+            $notify[] = ['error' ,'You Don not have access to delete this'];
+
+            return back()->withNotify($notify);
         }
         $data = Language::findOrFail($id);
         if (file_exists(base_path().'/../project/resources/lang/'.$data->file)) {
@@ -154,9 +143,9 @@ class LanguageController extends Controller
         }
         $data->delete();
         //--- Redirect Section     
-        $msg = __('Data Deleted Successfully.');
-        return response()->json($msg);      
-        //--- Redirect Section Ends    
+        $notify[] = ['success' ,'Language Deleted Successfully'];
+
+        return back()->withNotify($notify);
     }
 
     //*** POST Request
@@ -200,7 +189,9 @@ class LanguageController extends Controller
             $new[$key] = $value;
         } 
        
-        return back()->with(['data'=>$new,'success' => 'File Upload Successfully!']);
+        $notify[] = ['success' ,'File Uploaded Successfully'];
+
+        return back()->withNotify($notify);
     }
 
 

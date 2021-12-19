@@ -7,204 +7,76 @@
     <!-- hero-slider area start here  -->
     <section class="hero-slider-area">
         <div class="hero-banner-slide">
-            <div class="single-banner"
-                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-1.jpg')); ?>);">
-                <div class="container">
-                    <div class="row">
+            <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="single-banner"
+                    style="background-image: url(<?php echo e(asset('assets/images/poster/' . $slider->poster), false); ?>);">
+                    <div class="container">
+                        <div class="row">
 
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
+                            <div class="col-lg-6">
+                                <div class="exciting-collection"><img class="icon"
+                                        src="<?php echo e(asset('assets/front/images/trending-up.svg'), false); ?>" alt="grid" /> Trending
+                                    Now .
+                                    2021</div>
+                                <h1 class="banner-title"><?php echo e(@$slider->movie->tilte, false); ?></h1>
+                                <div class="hero-banner-rating d-flex align-items-center">
+                                    <span class="hero-normal-rating px-2 me-4">16+</span>
+                                    <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
+                                            src="<?php echo e(asset('assets/front/images/imdb-banner.png'), false); ?>"
+                                            alt="imdb"><span><?php echo e(\App\helper\Helper::GetIMDBRating(@$slider->movie->title), false); ?></span></span>
+                                </div>
 
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
-                                        class="me-1"> Add to List</button>
+                                <p class="banner-content"><?php echo e(@$slider->movie->description, false); ?></p>
+                                <div class="hero-cast-wrap">
+                                    <p><span class="red-color">Cast: </span>
+                                        <?php $__currentLoopData = $slider->movie->cast; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cast): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php
+                                                $cast = \App\Models\CastCrew::find($cast);
+                                            ?>
+                                            <?php echo e($cast->name, false); ?>,
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </p>
+                                    <p><span class="red-color">Genre: </span>
+                                        <?php if($slider->movie->genre_id != null): ?>
+                                            <?php $__currentLoopData = $slider->movie->genre_id; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php
+                                                    $cast = \App\Models\Genre::find($genre);
+                                                ?>
+                                                <?php echo e($genre->name, false); ?>,
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php endif; ?>
+                                    </p>
+                                    <p><span class="red-color">Tag: </span>
+                                         <?php if($slider->movie->tag != null): ?>
+                                            <?php $__currentLoopData = $slider->movie->tag; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                             
+                                                <?php echo e($tag, false); ?>,
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php endif; ?>
+                                    
+                                    </p>
+                                </div>
+                                <div class="hero-btns d-flex align-content-center">
+                                    <a href="<?php echo e(route('movie.details', $slider->movie->slug), false); ?>" class="primary-btn text-capitalize">Watch Now</a>
+                                    <button
+                                        class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
+                                        <img src="<?php echo e(asset('assets/front/images/plus.svg'), false); ?>" alt="plus"
+                                            class="me-1"> Add to List</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single-banner"
-                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-2.jpg')); ?>);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
-
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
-                                        class="me-1"> Add to List</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-banner"
-                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-3.jpg')); ?>);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
-
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
-
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
-                                        class="me-1"> Add to List</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-banner"
-                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-4.jpg')); ?>);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
-
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
-
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
-                                        class="me-1"> Add to List</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-banner"
-                style="background-image: url(<?php echo e(asset('assets/front/images/hero-abnner-image-2.jpg')); ?>);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="exciting-collection"><img class="icon"
-                                    src="<?php echo e(asset('assets/front/images/trending-up.svg')); ?>" alt="grid" /> Trending Now .
-                                2021</div>
-                            <h1 class="banner-title">Black Widow</h1>
-
-                            <div class="hero-banner-rating d-flex align-items-center">
-                                <span class="hero-normal-rating px-2 me-4">16+</span>
-                                <span class="imdb-rating bg-yellow d-inline-flex align-items-center text-black-50"><img
-                                        src="<?php echo e(asset('assets/front/images/imdb-banner.png')); ?>"
-                                        alt="imdb"><span>8.5</span></span>
-                            </div>
-
-                            <p class="banner-content">Natasha Romanoff, aka Black Widow, confronts the darker parts of her
-                                ledger when a dangerous conspiracy with ties to her past arises.</p>
-                            <div class="hero-cast-wrap">
-                                <p><span class="red-color">Cast: </span>Dwayne Johnson, Naomie Harris, Malin Akerman
-                                </p>
-                                <p><span class="red-color">Genre: </span>Action, Thriller, Mystery</p>
-                                <p><span class="red-color">Tag: </span>4k, Brother, Action, Fight</p>
-                            </div>
-                            <div class="hero-btns d-flex align-content-center">
-                                <a href="movie-details.html" class="primary-btn text-capitalize">Watch Now</a>
-                                <button
-                                    class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
-                                    <img src="<?php echo e(asset('assets/front/images/plus.svg')); ?>" alt="plus"
-                                        class="me-1"> Add to List</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="hero-banner-thumbnail">
+        <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="single-thumbnail">
-                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-1.png')); ?>" alt="thumbnail" />
+                <img src="<?php echo e(asset('assets/images/poster/' . $slider->poster), false); ?>" alt="thumbnail" />
             </div>
-            <div class="single-thumbnail">
-                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-2.png')); ?>" alt="thumbnail" />
-            </div>
-            <div class="single-thumbnail">
-                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-3.png')); ?>" alt="thumbnail" />
-            </div>
-            <div class="single-thumbnail">
-                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-4.png')); ?>" alt="thumbnail" />
-            </div>
-            <div class="single-thumbnail">
-                <img src="<?php echo e(asset('assets/front/images/hero-banner-thumbnail-2.png')); ?>" alt="thumbnail" />
-            </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
         </div>
     </section>
     <!-- hero-slider area end here  -->
@@ -215,10 +87,10 @@
             <div class="section-header">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h2 class="section-title"><?php echo e(__('Latest Movies')); ?></h2>
+                        <h2 class="section-title"><?php echo e(__('Latest Movies'), false); ?></h2>
                     </div>
                     <div class="col-sm-4 text-sm-end">
-                        <a href="<?php echo e(route('front.movies')); ?>" class="view-all-btn"><?php echo e(__('View all')); ?> <i
+                        <a href="<?php echo e(route('front.movies'), false); ?>" class="view-all-btn"><?php echo e(__('View all'), false); ?> <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -228,22 +100,23 @@
                 <?php $__currentLoopData = $latestMovies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $latest): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="single-movies">
                         <div class="movies-thumbnail">
-                            <img src="<?php echo e(asset('assets/images/'.@$latest->image->image)); ?>" alt="movis" />
+                            <img src="<?php echo e(asset('assets/images/' . @$latest->image->image), false); ?>" alt="movis" />
                         </div>
-                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                        <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                             alt="premium" />
-                        <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
-                                alt="imdb" /><span><?php echo e(\App\helper\Helper::GetIMDBRating($latest->title)); ?></span></div>
-                        <a href="<?php echo e(route('movie.details',$latest->slug)); ?>" class="play-btn"><i class="fas fa-play"></i></a>
+                        <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png'), false); ?>"
+                                alt="imdb" /><span><?php echo e(\App\helper\Helper::GetIMDBRating($latest->title), false); ?></span></div>
+                        <a href="<?php echo e(route('movie.details', $latest->slug), false); ?>" class="play-btn"><i
+                                class="fas fa-play"></i></a>
                         <div class="movies-info">
-                            <h3 class="movies-title"><a href="#"><?php echo e($latest->title); ?></a></h3>
+                            <h3 class="movies-title"><a href="#"><?php echo e($latest->title, false); ?></a></h3>
                             <ul class="movies-meta">
                                 <li class="season"><span>16+</span></li>
                                 <?php $__currentLoopData = $latest->category_id; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
                                         $category = \App\Models\Category::find($cat);
                                     ?>
-                                    <li><?php echo e($category->name); ?></li>
+                                    <li><?php echo e($category->name, false); ?></li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </ul>
@@ -272,7 +145,7 @@
                 <div class="col-lg-6">
                     <div class="single-watch-grid">
                         <div class="watch-thumbnail">
-                            <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-grid-image.jpg')); ?>"
+                            <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-grid-image.jpg'), false); ?>"
                                     alt="watch-grid-image" /></a>
                         </div>
                         <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
@@ -288,7 +161,7 @@
                         <div class="row g-0">
                             <div class="col-md-5">
                                 <div class="watch-thumbnail">
-                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-1.jpg')); ?>"
+                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-1.jpg'), false); ?>"
                                             class="img-fluid" alt="watch-list-image" /></a>
                                     <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                                 </div>
@@ -310,7 +183,7 @@
                         <div class="row g-0">
                             <div class="col-md-5">
                                 <div class="watch-thumbnail">
-                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-2.jpg')); ?>"
+                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-2.jpg'), false); ?>"
                                             class="img-fluid" alt="watch-list-image" /></a>
                                     <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                                 </div>
@@ -332,7 +205,7 @@
                         <div class="row g-0">
                             <div class="col-md-5">
                                 <div class="watch-thumbnail">
-                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-3.jpg')); ?>"
+                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-3.jpg'), false); ?>"
                                             class="img-fluid" alt="watch-list-image" /></a>
                                     <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
                                 </div>
@@ -374,7 +247,7 @@
                     <div class="col-lg-6">
                         <div class="trailer-video">
                             <img class="thumbnail-thumbnail"
-                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg')); ?>" alt="trailer-thumbnail" />
+                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg'), false); ?>" alt="trailer-thumbnail" />
                             <a class="play-btn" href="#"><i class="fas fa-play"></i></a>
                         </div>
                     </div>
@@ -393,7 +266,7 @@
                     <div class="col-lg-6">
                         <div class="trailer-video">
                             <img class="thumbnail-thumbnail"
-                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg')); ?>" alt="trailer-thumbnail" />
+                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg'), false); ?>" alt="trailer-thumbnail" />
                             <a class="play-btn" href="#"><i class="fas fa-play"></i></a>
                         </div>
                     </div>
@@ -412,7 +285,7 @@
                     <div class="col-lg-6">
                         <div class="trailer-video">
                             <img class="thumbnail-thumbnail"
-                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg')); ?>" alt="trailer-thumbnail" />
+                                src="<?php echo e(asset('assets/front/images/trailer-thumbnail.jpg'), false); ?>" alt="trailer-thumbnail" />
                             <a class="play-btn" href="#"><i class="fas fa-play"></i></a>
                         </div>
                     </div>
@@ -452,8 +325,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="<?php echo e(asset('assets/front/images/tv-series-1.png')); ?>" alt="tv series" /></a>
-                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-1.png'), false); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -466,10 +339,10 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="<?php echo e(asset('assets/front/images/tv-series-2.png')); ?>" alt="tv series" /></a>
-                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-2.png'), false); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                                 alt="premium" />
-                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png')); ?>"
+                            <div class="imdb"><img src="<?php echo e(asset('assets/front/images/imdb.png'), false); ?>"
                                     alt="imdb" /><span>6.5</span></div>
                         </div>
                         <div class="tv-series-info">
@@ -482,8 +355,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="<?php echo e(asset('assets/front/images/tv-series-3.png')); ?>" alt="tv series" /></a>
-                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-3.png'), false); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -496,8 +369,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="<?php echo e(asset('assets/front/images/tv-series-4.png')); ?>" alt="tv series" /></a>
-                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-4.png'), false); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -510,8 +383,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="<?php echo e(asset('assets/front/images/tv-series-5.png')); ?>" alt="tv series" /></a>
-                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-5.png'), false); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -524,8 +397,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="<?php echo e(asset('assets/front/images/tv-series-6.png')); ?>" alt="tv series" /></a>
-                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-6.png'), false); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -538,8 +411,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="<?php echo e(asset('assets/front/images/tv-series-7.png')); ?>" alt="tv series" /></a>
-                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-7.png'), false); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">
@@ -552,8 +425,8 @@
                     <div class="single-tv-series text-center">
                         <div class="tv-series-thumbnail">
                             <a href="#"><img class="thumbnail"
-                                    src="<?php echo e(asset('assets/front/images/tv-series-8.png')); ?>" alt="tv series" /></a>
-                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg')); ?>"
+                                    src="<?php echo e(asset('assets/front/images/tv-series-8.png'), false); ?>" alt="tv series" /></a>
+                            <img class="premium" src="<?php echo e(asset('assets/front/images/premium-label.svg'), false); ?>"
                                 alt="premium" />
                         </div>
                         <div class="tv-series-info">

@@ -1,39 +1,33 @@
+ <nav class="navbar navbar-expand-lg main-navbar">
 
-<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
-    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
-    </button>
-    <ul class="navbar-nav ml-auto">
-       
-        <li class="nav-item dropdown no-arrow mx-1" id="notf_order"> 
-            <a class="nav-link" href=""> <i class="fas fa-globe-americas text-white"></i></a>
-        </li>
-       
-        
-        <div class="topbar-divider d-none d-sm-block"></div>
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle ShowLanguageImage" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-              
-                <img class="img-profile rounded-circle " src="{{Auth::guard('admin')->user()->photo ? asset('assets/images/admins/'.Auth::guard('admin')->user()->photo) :  asset('assets/images/admins/admin.jpg')}}" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">{{ Auth::guard('admin')->user()->name }}</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ route('admin.profile') }}">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    {{ __('Profile') }}
-                </a>
-            <a class="dropdown-item" href="{{route('admin.password')}}">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    {{ __('Settings') }}
-                </a>
-               
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('admin.logout') }}">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    {{ __('Logout') }}
-                </a>
-            </div>
-        </li>
-    </ul>
-</nav>
+     <ul class="navbar-nav mr-auto icon-menu">
+         {{-- <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li> --}}
+     </ul>
+
+     <ul class="navbar-nav navbar-right">
+
+         <li>
+             <a target="_blank" href="{{ route('front.index') }}" class="nav-link nav-link-lg"><i
+                     class="fas fa-home pr-1"></i><span>{{ __('Visit Frontend') }}</span></a>
+         </li>
+
+         <li class="dropdown"><a href="#" data-toggle="dropdown"
+                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                 <img alt="image"
+                     src="{{asset('assets/images/'.auth()->guard('admin')->user()->photo)}}"
+                     class="rounded-circle mr-1">
+                 <div class="d-sm-none d-lg-inline-block">{{ Auth::guard('admin')->user()->name }}</div>
+             </a>
+             <div class="dropdown-menu dropdown-menu-right">
+                 <a href="{{ route('admin.profile') }}" class="dropdown-item has-icon">
+                     <i class="far fa-user"></i> {{ __('Profile') }}
+                 </a>
+
+                 <div class="dropdown-divider"></div>
+                 <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger">
+                     <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
+                 </a>
+             </div>
+         </li>
+     </ul>
+ </nav>

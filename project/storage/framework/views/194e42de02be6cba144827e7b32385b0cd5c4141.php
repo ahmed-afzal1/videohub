@@ -1,13 +1,7 @@
 <?php $__env->startSection('content'); ?>
 
     <div class="container-fluid" id="container-wrapper">
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"><?php echo e(__('Cast & Crew')); ?></h1>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo e(route('admin.dashboard')); ?>"><?php echo e(__('Dashboaard')); ?></a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?php echo e(__('Cast & Crew')); ?></li>
-            </ol>
-        </div>
+
 
         <!-- Row -->
         <div class="row">
@@ -68,10 +62,10 @@
                                                         href="<?php echo e(route('admin-cast-crew-edit', $castAndCrew->id)); ?>"
                                                         class="btn btn-primary btn-sm mr-2"> <i
                                                             class="fas fa-pen mr-1"></i></a>
-                                                        <a href="javascript:void(0);"
+                                                    <a href="javascript:void(0);"
                                                         data-href=" <?php echo e(route('admin-cast-crew-delete', $castAndCrew->id)); ?>"
-                                                       
-                                                        class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt"></i></a>
+                                                        class="btn btn-danger btn-sm delete"><i
+                                                            class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -155,7 +149,7 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo e(__('Cancel')); ?></button>
-                        <button type="submit" class="btn btn-danger" ><?php echo e(__('Delete')); ?></button>
+                        <button type="submit" class="btn btn-danger"><?php echo e(__('Delete')); ?></button>
                     </div>
 
                 </div>
@@ -192,9 +186,9 @@
 
         $(function() {
 
-            $('.delete').on('click',function(){
+            $('.delete').on('click', function() {
                 const modal = $('#confirm-delete');
-                modal.find('form').attr('action',$(this).data('href'))
+                modal.find('form').attr('action', $(this).data('href'))
                 modal.modal('show')
             })
 

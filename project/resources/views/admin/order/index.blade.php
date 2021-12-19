@@ -2,33 +2,44 @@
 
 @section('content')
 <div class="container-fluid" id="container-wrapper">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">{{ __('Orders') }}</h1>
-      <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{ __('Dashboard') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ __('Orders') }}</li>
-      </ol>
-    </div>
-
-    <!-- Row -->
+   
     <div class="row">
       <!-- Datatables -->
       <div class="col-lg-12">
         <div class="card mb-4">
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           </div>
-          @include('includes.admin.form-success')
+         
           <div class="table-responsive p-3">
-            <table id="geniustable" class="table align-items-center table-flush  dt-responsive" id="dataTable">
+            <table class="table align-items-center table-flush" >
               <thead class="thead-light">
                 <tr>
                   <th>{{ __('Customer Name') }}</th>
                   <th>{{ __('Subscription Plan Name') }}</th>
                   <th>{{ __('Order Amount') }}</th>
                   <th>{{ __('Payment Status') }}</th>
-                  <th>{{ __('Action') }}</th>
+                  <th>{{ __('Order Date') }}</th>
                 </tr>
               </thead>
+              <tbody>
+                @forelse ($orders as $order)
+
+                  <tr>
+                    <td>{{$order->user->name}}</td>
+                    <td>{{$order->plan->plan_name}}</td>
+                    <td>{{$order->order_amount}}</td>
+                    <td>{{$order->payment_status}}</td>
+                    <td>
+                    {{$order->created_at->format('Y-m-d')}}
+                    </td>
+                  </tr>
+                    
+                @empty
+
+
+                @endforelse
+              
+              </tbody>
             </table>
           </div>
         </div>
@@ -93,27 +104,6 @@
 
 @section('script')
 
-    <script type="text/javascript">
-		var table = $('#geniustable').DataTable({
-			   ordering: false,
-               processing: true,
-               serverSide: true,
-               ajax: '{{ route('admin.order.datatables') }}',
-               columns: [
-                        {data : 'user_id', name:'user_id'},
-                        {data : 'plan_id', name:'plan_id'},
-                        {data : 'order_amount', name:'order_amount'},
-                        {data : 'payment_status', name:'payment_status'},
-            			      { data: 'action', searchable: false, orderable: false }
-                     ],
-
-
-                language : {
-                	processing: '<img class="" src="{{asset('assets/images/genarel-settings/'.$gs->admin_loader)}}">'
-                },
-			
-            });
-
-</script>
+   
 
 @endsection

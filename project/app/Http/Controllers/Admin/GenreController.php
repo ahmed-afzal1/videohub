@@ -72,8 +72,9 @@ class GenreController extends Controller
     //*** GET Request
     public function edit($id)
     {
+        $pageTitle = __('Edit Genre');
         $data = Genre::findOrFail($id);
-        return view('admin.genre.edit',compact('data'));
+        return view('admin.genre.edit',compact('data','pageTitle'));
     }
 
     //*** POST Request

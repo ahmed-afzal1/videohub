@@ -18,15 +18,19 @@ class CastCrewController extends Controller
 
     public function index()
     {
+        $pageTitle = __('Cast And Crew');
+
         $castAndCrews = CastCrew::latest()->with('image')->paginate();
 
-        return view('admin.cast_crew.index', compact('castAndCrews'));
+        return view('admin.cast_crew.index', compact('castAndCrews','pageTitle'));
     }
 
     //*** GET Request
     public function create()
     {
-        return view('admin.cast_crew.create');
+        $pageTitle = __('Cast And Crew');
+
+        return view('admin.cast_crew.create',compact('pageTitle'));
     }
 
     //*** POST Request
@@ -64,8 +68,9 @@ class CastCrewController extends Controller
     //*** GET Request
     public function edit($id)
     {
+        $pageTitle = __('Cast And Crew Edit ');
         $castAndCrew = CastCrew::findOrFail($id);
-        return view('admin.cast_crew.edit', compact('castAndCrew'));
+        return view('admin.cast_crew.edit', compact('castAndCrew','pageTitle'));
     }
 
     //*** POST Request

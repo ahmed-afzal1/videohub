@@ -2,77 +2,87 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-    <link href="<?php echo e(asset('assets/admin/img/logo/GO-logo.jpg')); ?> " rel="icon">
-    
-    <title>GO - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo e($pageTitle ?? 'Not Set Page Title', false); ?></title>
+    <link rel="shortcut icon" href="<?php echo e($gs->icon, false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/bootstrap.min.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/font-awsome.min.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/selectric.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/jquery-ui.min.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/select2.min.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/summernote.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/bootstrap-iconpicker.min.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/colorpicker.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/stisla.css'), false); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(menu_asset('css/menu.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/components.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/custom.css'), false); ?>">
+
     <?php echo $__env->yieldPushContent('style'); ?>
-<style>
 
-        /*color picker Start*/
-    .colorpicker-alpha {display:none !important;}
-    .colorpicker{ min-width:128px !important;}
-    .colorpicker-color {display:none !important;}
-/*color picker End*/
-
-span.input-group-addon {
-    position: absolute;
-    right: 10px;
-    top: 0;
-    background: #ddd;
-    padding: 7px;
-    height: 100%;
-    width: 40px;
-    text-align: center;
-    line-height: 33px;
-    z-index: 9999;
-}
-
-</style>
-    <?php if ($__env->exists('admin.partials.style')) echo $__env->make('admin.partials.style', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php echo $__env->yieldPushContent('style'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/mode.css'), false); ?>">
 
 </head>
 
-<body id="page-top">
-<div id="wrapper">
-<!-- Sidebar -->
-<?php if ($__env->exists('admin.partials.sidebar')) echo $__env->make('admin.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<!-- Sidebar -->
+<body>
 
-<div id="content-wrapper" class="d-flex flex-column">
+    <div id="app">
+        <div class="main-wrapper">
+            <div class="navbar-bg"></div>
+            <?php echo $__env->make('admin.partials.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <div class="main-sidebar">
+                <?php echo $__env->make('admin.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            </div>
 
-        <!-- TopBar -->
-        <?php if ($__env->exists('admin.partials.topbar')) echo $__env->make('admin.partials.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <!-- Topbar -->
+            <!-- Main Content -->
+            <div class="main-content">
+                <?php echo $__env->make('admin.partials.breadcrumb', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-        <!-- Container Fluid-->
-        <div class="container-fluid" id="container-wrapper">
-            <?php echo $__env->yieldContent('content'); ?>
+                <?php echo $__env->yieldContent('content'); ?>
+            </div>
+
         </div>
-        <!---Container Fluid-->
+    </div>
+
+
+
+
     
-    <!-- Footer -->
-    <?php if ($__env->exists('admin.partials.footer')) echo $__env->make('admin.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <!-- Footer -->
-</div>
-</div>
+    <script src="<?php echo e(asset('assets/admin/js/jquery.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/popper.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/bootstrap.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/jquery-ui.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/nicescroll.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/summernote.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/select2.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/sortable.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/moment-a.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/stisla.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/bootstrap-iconpicker.bundle.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/colorpicker.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/jquery.uploadpreview.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/chart.min.js'), false); ?>"></script>
+    <script src="<?php echo e(menu_asset('js/menu.js'), false); ?>"></script> 
+    <script src="<?php echo e(asset('assets/admin/js/scripts.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/custom.js'), false); ?>"></script>
+    <?php echo $__env->make('admin.partials.toaster', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->yieldPushContent('script'); ?>
 
-<!-- Scroll to top -->
-<a class="scroll-to-top rounded" href="#page-top">
-<i class="fas fa-angle-up"></i>
-</a>
+    <script>
+        $(function() {
+            'use strict'
+            $('.clear').on('click', function(e) {
+                e.preventDefault();
+                const modal = $('#cleardb');
+                modal.find('form').attr('action', $(this).data('href'))
+                modal.modal('show');
+            })
 
-<?php if ($__env->exists('admin.partials.scripts')) echo $__env->make('admin.partials.scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<?php echo $__env->yieldPushContent('plugin'); ?>
-<?php if ($__env->exists('admin.partials.toaster')) echo $__env->make('admin.partials.toaster', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
-<?php echo $__env->yieldPushContent('script'); ?>
+        })
+    </script>
+    
 
 </body>
 

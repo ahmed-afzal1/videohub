@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::prefix('admin')->group(function () {
 
     Route::resource('category', 'Admin\CategoryController');
@@ -119,6 +118,9 @@ Route::prefix('admin')->group(function () {
         Route::post('movie/delete/{id}', 'Admin\MovieController@delete')->name('admin.movie.delete');
         // Move Section End -----------------------------------------------------------------------------//
     });
+
+    Route::get('/menu-builder', 'Admin\MenuController@index')->name('admin.menu_builder.index');
+    Route::post('/menu-builder/update', 'Admin\MenuController@update')->name('admin.menu_builder.update');
 
     Route::group(['middleware' => 'permissions:Menu Page Settings Section'], function () {
         //------------------------------------ ADMIN FAQ SECTION ---------------------------------//
@@ -255,6 +257,16 @@ Route::prefix('admin')->group(function () {
         // ---------------------------- ADMIN ORDER SECTION END ------------------------------//
     });
 
+    //Email Configure Section
+
+    Route::get('email/config', 'Admin\EmailTemplateController@emailConfig')->name('admin.email.config');
+    Route::post('email/config', 'Admin\EmailTemplateController@emailConfigUpdate');
+
+    Route::get('email/templates', 'Admin\EmailTemplateController@emailTemplates')->name('admin.email.templates');
+
+    Route::get('email/templates/{template}', 'Admin\EmailTemplateController@emailTemplatesEdit')->name('admin.email.templates.edit');
+    Route::post('email/templates/{template}', 'Admin\EmailTemplateController@emailTemplatesUpdate');
+
     Route::group(['middleware' => 'permissions:Newsletter Section'], function () {
         //------------ ADMIN SUBSCRIBERS SECTION --------------------------------------//
 
@@ -271,7 +283,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/users/edit/{id}', 'Admin\UserController@update')->name('admin-user-update');
         Route::get('/users/delete/{id}', 'Admin\UserController@destroy')->name('admin-user-delete');
         Route::get('/user/{id}/show', 'Admin\UserController@show')->name('admin-user-show');
-        Route::get('/users/ban/{id1}/{id2}', 'Admin\UserController@ban')->name('admin-user-ban');
+        Route::post('/users/ban/{id}', 'Admin\UserController@ban')->name('admin-user-ban');
+        Route::get('users/search', 'Admin\UserController@index')->name('admin.user.search');
 
         Route::get('/users/{id}/reviews', 'Admin\UserController@Review')->name('admin-user-review');
         Route::get('/users/review/delete/{id}', 'Admin\UserController@ReviewDelete')->name('admin-user-review-delete');
@@ -301,6 +314,29 @@ Route::prefix('admin')->group(function () {
         Route::get('/staff/delete/{id}', 'Admin\StaffController@destroy')->name('admin-staff-delete');
     });
 
+    Route::get('clear/cache', 'Admin\DashboardController@clearCache')->name('admin.clear.cache');
+    Route::get('custom/css', 'Admin\DashboardController@customCss')->name('admin.custom.css');
+    Route::post('custom/css', 'Admin\DashboardController@updateCss');
+
+    Route::get('general/cookie/consent', 'Admin\GeneralSettingController@cookieConsent')->name('admin.general.cookie');
+    Route::post('general/cookie/consent', 'Admin\GeneralSettingController@cookieConsentUpdate');
+
+    // Frontend Section Manager
+
+    Route::get('slider', 'Admin\ManageFrontendController@slider')->name('admin.frontend.slider');
+    Route::post('slider', 'Admin\ManageFrontendController@sliderCreate');
+    Route::post('slider/edit/{id}', 'Admin\ManageFrontendController@sliderUpdate')->name('admin.frontend.slider.edit');
+    Route::post('slider/delete/{id}', 'Admin\ManageFrontendController@sliderDelete')->name('admin.frontend.slider.delete');
+
+    Route::get('gateway/bank', 'Admin\ManageGatewayController@bank')->name('admin.payment.bank');
+    Route::post('gateway/bank', 'Admin\ManageGatewayController@bankUpdate');
+
+    Route::get('gateway/paypal', 'Admin\ManageGatewayController@paypal')->name('admin.payment.paypal');
+    Route::post('gateway/paypal', 'Admin\ManageGatewayController@paypalUpdate');
+
+    Route::get('gateway/stripe', 'Admin\ManageGatewayController@stripe')->name('admin.payment.stripe');
+    Route::post('gateway/stripe', 'Admin\ManageGatewayController@stripeUpdate');
+
 });
 
 Route::get('/sign-up', 'User\RegisterController@registerForm')->name('user.register');
@@ -308,21 +344,17 @@ Route::post('/sign-up', 'User\RegisterController@register');
 Route::get('/sign-in', 'User\LoginController@showLoginForm')->name('user.login');
 Route::post('/sign-in', 'User\LoginController@login');
 
-Route::middleware('auth')->name('user.')->group(function(){
+Route::middleware('auth')->name('user.')->group(function () {
 
-  Route::get('dashboard','User\UserController@index')->name('dashboard');
+    Route::get('dashboard', 'User\UserController@index')->name('dashboard');
 
-  Route::post('profile/update','User\UserController@profileUpdate')->name('profile.update');
+    Route::post('profile/update', 'User\UserController@profileUpdate')->name('profile.update');
 
-  Route::get('profile/update','User\LoginController@logout')->name('logout');
+    Route::get('profile/update', 'User\LoginController@logout')->name('logout');
 
 //   Route::get('billing/{plan}','')
 
-
 });
-
-
-
 
 Route::get('/', 'Front\FrontendController@index')->name('front.index');
 Route::get('/movies', 'Front\FrontendController@movies')->name('front.movies');
@@ -330,3 +362,5 @@ Route::get('/movie-details/{slug}', 'Front\FrontendController@movieDetails')->na
 
 Route::get('/pricing-plan', 'Front\FrontendController@plan')->name('front.plan');
 Route::get('/faq', 'Front\FrontendController@faq')->name('front.faq');
+
+MenuBuilder::routes();

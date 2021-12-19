@@ -4,6 +4,12 @@ namespace App\helper;
 
 use App\Classes\IMDB;
 use Image;
+use App\Models\EmailTemplate;
+use App\Models\GeneralSetting;
+use Illuminate\Support\Facades\Mail;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class Helper
 {
@@ -55,10 +61,9 @@ class Helper
 // -------------------- Image Update --------------------//
     public static function ImageUpdate($image, $location, $model, $size = null)
     {
-
         if ($model->image->image != null) {
             if (file_exists($location . $model->image->image)) {
-                unlink($location . $model->image->image);
+                @unlink($location . $model->image->image);
             }
         }
 
@@ -69,6 +74,7 @@ class Helper
         } else {
             Image::make($image)->resize($size[0], $size[1])->save($location);
         }
+
 
         $model->image()->update(['image' => $name]);
     }
@@ -190,4 +196,99 @@ class Helper
         }
         return $rating;
     }
+
+    
+public static function sendGeneralMail($data){
+    $general = GeneralSetting::first();
+
+    
+    if ($general->email_method == 'php') {
+        $headers = "From: $general->website_name <$general->from_email> \r\n";
+        $headers .= "Reply-To: $general->website_name <$general->from_email> \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+        @mail($data['email'], $data['subject'], $data['message'], $headers);
+    }
+    else {
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->isSMTP();
+            $mail->Host       = $general->smtp_config->smtp_host;
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $general->smtp_config->smtp_username;
+            $mail->Password   = $general->smtp_config->smtp_password;
+            if ($general->smtp_config->smtp_encryption == 'ssl') {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            } else {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            }
+            $mail->Port       = $general->smtp_config->smtp_port;
+            $mail->CharSet = 'UTF-8';
+            $mail->setFrom($general->from_email, $general->website_name);
+            $mail->addAddress($data['email'], $data['name']);
+            $mail->addReplyTo($general->from_email, $general->website_name);
+            $mail->isHTML(true);
+            $mail->Subject = $data['subject'];
+            $mail->Body    = $data['message'];
+            $mail->send();
+        } catch (Exception $e) {
+            throw new Exception($e);
+        }
+    }
+}
+
+public static function variableReplacer($code, $value, $template)
+{
+    return str_replace($code, $value, $template);
+}
+
+public static function sendMail($key, array $data, $user)
+{
+
+    $general = GeneralSetting::first();
+
+    $template =  EmailTemplate::where('name', $key)->first();
+
+    $message = self::variableReplacer('{username}', $user->username, $template->template);
+    $message = self::variableReplacer('{sent_from}', @$general->website_name, $message);
+
+    foreach ($data as $key => $value) {
+        $message = self::variableReplacer("{" . $key . "}", $value, $message);
+    }
+
+    if ($general->email_method == 'php') {
+        $headers = "From: $general->website_name <$general->from_email> \r\n";
+        $headers .= "Reply-To: $general->website_name <$general->from_email> \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+        @mail($user->email, $template->subject, $message, $headers);
+    } else {
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->isSMTP();
+            $mail->Host       = $general->smtp_config->smtp_host;
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $general->smtp_config->smtp_username;
+            $mail->Password   = $general->smtp_config->smtp_password;
+            if ($general->smtp_config->smtp_encryption == 'ssl') {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            } else {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            }
+            $mail->Port       = $general->smtp_config->smtp_port;
+            $mail->CharSet = 'UTF-8';
+            $mail->setFrom($general->from_email, $general->website_name);
+            $mail->addAddress($user->email, $user->username);
+            $mail->addReplyTo($general->from_email, $general->website_name);
+            $mail->isHTML(true);
+            $mail->Subject = $template->subject;
+            $mail->Body    = $message;
+            $mail->send();
+        } catch (Exception $e) {
+            throw new Exception($e);
+        }
+    }
+}
 }

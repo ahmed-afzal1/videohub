@@ -227,7 +227,7 @@
                             <?php echo e($movie->description); ?>
 
                             </p>
-                            <a href="#" class="readmore-btn">Red More</a>
+                            <a href="#" class="readmore-btn">Read More</a>
                         </div>
                         <div class="cast-area">
                             <h2 class="cast-title">Cast</h2>

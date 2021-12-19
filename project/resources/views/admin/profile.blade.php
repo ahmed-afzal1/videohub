@@ -2,65 +2,179 @@
 
 @section('content')
 
-<div class="container-fluid" id="container-wrapper">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">{{ __('Profile') }}
-    <a href="{{ url()->previous() }}" class="btn back-btn btn-sm">{{__('Back')}}</a>
-    </h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{ __('Dashboard') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{route('admin-episode-index')}}">{{ __('Profile') }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ __('Profile') }}</li>
-        </ol>
-    </div>
-    
-    <div class="row">
-        <div class="col-lg-12">
-            <!-- Form Basic -->
-            @include('includes.admin.form-both')
-              <div class="card-body">
-              
-                <form id="pageForm" action="{{route('admin.profile.update')}}" method="POST" enctype="multipart/form-data">
+<div class="row">
+
+      <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <form method="post" action="{{route('admin.password.update')}}">
                   @csrf
-                  <div class="form-group ShowLanguageImage text-center mb-2  {{ $data ? '' : 'd-none'}}">
-                      <img src="{{ $data->photo != null ? asset('assets/images/admins/'.$data->photo) : asset('assets/images/noimage.png')}}" class="rounded-circle img-fluid" alt="image" width="150">
-                  </div>
-                  <div class="form-group">
-                      <label for="languageimage">{{ __('Image') }}</label>
-                      <span class="ml-2">{{ __('(support (jpeg,jpg,png))') }}</span>
-                      <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="photo" id="image" value="" accept="image/*">
-                          <input type="hidden" value="" id="image_file">
-                          <label class="custom-file-label" for="languageimage">{{ __('Choose file') }}</label>
-                      </div>
-                  </div>
-                  
-                    <div class="form-group mt-2">
-                      <label for="name">{{ __('Name') }}</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="{{ __('Name') }}" value="{{$data->name}}">
-                    </div>
+                    <div class="card-header">
+
+                        <h6>{{__('Change Password')}}</h6>
                     
-                    <div class="form-group mt-2">
-                      <label for="email">{{ __('Email') }}</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="{{ __('Email') }}" value="{{$data->email}}">
                     </div>
-                    
-                    <div class="form-group mt-2">
-                      <label for="phone">{{ __('Phone') }}</label>
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="{{ __('Phone') }}" value="{{$data->phone}}">
+                    <div class="card-body">
+                       
+                        <div class="row">
+                        
+                          <div class="form-group col-md-12 col-12">
+                            <label>{{__('Old Password')}}</label>
+                            <input type="password" class="form-control" name="old_pass" required >
+                          </div>
+                          
+                          <div class="form-group col-md-12 col-12">
+                            <label>{{__('New Password')}}</label>
+                            <input type="password" class="form-control" name="password" required>
+                          </div>  
+                          <div class="form-group col-md-12 col-12">
+                            <label>{{__('Confirm Password')}}</label>
+                            <input type="password" class="form-control" name="password_confirmation" required>
+                          </div>
+                        </div>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                    <div class="card-footer text-right">
+                      <button class="btn btn-primary">{{__('Change Password')}}</button>
+                    </div>
                   </form>
                 </div>
-            </div>
-    </div>
+              </div> 
+              
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <form method="post" action="{{route('admin.profile.update')}}" enctype="multipart/form-data">
+                   @csrf
+                    <div class="card-body">
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload" name="photo" accept=".png, .jpg, .jpeg" />
+                                <label for="imageUpload"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview" style="background-image: url({{asset('assets/images/'.auth()->guard('admin')->user()->photo)}});">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                          <div class="form-group col-md-6 col-12">
+                            <label>{{__('Email')}}</label>
+                            <input type="email" class="form-control" name="email" value="{{auth()->guard('admin')->user()->email}}" required>
+                           
+                          </div>
+                          <div class="form-group col-md-6 col-12">
+                            <label>{{__('Username')}}</label>
+                            <input type="text" class="form-control" name="username" value="{{auth()->guard('admin')->user()->name}}">
+                          </div>
+                        </div>
+                        <div class="col-md-12 text-right">
+
+                          <button class="btn btn-primary">{{__('Update Profile')}}</button>
+                        
+                        </div>
+                    </div>
+                   
+                  </form>
+                </div>
+              </div>
+
 </div>
-<input type="hidden" value="1" id="isValue">
-@endsection
-
-@section('script')
-
 
 
 @endsection
+
+
+@push('style')
+
+  <style>
+  
+.avatar-upload {
+   position: relative;
+    max-width: 205px;
+    top: -15px;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+  content: "\f030";
+  font-family: "FontAwesome";
+  color: #757575;
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #f8f8f8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+  
+  </style>
+
+@endpush
+
+
+@push('script')
+
+<script>
+  'use strict'
+
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").on('change',function() {
+    readURL(this);
+});
+
+
+</script>
+
+@endpush

@@ -36,7 +36,7 @@ class GeneralSettingController extends Controller
     {
         //--- Validation Section
        $request->validate([
-        'logo'       => 'mimes:jpeg,jpg,png,svg',
+        'header_logo'       => 'mimes:jpeg,jpg,png,svg',
         'footer_logo'       => 'mimes:jpeg,jpg,png,svg',
         'favicon'    => 'mimes:jpeg,jpg,png,svg',
         'loader'     => 'mimes:gif',
@@ -99,16 +99,15 @@ class GeneralSettingController extends Controller
             }   
             
         $data->update($input);
-        //--- Logic Section Ends
-        //--- Redirect Section        
-        $msg = __('Data Updated Successfully.');
-        return response()->json($msg);      
-        //--- Redirect Section Ends               
+       
+        $notify[] = ['success', "Settings Updated Successfully"];
+
+            return redirect()->back()->withNotify($notify);
         
     }
 
     public function paymentsinfo()
-    {
+    { 
        return view('admin.generalsetting.p_information');
     }
 
@@ -152,47 +151,56 @@ class GeneralSettingController extends Controller
 
     public function logo()
     {
-        return view('admin.generalsetting.logo');
+        $pageTitle = 'Logo Settings';
+        return view('admin.generalsetting.logo',compact('pageTitle'));
     }
 
     public function fav()
     {
-        return view('admin.generalsetting.favicon');
+        $pageTitle = 'Fav Settings';
+        return view('admin.generalsetting.favicon',compact('pageTitle'));
     }
 
     public function error()
     {
-        return view('admin.generalsetting.error');
+        $pageTitle = 'Erors Settings';
+        return view('admin.generalsetting.error',compact('pageTitle'));
     }
      public function breadcumb()
     {
-        return view('admin.generalsetting.breadcumb');
+        $pageTitle = 'Breadcrumb Settings';
+        return view('admin.generalsetting.breadcumb',compact('pageTitle'));
     }
 
      public function load()
     {
-        return view('admin.generalsetting.loader');
+        $pageTitle = 'Load Settings';
+        return view('admin.generalsetting.loader',compact('pageTitle'));
     }
 
      public function contents()
     {
-        return view('admin.generalsetting.websitecontent');
+        $pageTitle = 'Website Content Settings';
+        return view('admin.generalsetting.websitecontent',compact('pageTitle'));
     }
 
      public function success()
     {
-        return view('admin.generalsetting.success');
+        $pageTitle = 'Success Settings';
+        return view('admin.generalsetting.success',compact('pageTitle'));
     }
 
      public function footer()
     {
-        return view('admin.generalsetting.footer');
+        $pageTitle = 'Footer Settings';
+        return view('admin.generalsetting.footer',compact('pageTitle'));
     }
 
 
     public function customize()
     {
-        return view('admin.pagesetting.menu_customize');
+        $pageTitle = 'Customize Settings';
+        return view('admin.pagesetting.menu_customize',compact('pageTitle'));
     }
     
     public function StatusUpdate($value)
@@ -210,6 +218,43 @@ class GeneralSettingController extends Controller
             return response()->json(['status'=>0,'success' => __('Data Updated Successfully.')]);
         }
        
+    }
+
+    public function cookieConsent()
+    {
+        $pageTitle = 'Cookie Consent';
+
+        $cookie = CookieConsent::first();
+
+        return view('admin.setting.cookie',compact('pageTitle','cookie'));
+    }
+
+    public function cookieConsentUpdate(Request $request)
+    {
+        $data = $request->validate([
+            'allow_modal' => 'required|integer',
+            'button_text' => 'required|max:100',
+            'cookie_text' => 'required'
+        ]);
+
+        $cookie = CookieConsent::first();
+
+        if(!$cookie){
+            CookieConsent::create($data);
+
+            $notify[] = ['success', "Cookie Consent Created Successfully"];
+
+            return redirect()->back()->withNotify($notify);
+
+        }
+
+
+        $cookie->update($data);
+
+        $notify[] = ['success', "Cookie Consent Updated Successfully"];
+
+        return redirect()->back()->withNotify($notify);
+
     }
    
 }
