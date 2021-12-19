@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2021 at 11:15 PM
+-- Generation Time: Dec 19, 2021 at 08:45 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -46,7 +46,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `phone`, `role`, `photo`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', '34553442334', 23, '1583907282man.png', '$2y$10$k49rQPEn5DFI2DW.VKPqE.oVToRK53ullSMb9HmiwTBZqqurt7RL.', 1, 'SA50Fp9JPrOMgN4A5ZxsktZqmwuYX2tHd9Bt7mh3gDEubz0CFGpty6OmdvSm', '2018-02-27 23:27:08', '2020-03-11 00:24:59'),
+(1, 'neymar', 'admin@gmail.com', '34553442334', 23, '1639686587pexels-alesia-kozik-6765363.jpg', '$2y$10$To/odQB65aU0YoWYsPThp.azusSE8tpgL2GUJf.tdoLn99VP7tpkq', 1, 'NgvePvK02MssudgSlZ3gIvDaErJBDIJpA7pRmtwVim93XCNm1kcQsZQ3qQ8Z', '2018-02-27 23:27:08', '2021-12-16 14:29:47'),
 (2, 'Shaon', 'genius@gmail.com', '2346545324', 25, NULL, '$2y$10$p35S2FczpEfpbe41CX4j4.XE548tHBtF5weGLPxZ56MX5dsOFtaCC', 1, '2x9ax4IYPKaUMBO5inFUW2g9mEc0nLCNba9iOVGTaWHJuRSEWed0vlRGBpmV', '2018-02-27 23:27:09', '2020-03-28 01:41:37'),
 (4, 'Staff', 'staff@gmail.com', '34534534534', 23, '15853808181564298473side-triple2.jpg', '$2y$10$I/2L8FXvxOQV7irwh2PH2upufB0DBMponc99HDo8U4cWx2B/6ASwa', 1, 'TronE5p2LlRL3ZeusD3JeSDo1yecvzFr6uFp9FZU8GLMFKXcMtMmZZ4O1f8C', '2019-05-23 08:10:30', '2020-03-28 01:33:58');
 
@@ -103,7 +103,8 @@ INSERT INTO `cast_crews` (`id`, `name`, `bio`, `status`, `created_at`, `updated_
 (4, 'Robert Downey Jr', 'Robert Downey Jr. has evolved into one of the most respected actors in Hollywood. With an amazing list of credits to his name, he has managed to stay new and fresh even after over four decades in the business. Downey was born April 4, 1965 in Manhattan, New York, the son of writer, director and filmographer Robert Downey Sr. and actress Elsie Downey', 1, '2020-03-07 00:34:11', '2020-03-07 03:12:57'),
 (5, 'Chris Evans', 'Christopher Robert Evans began his acting career in typical fashion: performing in school productions and community theatre. He was born in Boston, Massachusetts, the son of Lisa (Capuano), who worked at the Concord Youth Theatre, and G. Robert Evans III, a dentist. His uncle is congressman Mike Capuano. Chris\'s father is of half German and half', 1, '2020-03-07 00:36:10', '2020-03-07 00:36:10'),
 (6, 'Mark Ruffalo', 'Mark Ruffalo was born in Kenosha, Wisconsin, to Marie Rose (Hebert), a stylist and hairdresser, and Frank Lawrence Ruffalo, a construction painter. His father\'s ancestry is Italian, and his mother is of half French-Canadian and half Italian descent. Mark moved with his family to Virginia Beach, Virginia, where he lived out most of his teenage', 1, '2020-03-07 00:36:47', '2020-03-07 00:36:47'),
-(7, 'Scarlett Johansson', 'Scarlett Johansson was born in New York City. Her mother, Melanie Sloan, is from a Jewish family from the Bronx, and her father, Karsten Johansson, is a Danish-born architect, from Copenhagen. She has a sister, Vanessa Johansson, who is also an actress, a brother, Adrian, a twin brother, Hunter Johansson, born three minutes after her', 1, '2020-03-07 00:37:30', '2020-03-16 03:44:23');
+(7, 'Scarlett Johansson', 'Scarlett Johansson was born in New York City. Her mother, Melanie Sloan, is from a Jewish family from the Bronx, and her father, Karsten Johansson, is a Danish-born architect, from Copenhagen. She has a sister, Vanessa Johansson, who is also an actress, a brother, Adrian, a twin brother, Hunter Johansson, born three minutes after her', 1, '2020-03-07 00:37:30', '2020-03-16 03:44:23'),
+(8, 'created_at', 'mhjkh khkjhlk', 1, '2021-12-16 14:37:51', '2021-12-16 14:37:51');
 
 -- --------------------------------------------------------
 
@@ -175,6 +176,34 @@ CREATE TABLE `currencies` (
 
 INSERT INTO `currencies` (`id`, `name`, `sign`, `value`, `currency_format`, `is_default`) VALUES
 (1, 'USD', '$', 2, '1', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `email_templates`
+--
+
+CREATE TABLE `email_templates` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `template` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meaning` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `email_templates`
+--
+
+INSERT INTO `email_templates` (`id`, `name`, `subject`, `template`, `meaning`, `created_at`, `updated_at`) VALUES
+(1, 'PASSWORD_RESET', 'Password Reset Code', '<p><b>Hi {username},\r\n</b></p><p>\r\nHere is your password reset code : {code}\r\n</p><p>\r\nThanks,\r\n</p><p>\r\n{sent_from}</p>', '{\"username\":\"Email Receiver Name\", \"code\" : \"Email Verification Code\", \"sent_from\" : \"Email Sent from\"}', NULL, '2021-09-05 19:45:59'),
+(2, 'PAYMENT_SUCCESSFULL', 'PAYMENT SUCCESSFULL', '<p><b>Hi {username},</b></p><p><b>Your Payment for {service} has been successfully paid.</b></p><p><b>Transaction Number : {trx}</b></p><p><b>Total Amount : {amount} {currency}</b></p><p><b><br></b></p><p><b>\r\n</b></p><p>\r\n\r\n</p><p>\r\nThanks,\r\n</p><p>\r\n{sent_from}</p>', '{\"username\":\"Email Receiver Name\",\"trx\":\"Transaction Number\",\"amount\":\"Payment Amount\",\"service\":\"Service Name\",\"currency\":\"Currency for Payment\",\"sent_from\" : \"Email Sent from\"}', NULL, '2021-08-18 09:59:46'),
+(3, 'PAYMENT_RECEIVED', 'PAYMENT RECEIVED', '<p><b>Hi {username},</b></p><p><b>You Received Payment for {service} has been successfully paid.</b></p><p><b>Transaction Number : {trx}</b></p><p><b>Total Amount : {amount} {currency}</b></p><p><b><br></b></p><p><b>\r\n</b></p><p>\r\n\r\n</p><p>\r\nThanks,\r\n</p><p>\r\n{sent_from}</p>', '{\"username\":\"Email Receiver Name\",\"trx\":\"Transaction Number\",\"amount\":\"Payment Amount\",\"service\":\"Service Name\",\"currency\":\"Currency for Payment\",\"sent_from\" : \"Email Sent from\"}', NULL, '2021-08-19 07:08:28'),
+(4, 'VERIFY_EMAIL', 'Verify Your Email', '<p><b>Hi {username},</b></p><p><b>Your verification code is {code}</b></p><p><b><br></b></p><p><b>\r\n</b></p><p>\r\n\r\n</p><p>\r\nThanks,\r\n</p><p>\r\n{sent_from}</p>', '{\"username\":\"Email Receiver Name\",\"code\":\"Email Verification Code\",\"sent_from\" : \"Email Sent from\"}', NULL, '2021-08-20 20:27:15'),
+(12, 'PAYMENT_CONFIRMED', 'payment confirmed', '<p><b>Hi {username},</b></p><p><b>Your Payment for {service} is accepted</b></p><p><b>Amount : {amount} {currency}</b></p><p><b>Charge : {charge} {currency}</b></p><p><b>Booking Id : {trx}</b></p><p><b>&nbsp;</b></p><p><b><br></b></p><p><b>\r\n</b></p><p>\r\n\r\n</p><p>\r\nThanks,\r\n</p><p>\r\n{sent_from}</p>', '{\"username\":\"Email Receiver Name\",\"amount\":\"Payment Amount\",\"charge\":\"Payment Charge\",\"service\":\"Service Name\",\"trx\":\"Transaction ID\",\"currency\":\"Payment Currency\",\"sent_from\" : \"Email Sent from\"}', NULL, '2021-08-29 11:28:08'),
+(13, 'PAYMENT_REJECTED', 'payment rejected', '<p><b>Hi {username},</b></p><p><b>Your payement is rejected&nbsp;</b></p><p><b>Pay for {service}</b></p><p><b>charge : {charge}</b></p><p><b>amount : {amount}</b></p><p><b>Booking Id : {trx}</b></p><p><b>&nbsp;</b></p><p><b><br></b></p><p><b>\r\n</b></p><p>\r\n\r\n</p><p>\r\nThanks,\r\n</p><p>\r\n{sent_from}</p>', '{\"username\":\"Email Receiver Name\",\"amount\":\"Payment Amount\",\"charge\":\"Payment Charge\",\"service\":\"Service Name\",\"trx\":\"Transaction ID\",\"currency\":\"Payment Currency\",\"sent_from\" : \"Email Sent from\"}', NULL, '2021-08-29 11:26:39');
 
 -- --------------------------------------------------------
 
@@ -273,12 +302,43 @@ INSERT INTO `favarites` (`id`, `user_id`, `video_id`, `created_at`, `updated_at`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gateways`
+--
+
+CREATE TABLE `gateways` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `gateway_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gateway_parameters` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gateway_type` tinyint(1) NOT NULL COMMENT '0=> manual, 1=> autometic',
+  `user_proof_param` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `btc_wallet` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `btc_amount` decimal(28,8) DEFAULT NULL,
+  `rate` decimal(28,8) NOT NULL,
+  `charge` decimal(28,8) NOT NULL DEFAULT 0.00000000,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `gateways`
+--
+
+INSERT INTO `gateways` (`id`, `gateway_name`, `gateway_parameters`, `gateway_type`, `user_proof_param`, `btc_wallet`, `btc_amount`, `rate`, `charge`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'paypal', '{\"gateway_currency\":\"USD\",\"paypal_client_id\":\"AQtCVGlS22wqYBGWPHW1a6aAVuUcFwSOWzUGoRvsbth2vUNNxrekowLwrYRwIYLMAetedRPu3hKMO57C\",\"paypal_client_secret\":\"EMksMmpKq5xfnJP3So7fVTyjghVV4mtUa70qsXbNAiw3nBF3ir6ENXZasxT-3cPDZ8ZXJX0DaggQFptv\",\"mode\":\"sandbox\"}', 1, NULL, NULL, NULL, '1.00000000', '0.00000000', 1, '2021-08-07 03:15:07', '2021-12-18 11:55:59'),
+(3, 'stripe', '{\"gateway_currency\":\"USD\",\"stripe_client_id\":\"pk_test_51JPpg8Ep0youpBChKWG5eyrUnj7weSPl3FlIaU8unUrqOfoA0aAFGJq6biVmcZBjKdD7Jf7HXmH6DKaxjtJsWn9200QGc9BTns\",\"stripe_client_secret\":\"sk_test_51JPpg8Ep0youpBChPXaj1T1fXk5zhCTg8A8hCCF5sfrFm7C0n7pIYfGoMptc1xqoFb5Mnro56LB3jn21JsTvnGtP00ZTxKIaJ8\"}', 1, NULL, NULL, NULL, '1.00000000', '5.00000000', 1, '2021-08-07 03:29:38', '2021-12-18 11:48:52'),
+(4, 'bank', '{\"name\":\"AJ International Bank Ltd.\",\"account_number\":\"124568\",\"routing_number\":\"1234568\",\"branch_name\":\"NV Road, NYC\",\"gateway_currency\":\"USD\"}', 0, '[{\"field_name\":\"details\",\"type\":\"textarea\",\"validation\":\"required\"},{\"field_name\":\"Transaction Number\",\"type\":\"text\",\"validation\":\"required\"},{\"field_name\":\"test\",\"type\":\"file\",\"validation\":\"required\"}]', NULL, NULL, '1.00000000', '2.00000000', 1, '2021-08-07 06:20:30', '2021-12-18 12:01:23');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `generalsettings`
 --
 
 CREATE TABLE `generalsettings` (
   `id` int(191) NOT NULL,
   `website_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `site_currency` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `header_logo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `favicon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `website_loader` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -300,15 +360,12 @@ CREATE TABLE `generalsettings` (
   `paypal_business` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `stripe_key` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `stripe_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `smtp_host` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `smtp_port` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_text` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `smtp_user` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `smtp_pass` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `from_email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_method` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'php',
+  `smtp_config` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `from_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_smtp` tinyint(1) NOT NULL DEFAULT 0,
   `is_currency` tinyint(1) NOT NULL DEFAULT 0,
   `currency_format` tinyint(1) NOT NULL DEFAULT 0,
   `subscribe_success` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -327,8 +384,8 @@ CREATE TABLE `generalsettings` (
 -- Dumping data for table `generalsettings`
 --
 
-INSERT INTO `generalsettings` (`id`, `website_title`, `header_logo`, `favicon`, `website_loader`, `admin_loader`, `is_admin_loader`, `is_website_loader`, `secendary_color`, `is_tawk`, `theme_color`, `is_verification`, `tawk_id`, `is_disqus`, `disqus`, `paypal_check`, `paypal_client_id`, `paypal_client_secret`, `paypal_sendbox_check`, `stripe_check`, `paypal_business`, `stripe_key`, `stripe_secret`, `smtp_host`, `smtp_port`, `order_title`, `order_text`, `smtp_user`, `smtp_pass`, `from_email`, `from_name`, `is_smtp`, `is_currency`, `currency_format`, `subscribe_success`, `subscribe_error`, `error_title`, `error_text`, `error_photo`, `breadcumb_banner`, `footer_logo`, `footer_text`, `copy_right_text`, `is_verification_email`) VALUES
-(1, 'Video Pro', '1584504007logo.png', '15825409991573982412statistics1.png', '1584504315158036409715739824491563333857loader.gif', '158450432115739824491563333857loader.gif', 1, 1, '#0062e9', '0', '#afafaf', '1', '5bc2019c61d0b77092512d03', 1, 'text', 1, 'AcWYnysKa_elsQIAnlfsJXokR64Z31CeCbpis9G3msDC-BvgcbAwbacfDfEGSP-9Dp9fZaGgD05pX5Qi', 'EGZXTq6d6vBPq8kysVx8WQA5NpavMpDzOLVOb9u75UfsJ-cFzn6aeBXIMyJW2lN1UZtJg5iDPNL9ocYE', 1, 1, 'shaon143-facilitator-1@gmail.com', 'pk_test_UnU1Coi1p5qFGwtpjZMRMgJM', 'sk_test_QQcg3vGsKRPlW6T3dXcNJsor', 'smtp.mailtrap.io', '587', 'THANK YOU FOR YOUR GREAT GENEROSITY.', 'THANK YOU FOR YOUR GREAT GENEROSITY.', '57d0463c894d86', '8a4a767af36650', 'admin@geniusocean.com', 'GeniusOcean', 1, 0, 0, 'You are subscribed Successfully...', 'This email has already been taken.', 'adfgadsf', 'adfgadsf', '15826106951561878540404.png', '15825414171578741410blog.jpg', '1582613180logo.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut, adipiscing elit, sed do. eiusmod tempor incididunt ut, adipiscing.', 'COPYRIGHT © 2019. All Rights Reserved By <a href=\"http://geniusocean.com/\">GeniusOcean.com</a>', 0);
+INSERT INTO `generalsettings` (`id`, `website_title`, `site_currency`, `header_logo`, `favicon`, `website_loader`, `admin_loader`, `is_admin_loader`, `is_website_loader`, `secendary_color`, `is_tawk`, `theme_color`, `is_verification`, `tawk_id`, `is_disqus`, `disqus`, `paypal_check`, `paypal_client_id`, `paypal_client_secret`, `paypal_sendbox_check`, `stripe_check`, `paypal_business`, `stripe_key`, `stripe_secret`, `order_title`, `order_text`, `from_email`, `email_method`, `smtp_config`, `from_name`, `is_currency`, `currency_format`, `subscribe_success`, `subscribe_error`, `error_title`, `error_text`, `error_photo`, `breadcumb_banner`, `footer_logo`, `footer_text`, `copy_right_text`, `is_verification_email`) VALUES
+(1, 'Video Pro', NULL, '1639851532pexels-alesia-kozik-6765363.jpg', '1639851689logo.png', '1584504315158036409715739824491563333857loader.gif', '158450432115739824491563333857loader.gif', 1, 1, '#0062e9', '0', '#afafaf', '1', '5bc2019c61d0b77092512d03', 1, 'text', 1, 'AcWYnysKa_elsQIAnlfsJXokR64Z31CeCbpis9G3msDC-BvgcbAwbacfDfEGSP-9Dp9fZaGgD05pX5Qi', 'EGZXTq6d6vBPq8kysVx8WQA5NpavMpDzOLVOb9u75UfsJ-cFzn6aeBXIMyJW2lN1UZtJg5iDPNL9ocYE', 1, 1, 'shaon143-facilitator-1@gmail.com', 'pk_test_UnU1Coi1p5qFGwtpjZMRMgJM', 'sk_test_QQcg3vGsKRPlW6T3dXcNJsor', 'THANK YOU FOR YOUR GREAT GENEROSITY.', 'THANK YOU FOR YOUR GREAT GENEROSITY.', 'admin@gmail.com', 'smtp', '{\"smtp_host\":\"45asd\",\"smtp_username\":\"546\",\"smtp_password\":\"54\",\"smtp_port\":\"6\",\"smtp_encryption\":\"ssl\"}', 'GeniusOcean', 0, 0, 'You are subscribed Successfully...', 'This email has already been taken.', 'adfgadsf', 'adfgadsf', '15826106951561878540404.png', '15825414171578741410blog.jpg', '1639851542pexels-alesia-kozik-6765363.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut, adipiscing elit, sed do. eiusmod tempor incididunt ut, adipiscing.', 'COPYRIGHT © 2019. All Rights Reserved By <a', 0);
 
 -- --------------------------------------------------------
 
@@ -365,16 +422,99 @@ CREATE TABLE `languages` (
   `is_default` tinyint(1) NOT NULL DEFAULT 0,
   `language` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `file` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rtl` tinyint(1) NOT NULL DEFAULT 0
+  `rtl` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `languages`
 --
 
-INSERT INTO `languages` (`id`, `name`, `is_default`, `language`, `file`, `rtl`) VALUES
-(1, '15836611490f0uCB10', 1, 'English', '15836611490f0uCB10.json', 0),
-(7, '1584341028Tg1UjPlb', 0, 'Arabic', '1584341028Tg1UjPlb.json', 1);
+INSERT INTO `languages` (`id`, `name`, `is_default`, `language`, `file`, `rtl`, `created_at`, `updated_at`) VALUES
+(1, '15836611490f0uCB10', 1, 'English', '15836611490f0uCB10.json', 0, '2021-12-19 19:19:44', '2021-12-19 19:19:44'),
+(7, '1584341028Tg1UjPlb', 0, 'Arabic', '1584341028Tg1UjPlb.json', 1, '2021-12-19 19:19:44', '2021-12-19 19:19:44'),
+(8, '1639942597pWqsb71q', 0, 'banla', '1639942597pWqsb71q.json', 1, '2021-12-19 19:24:47', '2021-12-19 19:24:47'),
+(9, '1639942485qmB4AEe7', 0, 'banla', '1639942485qmB4AEe7.json', 1, '2021-12-19 19:27:42', '2021-12-19 19:27:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menus`
+--
+
+CREATE TABLE `menus` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `order` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `custom_class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `name`, `slug`, `url`, `order`, `custom_class`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin', '/admin', 1, NULL, '2021-12-17 13:46:20', '2021-12-17 13:46:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_items`
+--
+
+CREATE TABLE `menu_items` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `target` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
+  `parent_id` int(10) UNSIGNED DEFAULT NULL,
+  `order` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `route` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `params` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `controller` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `middleware` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `custom_class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menu_items`
+--
+
+INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `slug`, `url`, `target`, `parent_id`, `order`, `route`, `params`, `controller`, `middleware`, `icon`, `custom_class`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Menu Builder', 'menu-builder', '/admin/menus', '_self', NULL, 1, NULL, NULL, '\\CodexShaper\\Menu\\Http\\Controllers\\MenuController@index', NULL, NULL, NULL, '2021-12-17 13:46:21', '2021-12-17 13:46:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_settings`
+--
+
+CREATE TABLE `menu_settings` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `menu_id` int(11) DEFAULT NULL,
+  `depth` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '5',
+  `apply_child_as_parent` tinyint(1) NOT NULL DEFAULT 0,
+  `levels` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menu_settings`
+--
+
+INSERT INTO `menu_settings` (`id`, `menu_id`, `depth`, `apply_child_as_parent`, `levels`, `created_at`, `updated_at`) VALUES
+(1, NULL, '5', 0, '{\"root\":{\"style\":\"vertical\"},\"child\":{\"show\":\"onClick\",\"position\":\"right\",\"level_1\":{\"show\":\"onClick\",\"position\":\"bottom\"},\"level_2\":{\"show\":\"onHover\",\"position\":\"right\"}}}', '2021-12-17 13:46:21', '2021-12-17 13:46:21');
 
 -- --------------------------------------------------------
 
@@ -387,6 +527,19 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(28, '2014_10_12_000000_create_users_table', 1),
+(29, '2014_10_12_100000_create_password_resets_table', 2),
+(30, '2019_08_19_000000_create_failed_jobs_table', 3),
+(34, '2019_08_22_221932_create_menus_table', 4),
+(35, '2019_08_27_165403_create_menu_items_table', 4),
+(36, '2019_08_27_165403_create_menu_settings_table', 4),
+(37, '2021_12_18_094150_create_sliders_table', 5);
 
 -- --------------------------------------------------------
 
@@ -468,7 +621,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `name`, `email`, `phone`, `plan_id`, `order_amount`, `payment_type`, `order_number`, `title`, `payment_status`, `txnid`, `charge_id`, `created_at`, `updated_at`) VALUES
-(5, 9, 'user', 'user@gmail.com', '12131243', 10, 100, 'paypal', '5qfx1583231433', 'PREMIUM Via Paypal', 'Completed', '41Y95536G0574381G', NULL, '2019-03-17 22:49:55', '2029-03-03 04:30:33'),
+(5, 17, 'user', 'user@gmail.com', '12131243', 25, 100, 'paypal', '5qfx1583231433', 'PREMIUM Via Paypal', 'Completed', '41Y95536G0574381G', NULL, '2019-03-17 22:49:55', '2029-03-03 04:30:33'),
 (6, 9, 'user', 'user@gmail.com', '12131243', 16, 100, 'paypal', '5qfx1583231433', 'PREMIUM Via Paypal', 'Completed', '41Y95536G0574381G', NULL, '2019-11-19 22:49:55', '2029-03-03 04:30:33');
 
 -- --------------------------------------------------------
@@ -526,18 +679,6 @@ CREATE TABLE `pagesettings` (
 
 INSERT INTO `pagesettings` (`id`, `success_message`, `contact_email`, `website`, `day`, `time`, `street_address`, `contact_number`, `fax`, `meta_key`, `meta_description`, `home_page_photo`, `home_page_title`, `trending_section`, `recent_section`, `new_section`, `old_section`) VALUES
 (1, 'Success! Thanks for contacting us, we will get back to you shortly.', 'admin@gmail.com', NULL, 'Mon - Sat', '9am - 5pm', 'Dhaka,Bangladesh', 19000000, '00 000 000 0001', 'c1,v1,n1,t1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget ipsum vel leo molestie cursus sit amet eget dolor. Quisque egestas nisi vitae ipsum porttitor,', '1582966128herobg.jpg', 'BROWSE ALL MOVIES & TV-SERIES', 1, 0, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -664,87 +805,32 @@ CREATE TABLE `show_images` (
 --
 
 INSERT INTO `show_images` (`id`, `image`, `imageable_id`, `imageable_type`, `created_at`, `updated_at`) VALUES
-(13, '1581584763girl.png', 17, 'App\\Models\\VideoLanguage', '2020-02-13 03:04:26', '2020-02-13 03:06:03'),
-(14, '1581584749man.png', 19, 'App\\Models\\VideoLanguage', '2020-02-13 03:05:32', '2020-02-13 03:05:50'),
-(15, '1581585069girl.png', 33, 'App\\Models\\Genre', '2020-02-13 03:10:54', '2020-02-13 03:11:09'),
-(20, '1581928133news.jpg', 10, 'App\\Models\\TvShow', '2020-02-16 04:17:35', '2020-02-17 02:28:53'),
-(21, '15818484031578741410blog.jpg', 11, 'App\\Models\\TvShow', '2020-02-16 04:20:03', '2020-02-16 04:20:03'),
-(22, '1639219562logo.png', 34, 'App\\Models\\Genre', '2020-02-16 04:37:13', '2021-12-11 04:46:03'),
-(23, '15818496421574060315servicebg.jpg', 35, 'App\\Models\\Genre', '2020-02-16 04:40:42', '2020-02-16 04:40:42'),
-(24, NULL, 13, 'App\\Models\\TvShow', '2020-02-17 02:41:58', '2020-02-17 02:41:58'),
-(25, '1584158069Kingdom_Korean_Drama-TP-310x310.jpg', 14, 'App\\Models\\TvShow', '2020-02-17 03:10:30', '2020-03-13 21:54:29'),
-(26, '1581931738request-call.png', 1, 'App\\Models\\TvSession', '2020-02-17 03:24:38', '2020-02-17 03:28:58'),
-(27, '1584158204Kingdom_Korean_Drama-TP-310x310.jpg', 2, 'App\\Models\\TvSession', '2020-02-17 03:29:23', '2020-03-13 21:56:44'),
-(28, '1584158204Kingdom_Korean_Drama-TP-310x310.jpg', 2, 'App\\Models\\TvSession', '2020-02-18 04:27:07', '2020-03-13 21:56:44'),
-(29, '1584158190Kingdom_Korean_Drama-TP-310x310.jpg', 3, 'App\\Models\\TvSession', '2020-02-18 04:27:34', '2020-03-13 21:56:30'),
-(30, '1582181638testimonial-author-1.png', 5, 'App\\Models\\Episode', '2020-02-20 00:53:58', '2020-02-20 00:53:58'),
-(31, '1582435740news.jpg', 6, 'App\\Models\\Episode', '2020-02-20 01:06:34', '2020-02-22 23:29:01'),
-(33, '1582189341Donations-min.jpg', 8, 'App\\Models\\Episode', '2020-02-20 03:02:21', '2020-02-20 03:02:21'),
-(34, '1582437616fg14935513162-min.jpg', 9, 'App\\Models\\Episode', '2020-02-22 21:57:20', '2020-02-23 00:00:16'),
-(35, '15824302871578741410blog.jpg', 10, 'App\\Models\\Episode', '2020-02-22 21:58:07', '2020-02-22 21:58:07'),
-(36, '1582439317ukaZ4gZZujLWoK4yRYUR6rj.jpg', 11, 'App\\Models\\Episode', '2020-02-23 00:28:00', '2020-02-23 00:28:37'),
-(37, '1584158246Brooklyn99-310x310.jpg', 4, 'App\\Models\\TvSession', '2020-02-23 01:03:09', '2020-03-13 21:57:26'),
-(38, '1582441429testimonial-author-1.png', 15, 'App\\Models\\TvShow', '2020-02-23 01:03:49', '2020-02-23 01:03:49'),
-(39, '1582454044Donations-min.jpg', 1, 'App\\Models\\SportsCategory', '2020-02-23 04:27:47', '2020-02-23 04:34:05'),
-(40, '1582454062testimonial-author-1.png', 2, 'App\\Models\\SportsCategory', '2020-02-23 04:34:22', '2020-02-23 04:34:22'),
-(41, '1582454228Donations-min.jpg', 3, 'App\\Models\\SportsCategory', '2020-02-23 04:36:16', '2020-02-23 04:37:08'),
-(42, '1582523947request-call.png', 1, 'App\\Models\\SportsVideo', '2020-02-23 22:45:04', '2020-02-23 23:59:07'),
-(43, '1582520864testimonial-author-1.png', 2, 'App\\Models\\SportsVideo', '2020-02-23 23:07:44', '2020-02-23 23:07:44'),
-(48, '1583142446unnamed.jpg', 20, 'App\\Models\\Movie', '2020-02-25 04:32:41', '2020-03-02 03:47:26'),
-(49, '1583142182inception_movie_poster_banner_01.jpg', 21, 'App\\Models\\Movie', '2020-02-25 21:24:30', '2020-03-02 03:43:02'),
-(50, '1583142205unnamed.jpg', 22, 'App\\Models\\Movie', '2020-02-25 22:24:07', '2020-03-02 03:43:25'),
-(51, '15829516341578465053request-call.png', 46, 'App\\Models\\Blog', '2020-02-28 21:26:55', '2020-02-28 22:47:14'),
-(52, '15829519881578741410blog.jpg', 47, 'App\\Models\\Blog', '2020-02-28 22:01:02', '2020-02-28 22:53:08'),
-(53, '15829560871578465053request-call.png', 36, 'App\\Models\\Genre', '2020-02-28 23:59:40', '2020-02-29 00:01:28'),
-(54, '1583142163Aladdin-Live-Action-Banner24.jpg-e1566222177733.jpeg', 23, 'App\\Models\\Movie', '2020-02-29 00:03:02', '2020-03-02 03:42:43'),
-(55, '1583208653paper-plane.png', 9, 'App\\Models\\SubscriptionPlan', '2020-03-02 22:10:04', '2020-03-02 22:10:53'),
-(56, '1583208711paper-plane.png', 10, 'App\\Models\\SubscriptionPlan', '2020-03-02 22:11:51', '2020-03-02 22:11:51'),
-(57, '1583208729paper-plane.png', 11, 'App\\Models\\SubscriptionPlan', '2020-03-02 22:12:10', '2020-03-02 22:12:10'),
-(58, '1583219342paper-plane.png', 15, 'App\\Models\\SubscriptionPlan', '2020-03-03 01:09:02', '2020-03-03 01:09:02'),
-(59, '1583219428paper-plane.png', 16, 'App\\Models\\SubscriptionPlan', '2020-03-03 01:10:28', '2020-03-03 01:10:28'),
-(60, '158356227215824302871578741410blog.jpg', 2, 'App\\Models\\CastCrew', '2020-03-07 00:18:51', '2020-03-07 00:24:32'),
-(61, '1583562713MV5BMTc2NjM5MTM0Ml5BMl5BanBnXkFtZTgwMTY3ODczNjM@._V1_UX214_CR0,0,214,317_AL_.jpg', 3, 'App\\Models\\CastCrew', '2020-03-07 00:31:53', '2020-03-07 00:31:53'),
-(62, '1583562851MV5BNzg1MTUyNDYxOF5BMl5BanBnXkFtZTgwNTQ4MTE2MjE@._V1_UX214_CR0,0,214,317_AL_.jpg', 4, 'App\\Models\\CastCrew', '2020-03-07 00:34:11', '2020-03-07 00:34:11'),
-(63, '1583562970MV5BMTU2NTg1OTQzMF5BMl5BanBnXkFtZTcwNjIyMjkyMg@@._V1_UY317_CR6,0,214,317_AL_.jpg', 5, 'App\\Models\\CastCrew', '2020-03-07 00:36:10', '2020-03-07 00:36:10'),
-(64, '1583563007MV5BNDQyNzMzZTMtYjlkNS00YzFhLWFhMTctY2M4YmQ1NmRhODBkXkEyXkFqcGdeQXVyNjcyNzgyOTE@._V1_UY317_CR20,0,214,317_AL_.jpg', 6, 'App\\Models\\CastCrew', '2020-03-07 00:36:47', '2020-03-07 00:36:47'),
-(65, '1639204609logo.png', 7, 'App\\Models\\CastCrew', '2020-03-07 00:37:30', '2021-12-11 00:36:51'),
-(66, '1583577794MV5BOTI0MzcxMTYtZDVkMy00NjY1LTgyMTYtZmUxN2M3NmQ2NWJhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg', 24, 'App\\Models\\Movie', '2020-03-07 01:07:29', '2020-03-07 04:43:15'),
-(67, '15840085001578465053request-call.png', 12, 'App\\Models\\Episode', '2020-03-12 04:21:40', '2020-03-12 04:21:40'),
-(68, '1584157446Brooklyn99-310x310.jpg', 16, 'App\\Models\\TvShow', '2020-03-13 21:44:06', '2020-03-13 21:44:06'),
-(69, '1584157597Brooklyn99-310x310.jpg', 17, 'App\\Models\\TvShow', '2020-03-13 21:46:37', '2020-03-13 21:46:37'),
-(70, '1584157690Brooklyn99-310x310.jpg', 18, 'App\\Models\\TvShow', '2020-03-13 21:48:10', '2020-03-13 21:48:10'),
-(71, '1584158122MV5BMjMyZTdlNjAtODZmOC00OGI2LTliOWEtNThmYjNiN2E2Njk2XkEyXkFqcGdeQXVyNjg4NzAyOTA@-310x310.jpg', 19, 'App\\Models\\TvShow', '2020-03-13 21:55:22', '2020-03-13 21:55:22'),
-(72, '1584158246Brooklyn99-310x310.jpg', 4, 'App\\Models\\TvSession', '2020-03-13 21:56:59', '2020-03-13 21:57:26'),
-(73, '1584158264MV5BMjMyZTdlNjAtODZmOC00OGI2LTliOWEtNThmYjNiN2E2Njk2XkEyXkFqcGdeQXVyNjg4NzAyOTA@-310x310.jpg', 5, 'App\\Models\\TvSession', '2020-03-13 21:57:44', '2020-03-13 21:57:44'),
-(74, '1584158281MV5BMjMyZTdlNjAtODZmOC00OGI2LTliOWEtNThmYjNiN2E2Njk2XkEyXkFqcGdeQXVyNjg4NzAyOTA@-310x310.jpg', 6, 'App\\Models\\TvSession', '2020-03-13 21:58:01', '2020-03-13 21:58:01'),
-(75, '1584158290MV5BMjMyZTdlNjAtODZmOC00OGI2LTliOWEtNThmYjNiN2E2Njk2XkEyXkFqcGdeQXVyNjg4NzAyOTA@-310x310.jpg', 7, 'App\\Models\\TvSession', '2020-03-13 21:58:10', '2020-03-13 21:58:10'),
-(76, '1584160189Brooklyn99-310x310.jpg', 13, 'App\\Models\\Episode', '2020-03-13 22:29:49', '2020-03-13 22:29:49'),
-(77, '1584160297Brooklyn99-310x310.jpg', 14, 'App\\Models\\Episode', '2020-03-13 22:31:37', '2020-03-13 22:31:37'),
-(78, '1584348517MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_UY317_CR23,0,214,317_AL_.jpg', 36, 'App\\Models\\Genre', '2020-03-16 02:48:37', '2020-03-16 02:48:37'),
-(79, '1584348650MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_UY317_CR23,0,214,317_AL_.jpg', 37, 'App\\Models\\Genre', '2020-03-16 02:50:50', '2020-03-16 02:50:50'),
-(80, '1639167062pexels-alesia-kozik-6765363.jpg', 25, 'App\\Models\\Movie', '2021-12-10 14:11:02', '2021-12-10 14:11:02'),
-(81, '1639169064logo.png', 28, 'App\\Models\\Movie', '2021-12-10 14:44:24', '2021-12-10 14:44:24'),
-(82, '1639219583pexels-alesia-kozik-6765363.jpg', 38, 'App\\Models\\Genre', '2021-12-11 04:46:23', '2021-12-11 04:46:23'),
-(83, '1639248013logo.png', 20, 'App\\Models\\TvShow', '2021-12-11 12:40:13', '2021-12-11 12:40:13'),
-(84, '1639248221logo.png', 21, 'App\\Models\\TvShow', '2021-12-11 12:43:41', '2021-12-11 12:43:41'),
-(85, '1639248279pexels-alesia-kozik-6765363.jpg', 22, 'App\\Models\\TvShow', '2021-12-11 12:44:39', '2021-12-11 12:44:39'),
-(86, '1639248739logo.png', 23, 'App\\Models\\TvShow', '2021-12-11 12:52:19', '2021-12-11 12:52:19'),
-(87, '1639248967logo.png', 24, 'App\\Models\\TvShow', '2021-12-11 12:56:08', '2021-12-11 12:56:08'),
-(88, '1639249112pexels-alesia-kozik-6765363.jpg', 25, 'App\\Models\\TvShow', '2021-12-11 12:58:32', '2021-12-11 12:58:32'),
-(89, '1639249691logo.png', 26, 'App\\Models\\TvShow', '2021-12-11 13:08:11', '2021-12-11 13:08:11'),
-(90, '1639249763screencapture-localhost-websolution-3-servicetop-kawsar-script-content-main-files-admin-pages-create-2021-09-15-20_48_42.png', 27, 'App\\Models\\TvShow', '2021-12-11 13:09:23', '2021-12-11 13:09:23'),
-(91, '1639333114logo.png', 8, 'App\\Models\\TvSession', '2021-12-12 12:18:36', '2021-12-12 12:18:36'),
-(92, '1639333136logo.png', 9, 'App\\Models\\TvSession', '2021-12-12 12:18:56', '2021-12-12 12:18:56'),
-(93, '1639333166pexels-alesia-kozik-6765363.jpg', 10, 'App\\Models\\TvSession', '2021-12-12 12:19:26', '2021-12-12 12:19:26'),
-(94, '1639333203pexels-alesia-kozik-6765363.jpg', 11, 'App\\Models\\TvSession', '2021-12-12 12:20:03', '2021-12-12 12:20:03'),
-(95, '1639333256logo.png', 12, 'App\\Models\\TvSession', '2021-12-12 12:20:56', '2021-12-12 12:20:56'),
-(96, '1639333481logo.png', 13, 'App\\Models\\TvSession', '2021-12-12 12:24:41', '2021-12-12 12:24:41'),
-(97, '1639333504logo.png', 14, 'App\\Models\\TvSession', '2021-12-12 12:25:04', '2021-12-12 12:25:04'),
-(98, '1639334582logo.png', 15, 'App\\Models\\Episode', '2021-12-12 12:43:02', '2021-12-12 12:43:02'),
-(99, '1639335610logo.png', 16, 'App\\Models\\Episode', '2021-12-12 13:00:10', '2021-12-12 13:00:10'),
-(100, '1639338268logo.png', 29, 'App\\Models\\Movie', '2021-12-12 13:44:28', '2021-12-12 13:44:28'),
-(101, '1639603069logo.png', 30, 'App\\Models\\Movie', '2021-12-15 15:17:49', '2021-12-15 15:17:49'),
-(102, '1639603069logo.png', 31, 'App\\Models\\Movie', '2021-12-15 15:17:49', '2021-12-15 15:17:49');
+(1, '1639849732logo.png', 3, 'App\\Models\\Gateway', '2021-12-18 11:48:52', '2021-12-18 11:48:52'),
+(2, '1639850159pexels-alesia-kozik-6765363.jpg', 2, 'App\\Models\\Gateway', '2021-12-18 11:54:19', '2021-12-18 11:55:59'),
+(5, '1639850483logo.png', 4, 'App\\Models\\Gateway', '2021-12-18 12:01:23', '2021-12-18 12:01:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `poster` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `movie_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sliders`
+--
+
+INSERT INTO `sliders` (`id`, `poster`, `movie_id`, `created_at`, `updated_at`) VALUES
+(2, '1639824455pexels-alesia-kozik-6765363.jpg', 30, '2021-12-18 04:15:07', '2021-12-18 04:47:35'),
+(3, '1639826258screencapture-localhost-websolution-3-servicetop-kawsar-script-content-main-files-admin-gateway-bank-2021-09-15-20_32_43.png', 30, '2021-12-18 05:17:38', '2021-12-18 05:17:38'),
+(4, '1639826289andrew-neel-cckf4TsHAuw-unsplash.jpg', 31, '2021-12-18 05:18:09', '2021-12-18 05:18:09');
 
 -- --------------------------------------------------------
 
@@ -882,7 +968,8 @@ CREATE TABLE `subscription_plans` (
 
 INSERT INTO `subscription_plans` (`id`, `plan_name`, `duration`, `price`, `icon`, `description`, `plan_features`, `status`, `created_at`, `updated_at`) VALUES
 (25, 'asda', 78, 89, NULL, 'asdasd asd asdsad asd a', '[\"2\"]', 1, '2021-12-11 12:22:32', '2021-12-11 12:29:21'),
-(26, 'asd', 78, 89, NULL, 'asdasd asd asdsad asd a', '[\"1\",\"2\"]', 1, '2021-12-11 12:32:54', '2021-12-11 12:32:54');
+(26, 'asd', 78, 89, NULL, 'asdasd asd asdsad asd a', '[\"1\",\"2\"]', 1, '2021-12-11 12:32:54', '2021-12-11 12:32:54'),
+(27, 'asda', 78, 500, NULL, 'asdasd asd asdsad asd a', '[\"2\"]', 1, '2021-12-16 14:00:15', '2021-12-16 14:00:15');
 
 -- --------------------------------------------------------
 
@@ -963,7 +1050,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `photo`, `email`, `address`, `phone`, `password`, `remember_token`, `created_at`, `updated_at`, `email_verified`, `status`, `verification_link`) VALUES
-(17, 'messi jr', 'neymar', NULL, 'khossain227@gmail.com', 'tesadasdasda', '0123456789', '$2y$10$h6r6vdiOXnoNRw7i4Cbbwu..A94yiQFXljuPPgmMu/yKoyUsx2LHC', 'NF6SADWdXPr4Xb5JNrpyfAXGKzxv61t61QACPkZSjay3tz0njCQaCxyUvB5N', '2021-12-15 13:45:20', '2021-12-15 14:20:34', 0, 0, '7e9d4ed79beb407c36f8e4925d2f1d6c');
+(17, 'messi jr', 'neymar', '1639773079logo.png', 'khossain227@gmail.com', 'tesadasdasda2', '0123456789', '$2y$10$h6r6vdiOXnoNRw7i4Cbbwu..A94yiQFXljuPPgmMu/yKoyUsx2LHC', 'NF6SADWdXPr4Xb5JNrpyfAXGKzxv61t61QACPkZSjay3tz0njCQaCxyUvB5N', '2021-12-15 13:45:20', '2021-12-17 14:36:35', 0, 0, '7e9d4ed79beb407c36f8e4925d2f1d6c');
 
 -- --------------------------------------------------------
 
@@ -1030,6 +1117,13 @@ ALTER TABLE `currencies`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `email_templates`
+--
+ALTER TABLE `email_templates`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email_templates_name_unique` (`name`);
+
+--
 -- Indexes for table `episodes`
 --
 ALTER TABLE `episodes`
@@ -1054,6 +1148,13 @@ ALTER TABLE `favarites`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gateways`
+--
+ALTER TABLE `gateways`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `gateways_gateway_name_unique` (`gateway_name`);
+
+--
 -- Indexes for table `generalsettings`
 --
 ALTER TABLE `generalsettings`
@@ -1069,6 +1170,24 @@ ALTER TABLE `genres`
 -- Indexes for table `languages`
 --
 ALTER TABLE `languages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menus`
+--
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu_settings`
+--
+ALTER TABLE `menu_settings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1108,12 +1227,6 @@ ALTER TABLE `pagesettings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
 -- Indexes for table `plan_features`
 --
 ALTER TABLE `plan_features`
@@ -1142,6 +1255,12 @@ ALTER TABLE `roles`
 -- Indexes for table `show_images`
 --
 ALTER TABLE `show_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1218,13 +1337,13 @@ ALTER TABLE `blogs`
 -- AUTO_INCREMENT for table `cast_crews`
 --
 ALTER TABLE `cast_crews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -1237,6 +1356,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `currencies`
   MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `email_templates`
+--
+ALTER TABLE `email_templates`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `episodes`
@@ -1263,6 +1388,12 @@ ALTER TABLE `favarites`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
+-- AUTO_INCREMENT for table `gateways`
+--
+ALTER TABLE `gateways`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `generalsettings`
 --
 ALTER TABLE `generalsettings`
@@ -1278,13 +1409,31 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `menus`
+--
+ALTER TABLE `menus`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `menu_settings`
+--
+ALTER TABLE `menu_settings`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `movies`
@@ -1344,7 +1493,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `show_images`
 --
 ALTER TABLE `show_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `socialsettings`
@@ -1374,7 +1529,7 @@ ALTER TABLE `subscribers`
 -- AUTO_INCREMENT for table `subscription_plans`
 --
 ALTER TABLE `subscription_plans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tv_sessions`
