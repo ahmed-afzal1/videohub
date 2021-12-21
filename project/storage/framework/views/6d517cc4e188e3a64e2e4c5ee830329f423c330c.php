@@ -1,6 +1,4 @@
-@extends('layouts.admin')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <div class="container-fluid" id="container-wrapper">
       
@@ -23,29 +21,29 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin-episode-store') }}" enctype="multipart/form-data" method="POST"
+                        <form action="<?php echo e(route('admin-episode-store'), false); ?>" enctype="multipart/form-data" method="POST"
                             >
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <input type="hidden" value="" id="is_video" name="is_video">
 
                             <div class="form-group">
-                                <label for="title">{{ __('Video Type') }}</label>
+                                <label for="title"><?php echo e(__('Video Type'), false); ?></label>
                                 <select class="form-control form-control-sm  mb-3" name="video_type" id="video_type">
-                                    <option value="file">{{ __('File') }}</option>
-                                    <option value="url">{{ __('Url') }}</option>
+                                    <option value="file"><?php echo e(__('File'), false); ?></option>
+                                    <option value="url"><?php echo e(__('Url'), false); ?></option>
                                 </select>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <div class="form-group VideoInsert">
-                                        <label for="video">{{ __('Video File') }}</label>
-                                        <span class="ml-3">{{ __('(support (mp4,webm,avi,flv,mkv))') }}</span>
+                                        <label for="video"><?php echo e(__('Video File'), false); ?></label>
+                                        <span class="ml-3"><?php echo e(__('(support (mp4,webm,avi,flv,mkv))'), false); ?></span>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="video_name" id="video"
-                                                value="" data-href="{{ route('admin.episode.processing') }}">
+                                                value="" data-href="<?php echo e(route('admin.episode.processing'), false); ?>">
                                             <input type="hidden" name="previous_video" id="previous_video" value="">
-                                            <label class="custom-file-label" for="video">{{ __('Choose file') }}</label>
+                                            <label class="custom-file-label" for="video"><?php echo e(__('Choose file'), false); ?></label>
                                         </div>
                                         <div class="progress mt-3 d-none">
                                             <div class="progress-bar" role="progressbar" aria-valuenow="25"
@@ -56,75 +54,75 @@
                                 <input type="hidden" value="" name="video" id="getId" value="">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="video_image">{{ __('Video Thumbnail') }}</label>
-                                        <span class="ml-3">{{ __('(support (jpeg,jpg,png))') }}</span>
+                                        <label for="video_image"><?php echo e(__('Video Thumbnail'), false); ?></label>
+                                        <span class="ml-3"><?php echo e(__('(support (jpeg,jpg,png))'), false); ?></span>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="video_image" id="video_image"
                                                 accept="image/*">
                                             <input type="hidden" value="" id="image_file">
-                                            <label class="custom-file-label" for="video">{{ __('Choose file') }}</label>
+                                            <label class="custom-file-label" for="video"><?php echo e(__('Choose file'), false); ?></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="title">{{ __('Episode Title') }}</label>
+                                <label for="title"><?php echo e(__('Episode Title'), false); ?></label>
                                 <input type="text" class="form-control" name="title" id="title"
-                                    placeholder="{{ __('Movie Title') }}">
+                                    placeholder="<?php echo e(__('Movie Title'), false); ?>">
                             </div>
 
                             <div class="form-group">
-                                <label for="title">{{ __('Episode Access') }}</label>
+                                <label for="title"><?php echo e(__('Episode Access'), false); ?></label>
                                 <select class="form-control  mb-3" name="access" id="title">
-                                    <option value="free">{{ __('Free') }}</option>
-                                    <option value="premium">{{ __('Premium') }}</option>
+                                    <option value="free"><?php echo e(__('Free'), false); ?></option>
+                                    <option value="premium"><?php echo e(__('Premium'), false); ?></option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="title">{{ __('Select Show') }}</label>
+                                <label for="title"><?php echo e(__('Select Show'), false); ?></label>
                                 <select class="form-control  mb-3" name="tv_show_id" id="TvShow">
-                                    <option value="" selected>{{ __('Select One') }}</option>
-                                    @foreach ($tvshows ?? '' as $item)
-                                        <option value="{{ $item->id }}">{{ $item->show_name }}</option>
-                                    @endforeach
+                                    <option value="" selected><?php echo e(__('Select One'), false); ?></option>
+                                    <?php $__currentLoopData = $tvshows ?? ''; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($item->id, false); ?>"><?php echo e($item->show_name, false); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
 
 
                             <div class="form-group">
-                                <label for="title">{{ __('Select Season') }}</label>
+                                <label for="title"><?php echo e(__('Select Season'), false); ?></label>
                                 <select class="form-control  mb-3" name="tv_session_id" id="tvSession">
-                                    <option value="">{{ __('Select One') }}</option>
+                                    <option value=""><?php echo e(__('Select One'), false); ?></option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="date">{{ __('Realse Date') }}</label>
+                                <label for="date"><?php echo e(__('Realse Date'), false); ?></label>
                                 <input type="text" class="form-control date" name="relase_date"
-                                    placeholder="{{ __('Realse Date') }}">
+                                    placeholder="<?php echo e(__('Realse Date'), false); ?>">
                             </div>
 
                             <div class="form-group">
-                                <label for="duration">{{ __('Duration') }}</label>
+                                <label for="duration"><?php echo e(__('Duration'), false); ?></label>
                                 <input type="text" class="form-control" name="duration"
-                                    placeholder="{{ __('1 hour 30 min') }}">
+                                    placeholder="<?php echo e(__('1 hour 30 min'), false); ?>">
                             </div>
 
                             <div class="form-group">
-                                <label for="tag">{{ __('Tag') }}</label>
+                                <label for="tag"><?php echo e(__('Tag'), false); ?></label>
                                 <input type="text" class="form-control" id="tag" name="tag"
-                                    placeholder="{{ __('Tag') }}">
+                                    placeholder="<?php echo e(__('Tag'), false); ?>">
                             </div>
 
                             <div class="form-group">
-                                <label for="description">{{ __('Description') }}</label>
+                                <label for="description"><?php echo e(__('Description'), false); ?></label>
                                 <textarea id="area1" class="form-control " name="description"
-                                    placeholder="{{ __('Description') }}"></textarea>
+                                    placeholder="<?php echo e(__('Description'), false); ?>"></textarea>
 
                             </div>
-                            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                            <button type="submit" class="btn btn-primary"><?php echo e(__('Submit'), false); ?></button>
                         </form>
                     </div>
                 </div>
@@ -132,9 +130,9 @@
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 
     <script>
         $('.date').datepicker();
@@ -146,12 +144,12 @@
   
         var input = $('.VideoInsert');
 
-        var fileHtml = `<label for="video">{{ __('Video File') }}</label>
-                <span class="ml-3">{{ __('(support (mp4,webm,avi,flv,mkv))') }}</span>
+        var fileHtml = `<label for="video"><?php echo e(__('Video File'), false); ?></label>
+                <span class="ml-3"><?php echo e(__('(support (mp4,webm,avi,flv,mkv))'), false); ?></span>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="video_name" id="video" value="" data-href="{{ route('admin.episode.processing') }}">
+                    <input type="file" class="custom-file-input" name="video_name" id="video" value="" data-href="<?php echo e(route('admin.episode.processing'), false); ?>">
                     <input type="hidden" name="previous_video" id="previous_video" value="">
-                    <label class="custom-file-label" for="video">{{ __('Choose file') }}</label>
+                    <label class="custom-file-label" for="video"><?php echo e(__('Choose file'), false); ?></label>
                 </div>
                 <div class="progress mt-3 d-none">
                     <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -159,8 +157,8 @@
 
 
         var urlHtml =
-            `<label for="url">{{ __('Video Url') }}</label>
-                <input type="text" class="form-control form-control-sm" style="padding:19px .5rem;"  value="" id="urlVideo" placeholder="{{ __('Video Url') }}">`;
+            `<label for="url"><?php echo e(__('Video Url'), false); ?></label>
+                <input type="text" class="form-control form-control-sm" style="padding:19px .5rem;"  value="" id="urlVideo" placeholder="<?php echo e(__('Video Url'), false); ?>">`;
 
 
 
@@ -264,14 +262,14 @@
 
         $(document).on('change', '#TvShow', function() {
             let showId = $(this).val();
-            let = getDataUrl = "{{ url('admin/episode/session/get') }}/" + showId;
+            let = getDataUrl = "<?php echo e(url('admin/episode/session/get'), false); ?>/" + showId;
             if (showId != '') {
                 $.ajax({
                     url: getDataUrl,
                     type: "get",
                     success: function(data) {
                         let SessionData =
-                        '<option value="" selected>{{ __('Select One') }}</option>';
+                        '<option value="" selected><?php echo e(__('Select One'), false); ?></option>';
                         data.data.map(function($value) {
                             SessionData +=
                                 `<option value="${$value.id}">${$value.session_title}</option>`;
@@ -284,4 +282,6 @@
         })
     </script>
 
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\video\videohub\project\resources\views/admin/episode/create.blade.php ENDPATH**/ ?>

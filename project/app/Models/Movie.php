@@ -8,7 +8,13 @@ use App\Models\CastCrew;
 
 class Movie extends Model
 {
-    protected $casts = ['category_id' => 'array','tag' => 'array'];
+    protected $casts = [
+        'category_id' => 'array',
+        'tag' => 'array',
+        'producer' => 'array',
+        'directors' => 'array',
+        'cast' => 'array'
+    ];
     
     protected $fillable = ['title','video','video_type','tag','description','access','relase_date',
     'producer','directors','cast',
@@ -34,14 +40,7 @@ class Movie extends Model
         }
         return explode(',', $value);
     }
-    public function getTagAttribute($value)
-    {
-        if($value == null)
-        {
-            return '';
-        }
-        return explode(',', $value);
-    }
+    
 
 
     public function getGenreIdAttribute($value)
@@ -54,32 +53,6 @@ class Movie extends Model
     }
 
 
-    public function getProducerAttribute($value)
-    {
-        if($value == null)
-        {
-            return '';
-        }
-        return explode(',', $value);
-    }
-
-    public function getDirectorsAttribute($value)
-    {
-        if($value == null)
-        {
-            return '';
-        }
-        return explode(',', $value);
-    }
-    public function getCastAttribute($value)
-    {
-        if($value == null)
-        {
-            return '';
-        }
-        return explode(',', $value);
-    }
- 
     public function genres()
     {
         if($this->genre_id == null)

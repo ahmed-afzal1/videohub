@@ -3,14 +3,7 @@
 
 @section('content')
 
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">{{ __('Update') }} <a href="{{ url()->previous() }}"
-                class="btn back-btn btn-sm">{{ __('Back') }}</a></h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboaard') }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ __('Update') }}</li>
-        </ol>
-    </div>
+   
 
     <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -101,7 +94,10 @@
 @push('script')
 
     <script>
+    $(function(){
+
         $('.select-2').select2();
         $( "#datepicker" ).datepicker();
+    })
     </script>
 @endpush

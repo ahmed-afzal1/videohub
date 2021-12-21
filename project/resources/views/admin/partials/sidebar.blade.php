@@ -254,6 +254,36 @@
 
                 </ul>
             </li>
+            
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-fw fa-columns"></i>
+                   <span>{{ __('Tv Show') }}</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                         <a class="nav-link" href="{{ route('admin-show-index') }}">{{ __('Shows') }}</a>
+
+                    </li>
+
+                    <li>
+                        <a class="nav-link"
+                            href="{{ route('admin-session-index') }}">{{ __('Seasons') }}</a>
+
+
+                    </li>
+
+                    <li>
+
+                        <a class="nav-link"
+                            href="{{ route('admin-episode-index') }}">{{ __('Episodes') }}</a>
+
+                    </li>
+
+
+                </ul>
+            </li>
 
 
 
@@ -267,23 +297,7 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#showTable" aria-expanded="true"
-                    aria-controls="collapseTable">
-                    <i class="fa fa-tv"></i>
-                    <span>{{ __('Tv Show') }}</span>
-                </a>
-                <div id="showTable" class="collapse" aria-labelledby="headingTable"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="nav-link" href="{{ route('admin-show-index') }}">{{ __('Shows') }}</a>
-                        <a class="nav-link"
-                            href="{{ route('admin-session-index') }}">{{ __('Seasons') }}</a>
-                        <a class="nav-link"
-                            href="{{ route('admin-episode-index') }}">{{ __('Episodes') }}</a>
-                    </div>
-                </div>
-            </li>
+         
 
 
 

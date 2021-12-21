@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/selectric.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/jquery-ui.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/tagify.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/summernote.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap-iconpicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/colorpicker.css') }}">
+    @stack('style-plugin')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/stisla.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ menu_asset('css/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/components.css') }}">
@@ -91,6 +93,7 @@
     <script src="{{ asset('assets/admin/js/colorpicker.js') }}"></script>
     <script src="{{ asset('assets/admin/js/jquery.uploadpreview.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/chart.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/tagify.js') }}"></script>
     <script src="{{ menu_asset('js/menu.js') }}"></script> 
     <script src="{{ asset('assets/admin/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/admin/js/custom.js') }}"></script>

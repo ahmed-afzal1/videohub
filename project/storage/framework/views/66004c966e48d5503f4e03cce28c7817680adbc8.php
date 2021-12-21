@@ -4,49 +4,49 @@
         
         <div class="card-body">
 
-            <form id="" action="<?php echo e(route('admin-subscription-plan-store')); ?>" method="POST">
+            <form id="" action="<?php echo e(route('admin-subscription-plan-store'), false); ?>" method="POST">
                 <?php echo csrf_field(); ?>
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label for="plan_name"><?php echo e(__('Plan Name')); ?></label>
+                        <label for="plan_name"><?php echo e(__('Plan Name'), false); ?></label>
                         <input type="text" class="form-control" name="plan_name" required id="plan_name"
-                            placeholder="<?php echo e(__('Plan Name')); ?>">
+                            placeholder="<?php echo e(__('Plan Name'), false); ?>">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="price"><?php echo e(__('Plan Price')); ?></label>
+                        <label for="price"><?php echo e(__('Plan Price'), false); ?></label>
                         <input type="text" class="form-control" name="price" required id="price"
-                            placeholder="<?php echo e(__('Plan Price')); ?>">
+                            placeholder="<?php echo e(__('Plan Price'), false); ?>">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="price"><?php echo e(__('Plan Duration in Days')); ?></label>
+                        <label for="price"><?php echo e(__('Plan Duration in Days'), false); ?></label>
                         <input type="text" class="form-control" name="duration" required
-                            placeholder="<?php echo e(__('Plan Duration')); ?>">
+                            placeholder="<?php echo e(__('Plan Duration'), false); ?>">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="price"><?php echo e(__('Plan Status')); ?></label>
+                        <label for="price"><?php echo e(__('Plan Status'), false); ?></label>
                         <select name="status" id="" class="form-control">
 
-                            <option value="1"><?php echo e(__('Active')); ?></option>
-                            <option value="0"><?php echo e(__('Inactive')); ?></option>
+                            <option value="1"><?php echo e(__('Active'), false); ?></option>
+                            <option value="0"><?php echo e(__('Inactive'), false); ?></option>
 
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="price"><?php echo e(__('Plan Features')); ?></label>
+                        <label for="price"><?php echo e(__('Plan Features'), false); ?></label>
                         <select name="plan_features[]" multiple class="form-control select-2">
 
                             <?php $__currentLoopData = $features; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $featrue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($featrue->id); ?>"><?php echo e(__($featrue->features)); ?></option>
+                                <option value="<?php echo e($featrue->id, false); ?>"><?php echo e(__($featrue->features), false); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </select>
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="description"><?php echo e(__('Short Description')); ?></label>
-                        <input type="text" name="description" id="description" placeholder="<?php echo e(__('Description')); ?>"
+                        <label for="description"><?php echo e(__('Short Description'), false); ?></label>
+                        <input type="text" name="description" id="description" placeholder="<?php echo e(__('Description'), false); ?>"
                             class="form-control">
                     </div>
 
@@ -59,7 +59,7 @@
 
 
                 </div>
-                <button type="submit" class="btn btn-primary"><?php echo e(__('Save')); ?></button>
+                <button type="submit" class="btn btn-primary"><?php echo e(__('Save'), false); ?></button>
             </form>
         </div>
     </div>
