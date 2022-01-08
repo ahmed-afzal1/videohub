@@ -141,10 +141,7 @@
 
                                             <div class="col-md-12 user-data">
                                                 <div class="row">
-
-
                                                     @if (@$gateway->user_proof_param != null)
-
 
                                                         @foreach ($gateway->user_proof_param as $key => $param)
                 
@@ -209,7 +206,6 @@
                                                             </div>
                                                         @endforeach
 
-
                                                     @endif
                                                 </div>
 
@@ -233,9 +229,7 @@
             </div>
         </div>
 
-
     </div>
-
 
 @endsection
 
