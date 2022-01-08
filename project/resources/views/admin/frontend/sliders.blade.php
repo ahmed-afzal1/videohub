@@ -68,7 +68,6 @@
 
     </div>
 
-
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form action="" method="post" enctype="multipart/form-data">
@@ -81,34 +80,26 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
+                        <div class="row">
+                            <div class="form-group col-md-12 mb-3">
+                                <label class="col-form-label">{{ __('Slider Poster') }}</label>
 
-
-                                <div class="form-group col-md-12 mb-3">
-                                    <label class="col-form-label">{{ __('Slider Poster') }}</label>
-
-                                    <div id="image-preview" class="image-preview w-100" style="background-image:url()">
-                                        <label for="image-upload" id="image-label">{{ __('Choose File') }}</label>
-                                        <input type="file" name="image" id="image-upload" />
-                                    </div>
-
+                                <div id="image-preview" class="image-preview w-100" style="background-image:url()">
+                                    <label for="image-upload" id="image-label">{{ __('Choose File') }}</label>
+                                    <input type="file" name="image" id="image-upload" />
                                 </div>
-
-
-                                <div class="form-group col-md-12">
-                                    <label for="">{{__('Select Movie')}}</label>
-
-                                    <select name="movie" id="" class="form-control">
-                                        @foreach ($movies as $movie)
-                                            <option value="{{$movie->id}}">{{$movie->title}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-
 
                             </div>
+                            <div class="form-group col-md-12">
+                                <label for="">{{__('Select Movie')}}</label>
+
+                                <select name="movie" id="" class="form-control">
+                                    @foreach ($movies as $movie)
+                                        <option value="{{$movie->id}}">{{$movie->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -116,12 +107,9 @@
                         <button type="submit" class="btn btn-primary">Create</button>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div>  
-    
     
     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -135,34 +123,28 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
+                        <div class="row">
 
+                            <div class="form-group col-md-12 mb-3">
+                                <label class="col-form-label">{{ __('Slider Poster') }}</label>
 
-                                <div class="form-group col-md-12 mb-3">
-                                    <label class="col-form-label">{{ __('Slider Poster') }}</label>
-
-                                    <div id="image-preview-update" class="image-preview w-100" style="background-image:url()">
-                                        <label for="image-upload-update" id="image-label-update">{{ __('Choose File') }}</label>
-                                        <input type="file" name="image" id="image-upload-update" />
-                                    </div>
-
+                                <div id="image-preview-update" class="image-preview w-100" style="background-image:url()">
+                                    <label for="image-upload-update" id="image-label-update">{{ __('Choose File') }}</label>
+                                    <input type="file" name="image" id="image-upload-update" />
                                 </div>
-
-
-                                <div class="form-group col-md-12">
-                                    <label for="">{{__('Select Movie')}}</label>
-
-                                    <select name="movie" id="" class="form-control">
-                                        @foreach ($movies as $movie)
-                                            <option value="{{$movie->id}}">{{$movie->title}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-
 
                             </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="">{{__('Select Movie')}}</label>
+
+                                <select name="movie" id="" class="form-control">
+                                    @foreach ($movies as $movie)
+                                        <option value="{{$movie->id}}">{{$movie->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -170,12 +152,9 @@
                         <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div> 
-    
     
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -189,24 +168,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container-fluid">
-                            
-                            <p>{{__('Are You Sure To Delete Sliders')}}</p>
-                        </div>
+                        <p>{{__('Are You Sure To Delete Sliders')}}</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div>
-
-
-
 
 @endsection
 

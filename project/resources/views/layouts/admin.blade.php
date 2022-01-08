@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/colorpicker.css') }}">
     @stack('style-plugin')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/stisla.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ menu_asset('css/menu.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ menu_asset('css/menu.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/css/menu.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/admin/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/extra.css') }}">
 
     @stack('style')
 

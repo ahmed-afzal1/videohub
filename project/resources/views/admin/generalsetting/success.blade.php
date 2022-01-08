@@ -12,7 +12,6 @@
       </ol>
   </div>
 
-
   <div class="card mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
     <h6 class="m-0 font-weight-bold text-primary">{{__('Success Messages')}}</h6>
@@ -26,21 +25,21 @@
           </div>
         </div>
        
-        <div class="form-group row mb-5">
+        <div class="form-group row">
           <label for="tawk_id" class="col-sm-3 col-form-label">{{ __('Subscribe Error') }} *</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" id="tawk_id" name="tawk_id" placeholder="{{ __('Subscribe Error') }}">
           </div>
         </div>
 
-        <div class="form-group row mb-5">
+        <div class="form-group row">
           <label for="success_title" class="col-sm-3 col-form-label">{{ __('Order Success Title ') }} *</label>
           <div class="col-sm-9">
             <textarea class="form-control" id="success_title" rows="5" placeholder="{{ __('Order Success Title ') }}"></textarea>
           </div>
         </div>
 
-        <div class="form-group row mb-5">
+        <div class="form-group row">
           <label for="success_text" class="col-sm-3 col-form-label">{{ __('Order Success Text') }} *</label>
           <div class="col-sm-9">
             <textarea class="form-control" id="success_text" rows="5" placeholder="{{ __('Order Success Text') }}"></textarea>
@@ -48,8 +47,9 @@
         </div>
 
         <div class="form-group row">
-          <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-9">
+            <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
           </div>
         </div>
       </form>

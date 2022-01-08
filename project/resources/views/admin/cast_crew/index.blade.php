@@ -57,21 +57,13 @@
 
                                             </td>
                                             <td>
-                                                <div class="action-list"><a
-                                                        href="{{ route('admin-cast-crew-edit', $castAndCrew->id) }}"
-                                                        class="btn btn-primary btn-sm mr-2"> <i
-                                                            class="fas fa-pen mr-1"></i></a>
-                                                    <a href="javascript:void(0);"
-                                                        data-href=" {{ route('admin-cast-crew-delete', $castAndCrew->id) }}"
-                                                        class="btn btn-danger btn-sm delete"><i
-                                                            class="fas fa-trash-alt"></i></a>
-                                                </div>
+                                                <a href="{{ route('admin-cast-crew-edit', $castAndCrew->id) }}" class="btn btn-primary"> <i class="fas fa-pen"></i></a>
+                                                <a href="javascript:void(0);" data-href=" {{ route('admin-cast-crew-delete', $castAndCrew->id) }}" class="btn btn-danger delete"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     @empty
 
                                         <tr>
-
                                             <td class="text-center" colspan="100%">{{ __('No Cast and Crew Found') }}
                                             </td>
 

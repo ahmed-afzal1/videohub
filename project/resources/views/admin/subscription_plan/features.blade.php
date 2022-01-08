@@ -69,9 +69,6 @@
         </div>
     </div>
 
-
-
-
     <!-- Modal -->
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -85,17 +82,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
+                        <div class="row">
 
-                                <div class="form-group col-md-12">
+                            <div class="form-group col-md-12">
 
-                                    <label for="features">{{ __('Feature') }}</label>
-                                    <input type="text" name="features" class="form-control"
-                                        placeholder="{{ __('Subscription Plan Featured') }}" id="features">
-                                </div>
-
+                                <label for="features">{{ __('Feature') }}</label>
+                                <input type="text" name="features" class="form-control"
+                                    placeholder="{{ __('Subscription Plan Featured') }}" id="features">
                             </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -106,7 +101,6 @@
             </form>
         </div>
     </div>
-
 
     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -120,17 +114,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
+                        <div class="row">
 
-                                <div class="form-group col-md-12">
+                            <div class="form-group col-md-12">
 
-                                    <label for="features">{{ __('Feature') }}</label>
-                                    <input type="text" name="features" class="form-control"
-                                        placeholder="{{ __('Subscription Plan Featured') }}" id="features">
-                                </div>
-
+                                <label for="features">{{ __('Feature') }}</label>
+                                <input type="text" name="features" class="form-control"
+                                    placeholder="{{ __('Subscription Plan Featured') }}" id="features">
                             </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
