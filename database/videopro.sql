@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2021 at 08:45 PM
+-- Generation Time: Jan 09, 2022 at 05:58 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -104,7 +104,7 @@ INSERT INTO `cast_crews` (`id`, `name`, `bio`, `status`, `created_at`, `updated_
 (5, 'Chris Evans', 'Christopher Robert Evans began his acting career in typical fashion: performing in school productions and community theatre. He was born in Boston, Massachusetts, the son of Lisa (Capuano), who worked at the Concord Youth Theatre, and G. Robert Evans III, a dentist. His uncle is congressman Mike Capuano. Chris\'s father is of half German and half', 1, '2020-03-07 00:36:10', '2020-03-07 00:36:10'),
 (6, 'Mark Ruffalo', 'Mark Ruffalo was born in Kenosha, Wisconsin, to Marie Rose (Hebert), a stylist and hairdresser, and Frank Lawrence Ruffalo, a construction painter. His father\'s ancestry is Italian, and his mother is of half French-Canadian and half Italian descent. Mark moved with his family to Virginia Beach, Virginia, where he lived out most of his teenage', 1, '2020-03-07 00:36:47', '2020-03-07 00:36:47'),
 (7, 'Scarlett Johansson', 'Scarlett Johansson was born in New York City. Her mother, Melanie Sloan, is from a Jewish family from the Bronx, and her father, Karsten Johansson, is a Danish-born architect, from Copenhagen. She has a sister, Vanessa Johansson, who is also an actress, a brother, Adrian, a twin brother, Hunter Johansson, born three minutes after her', 1, '2020-03-07 00:37:30', '2020-03-16 03:44:23'),
-(8, 'created_at', 'mhjkh khkjhlk', 1, '2021-12-16 14:37:51', '2021-12-16 14:37:51');
+(8, 'created_at', 'mhjkh khkjhlk', 1, '2021-12-16 14:37:51', '2021-12-29 12:22:26');
 
 -- --------------------------------------------------------
 
@@ -129,7 +129,7 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `status`, `created_at`, `updated
 (3, 'Thriller', 'thriller', 1, '2021-12-10 13:56:23', '2021-12-12 13:41:02'),
 (4, 'Horror', 'horror', 1, '2021-12-10 13:56:29', '2021-12-12 13:40:37'),
 (5, 'Action', 'action', 1, '2021-12-10 13:56:35', '2021-12-12 13:40:36'),
-(6, 'Romantic', 'romantic', 1, '2021-12-10 13:56:43', '2021-12-12 13:40:35');
+(6, 'Romantic', 'romantic', 1, '2021-12-10 13:56:43', '2021-12-29 12:21:35');
 
 -- --------------------------------------------------------
 
@@ -234,7 +234,8 @@ CREATE TABLE `episodes` (
 --
 
 INSERT INTO `episodes` (`id`, `access`, `tv_show_id`, `tv_session_id`, `title`, `description`, `release_date`, `duration`, `video_type`, `video`, `status`, `slug`, `tag`, `created_at`, `updated_at`) VALUES
-(16, 'free', 25, 14, 'khusu', '8989898d asdasda sdasdasdasd as', '2021-12-12 19:00:10', '78', 'url', 'https://www.youtube.com/embed/-4dtjKFqEEE', 1, 'khusu', '898989', '2021-12-12 13:00:10', '2021-12-12 13:05:58');
+(16, 'free', 25, 14, 'khusu', '8989898d asdasda sdasdasdasd as', '2021-12-12 19:00:10', '78', 'url', 'https://www.youtube.com/embed/-4dtjKFqEEE', 1, 'khusu', '898989', '2021-12-12 13:00:10', '2021-12-12 13:05:58'),
+(17, 'free', 24, 15, 'khusu', 'adasdadasd', '2021-12-21 20:59:25', '78', 'url', 'https://www.youtube.com/embed/S-lwK7n-4_s', 1, 'khusu', 'dsadsd,asdasdasd', '2021-12-21 14:59:25', '2021-12-21 14:59:25');
 
 -- --------------------------------------------------------
 
@@ -407,8 +408,7 @@ CREATE TABLE `genres` (
 --
 
 INSERT INTO `genres` (`id`, `name`, `slug`, `status`, `updated_at`, `created_at`) VALUES
-(34, 'Flower', 'flower', 1, '2021-12-11 13:09:00', NULL),
-(38, 'messi jr', 'asdsdas', 1, '2021-12-11 10:46:22', NULL);
+(39, 'sub', 'asdsdas', 1, '2021-12-29 18:40:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -556,6 +556,7 @@ CREATE TABLE `movies` (
   `category_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `language_id` int(11) DEFAULT NULL,
   `video` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `duration` int(11) NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tag` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
@@ -573,9 +574,9 @@ CREATE TABLE `movies` (
 -- Dumping data for table `movies`
 --
 
-INSERT INTO `movies` (`id`, `title`, `slug`, `video_type`, `genre_id`, `category_id`, `language_id`, `video`, `description`, `tag`, `status`, `access`, `relase_date`, `heighlight`, `producer`, `directors`, `cast`, `created_at`, `updated_at`) VALUES
-(30, 'The Office', 'khusu', 'url', NULL, '[\"3\",\"4\"]', NULL, 'https://www.youtube.com/embed/-4dtjKFqEEE', 'dskjsadfh ksdafh ksajdfhslkajdfhasfkhasdljkfahsf', '789416', '1', 'free', '12/23/2021', 'new', '4', '5', '6', '2021-12-15 15:17:49', '2021-12-15 15:17:49'),
-(31, 'Spider-Man\'s Greatest Movie Moments Ranked', 'khusu-2', 'url', NULL, '[\"3\",\"4\"]', NULL, 'https://www.youtube.com/embed/-4dtjKFqEEE', 'dskjsadfh ksdafh ksajdfhslkajdfhasfkhasdljkfahsf', '789416', '1', 'free', '12/23/2021', 'new', '4', '5', '6', '2021-12-15 15:17:49', '2021-12-15 15:17:49');
+INSERT INTO `movies` (`id`, `title`, `slug`, `video_type`, `genre_id`, `category_id`, `language_id`, `video`, `duration`, `description`, `tag`, `status`, `access`, `relase_date`, `heighlight`, `producer`, `directors`, `cast`, `created_at`, `updated_at`) VALUES
+(34, 'The Office', 'ter', 'url', '[\"39\"]', '[\"3\"]', NULL, 'https://www.youtube.com/embed/-4dtjKFqEEE', 50, 'sadasdasda sdasd asd', '[\"sadasdasd\"]', '1', 'premium', '01-01-1970', 'new', '[\"4\"]', '[\"5\"]', '[\"6\"]', '2021-12-29 12:41:15', '2021-12-29 13:31:22'),
+(35, 'test', 'test', 'url', '[\"39\"]', '[\"5\"]', NULL, 'https://www.youtube.com/embed/S-lwK7n-4_s', 0, 'dasd asd asd asdas d asda sd asd a', '[\"wqwqwq\"]', '1', 'free', '01-01-1970', 'new', '[\"3\"]', '[\"5\"]', '[\"6\"]', '2021-12-29 12:45:50', '2022-01-02 10:44:52');
 
 -- --------------------------------------------------------
 
@@ -621,7 +622,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `name`, `email`, `phone`, `plan_id`, `order_amount`, `payment_type`, `order_number`, `title`, `payment_status`, `txnid`, `charge_id`, `created_at`, `updated_at`) VALUES
-(5, 17, 'user', 'user@gmail.com', '12131243', 25, 100, 'paypal', '5qfx1583231433', 'PREMIUM Via Paypal', 'Completed', '41Y95536G0574381G', NULL, '2019-03-17 22:49:55', '2029-03-03 04:30:33'),
+(5, 17, 'user', 'user@gmail.com', '12131243', 25, 100, 'paypal', '5qfx1583231433', 'PREMIUM Via Paypal', 'Completed', '41Y95536G0574381G', NULL, '2021-12-20 22:49:55', '2029-03-03 04:30:33'),
 (6, 9, 'user', 'user@gmail.com', '12131243', 16, 100, 'paypal', '5qfx1583231433', 'PREMIUM Via Paypal', 'Completed', '41Y95536G0574381G', NULL, '2019-11-19 22:49:55', '2029-03-03 04:30:33');
 
 -- --------------------------------------------------------
@@ -807,7 +808,17 @@ CREATE TABLE `show_images` (
 INSERT INTO `show_images` (`id`, `image`, `imageable_id`, `imageable_type`, `created_at`, `updated_at`) VALUES
 (1, '1639849732logo.png', 3, 'App\\Models\\Gateway', '2021-12-18 11:48:52', '2021-12-18 11:48:52'),
 (2, '1639850159pexels-alesia-kozik-6765363.jpg', 2, 'App\\Models\\Gateway', '2021-12-18 11:54:19', '2021-12-18 11:55:59'),
-(5, '1639850483logo.png', 4, 'App\\Models\\Gateway', '2021-12-18 12:01:23', '2021-12-18 12:01:23');
+(5, '1639850483logo.png', 4, 'App\\Models\\Gateway', '2021-12-18 12:01:23', '2021-12-18 12:01:23'),
+(6, '1640119289pexels-alesia-kozik-6765363.jpg', 32, 'App\\Models\\Movie', '2021-12-21 14:41:29', '2021-12-21 14:41:29'),
+(7, '1640119799logo.png', 33, 'App\\Models\\Movie', '2021-12-21 14:49:59', '2021-12-21 14:49:59'),
+(8, '1640120236logo.png', 28, 'App\\Models\\TvShow', '2021-12-21 14:57:16', '2021-12-21 14:57:16'),
+(9, '1640120297logo.png', 15, 'App\\Models\\TvSession', '2021-12-21 14:58:17', '2021-12-21 14:58:17'),
+(10, '1640120365logo.png', 17, 'App\\Models\\Episode', '2021-12-21 14:59:25', '2021-12-21 14:59:25'),
+(11, '1640803238download.jfif', 39, 'App\\Models\\Genre', '2021-12-29 12:40:39', '2021-12-29 12:40:39'),
+(12, '1640808632download.jfif', 34, 'App\\Models\\Movie', '2021-12-29 12:41:15', '2021-12-29 14:10:32'),
+(13, '1640803550istockphoto-1218254547-170667a.jpg', 35, 'App\\Models\\Movie', '2021-12-29 12:45:50', '2021-12-29 12:45:50'),
+(14, '1640806788download.jfif', 8, 'App\\Models\\CastCrew', '2021-12-29 13:39:48', '2021-12-29 13:39:48'),
+(15, '1640806974bitcoin-cta-right.06cde660ad057c8bcfac80281a2a89c3.png', 6, 'App\\Models\\CastCrew', '2021-12-29 13:42:54', '2021-12-29 13:42:54');
 
 -- --------------------------------------------------------
 
@@ -828,9 +839,7 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `poster`, `movie_id`, `created_at`, `updated_at`) VALUES
-(2, '1639824455pexels-alesia-kozik-6765363.jpg', 30, '2021-12-18 04:15:07', '2021-12-18 04:47:35'),
-(3, '1639826258screencapture-localhost-websolution-3-servicetop-kawsar-script-content-main-files-admin-gateway-bank-2021-09-15-20_32_43.png', 30, '2021-12-18 05:17:38', '2021-12-18 05:17:38'),
-(4, '1639826289andrew-neel-cckf4TsHAuw-unsplash.jpg', 31, '2021-12-18 05:18:09', '2021-12-18 05:18:09');
+(5, '1640802956download.jfif', 34, '2021-12-29 12:35:56', '2021-12-29 12:41:28');
 
 -- --------------------------------------------------------
 
@@ -992,7 +1001,8 @@ CREATE TABLE `tv_sessions` (
 --
 
 INSERT INTO `tv_sessions` (`id`, `show_id`, `session_title`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(14, 25, 'Season 1', 'season-1', 1, '2021-12-12 12:25:04', '2021-12-12 12:25:04');
+(14, 25, 'Season 1', 'season-1', 1, '2021-12-12 12:25:04', '2021-12-12 12:25:04'),
+(15, 24, 'Season 1', 'season-1', 1, '2021-12-21 14:58:17', '2021-12-21 14:58:17');
 
 -- --------------------------------------------------------
 
@@ -1020,7 +1030,8 @@ CREATE TABLE `tv_shows` (
 
 INSERT INTO `tv_shows` (`id`, `language_id`, `genre_id`, `show_name`, `slug`, `description`, `status`, `access`, `relase_date`, `created_at`, `updated_at`) VALUES
 (24, NULL, '[\"38\"]', 'asdsad', 'asdsad', 'aad asd asdasd adasda', 1, 'free', '12/14/2021', '2021-12-11 12:56:07', '2021-12-11 12:56:07'),
-(25, NULL, '[\"38\"]', 'test3', 'test3', 'ad asdasdas dasd asd', 1, 'free', '12/13/2021', '2021-12-11 12:58:31', '2021-12-11 13:02:34');
+(25, NULL, '[\"38\"]', 'test3', 'test3', 'ad asdasdas dasd asd', 0, 'free', '12/13/2021', '2021-12-11 12:58:31', '2021-12-21 14:55:24'),
+(28, NULL, '[\"34\"]', 'asdsad', 'asdsad', 'sdf sdf afadf sajkjkjgdfjasdg fjsdf', 1, 'free', '12/23/2021', '2021-12-21 14:57:15', '2021-12-29 12:32:03');
 
 -- --------------------------------------------------------
 
@@ -1050,7 +1061,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `photo`, `email`, `address`, `phone`, `password`, `remember_token`, `created_at`, `updated_at`, `email_verified`, `status`, `verification_link`) VALUES
-(17, 'messi jr', 'neymar', '1639773079logo.png', 'khossain227@gmail.com', 'tesadasdasda2', '0123456789', '$2y$10$h6r6vdiOXnoNRw7i4Cbbwu..A94yiQFXljuPPgmMu/yKoyUsx2LHC', 'NF6SADWdXPr4Xb5JNrpyfAXGKzxv61t61QACPkZSjay3tz0njCQaCxyUvB5N', '2021-12-15 13:45:20', '2021-12-17 14:36:35', 0, 0, '7e9d4ed79beb407c36f8e4925d2f1d6c');
+(17, 'messi jr', 'neymar', '1639773079logo.png', 'khossain227@gmail.com', 'tesadasdasda3', '0123456789', '$2y$10$h6r6vdiOXnoNRw7i4Cbbwu..A94yiQFXljuPPgmMu/yKoyUsx2LHC', 'wHTHE4q84mcK72jJKx5UMPF9N7QfMJxNL0VZJR837EbObsTQccPC1Z4sM4gw', '2021-12-15 13:45:20', '2022-01-02 10:41:00', 0, 0, '7e9d4ed79beb407c36f8e4925d2f1d6c');
 
 -- --------------------------------------------------------
 
@@ -1367,7 +1378,7 @@ ALTER TABLE `email_templates`
 -- AUTO_INCREMENT for table `episodes`
 --
 ALTER TABLE `episodes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1403,7 +1414,7 @@ ALTER TABLE `generalsettings`
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `languages`
@@ -1439,7 +1450,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -1493,13 +1504,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `show_images`
 --
 ALTER TABLE `show_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `socialsettings`
@@ -1535,13 +1546,13 @@ ALTER TABLE `subscription_plans`
 -- AUTO_INCREMENT for table `tv_sessions`
 --
 ALTER TABLE `tv_sessions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tv_shows`
 --
 ALTER TABLE `tv_shows`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users`
