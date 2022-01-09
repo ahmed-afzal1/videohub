@@ -67,8 +67,10 @@ class MovieController extends Controller
         $input['tag'] = $request->tag;
         $input['video_type'] = $request->video_type;
         $input['category_id'] = $request->category;
+        $input['genre_id'] = $request->genre;
 
         $input['producer'] = $request->producer;
+        $input['duration'] = $request->duration;
         $input['directors'] = $request->directors;
         $input['cast'] = $request->cast;
         $location = 'assets/videos';
@@ -237,10 +239,12 @@ class MovieController extends Controller
         }
 
         $input['tag'] = $request->tag;
+        $input['genre_id'] = $request->genre;
         $input['producer'] = $request->producer;
         $input['directors'] = $request->directors;
         $input['cast'] = $request->cast;
         $input['slug'] = Helper::slug($request->title . ' ' . $request->release_date);
+        $input['duration'] = $request->duration;
         $input['category_id'] = $request->category;
         $data->update($input);
         Helper::tempClear();

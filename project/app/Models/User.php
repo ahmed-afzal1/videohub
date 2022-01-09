@@ -66,16 +66,10 @@ class User extends Authenticatable
     {
         $order = Order::where('user_id',Auth::user()->id)->orderby('id','desc')->first();
         if($order){
-            if($order->plan->time ==1){
-                $time = 'day';
-              }elseif($order->plan->time == 30){
-                $time = 'month';
-              }else{
-                $time = 'year';
-              }
+           
     
-            $create = Carbon::parse(Carbon::now());
-            $expire = Carbon::parse($order->created_at->add($order->plan->duration . ' '. $time)); 
+            $create = now();
+            $expire = Carbon::parse($order->created_at->addDays($order->plan->duration)); 
     
             if($expire->gt($create)){
                 return true;

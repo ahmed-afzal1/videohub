@@ -10,17 +10,17 @@
     <meta name="keywords"
         content="business,corporate, creative, woocommerach, design, gallery, minimal, modern, landing page, cv, designer, freelancer, html, one page, personal, portfolio, programmer, responsive, vcard, one page" />
     <meta name="author" content="ZaiFlix" />
-    <link rel="shortcut icon" href="<?php echo e(asset('assets/front/images/favicon.pn')); ?>g" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo e(asset('assets/front/images/favicon.pn'), false); ?>g" type="image/x-icon">
     <!-- fonts file -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- css file  -->
-    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/plugins.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/bootstrap.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('assets/front/scss/style.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/responsive.css')); ?>">
-    <script src="<?php echo e(asset('assets/front/js/modernizr-3.11.2.min.js')); ?>"></script>
+    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/plugins.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/bootstrap.min.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/front/scss/style.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/front/css/responsive.css'), false); ?>">
+    <script src="<?php echo e(asset('assets/front/js/modernizr-3.11.2.min.js'), false); ?>"></script>
 </head>
 
 <body>
@@ -51,7 +51,7 @@
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileoffcanvas">
         <div class="offcanvas-header">
-            <a class="navbar-brand" href="index.html"><img src="<?php echo e(asset('assets/front/images/logo.png')); ?>"
+            <a class="navbar-brand" href="index.html"><img src="<?php echo e(asset('assets/front/images/logo.png'), false); ?>"
                     alt="ZaiFlix" /></a>
             <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas"
                 aria-label="Close"></button>
@@ -68,7 +68,7 @@
             <div class="button-list d-flex align-items-center justify-content-center">
                 <div class="dropdown language-dropdown">
                     <button class="language-btn" data-bs-toggle="dropdown">
-                        <img class="flag" src="<?php echo e(asset('assets/front/images/usa-flag.png')); ?>"
+                        <img class="flag" src="<?php echo e(asset('assets/front/images/usa-flag.png'), false); ?>"
                             alt="usa" />
                         <span class="btn-text">EN</span>
                         <i class="agnle-down fas fa-angle-down"></i>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="dropdown favourite-dropdown">
                     <button class="favourite-btn" data-bs-toggle="dropdown">
-                        <img class="favourite" src="<?php echo e(asset('assets/front/images/favourite.svg')); ?>"
+                        <img class="favourite" src="<?php echo e(asset('assets/front/images/favourite.svg'), false); ?>"
                             alt="favourite" />
                     </button>
                     <div class="dropdown-menu">
@@ -89,7 +89,7 @@
                             <li>
                                 <a href="#" class="singtle-movi">
                                     <div class="movi-image">
-                                        <img src="<?php echo e(asset('assets/front/images/favourite-1.png')); ?>"
+                                        <img src="<?php echo e(asset('assets/front/images/favourite-1.png'), false); ?>"
                                             alt="favourite" />
                                     </div>
                                     <div class="movi-info">
@@ -292,7 +292,7 @@
                     <div class="col-xl-6 col-lg-3 col-md-6 col-sm-6">
                         <div class="single-widget about-widget">
                             <a href="index.html" class="brand-logo"><img
-                                    src="<?php echo e(asset('assets/front/images/logo.png')); ?>" alt="logo" /></a>
+                                    src="<?php echo e(asset('assets/front/images/logo.png'), false); ?>" alt="logo" /></a>
                             <p>Wonderful serenity has taken possession of my entire soul, like these sweet mornings of
                                 spring which I enjoy with my whole</p>
                             <ul class="social-media">
@@ -370,10 +370,12 @@
     <!-- footer area end here  -->
 
     <!-- js file  -->
-    <script src="<?php echo e(asset('assets/front/js/jquery-3.6.0.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/front/js/bootstrap.bundle.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/front/js/plugins.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/front/js/main.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/front/js/jquery-3.6.0.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/front/js/bootstrap.bundle.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/front/js/plugins.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/front/js/main.js'), false); ?>"></script>
+
+    <?php echo $__env->yieldPushContent('script'); ?>
 </body>
 
 </html>

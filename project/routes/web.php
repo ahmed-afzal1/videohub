@@ -352,13 +352,15 @@ Route::middleware('auth')->name('user.')->group(function () {
 
     Route::get('profile/update', 'User\LoginController@logout')->name('logout');
 
-//   Route::get('billing/{plan}','')
 
 });
 
 Route::get('/', 'Front\FrontendController@index')->name('front.index');
 Route::get('/movies', 'Front\FrontendController@movies')->name('front.movies');
+Route::get('/filter/movies', 'Front\FrontendController@filterMovies')->name('filter.movies');
 Route::get('/movie-details/{slug}', 'Front\FrontendController@movieDetails')->name('movie.details');
+
+Route::get('free-movies','Front\FrontendController@freeMovies')->name('free.movies');
 
 Route::get('/pricing-plan', 'Front\FrontendController@plan')->name('front.plan');
 Route::get('/faq', 'Front\FrontendController@faq')->name('front.faq');

@@ -142,6 +142,16 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="cast">{{ __('Genre') }}</label>
+                                    <select class="form-control  mb-3 js-example-tokenizer" name="genre[]"
+                                        multiple="multiple" multiple="multiple">
+                                        @foreach ($genres as $genre)
+                                            <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="description">{{ __('Description') }}</label>

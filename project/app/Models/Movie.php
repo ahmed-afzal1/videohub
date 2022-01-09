@@ -13,12 +13,13 @@ class Movie extends Model
         'tag' => 'array',
         'producer' => 'array',
         'directors' => 'array',
-        'cast' => 'array'
+        'cast' => 'array',
+        'genre_id' => 'array'
     ];
     
     protected $fillable = ['title','video','video_type','tag','description','access','relase_date',
     'producer','directors','cast',
-    'genre_id','status','heighlight','slug','language_id','category_id'];
+    'genre_id','status','heighlight','slug','language_id','category_id','duration'];
 
     
     public function language()
@@ -43,14 +44,7 @@ class Movie extends Model
     
 
 
-    public function getGenreIdAttribute($value)
-    {
-        if($value == null)
-        {
-            return '';
-        }
-        return explode(',', $value);
-    }
+   
 
 
     public function genres()

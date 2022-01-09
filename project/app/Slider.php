@@ -11,7 +11,7 @@ class Slider extends Model
 
     public function movie()
     {
-        return $this->belongsTo(Movie::class);
+        return $this->belongsTo(Movie::class)->withDefault();
     }
 
     public static function upload($name, $file, $oldname)

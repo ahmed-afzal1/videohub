@@ -140,6 +140,16 @@
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="cast"><?php echo e(__('Genre'), false); ?></label>
+                                    <select class="form-control  mb-3 js-example-tokenizer" name="genre[]"
+                                        multiple="multiple" multiple="multiple">
+                                        <?php $__currentLoopData = $genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($genre->id, false); ?>"><?php echo e($genre->name, false); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="description"><?php echo e(__('Description'), false); ?></label>
