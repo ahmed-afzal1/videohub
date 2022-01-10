@@ -31,6 +31,7 @@
                                 <p class="banner-content">{{ @$slider->movie->description }}</p>
                                 <div class="hero-cast-wrap">
                                     <p><span class="red-color">Cast: </span>
+
                                         @foreach ($slider->movie->cast as $cast)
                                             @php
                                                 $cast = \App\Models\CastCrew::find($cast);
@@ -41,25 +42,27 @@
                                     <p><span class="red-color">Genre: </span>
                                         @if ($slider->movie->genre_id != null)
                                             @foreach ($slider->movie->genre_id as $genre)
+
                                                 @php
                                                     $cast = \App\Models\Genre::find($genre);
                                                 @endphp
-                                                {{ $genre->name }},
+                                                {{ $cast->name }},
                                             @endforeach
                                         @endif
                                     </p>
                                     <p><span class="red-color">Tag: </span>
-                                         @if ($slider->movie->tag != null)
+                                        @if ($slider->movie->tag != null)
                                             @foreach ($slider->movie->tag as $tag)
-                                             
+
                                                 {{ $tag }},
                                             @endforeach
                                         @endif
-                                    
+
                                     </p>
                                 </div>
                                 <div class="hero-btns d-flex align-content-center">
-                                    <a href="{{ route('movie.details', $slider->movie->slug) }}" class="primary-btn text-capitalize">Watch Now</a>
+                                    <a href="{{ route('movie.details', $slider->movie->slug) }}"
+                                        class="primary-btn text-capitalize">{{ __('Watch Now') }}</a>
                                     <button
                                         class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
                                         <img src="{{ asset('assets/front/images/plus.svg') }}" alt="plus"
@@ -73,11 +76,11 @@
 
         </div>
         <div class="hero-banner-thumbnail">
-        @foreach ($sliders as $slider)
-            <div class="single-thumbnail">
-                <img src="{{ asset('assets/images/poster/' . $slider->poster) }}" alt="thumbnail" />
-            </div>
-        @endforeach
+            @foreach ($sliders as $slider)
+                <div class="single-thumbnail">
+                    <img src="{{ asset('assets/images/poster/' . $slider->poster) }}" alt="thumbnail" />
+                </div>
+            @endforeach
 
         </div>
     </section>
@@ -136,95 +139,64 @@
             <div class="section-header">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h2 class="section-title">Free To Watch</h2>
+                        <h2 class="section-title">{{ __('Free To Watch') }}</h2>
                     </div>
                     <div class="col-sm-4 text-sm-end">
-                        <a href="free-movies.html" class="view-all-btn">View all <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{route('free.movies')}}" class="view-all-btn">{{ __('View all') }} <i
+                                class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="single-watch-grid">
-                        <div class="watch-thumbnail">
-                            <a href="#"><img src="{{ asset('assets/front/images/watch-grid-image.jpg') }}"
-                                    alt="watch-grid-image" /></a>
+                    
+                    @foreach ($freeMovies as $free)
+                        @if ($loop->first)
+                           
+                        <div class="single-watch-grid">
+                            <div class="watch-thumbnail">
+                                <a href="{{ route('movie.details', $free->slug) }}"><img src="{{ asset('assets/images/'.$free->image->image) }}"
+                                        alt="watch-grid-image" /></a>
+                            </div>
+                            <a href="{{ route('movie.details', $free->slug) }}" class="play-btn"><i class="fas fa-play"></i></a>
+                            <div class="watch-info">
+                                <h3><a href="{{ route('movie.details', $free->slug) }}">{{__($free->title)}}</a></h3>
+                                <p>{{__($free->description)}}</p>
+                            </div>
                         </div>
-                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
-                        <div class="watch-info">
-                            <h3><a href="#">Dracula Untold Story</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt
-                                ut labore et.</p>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="col-lg-6">
                     <div class="single-watch-list">
-                        <div class="row g-0">
-                            <div class="col-md-5">
-                                <div class="watch-thumbnail">
-                                    <a href="#"><img src="{{ asset('assets/front/images/watch-list-image-1.jpg') }}"
-                                            class="img-fluid" alt="watch-list-image" /></a>
-                                    <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                        @foreach ($freeMovies as $free)
+                            @if ($loop->first)
+                                @continue
+                            @endif
+                            <div class="row g-0">
+                                <div class="col-md-5">
+                                    <div class="watch-thumbnail">
+                                        <a href="#"><img src="{{ asset('assets/front/images/watch-list-image-1.jpg') }}"
+                                                class="img-fluid" alt="watch-list-image" /></a>
+                                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="watch-info">
+                                        <span class="date">2018</span>
+                                        <h3 class="watch-title"><a href="#">300 Rise Of An Empire</a></h3>
+                                        <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor.
+                                        </p>
+                                        <ul class="watch-meta">
+                                            <li><i class="far fa-clock"></i> 3hr 30mins</li>
+                                            <li><i class="far fa-calendar-alt"></i> June 2, 2021</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-7">
-                                <div class="watch-info">
-                                    <span class="date">2018</span>
-                                    <h3 class="watch-title"><a href="#">300 Rise Of An Empire</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor.</p>
-                                    <ul class="watch-meta">
-                                        <li><i class="far fa-clock"></i> 3hr 30mins</li>
-                                        <li><i class="far fa-calendar-alt"></i> June 2, 2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="single-watch-list">
-                        <div class="row g-0">
-                            <div class="col-md-5">
-                                <div class="watch-thumbnail">
-                                    <a href="#"><img src="{{ asset('assets/front/images/watch-list-image-2.jpg') }}"
-                                            class="img-fluid" alt="watch-list-image" /></a>
-                                    <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="watch-info">
-                                    <span class="date">2015</span>
-                                    <h3 class="watch-title"><a href="#">The Sinister</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor.</p>
-                                    <ul class="watch-meta">
-                                        <li><i class="far fa-clock"></i> 3hr 24mins</li>
-                                        <li><i class="far fa-calendar-alt"></i> June 2, 2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-watch-list">
-                        <div class="row g-0">
-                            <div class="col-md-5">
-                                <div class="watch-thumbnail">
-                                    <a href="#"><img src="{{ asset('assets/front/images/watch-list-image-3.jpg') }}"
-                                            class="img-fluid" alt="watch-list-image" /></a>
-                                    <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="watch-info">
-                                    <span class="date">2019</span>
-                                    <h3 class="watch-title"><a href="#">The Maze Runner</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor.</p>
-                                    <ul class="watch-meta">
-                                        <li><i class="far fa-clock"></i> 3hr 20mins</li>
-                                        <li><i class="far fa-calendar-alt"></i> June 2, 2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

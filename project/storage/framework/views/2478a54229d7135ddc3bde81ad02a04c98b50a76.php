@@ -254,6 +254,36 @@
 
                 </ul>
             </li>
+            
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-fw fa-columns"></i>
+                   <span><?php echo e(__('Tv Show'), false); ?></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                         <a class="nav-link" href="<?php echo e(route('admin-show-index'), false); ?>"><?php echo e(__('Shows'), false); ?></a>
+
+                    </li>
+
+                    <li>
+                        <a class="nav-link"
+                            href="<?php echo e(route('admin-session-index'), false); ?>"><?php echo e(__('Seasons'), false); ?></a>
+
+
+                    </li>
+
+                    <li>
+
+                        <a class="nav-link"
+                            href="<?php echo e(route('admin-episode-index'), false); ?>"><?php echo e(__('Episodes'), false); ?></a>
+
+                    </li>
+
+
+                </ul>
+            </li>
 
 
 
@@ -267,23 +297,7 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#showTable" aria-expanded="true"
-                    aria-controls="collapseTable">
-                    <i class="fa fa-tv"></i>
-                    <span><?php echo e(__('Tv Show'), false); ?></span>
-                </a>
-                <div id="showTable" class="collapse" aria-labelledby="headingTable"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="nav-link" href="<?php echo e(route('admin-show-index'), false); ?>"><?php echo e(__('Shows'), false); ?></a>
-                        <a class="nav-link"
-                            href="<?php echo e(route('admin-session-index'), false); ?>"><?php echo e(__('Seasons'), false); ?></a>
-                        <a class="nav-link"
-                            href="<?php echo e(route('admin-episode-index'), false); ?>"><?php echo e(__('Episodes'), false); ?></a>
-                    </div>
-                </div>
-            </li>
+         
 
 
 

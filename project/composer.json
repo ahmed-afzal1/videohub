@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "cloudinary-labs/cloudinary-laravel": "^1.0",
         "codexshaper/laravel-menu-builder": "^2.5",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",
@@ -18,9 +19,9 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "paypal/rest-api-sdk-php": "^1.14",
+        "phpmailer/phpmailer": "^6.5",
         "stripe/stripe-php": "^7.103",
-        "yajra/laravel-datatables": "1.5",
-        "phpmailer/phpmailer": "^6.5"
+        "yajra/laravel-datatables": "1.5"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

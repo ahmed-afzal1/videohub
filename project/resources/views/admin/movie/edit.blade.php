@@ -3,17 +3,8 @@
 @section('content')
 
     <div class="container-fluid" id="container-wrapper">
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{ __('Edit Movie') }}
-                <a href="{{ url()->previous() }}" class="btn back-btn btn-sm">{{ __('Back') }}</a>
-            </h1>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin-episode-index') }}">{{ __('Edit Movie') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Movie') }}</li>
-            </ol>
-        </div>
-        @include('includes.form-success')
+       
+        
         <div class="row">
             <div class="col-lg-12">
                 <!-- Form Basic -->
@@ -123,17 +114,19 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="title">{{ __('Movie Category') }}</label>
-                                    <select class="form-control  mb-3" name="category" >
-                                     @foreach($categories as $category)
-                                        <option value="{{$category->id}}" {{$category->id == $data->category_id ? 'selected' : ''}}>{{ $category->name}}</option>
-                                     @endforeach
+                                    <select class="form-control js-example-tokenizer mb-3" multiple name="category[]">
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}"
+                                                {{ in_array($category->id , $data->category_id) ? 'selected' : '' }}>
+                                                {{ $category->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                                
+
 
                                 <div class="form-group col-md-6">
                                     <label for="producer">{{ __('Producer') }}</label>
-                                    <select class="form-control  mb-3 select-2" id="producer" name="producer[]"
+                                    <select class="form-control  mb-3 js-example-tokenizer" id="producer[]" name="producer[]"
                                         multiple="multiple" multiple="multiple">
                                         @foreach ($cast_crews as $producer)
                                             <option value="{{ $producer->id }}"
@@ -145,7 +138,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="directors">{{ __('Directors') }}</label>
-                                    <select class="form-control  mb-3 select-2" id="directors" name="directors[]"
+                                    <select class="form-control  mb-3 js-example-tokenizer" id="directors[]" name="directors[]"
                                         multiple="multiple" multiple="multiple">
                                         @foreach ($cast_crews as $directors)
                                             <option value="{{ $directors->id }}"
@@ -157,12 +150,22 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="cast">{{ __('Cast') }}</label>
-                                    <select class="form-control  mb-3 select-2" id="cast" name="cast[]" multiple="multiple"
+                                    <select class="form-control  mb-3 js-example-tokenizer" id="cast" name="cast[]" multiple="multiple"
                                         multiple="multiple">
                                         @foreach ($cast_crews as $cast)
                                             <option value="{{ $cast->id }}"
                                                 {{ in_array($cast->id, $data->cast) ? 'selected' : '' }}>
                                                 {{ $cast->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="cast">{{ __('Genre') }}</label>
+                                    <select class="form-control  mb-3 js-example-tokenizer" name="genre[]"
+                                        multiple="multiple" multiple="multiple">
+                                        @foreach ($genres as $genre)
+                                            <option value="{{ $genre->id }}"  {{ in_array($genre->id, $data->genre_id) ? 'selected' : '' }}>{{ $genre->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -199,9 +202,15 @@
 @push('script')
 
     <script>
-        $('.select-2').select2();
+        $(function() {
+            $('.js-example-tokenizer').select2({
+                tags: true,
+                tokenSeparators: [',', ' ']
+            });
+        })
+
         $('.date').datepicker({});
-        $('#tag').tagify();
+
 
 
 

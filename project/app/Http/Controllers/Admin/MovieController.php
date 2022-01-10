@@ -41,6 +41,7 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
+       
         if ($request->video_type == 'file') {
             if (!$request->hasFile('video_name')) {
                 return response()->json(array('errors' => [__('File Not Found.!')]));
@@ -63,13 +64,15 @@ class MovieController extends Controller
         ]);
 
         $input = $request->all();
-        $input['tag'] = Helper::TagFormat($request->tag);
+        $input['tag'] = $request->tag;
         $input['video_type'] = $request->video_type;
         $input['category_id'] = $request->category;
+        $input['genre_id'] = $request->genre;
 
-        $input['producer'] = Helper::implode($request->producer);
-        $input['directors'] = Helper::implode($request->directors);
-        $input['cast'] = Helper::implode($request->cast);
+        $input['producer'] = $request->producer;
+        $input['duration'] = $request->duration;
+        $input['directors'] = $request->directors;
+        $input['cast'] = $request->cast;
         $location = 'assets/videos';
         $input['video'] = Helper::VideoUpload($request->all(), $location);
         $input['heighlight'] = 'new';
@@ -235,16 +238,20 @@ class MovieController extends Controller
             Helper::ImageUpdate($file, $location, $data, $size);
         }
 
-        $input['tag'] = Helper::TagFormat($request->tag);
-        $input['producer'] = Helper::implode($request->producer);
-        $input['directors'] = Helper::implode($request->directors);
-        $input['cast'] = Helper::implode($request->cast);
+        $input['tag'] = $request->tag;
+        $input['genre_id'] = $request->genre;
+        $input['producer'] = $request->producer;
+        $input['directors'] = $request->directors;
+        $input['cast'] = $request->cast;
         $input['slug'] = Helper::slug($request->title . ' ' . $request->release_date);
+        $input['duration'] = $request->duration;
         $input['category_id'] = $request->category;
         $data->update($input);
         Helper::tempClear();
 
-        return back()->with('success', __('Data Updated Successfully.'));
+        $notify[] = ['success','Movie  Updated Successfully'];
+
+        return redirect()->back()->withNotify($notify);
     }
 
 

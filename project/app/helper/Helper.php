@@ -3,13 +3,12 @@
 namespace App\helper;
 
 use App\Classes\IMDB;
-use Image;
 use App\Models\EmailTemplate;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Mail;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
+use Image;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class Helper
 {
@@ -75,7 +74,6 @@ class Helper
             Image::make($image)->resize($size[0], $size[1])->save($location);
         }
 
-
         $model->image()->update(['image' => $name]);
     }
 
@@ -123,7 +121,17 @@ class Helper
 // --------------------- Make Video --------------------------//
     public static function VideoUpload($files, $location)
     {
+       
         if ($files['video_type'] == 'file') {
+            $resizedVideo = cloudinary()->uploadVideo($files->getRealPath(), [
+                'folder' => 'uploads',
+                'transformation' => [
+                    'width' => 350,
+                    'height' => 200,
+                ],
+            ])->getSecurePath();
+
+            dd($resizedVideo);
             $file = $files['video_name'];
             $name = $file->getClientOriginalName();
             $name = str_replace(' ', '_', $name);
@@ -197,98 +205,96 @@ class Helper
         return $rating;
     }
 
-    
-public static function sendGeneralMail($data){
-    $general = GeneralSetting::first();
+    public static function sendGeneralMail($data)
+    {
+        $general = GeneralSetting::first();
 
-    
-    if ($general->email_method == 'php') {
-        $headers = "From: $general->website_name <$general->from_email> \r\n";
-        $headers .= "Reply-To: $general->website_name <$general->from_email> \r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=utf-8\r\n";
-        @mail($data['email'], $data['subject'], $data['message'], $headers);
-    }
-    else {
-        $mail = new PHPMailer(true);
+        if ($general->email_method == 'php') {
+            $headers = "From: $general->website_name <$general->from_email> \r\n";
+            $headers .= "Reply-To: $general->website_name <$general->from_email> \r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+            @mail($data['email'], $data['subject'], $data['message'], $headers);
+        } else {
+            $mail = new PHPMailer(true);
 
-        try {
-            $mail->isSMTP();
-            $mail->Host       = $general->smtp_config->smtp_host;
-            $mail->SMTPAuth   = true;
-            $mail->Username   = $general->smtp_config->smtp_username;
-            $mail->Password   = $general->smtp_config->smtp_password;
-            if ($general->smtp_config->smtp_encryption == 'ssl') {
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            } else {
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            try {
+                $mail->isSMTP();
+                $mail->Host = $general->smtp_config->smtp_host;
+                $mail->SMTPAuth = true;
+                $mail->Username = $general->smtp_config->smtp_username;
+                $mail->Password = $general->smtp_config->smtp_password;
+                if ($general->smtp_config->smtp_encryption == 'ssl') {
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                } else {
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                }
+                $mail->Port = $general->smtp_config->smtp_port;
+                $mail->CharSet = 'UTF-8';
+                $mail->setFrom($general->from_email, $general->website_name);
+                $mail->addAddress($data['email'], $data['name']);
+                $mail->addReplyTo($general->from_email, $general->website_name);
+                $mail->isHTML(true);
+                $mail->Subject = $data['subject'];
+                $mail->Body = $data['message'];
+                $mail->send();
+            } catch (Exception $e) {
+                throw new Exception($e);
             }
-            $mail->Port       = $general->smtp_config->smtp_port;
-            $mail->CharSet = 'UTF-8';
-            $mail->setFrom($general->from_email, $general->website_name);
-            $mail->addAddress($data['email'], $data['name']);
-            $mail->addReplyTo($general->from_email, $general->website_name);
-            $mail->isHTML(true);
-            $mail->Subject = $data['subject'];
-            $mail->Body    = $data['message'];
-            $mail->send();
-        } catch (Exception $e) {
-            throw new Exception($e);
         }
     }
-}
 
-public static function variableReplacer($code, $value, $template)
-{
-    return str_replace($code, $value, $template);
-}
-
-public static function sendMail($key, array $data, $user)
-{
-
-    $general = GeneralSetting::first();
-
-    $template =  EmailTemplate::where('name', $key)->first();
-
-    $message = self::variableReplacer('{username}', $user->username, $template->template);
-    $message = self::variableReplacer('{sent_from}', @$general->website_name, $message);
-
-    foreach ($data as $key => $value) {
-        $message = self::variableReplacer("{" . $key . "}", $value, $message);
+    public static function variableReplacer($code, $value, $template)
+    {
+        return str_replace($code, $value, $template);
     }
 
-    if ($general->email_method == 'php') {
-        $headers = "From: $general->website_name <$general->from_email> \r\n";
-        $headers .= "Reply-To: $general->website_name <$general->from_email> \r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=utf-8\r\n";
-        @mail($user->email, $template->subject, $message, $headers);
-    } else {
-        $mail = new PHPMailer(true);
+    public static function sendMail($key, array $data, $user)
+    {
 
-        try {
-            $mail->isSMTP();
-            $mail->Host       = $general->smtp_config->smtp_host;
-            $mail->SMTPAuth   = true;
-            $mail->Username   = $general->smtp_config->smtp_username;
-            $mail->Password   = $general->smtp_config->smtp_password;
-            if ($general->smtp_config->smtp_encryption == 'ssl') {
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            } else {
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $general = GeneralSetting::first();
+
+        $template = EmailTemplate::where('name', $key)->first();
+
+        $message = self::variableReplacer('{username}', $user->username, $template->template);
+        $message = self::variableReplacer('{sent_from}', @$general->website_name, $message);
+
+        foreach ($data as $key => $value) {
+            $message = self::variableReplacer("{" . $key . "}", $value, $message);
+        }
+
+        if ($general->email_method == 'php') {
+            $headers = "From: $general->website_name <$general->from_email> \r\n";
+            $headers .= "Reply-To: $general->website_name <$general->from_email> \r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+            @mail($user->email, $template->subject, $message, $headers);
+        } else {
+            $mail = new PHPMailer(true);
+
+            try {
+                $mail->isSMTP();
+                $mail->Host = $general->smtp_config->smtp_host;
+                $mail->SMTPAuth = true;
+                $mail->Username = $general->smtp_config->smtp_username;
+                $mail->Password = $general->smtp_config->smtp_password;
+                if ($general->smtp_config->smtp_encryption == 'ssl') {
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                } else {
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                }
+                $mail->Port = $general->smtp_config->smtp_port;
+                $mail->CharSet = 'UTF-8';
+                $mail->setFrom($general->from_email, $general->website_name);
+                $mail->addAddress($user->email, $user->username);
+                $mail->addReplyTo($general->from_email, $general->website_name);
+                $mail->isHTML(true);
+                $mail->Subject = $template->subject;
+                $mail->Body = $message;
+                $mail->send();
+            } catch (Exception $e) {
+                throw new Exception($e);
             }
-            $mail->Port       = $general->smtp_config->smtp_port;
-            $mail->CharSet = 'UTF-8';
-            $mail->setFrom($general->from_email, $general->website_name);
-            $mail->addAddress($user->email, $user->username);
-            $mail->addReplyTo($general->from_email, $general->website_name);
-            $mail->isHTML(true);
-            $mail->Subject = $template->subject;
-            $mail->Body    = $message;
-            $mail->send();
-        } catch (Exception $e) {
-            throw new Exception($e);
         }
     }
-}
 }

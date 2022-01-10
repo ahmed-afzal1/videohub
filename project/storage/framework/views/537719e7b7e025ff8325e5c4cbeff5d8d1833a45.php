@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/selectric.css'), false); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/jquery-ui.min.css'), false); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/select2.min.css'), false); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/tagify.css'), false); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/summernote.css'), false); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/bootstrap-iconpicker.min.css'), false); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/colorpicker.css'), false); ?>">
+    <?php echo $__env->yieldPushContent('style-plugin'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/stisla.css'), false); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(menu_asset('css/menu.css'), false); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/admin/css/components.css'), false); ?>">
@@ -64,6 +66,7 @@
     <script src="<?php echo e(asset('assets/admin/js/colorpicker.js'), false); ?>"></script>
     <script src="<?php echo e(asset('assets/admin/js/jquery.uploadpreview.min.js'), false); ?>"></script>
     <script src="<?php echo e(asset('assets/admin/js/chart.min.js'), false); ?>"></script>
+    <script src="<?php echo e(asset('assets/admin/js/tagify.js'), false); ?>"></script>
     <script src="<?php echo e(menu_asset('js/menu.js'), false); ?>"></script> 
     <script src="<?php echo e(asset('assets/admin/js/scripts.js'), false); ?>"></script>
     <script src="<?php echo e(asset('assets/admin/js/custom.js'), false); ?>"></script>

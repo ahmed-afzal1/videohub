@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Classes\IMDB;
+use App\helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
@@ -30,23 +31,51 @@ class FrontendController extends Controller
 
         $latestMovies = Movie::where('status', 1)->latest()->with('image')->get();
 
-        $sliders = Slider::latest()->with('movie')->get();
+        $sliders = Slider::whereHas('movie')->latest()->with('movie')->get();
 
-        return view('front.index', compact('latestMovies','sliders'));
+        $freeMovies = Movie::where('access','free')->where('status',1)->latest()->take(4)->get();
+
+        return view('front.index', compact('latestMovies', 'sliders','freeMovies'));
 
     }
+
+
 
     // ------------ Movie Search ---------------------//
 
     public function MovieDetails($slug)
     {
         $movie = Movie::where('slug', $slug)->first();
+
+        if ($movie->access == 'premium') {
+            if (!auth()->check()) {
+                return redirect()->route('user.login');
+            } else {
+                if (auth()->user()->planTime()) {
+                    $IMDB = new IMDB($movie->title);
+                    if ($IMDB->isReady) {
+                        $rating = $IMDB->getRating();
+                    } else {
+                        $rating = null;
+                    }
+
+                    return view('front.movieDetails', compact('movie', 'rating'));
+                } else {
+                    return redirect()->route('front.plan');
+                }
+            }
+        }
         // $favariteValues = Favarite::where('video_id',$data->id)->get();
         // if(Auth::user()){
         //     $isFavarite = Favarite::where('video_id',$data->id)->where('user_id',Auth::user()->id)->exists();
         // }else{
         //     $isFavarite = false;
         // }
+
+        // $reviews = Review::where('video_id',$data->id)->get();
+        // $topMovies = Movie::where('heighlight','like', '%top%')->orderby('id','desc')->take(4)->get();
+        // ,compact('data','topMovies','reviews','favariteValues','isFavarite','rating')
+
 
         $IMDB = new IMDB($movie->title);
         if ($IMDB->isReady) {
@@ -55,11 +84,7 @@ class FrontendController extends Controller
             $rating = null;
         }
 
-        // $reviews = Review::where('video_id',$data->id)->get();
-        // $topMovies = Movie::where('heighlight','like', '%top%')->orderby('id','desc')->take(4)->get();
-        // ,compact('data','topMovies','reviews','favariteValues','isFavarite','rating')
-
-        return view('front.movieDetails',compact('movie','rating'));
+        return view('front.movieDetails', compact('movie', 'rating'));
     }
 
     public function pages($slug)
@@ -70,13 +95,13 @@ class FrontendController extends Controller
 
     public function movies()
     {
-        $categories = Category::where('status',1)->get();
+        $categories = Category::where('status', 1)->get();
 
-        $moviesAll = Movie::where('status',1)->latest()->with('image')->paginate(1);
+        $moviesAll = Movie::where('status', 1)->latest()->with('image')->paginate();
 
         $paginationResult = json_decode(json_encode($moviesAll));
 
-        return view('front.movies',compact('moviesAll','categories','paginationResult'));
+        return view('front.movies', compact('moviesAll', 'categories', 'paginationResult'));
     }
 
     public function MovieShow($data)
@@ -448,6 +473,43 @@ class FrontendController extends Controller
         }
         session(['captcha_string' => $word]);
         imagepng($image, base_path('../assets/images/capcha_code.png'));
+    }
+
+    public function filterMovies(Request $request)
+    {
+        $movies = Movie::where('status', 1)->when($request->category, function ($q) use ($request) {
+            $q->where('category_id', 'like', '%' . $request->category . '%');
+        })->when($request->value, function ($q) use ($request) {
+            $a = $q->latest()->get();
+            $rating = explode(',', $request->value);
+
+            $movieIds = [];
+            foreach ($a as $mov) {
+                $ratingSingle = (float) Helper::GetIMDBRating($mov->title);
+
+                if (((float) $rating[0] <= $ratingSingle) && ((float) $rating[1] >= $ratingSingle)) {
+                    array_push($movieIds, $mov->id);
+                }
+            }
+            $q->whereIn('id', $movieIds);
+        })->when($request->search, function ($q) use ($request) {
+            $q->where('title', 'like', '%' . $request->search . '%');
+        })->get();
+
+        return view('front.movie_filter', compact('movies'));
+
+    }
+
+    public function freeMovies()
+    {
+        $pageTitle = __('Free Movies');
+
+        $categories = Category::where('status',1)->latest()->get();
+
+        $freeMovies = Movie::where('access','free')->where('status',1)->latest()->with('image')->get();
+
+        return view('front.free_movies', compact('categories','freeMovies','pageTitle'));
+        
     }
 
 }

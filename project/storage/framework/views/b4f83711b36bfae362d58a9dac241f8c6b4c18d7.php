@@ -29,6 +29,7 @@
                                 <p class="banner-content"><?php echo e(@$slider->movie->description, false); ?></p>
                                 <div class="hero-cast-wrap">
                                     <p><span class="red-color">Cast: </span>
+
                                         <?php $__currentLoopData = $slider->movie->cast; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cast): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php
                                                 $cast = \App\Models\CastCrew::find($cast);
@@ -39,25 +40,27 @@
                                     <p><span class="red-color">Genre: </span>
                                         <?php if($slider->movie->genre_id != null): ?>
                                             <?php $__currentLoopData = $slider->movie->genre_id; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                                                 <?php
                                                     $cast = \App\Models\Genre::find($genre);
                                                 ?>
-                                                <?php echo e($genre->name, false); ?>,
+                                                <?php echo e($cast->name, false); ?>,
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     </p>
                                     <p><span class="red-color">Tag: </span>
-                                         <?php if($slider->movie->tag != null): ?>
+                                        <?php if($slider->movie->tag != null): ?>
                                             <?php $__currentLoopData = $slider->movie->tag; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                             
+
                                                 <?php echo e($tag, false); ?>,
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
-                                    
+
                                     </p>
                                 </div>
                                 <div class="hero-btns d-flex align-content-center">
-                                    <a href="<?php echo e(route('movie.details', $slider->movie->slug), false); ?>" class="primary-btn text-capitalize">Watch Now</a>
+                                    <a href="<?php echo e(route('movie.details', $slider->movie->slug), false); ?>"
+                                        class="primary-btn text-capitalize"><?php echo e(__('Watch Now'), false); ?></a>
                                     <button
                                         class="add-to-btn border-0 bg-transparent text-white d-flex align-items-center ms-4">
                                         <img src="<?php echo e(asset('assets/front/images/plus.svg'), false); ?>" alt="plus"
@@ -71,11 +74,11 @@
 
         </div>
         <div class="hero-banner-thumbnail">
-        <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="single-thumbnail">
-                <img src="<?php echo e(asset('assets/images/poster/' . $slider->poster), false); ?>" alt="thumbnail" />
-            </div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="single-thumbnail">
+                    <img src="<?php echo e(asset('assets/images/poster/' . $slider->poster), false); ?>" alt="thumbnail" />
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
     </section>
@@ -134,95 +137,64 @@
             <div class="section-header">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h2 class="section-title">Free To Watch</h2>
+                        <h2 class="section-title"><?php echo e(__('Free To Watch'), false); ?></h2>
                     </div>
                     <div class="col-sm-4 text-sm-end">
-                        <a href="free-movies.html" class="view-all-btn">View all <i class="fas fa-arrow-right"></i></a>
+                        <a href="<?php echo e(route('free.movies'), false); ?>" class="view-all-btn"><?php echo e(__('View all'), false); ?> <i
+                                class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="single-watch-grid">
-                        <div class="watch-thumbnail">
-                            <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-grid-image.jpg'), false); ?>"
-                                    alt="watch-grid-image" /></a>
+                    
+                    <?php $__currentLoopData = $freeMovies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $free): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($loop->first): ?>
+                           
+                        <div class="single-watch-grid">
+                            <div class="watch-thumbnail">
+                                <a href="<?php echo e(route('movie.details', $free->slug), false); ?>"><img src="<?php echo e(asset('assets/images/'.$free->image->image), false); ?>"
+                                        alt="watch-grid-image" /></a>
+                            </div>
+                            <a href="<?php echo e(route('movie.details', $free->slug), false); ?>" class="play-btn"><i class="fas fa-play"></i></a>
+                            <div class="watch-info">
+                                <h3><a href="<?php echo e(route('movie.details', $free->slug), false); ?>"><?php echo e(__($free->title), false); ?></a></h3>
+                                <p><?php echo e(__($free->description), false); ?></p>
+                            </div>
                         </div>
-                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
-                        <div class="watch-info">
-                            <h3><a href="#">Dracula Untold Story</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt
-                                ut labore et.</p>
-                        </div>
-                    </div>
+                        <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <div class="col-lg-6">
                     <div class="single-watch-list">
-                        <div class="row g-0">
-                            <div class="col-md-5">
-                                <div class="watch-thumbnail">
-                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-1.jpg'), false); ?>"
-                                            class="img-fluid" alt="watch-list-image" /></a>
-                                    <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                        <?php $__currentLoopData = $freeMovies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $free): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($loop->first): ?>
+                                <?php continue; ?>
+                            <?php endif; ?>
+                            <div class="row g-0">
+                                <div class="col-md-5">
+                                    <div class="watch-thumbnail">
+                                        <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-1.jpg'), false); ?>"
+                                                class="img-fluid" alt="watch-list-image" /></a>
+                                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="watch-info">
+                                        <span class="date">2018</span>
+                                        <h3 class="watch-title"><a href="#">300 Rise Of An Empire</a></h3>
+                                        <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor.
+                                        </p>
+                                        <ul class="watch-meta">
+                                            <li><i class="far fa-clock"></i> 3hr 30mins</li>
+                                            <li><i class="far fa-calendar-alt"></i> June 2, 2021</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-7">
-                                <div class="watch-info">
-                                    <span class="date">2018</span>
-                                    <h3 class="watch-title"><a href="#">300 Rise Of An Empire</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor.</p>
-                                    <ul class="watch-meta">
-                                        <li><i class="far fa-clock"></i> 3hr 30mins</li>
-                                        <li><i class="far fa-calendar-alt"></i> June 2, 2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                    <div class="single-watch-list">
-                        <div class="row g-0">
-                            <div class="col-md-5">
-                                <div class="watch-thumbnail">
-                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-2.jpg'), false); ?>"
-                                            class="img-fluid" alt="watch-list-image" /></a>
-                                    <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="watch-info">
-                                    <span class="date">2015</span>
-                                    <h3 class="watch-title"><a href="#">The Sinister</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor.</p>
-                                    <ul class="watch-meta">
-                                        <li><i class="far fa-clock"></i> 3hr 24mins</li>
-                                        <li><i class="far fa-calendar-alt"></i> June 2, 2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-watch-list">
-                        <div class="row g-0">
-                            <div class="col-md-5">
-                                <div class="watch-thumbnail">
-                                    <a href="#"><img src="<?php echo e(asset('assets/front/images/watch-list-image-3.jpg'), false); ?>"
-                                            class="img-fluid" alt="watch-list-image" /></a>
-                                    <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="watch-info">
-                                    <span class="date">2019</span>
-                                    <h3 class="watch-title"><a href="#">The Maze Runner</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor.</p>
-                                    <ul class="watch-meta">
-                                        <li><i class="far fa-clock"></i> 3hr 20mins</li>
-                                        <li><i class="far fa-calendar-alt"></i> June 2, 2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
