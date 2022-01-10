@@ -14,7 +14,7 @@
                         <form action="{{ route('admin-gs-update') }}" enctype="multipart/form-data" method="POST">
                             @csrf
                            
-                            <div class="form-group col-md-3 mb-3">
+                            <div class="form-group col-md-12 mb-3">
                                 <label class="col-form-label">{{ __('Header logo') }}</label>
 
                                 <div id="image-preview" class="image-preview" style="background-image:url({{ $gs->header_logo ? asset('assets/images/'. $gs->header_logo) : asset('assets/images/noimage.png') }})">
@@ -24,9 +24,8 @@
 
                             </div>
 
-                            
-                            <div class="form-group row">
-                                <div class="col-sm-10">
+                            <div class="form-group">
+                                <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
                                 </div>
                             </div>
@@ -47,7 +46,7 @@
                             method="POST">@csrf
                             @include('includes.admin.form-both')
 
-                           <div class="form-group col-md-3 mb-3">
+                           <div class="form-group col-md-12 mb-3">
                                 <label class="col-form-label">{{ __('Footer logo') }}</label>
 
                                 <div id="image-preview_footer" class="image-preview" style="background-image:url({{ $gs->footer_logo ? asset('assets/images/' . $gs->footer_logo) : asset('assets/images/noimage.png') }})">
@@ -56,8 +55,8 @@
                                 </div>
 
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-10">
+                            <div class="form-group">
+                                <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
                                 </div>
                             </div>
@@ -67,8 +66,6 @@
             </div>
         </div>
     </div>
-
-
 
 @endsection
 

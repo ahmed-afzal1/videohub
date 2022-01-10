@@ -189,7 +189,7 @@
   
   ul {
     list-style: none;
-    min-width: 260px;
+    /* min-width: 260px; */
     padding: 0px;
     margin: 0px;
   }
@@ -336,7 +336,7 @@
   }
   
   .level_root.vertical .level_4{
-     background: ;
+     /* background: ; */
   }
   .level_root.vertical .level_4 >li:hover> a{
      background:#24cbe5 !important ;
@@ -424,7 +424,7 @@
   .level_root.horizontal .level_2 li a {
        color:#fff ;
   }
-  .level_root.horizontal.level_2> li> a:hover{
+  .level_root.horizontal.level_2> li> a:hover {
       color:#fff;
       background:#06abe2 !important;
   }
@@ -432,11 +432,11 @@
   .level_root.horizontal .level_3{
      background: #000;
   }
-  .level_root.horizontal.level_3 li.active{
+  .level_root.horizontal.level_3 li.active {
      background: #07990c;
   }
   
-  .level_root.horizontal .level_3 > li:hover> a{
+  .level_root.horizontal .level_3 > li:hover> a {
      background:rgba(225,225,225,.2) !important;
      color: #fff;
   }

@@ -206,7 +206,7 @@ select.form-control:not([size]):not([multiple]) {
   .form-group > label {
     font-weight: 600;
     color: #34395e;
-    font-size: 12px;
+    /* font-size: 12px; */
     letter-spacing: .5px; }
   .form-group.floating-addon {
     position: relative; }
@@ -2088,7 +2088,8 @@ blockquote {
   font-size: 15px; }
 
 .fas, .far, .fab, .fal {
-  font-size: 13px; }
+  /* font-size: 13px; */
+ }
 
 #visitorMap {
   height: 210px; }
@@ -2820,10 +2821,10 @@ body.layout-3 .main-footer {
       font-family: 'Font Awesome 5 Free';
       font-weight: 900;
       position: absolute;
-      top: 50%;
+      top: 54%;
       right: 20px;
       transform: translate(0, -50%);
-      font-size: 12px;
+      font-size: 10px;
       transition: all .5s; }
     .main-sidebar .sidebar-menu li.active > ul.dropdown-menu li a:hover {
       background-color: #f8fafb; }

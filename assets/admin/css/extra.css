@@ -1,0 +1,23 @@
+/* Extra CSS Start*/
+.navbar .nav-link.nav-link-user img {
+    height: 30px;
+}
+.action-list i {
+    font-size: 9px;
+}
+
+/* Extra Responsive CSS Start */
+@media (max-width: 420px) {
+    .image-preview, #callback-preview {
+        width: 150px!important;
+        height: 150px!important;
+    }
+    .image-preview label, #callback-preview label {
+        width: 130px;
+        height: 44px;
+        line-height: 45px;
+    }
+}
+/* Extra Responsive CSS End */
+
+/* Extra CSS End */

@@ -14,18 +14,19 @@
 
                         <div class="row">
 
-                            <div class="form-group col-md-3 mb-3">
-                                <label class="col-form-label">{{__('Paypal Image')}}</label>
-
-                                <div id="image-preview" class="image-preview"
-                                    style="background-image:url({{ asset('assets/images/'.@$gateway->image->image )}});">
-                                    <label for="image-upload" id="image-label">{{__('Choose File')}}</label>
-                                    <input type="file" name="paypal_image" id="image-upload" />
+                            <div class="col-md-3">
+                                <div class="form-group mb-5">
+                                    <label class="col-form-label">{{__('Paypal Image')}}</label>
+    
+                                    <div id="image-preview" class="image-preview"
+                                        style="background-image:url({{ asset('assets/images/'.@$gateway->image->image )}});">
+                                        <label for="image-upload" id="image-label">{{__('Choose File')}}</label>
+                                        <input type="file" name="paypal_image" id="image-upload" />
+                                    </div>
                                 </div>
-
                             </div>
 
-                            <div class="col-md-9">
+                            <div class="col-md-12">
 
                                 <div class="row">
 
@@ -106,9 +107,9 @@
 
                             </div>
 
-
-                            <button type="submit" class="btn btn-primary w-100">{{__('Update Paypal Information')}}</button>
-
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary w-100">{{__('Update Paypal Information')}}</button>
+                            </div>
                         </div>
 
                     </form>
@@ -118,11 +119,7 @@
         </div>
     </div>
 
-
-
-
 @endsection
-
 
 @push('script')
 

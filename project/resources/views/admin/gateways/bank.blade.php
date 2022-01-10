@@ -15,18 +15,20 @@
 
                         <div class="row">
 
-                            <div class="form-group col-md-3 mb-3">
-                                <label class="col-form-label">{{__('Bank Image')}}</label>
-
-                                <div id="image-preview" class="image-preview"
-                                    style="background-image:url({{ asset('assets/images/'.@$gateway->image->image )}});">
-                                    <label for="image-upload" id="image-label">{{__('Choose File')}}</label>
-                                    <input type="file" name="bank_image" id="image-upload" />
+                            <div class="col-md-3">
+                                <div class="form-group mb-5">
+                                    <label class="col-form-label">{{__('Bank Image')}}</label>
+    
+                                    <div id="image-preview" class="image-preview"
+                                        style="background-image:url({{ asset('assets/images/'.@$gateway->image->image )}});">
+                                        <label for="image-upload" id="image-label">{{__('Choose File')}}</label>
+                                        <input type="file" name="bank_image" id="image-upload" />
+                                    </div>
+    
                                 </div>
-
                             </div>
 
-                            <div class="col-md-9">
+                            <div class="col-md-12">
 
                                 <div class="row">
 
@@ -101,8 +103,6 @@
                                                 </div>
                                             </div>
                                             <input type="text" class="form-control currency" name="charge"  value="{{number_format(@$gateway->charge,4) ?? 0}}">
-
-                                            
                                         </div>
                                     </div>
 
@@ -111,13 +111,10 @@
                                         <label for="">{{__('Allow as payment method')}}</label>
 
                                         <select name="status" id="" class="form-control">
-
                                             <option value="1" {{ @$gateway->status ? 'selected' : '' }}>{{__('Yes')}}
                                             </option>
                                             <option value="0" {{ @$gateway->status ? '' : 'selected' }}>{{__('No')}}
                                             </option>
-
-
                                         </select>
 
                                     </div>
@@ -144,10 +141,7 @@
 
                                             <div class="col-md-12 user-data">
                                                 <div class="row">
-
-
                                                     @if (@$gateway->user_proof_param != null)
-
 
                                                         @foreach ($gateway->user_proof_param as $key => $param)
                 
@@ -212,7 +206,6 @@
                                                             </div>
                                                         @endforeach
 
-
                                                     @endif
                                                 </div>
 
@@ -236,9 +229,7 @@
             </div>
         </div>
 
-
     </div>
-
 
 @endsection
 

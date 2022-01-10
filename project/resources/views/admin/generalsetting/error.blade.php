@@ -21,10 +21,17 @@
           <div class="loader" style="background: url({{asset('assets/images/genarel-settings/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);"></div>
           <form id="pageForm" action="{{ route('admin-gs-update') }}" enctype="multipart/form-data" method="POST">@csrf
              @include('includes.admin.form-both')
-             <div class="text-center image-view-error mb-4 ml-5">
-                <img class="image-fluid border p-3" src="{{ $gs->error_photo ? asset('assets/images/genarel-settings/'.$gs->error_photo) : asset('assets/images/noimage.png') }}" width="550" height="280">
-              </div>
-              <div class="form-group row mb-5 mt-5">
+            
+            <div class="form-group row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <div class="image-view-error mb-4">
+                        <img class="image-fluid border p-3" src="{{ $gs->error_photo ? asset('assets/images/genarel-settings/'.$gs->error_photo) : asset('assets/images/noimage.png') }}" width="550" height="280">
+                    </div>
+                </div>
+            </div>
+
+              <div class="form-group row">
                   <label for="error-image" class="col-sm-3 col-form-label">{{ __('Upload Image') }} *</label>
                   <div class="col-sm-9">
                       <div class="custom-file">
@@ -34,14 +41,14 @@
                   </div>
               </div>
 
-              <div class="form-group row mt-5 mb-5">
+              <div class="form-group row">
                   <label for="error_title" class="col-sm-3 col-form-label">{{ __('Error Title') }} *</label>
                   <div class="col-sm-9">
                       <textarea class="form-control " name="error_title" id="error_title" rows="5">{!! $gs->error_text !!}</textarea>
                   </div>
               </div>
 
-              <div class="form-group row mb-5">
+              <div class="form-group row">
                   <label for="error_text" class="col-sm-3 col-form-label">{{ __('Error Text') }} *</label>
                   <div class="col-sm-9">
                       <textarea class="form-control " name="error_text" id="error_text" rows="5">{!! $gs->error_text !!}</textarea>
@@ -49,7 +56,9 @@
               </div>
 
               <div class="form-group row">
-                  <div class="col-sm-10">
+                  <div class="col-sm-3">
+                  </div>
+                  <div class="col-sm-9">
                       <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                   </div>
               </div>

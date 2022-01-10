@@ -23,14 +23,14 @@
       <form id="pageForm" action="{{ route('admin-gs-update') }}" enctype="multipart/form-data" method="POST">
         @csrf
          @include('includes.admin.form-both')
-        <div class="form-group row mb-5">
+        <div class="form-group row">
           <label for="footer_text" class="col-sm-3 col-form-label">{{ __('Footer Text') }} *</label>
           <div class="col-sm-9">
             <textarea class="form-control" id="footer_text" name="footer_text" rows="5" placeholder="{{ __('Footer Text') }}">{{ $gs->footer_text }}</textarea>
           </div>
         </div>
 
-        <div class="form-group row mb-5">
+        <div class="form-group row">
           <label for="copy_right_text" class="col-sm-3 col-form-label">{{ __('Copyright Text') }} *</label>
           <div class="col-sm-9">
             <textarea class="form-control " name="copy_right_text" id="copy_right_text" rows="5">{{ $gs->copy_right_text }}</textarea>
@@ -38,8 +38,9 @@
         </div>
 
         <div class="form-group row">
-          <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-9">
+            <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
           </div>
         </div>
       </form>
