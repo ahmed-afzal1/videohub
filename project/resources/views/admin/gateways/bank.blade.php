@@ -145,7 +145,7 @@
 
                                                         @foreach ($gateway->user_proof_param as $key => $param)
                 
-                                                            <div class="col-md-12 user-data">
+                                                            <div class="col-md-12 user-data p-0">
                                                                 <div class="form-group">
                                                                     <div class="input-group mb-md-0 mb-4">
                                                                         <div class="col-md-4">

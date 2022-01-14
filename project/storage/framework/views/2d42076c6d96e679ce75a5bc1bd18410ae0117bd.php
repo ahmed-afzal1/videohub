@@ -52,13 +52,12 @@
                                                 </select>
                                         </td>
                                         <td>
-                                            <div class="action-list"><a href="<?php echo e(route('admin-show-edit', $show->id), false); ?>"
-                                                    class="btn btn-primary btn-sm mr-2"> <i
-                                                        class="fas fa-edit mr-1"></i><?php echo e(__('Edit'), false); ?></a><a
+                                            <div><a href="<?php echo e(route('admin-show-edit', $show->id), false); ?>"
+                                                    class="btn btn-primary mr-2"><i class="fa fa-pen"></i></a><a
                                                     href="javascript:;"
                                                     data-href=" <?php echo e(route('admin-show-delete', $show->id), false); ?>"
                                                     data-toggle="modal" data-target="#confirm-delete"
-                                                    class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a></div>
+                                                    class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></div>
                                         </td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

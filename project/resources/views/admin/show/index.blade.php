@@ -52,13 +52,12 @@
                                                 </select>
                                         </td>
                                         <td>
-                                            <div class="action-list"><a href="{{ route('admin-show-edit', $show->id) }}"
-                                                    class="btn btn-primary btn-sm mr-2"> <i
-                                                        class="fas fa-edit mr-1"></i>{{ __('Edit') }}</a><a
+                                            <div><a href="{{ route('admin-show-edit', $show->id) }}"
+                                                    class="btn btn-primary mr-2"><i class="fa fa-pen"></i></a><a
                                                     href="javascript:;"
                                                     data-href=" {{ route('admin-show-delete', $show->id) }}"
                                                     data-toggle="modal" data-target="#confirm-delete"
-                                                    class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a></div>
+                                                    class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></div>
                                         </td>
                                     </tr>
                                 @endforeach

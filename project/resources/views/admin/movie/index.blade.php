@@ -14,7 +14,7 @@
         <!-- Row -->
         <div class="row">
             <!-- Datatables -->
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-0">
                 <div class="card mb-4">
                     <div class="card-header">
                         <a class="btn btn-primary" href="{{ route('admin.movie.create') }}">
@@ -24,7 +24,7 @@
                     <div class="card-body">
 
 
-                        <div class="table-responsive p-3">
+                        <div class="table-responsive">
 
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
@@ -55,15 +55,14 @@
                                             <td>
                                                 <div class="action-list"><a
                                                         href="{{ route('admin.movie.edit', $movie->id) }}"
-                                                        class="btn btn-primary btn-sm mr-2"> <i
-                                                            class="fas fa-edit mr-1"></i>{{ __('Edit') }}</a><a
+                                                        class="btn btn-primary mr-2"> <i class="fa fa-pen"></i></a><a
                                                         href="javascript:void(0)"
                                                         data-href=" {{ route('admin.movie.delete', $movie->id) }}"
                                                         
-                                                        class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt"></i></a><a
+                                                        class="btn btn-danger delete"><i class="fas fa-trash-alt"></i></a><a
                                                         href="javascript:void(0)"
                                                         data-href="{{ route('admin.move.heighlight', $movie->id) }}"
-                                                        class="btn btn-primary btn-sm mr-2 heighight ml-2"
+                                                        class="btn btn-primary mr-2 heighight ml-2"
                                                         data-toggle="modal" data-target="#modal1"> <i
                                                             class="fas fa-star mr-1"></i>{{ __('Highlight') }}</a></div>
                                             </td>

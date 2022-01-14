@@ -4,7 +4,7 @@
 
     <div class="row">
 
-        <div class="col-9 col-md-9 col-lg-9">
+        <div class="col-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-header">
@@ -32,7 +32,7 @@
         </div>
 
 
-        <div class="col-9 col-md-9 col-lg-9">
+        <div class="col-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
 
@@ -59,10 +59,9 @@
 
                             </div>
 
-
-                            <button type="submit" class="btn btn-primary">{{__('Update Email Template')}}</button>
-
-
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-primary">{{__('Update Email Template')}}</button>
+                            </div>
                         </div>
 
 

@@ -13,15 +13,18 @@
     <!-- Row -->
     <div class="row">
       <!-- Datatables -->
-      <div class="col-lg-12">
+      <div class="col-lg-12 p-0">
         <div class="card mb-4">
-          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <div class="card-header">
+            <a class="btn btn-primary" href="{{route('admin-blog-create')}}">
+              <i class="fas fa-plus"></i> {{ __('Add New Blog') }}
+            </a>
           </div>
           @include('includes.admin.form-both')
           <div class="table-responsive p-3">
-            <a class="btn btn-primary" href="{{route('admin-blog-create')}}">
+            {{-- <a class="btn btn-primary mb-3" href="{{route('admin-blog-create')}}">
               <i class="fas fa-plus"></i> {{ __('Add New Blog') }}
-          </a>
+          </a> --}}
             <table id="geniustable" class="table align-items-center table-flush  dt-responsive" id="dataTable">
               <thead class="thead-light">
                 <tr>
@@ -34,9 +37,9 @@
                 @foreach ($blogs as $blog)
                     <tr>
                       <td>{{$blog->title}}</td>
-                      <td><img src="{{$blog->image->image ? asset('assets/images/'.$blog->image->image) : asset('assets/images/noimage.png')}}" alt=""></td>
+                      <td><img src="{{$blog->image->image ? asset('assets/images/'.$blog->image->image) : asset('assets/images/noimage.png')}}" alt="" class="img-fluid"></td>
                       <td>
-                        <div class="action-list"><a  href="{{route('admin-blog-edit',$blog->id) }}" class="btn btn-primary btn-sm mr-2"> <i class="fas fa-edit mr-1"></i>{{__('Edit')}}</a><a href="javascript:;" data-href=" {{route('admin-blog-delete',$blog->id)}}" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a></div>
+                        <div class="action-list"><a  href="{{route('admin-blog-edit',$blog->id) }}" class="btn btn-primary edit mr-2"> <i class="fa fa-pen"></i></a><a href="javascript:;" data-href=" {{route('admin-blog-delete',$blog->id)}}" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger delete"><i class="fas fa-trash-alt"></i></a></div>
                       </td>
                     </tr>
                 @endforeach

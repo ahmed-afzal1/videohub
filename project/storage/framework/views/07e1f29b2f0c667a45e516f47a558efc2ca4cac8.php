@@ -118,11 +118,7 @@
         </div>
     </div>
 
-
-
-
 <?php $__env->stopSection(); ?>
-
 
 <?php $__env->startPush('script'); ?>
 

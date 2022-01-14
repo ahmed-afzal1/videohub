@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 
-
 @section('content')
-
-  
 
     <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -16,15 +13,12 @@
 
                 <div class="row">
 
-
                     <div class="form-group col-md-6">
                         <label for="showname">{{ __('Show Name') }}</label>
                         <input type="text" class="form-control" name="show_name" id="showname"
                             placeholder="{{ __('Show Name') }}">
                     </div>
-
-                   
-
+ 
                     <div class="form-group col-md-6">
                         <label for="date">{{ __('Realse Date') }}</label>
                         <input type="text" class="form-control date" name="relase_date"
@@ -52,7 +46,7 @@
 
                      <div class="form-group col-md-12">
                         <label for="languageimage">{{ __('Image Thumbnail') }}</label>
-                        <span class="ml-3">{{ __('(support (jpeg,jpg,png))') }}</span>
+                        <span class="ml-2 mb-2 d-block d-sm-inline-block">{{ __('(support (jpeg,jpg,png))') }}</span>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" name="image" id="image" value="" accept="image/*">
                             <label class="custom-file-label" for="languageimage">{{ __('Choose file') }}</label>

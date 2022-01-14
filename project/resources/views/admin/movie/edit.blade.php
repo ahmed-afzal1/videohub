@@ -6,7 +6,7 @@
        
         
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-0">
                 <!-- Form Basic -->
                 <div class="card mb-4">
                     <div class="row py-3">

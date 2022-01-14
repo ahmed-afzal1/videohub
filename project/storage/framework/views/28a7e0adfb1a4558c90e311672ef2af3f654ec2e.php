@@ -142,14 +142,11 @@
 
                                             <div class="col-md-12 user-data">
                                                 <div class="row">
-
-
                                                     <?php if(@$gateway->user_proof_param != null): ?>
-
 
                                                         <?php $__currentLoopData = $gateway->user_proof_param; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $param): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 
-                                                            <div class="col-md-12 user-data">
+                                                            <div class="col-md-12 user-data p-0">
                                                                 <div class="form-group">
                                                                     <div class="input-group mb-md-0 mb-4">
                                                                         <div class="col-md-4">
@@ -215,7 +212,6 @@
                                                             </div>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-
                                                     <?php endif; ?>
                                                 </div>
 
@@ -239,9 +235,7 @@
             </div>
         </div>
 
-
     </div>
-
 
 <?php $__env->stopSection(); ?>
 

@@ -51,12 +51,12 @@
                         <div class="language-area  position-relative">
                             <span class="remove-btn language-remove"><i class="fas fa-times"></i></span>
                             <div class="row">
-                                <div class="col-sm-6 col-md-6 col-6">
+                                <div class="col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <textarea name="keys[]" class="form-control" placeholder="Enter Language Key" required=""></textarea>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-6 col-6">
+                                <div class="col-md-6 col-lg-6">
                                    
                                     <div class="form-group">
                                         <textarea name="values[]" class="form-control" placeholder="Enter Language Value" required=""></textarea>
@@ -67,7 +67,7 @@
                        
                        
                     </div>
-                        <div class="more-field text-center">
+                        <div class="more-field text-center mb-2">
                             <button type="button" class="btn btn-info" id="language-btn">{{ __('Add More Field') }}</button>
                         </div>
 
@@ -93,12 +93,12 @@
           `<div class="language-area  position-relative">
             <span class="remove-btn"><i class="fas fa-times"></i></span>
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-6">
+                <div class="col-md-6 col-lg-6">
                     <div class="form-group ">
                         <textarea name="keys[]" class="form-control" placeholder="Enter Language Key" required=""></textarea>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6 col-6">
+                <div class="col-md-6 col-lg-6">
                     
                     <div class="form-group ">
                         <textarea name="values[]" class="form-control" placeholder="Enter Language Value" required=""></textarea>
@@ -121,12 +121,12 @@
         ` <div class="language-area  position-relative">
             <span class="remove-btn"><i class="fas fa-times"></i></span>
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-6">
+                <div class="col-md-6 col-lg-6">
                     <div class="form-group ">
                         <textarea name="keys[]" class="form-control" placeholder="Enter Language Key" required=""></textarea>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6 col-6">
+                <div class="col-md-6 col-lg-6">
                     
                     <div class="form-group ">
                         <textarea name="values[]" class="form-control" placeholder="Enter Language Value" required=""></textarea>

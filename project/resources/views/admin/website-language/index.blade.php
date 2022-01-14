@@ -5,7 +5,7 @@
 <div class="container-fluid" id="container-wrapper">
    
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12 p-0">
         <div class="card mb-4">
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <a href="{{route('admin-lang-create')}}" class="btn btn-primary add">{{__('Create Language')}}</a>
@@ -13,7 +13,7 @@
           
           <div class="table-responsive p-3">
          
-            <table class="table align-items-center table-flush  dt-responsive" >
+            <table class="table align-items-center table-flush dt-responsive" >
               <thead class="thead-light">
                 <tr>
                   <th>{{ __('Languages') }}</th>

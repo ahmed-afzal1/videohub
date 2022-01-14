@@ -13,15 +13,15 @@
 
   <div class="row">
       <!-- Datatables -->
-      <div class="col-lg-12">
+      <div class="col-lg-12 p-0">
           <div class="card mb-4">
-              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              </div>
-              @include('includes.admin.form-success')
-              <div class="table-responsive p-3">
+            <div class="card-header">
                 <a class="btn btn-primary" href="{{route('admin-page-create')}}">
                     <i class="fas fa-plus"></i> {{ __('Add New Page') }}
                 </a>
+            </div>
+              @include('includes.admin.form-success')
+              <div class="table-responsive p-3">
                   <table id="geniustable" class="table align-items-center table-flush  dt-responsive" id="dataTable">
                       <thead class="thead-light">
                           <tr>
@@ -36,7 +36,7 @@
                                  <td>{{$data->title}}</td>
                                  <td>{{$data->details}}</td>
                                  <td>
-                                    <div class="action-list"><a  href="{{route('admin-page-edit',$data->id) }}" class="btn btn-primary btn-sm mr-2"> <i class="fas fa-edit mr-1"></i>{{__('Edit')}}</a><a href="javascript:;" data-href=" {{route('admin-page-delete',$data->id)}}" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a></div>
+                                    <div class="action-list"><a  href="{{route('admin-page-edit',$data->id) }}" class="btn btn-primary mr-2"> <i class="fa fa-pen"></i></a><a href="javascript:;" data-href=" {{route('admin-page-delete',$data->id)}}" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></div>
                                  </td>
                             </tr> 
                           @endforeach
@@ -66,7 +66,7 @@
           <!-- Modal footer -->
           <div class="modal-footer justify-content-center">
               <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Cancel') }}</button>
-              <a class="btn btn-danger btn-ok">{{ __('Delete') }}</a>
+              <button type="submit" class="btn btn-danger btn-ok">{{ __('Delete') }}</button>
           </div>
 
       </div>

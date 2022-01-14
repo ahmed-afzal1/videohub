@@ -2,11 +2,23 @@
 .navbar .nav-link.nav-link-user img {
     height: 30px;
 }
+.action-list {
+    /* min-width: 140px!important; */
+}
+.action-list {
+    min-width: 195px!important;
+}
 .action-list i {
     font-size: 9px;
 }
 
 /* Extra Responsive CSS Start */
+@media (max-width: 575px) {
+    .url-area iframe {
+        width: auto!important;
+        max-width: 100%!important;
+    }
+}
 @media (max-width: 420px) {
     .image-preview, #callback-preview {
         width: 150px!important;
@@ -16,6 +28,9 @@
         width: 130px;
         height: 44px;
         line-height: 45px;
+    }
+    .url-area iframe {
+        height: 180px!important;
     }
 }
 /* Extra Responsive CSS End */

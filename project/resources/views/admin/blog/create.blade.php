@@ -32,7 +32,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="video_image">{{ __('Post Thumbnail') }}</label>
-                                        <span class="ml-3">{{ __('(support (jpeg,jpg,png))') }}</span>
+                                        <span class="ml-2 mb-2 d-block d-sm-inline-block">{{ __('(support (jpeg,jpg,png))') }}</span>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="photo" id="video_image" accept="image/*">
                                             <label class="custom-file-label" for="photo">{{ __('Choose file') }}</label>

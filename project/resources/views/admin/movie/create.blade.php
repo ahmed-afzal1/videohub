@@ -6,7 +6,7 @@
 
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-0">
                 <!-- Form Basic -->
                 <div class="card mb-4">
                     <div class="card-header">
@@ -43,7 +43,7 @@
                                 <div class="col-md-6 ">
                                     <div class="form-group VideoInsert">
                                         <label for="video">{{ __('Video File') }}</label>
-                                        <span class="ml-3">{{ __('(support (mp4,webm,avi,flv,mkv))') }}</span>
+                                        <span class="ml-2 mb-2 d-block d-sm-inline-block">{{ __('(support (mp4,webm,avi,flv,mkv))') }}</span>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input vedio_processing" name="video_name"
                                                 id="video" value="" data-href="{{ route('admin.movie.processing') }}">
@@ -60,7 +60,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="video_image">{{ __('Video Thumbnail') }}</label>
-                                        <span class="ml-3">{{ __('(support (jpeg,jpg,png))') }}</span>
+                                        <span class="ml-2 mb-2 d-block d-sm-inline-block">{{ __('(support (jpeg,jpg,png))') }}</span>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="video_image" id="video_image"
                                                 accept="image/*">
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6 col-md-6">
+                                <div class="form-group col-md-6">
                                     <label for="title">{{ __('Movie Title') }}</label>
                                     <input type="text" class="form-control" name="title"
                                         placeholder="{{ __('Movie Title') }}">
@@ -143,7 +143,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <label for="description">{{ __('Description') }}</label>
                                     <textarea id="area1" class="form-control " name="description"
                                         placeholder="{{ __('Description') }}"></textarea>
@@ -177,7 +177,7 @@
             var input = $('.VideoInsert');
 
             var fileHtml = `<label for="video">{{ __('Video File') }}</label>
-                <span class="ml-3">{{ __('(support (mp4,webm,avi,flv,mkv))') }}</span>
+                <span class="ml-2 mb-2 d-block d-sm-inline-block">{{ __('(support (mp4,webm,avi,flv,mkv))') }}</span>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input vedio_processing" name="video_name" id="video" value="" data-href="{{ route('admin.episode.processing') }}">
                     <input type="hidden" name="previous_video" id="previous_video" value="">

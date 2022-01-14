@@ -6,24 +6,24 @@
       
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-0">
 
                 <div class="card mb-4">
-                    <div class="row py-3">
+                    <div class="p-3 admin-video-player-edit-page-wrap">
 
-                        <div class="col-md-6 text-center video-area {{ $data->video_type == 'file' ? '' : 'd-none' }}">
+                        <div class="video-area {{ $data->video_type == 'file' ? '' : 'd-none' }}">
                             <video
                                 src="{{ $data->video_type == 'file' ? asset('assets/videos/episode-videos/' . $data->video) : '' }}"
                                 width="400" height="360" controls
                                 class="{{ $data->video_type == 'file' ? '' : 'd-none' }}"></video>
                         </div>
-                        <div class="col-md-6 text-center url-area {{ $data->video_type == 'url' ? '' : 'd-none' }}">
+                        <div class="url-area {{ $data->video_type == 'url' ? '' : 'd-none' }}">
                             <iframe width="400" height="360" src="{!! $data->video_type == 'url' ? $data->video : '' !!}"
                                 class="{{ $data->video_type == 'url' ? '' : 'd-none' }}">
                             </iframe>
                         </div>
 
-                        <div class="col-md-6 image-area {{ $data->image->image != null ? '' : 'd-none' }} text-center">
+                        <div class="image-area {{ $data->image->image != null ? '' : 'd-none' }}">
                             <img src="{{ asset('assets/images/' . $data->image->image) }}"
                                 class="img-fluid" width="400" height="360" alt="">
                         </div>

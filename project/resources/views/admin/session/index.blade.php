@@ -14,7 +14,7 @@
         <!-- Row -->
         <div class="row">
 
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-0">
                 <div class="card mb-4">
 
                     <div class="card-header">
@@ -45,14 +45,13 @@
                                                     alt="" class="w-50 rounded">
                                             </td>
                                             <td>
-                                                <div class="action-list"><a
+                                                <div><a
                                                         href="{{ route('admin-session-edit', $data->id) }}"
-                                                        class="btn btn-primary btn-sm mr-2"> <i
-                                                            class="fas fa-edit mr-1"></i>{{ __('Edit') }}</a><a
+                                                        class="btn btn-primary mr-2"><i class="fa fa-pen"></i></a><a
                                                         href="javascript:;"
                                                         data-href=" {{ route('admin-session-delete', $data->id) }}"
                                                         data-toggle="modal" data-target="#confirm-delete"
-                                                        class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
